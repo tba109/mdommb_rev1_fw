@@ -1,0 +1,421 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------
+| Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+| Date             : Tue Nov 10 18:45:51 2020
+| Host             : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
+| Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
+| Design           : top
+| Device           : xc7s100fgga676-2
+| Design State     : routed
+| Grade            : commercial
+| Process          : typical
+| Characterization : Production
+-------------------------------------------------------------------------------------------------------------------------------
+
+Power Report
+
+Table of Contents
+-----------------
+1. Summary
+1.1 On-Chip Components
+1.2 Power Supply Summary
+1.3 Confidence Level
+2. Settings
+2.1 Environment
+2.2 Clock Constraints
+3. Detailed Reports
+3.1 By Hierarchy
+
+1. Summary
+----------
+
++--------------------------+--------------+
+| Total On-Chip Power (W)  | 0.948        |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 0.845        |
+| Device Static (W)        | 0.103        |
+| Effective TJA (C/W)      | 2.4          |
+| Max Ambient (C)          | 82.7         |
+| Junction Temperature (C) | 27.3         |
+| Confidence Level         | Low          |
+| Setting File             | ---          |
+| Simulation Activity File | ---          |
+| Design Nets Matched      | NA           |
++--------------------------+--------------+
+* Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
+
+
+1.1 On-Chip Components
+----------------------
+
++--------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
++--------------------------+-----------+----------+-----------+-----------------+
+| Clocks                   |     0.112 |       10 |       --- |             --- |
+| Slice Logic              |     0.029 |    31114 |       --- |             --- |
+|   LUT as Logic           |     0.022 |    10536 |     64000 |           16.46 |
+|   CARRY4                 |     0.003 |     1379 |     16000 |            8.62 |
+|   Register               |     0.003 |    15160 |    128000 |           11.84 |
+|   LUT as Distributed RAM |    <0.001 |      384 |     17600 |            2.18 |
+|   F7/F8 Muxes            |    <0.001 |      397 |     64000 |            0.62 |
+|   Others                 |     0.000 |     1054 |       --- |             --- |
+| Signals                  |     0.045 |    24937 |       --- |             --- |
+| Block RAM                |     0.073 |       55 |       120 |           45.83 |
+| MMCM                     |     0.239 |        2 |         8 |           25.00 |
+| I/O                      |     0.348 |      157 |       400 |           39.25 |
+| Static Power             |     0.103 |          |           |                 |
+| Total                    |     0.948 |          |           |                 |
++--------------------------+-----------+----------+-----------+-----------------+
+
+
+1.2 Power Supply Summary
+------------------------
+
++-----------+-------------+-----------+-------------+------------+
+| Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
++-----------+-------------+-----------+-------------+------------+
+| Vccint    |       1.000 |     0.302 |       0.286 |      0.017 |
+| Vccaux    |       1.800 |     0.236 |       0.215 |      0.022 |
+| Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |
+| Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
+| Vcco18    |       1.800 |     0.096 |       0.092 |      0.004 |
+| Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
+| Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
+| Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
+| Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
+| Vccbram   |       1.000 |     0.010 |       0.006 |      0.004 |
+| Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
++-----------+-------------+-----------+-------------+------------+
+
+
+1.3 Confidence Level
+--------------------
+
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| User Input Data             | Confidence | Details                                                | Action                                                                                                     |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| Design implementation state | High       | Design is routed                                       |                                                                                                            |
+| Clock nodes activity        | High       | User specified more than 95% of clocks                 |                                                                                                            |
+| I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view   |
+| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views |
+| Device models               | High       | Device models are Production                           |                                                                                                            |
+|                             |            |                                                        |                                                                                                            |
+| Overall confidence level    | Low        |                                                        |                                                                                                            |
++-----------------------------+------------+--------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+
+
+2. Settings
+-----------
+
+2.1 Environment
+---------------
+
++-----------------------+--------------------------+
+| Ambient Temp (C)      | 25.0                     |
+| ThetaJA (C/W)         | 2.4                      |
+| Airflow (LFM)         | 250                      |
+| Heat Sink             | medium (Medium Profile)  |
+| ThetaSA (C/W)         | 2.8                      |
+| Board Selection       | medium (10"x10")         |
+| # of Board Layers     | 12to15 (12 to 15 Layers) |
+| Board Temperature (C) | 25.0                     |
++-----------------------+--------------------------+
+
+
+2.2 Clock Constraints
+---------------------
+
++-------------------------------+-----------------------------------------------------------+-----------------+
+| Clock                         | Domain                                                    | Constraint (ns) |
++-------------------------------+-----------------------------------------------------------+-----------------+
+| clk_out1_idelay_discr_clk_wiz | IDELAY_DISCR_CLK_WIZ_0/inst/clk_out1_idelay_discr_clk_wiz |             5.0 |
+| clk_out1_lclk_adcclk_wiz      | LCLK_ADCCLK_WIZ_0/inst/clk_out1_lclk_adcclk_wiz           |             8.0 |
+| clk_out2_idelay_discr_clk_wiz | IDELAY_DISCR_CLK_WIZ_0/inst/clk_out2_idelay_discr_clk_wiz |             2.0 |
+| clk_out2_lclk_adcclk_wiz      | LCLK_ADCCLK_WIZ_0/inst/clk_out2_lclk_adcclk_wiz           |             2.7 |
+| clk_out3_idelay_discr_clk_wiz | IDELAY_DISCR_CLK_WIZ_0/inst/clk_out3_idelay_discr_clk_wiz |             8.0 |
+| clkfbout_idelay_discr_clk_wiz | IDELAY_DISCR_CLK_WIZ_0/inst/clkfbout_idelay_discr_clk_wiz |            50.0 |
+| clkfbout_lclk_adcclk_wiz      | LCLK_ADCCLK_WIZ_0/inst/clkfbout_lclk_adcclk_wiz           |            50.0 |
+| qosc_clk                      | QOSC_CLK_P1V8                                             |            50.0 |
++-------------------------------+-----------------------------------------------------------+-----------------+
+
+
+3. Detailed Reports
+-------------------
+
+3.1 By Hierarchy
+----------------
+
++------------------------------------------+-----------+
+| Name                                     | Power (W) |
++------------------------------------------+-----------+
+| top                                      |     0.845 |
+|   IDELAY_DISCR_CLK_WIZ_0                 |     0.108 |
+|     inst                                 |     0.108 |
+|   LCLK_ADCCLK_WIZ_0                      |     0.132 |
+|     inst                                 |     0.132 |
+|   WVB_READER                             |     0.021 |
+|     RD_CTRL                              |     0.003 |
+|   XDOM_0                                 |     0.021 |
+|     CRSM_0                               |     0.001 |
+|     PG_DPRAM                             |     0.009 |
+|       U0                                 |     0.009 |
+|     RDOUT_DPRAM                          |     0.004 |
+|       U0                                 |     0.004 |
+|     UART_DEBUG_0                         |     0.003 |
+|       UART_PROC_HS_0                     |     0.002 |
+|   adc_discr_iface_gen[0].ADC_DISCR_CHAN  |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[10].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[11].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[12].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[13].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[14].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[15].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[16].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[17].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[18].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[19].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[1].ADC_DISCR_CHAN  |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[20].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[21].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[22].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[23].ADC_DISCR_CHAN |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[2].ADC_DISCR_CHAN  |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[3].ADC_DISCR_CHAN  |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[4].ADC_DISCR_CHAN  |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[5].ADC_DISCR_CHAN  |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[6].ADC_DISCR_CHAN  |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[7].ADC_DISCR_CHAN  |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[8].ADC_DISCR_CHAN  |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   adc_discr_iface_gen[9].ADC_DISCR_CHAN  |     0.006 |
+|     ADC_SERDES_0                         |     0.003 |
+|       inst                               |     0.003 |
+|     ADC_SERDES_1                         |     0.003 |
+|       inst                               |     0.003 |
+|   io_clk_gen[0].OBUF_ADC_CLOCK           |     0.018 |
+|   io_clk_gen[0].OBUF_ADC_SYSRF           |     0.018 |
+|   io_clk_gen[1].OBUF_ADC_CLOCK           |     0.018 |
+|   io_clk_gen[1].OBUF_ADC_SYSRF           |     0.018 |
+|   io_clk_gen[2].OBUF_ADC_CLOCK           |     0.018 |
+|   io_clk_gen[2].OBUF_ADC_SYSRF           |     0.018 |
+|   io_clk_gen[3].OBUF_ADC_CLOCK           |     0.018 |
+|   io_clk_gen[3].OBUF_ADC_SYSRF           |     0.018 |
+|   io_clk_gen[4].OBUF_ADC_CLOCK           |     0.018 |
+|   io_clk_gen[4].OBUF_ADC_SYSRF           |     0.018 |
+|   io_clk_gen[5].OBUF_ADC_CLOCK           |     0.018 |
+|   io_clk_gen[5].OBUF_ADC_SYSRF           |     0.018 |
+|   waveform_acq_gen[0].WFM_ACQ            |     0.009 |
+|     WVB                                  |     0.008 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.004 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[10].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[11].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[12].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[13].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[14].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[15].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[16].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[17].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[18].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.002 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[19].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[1].WFM_ACQ            |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[20].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[21].WFM_ACQ           |     0.007 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[22].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[23].WFM_ACQ           |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[2].WFM_ACQ            |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[3].WFM_ACQ            |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[4].WFM_ACQ            |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[5].WFM_ACQ            |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[6].WFM_ACQ            |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[7].WFM_ACQ            |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[8].WFM_ACQ            |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
+|   waveform_acq_gen[9].WFM_ACQ            |     0.008 |
+|     WVB                                  |     0.007 |
+|       PTB                                |     0.001 |
+|       WBS                                |     0.003 |
+|       WR_CTRL                            |     0.003 |
++------------------------------------------+-----------+
+
+

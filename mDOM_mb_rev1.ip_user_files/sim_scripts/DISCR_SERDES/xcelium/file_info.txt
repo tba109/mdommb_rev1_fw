@@ -1,0 +1,6 @@
+xpm_cdc.sv,systemverilog,xil_defaultlib,../../../../../../../../../Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv,
+xpm_memory.sv,systemverilog,xil_defaultlib,../../../../../../../../../Xilinx/Vivado/2019.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv,
+xpm_VCOMP.vhd,vhdl,xpm,../../../../../../../../../Xilinx/Vivado/2019.1/data/ip/xpm/xpm_VCOMP.vhd,
+DISCR_SERDES_selectio_wiz.v,verilog,xil_defaultlib,../../../../mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES_selectio_wiz.v,
+DISCR_SERDES.v,verilog,xil_defaultlib,../../../../mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="ADC_SERDES_synth_1" LaunchPart="xc7s100fgga676-2" LaunchTime="1605047417">
+  <File Type="PA-TCL" Name="ADC_SERDES.tcl"/>
+  <File Type="REPORTS-TCL" Name="ADC_SERDES_reports.tcl"/>
+  <File Type="RDS-RDS" Name="ADC_SERDES.vds"/>
+  <File Type="RDS-UTIL" Name="ADC_SERDES_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="ADC_SERDES_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="ADC_SERDES.dcp"/>
+  <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ADC_SERDES">
+    <File Path="$PSRCDIR/sources_1/ip/ADC_SERDES/ADC_SERDES.xci">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../pinAssign/vivado_project/mDOM_pin_verification.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xci"/>
+        <Attr Name="ImportTime" Val="1593628911"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="ADC_SERDES"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ADC_SERDES">
+    <File Path="$PSRCDIR/sources_1/ip/ADC_SERDES/ADC_SERDES.xci">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../pinAssign/vivado_project/mDOM_pin_verification.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xci"/>
+        <Attr Name="ImportTime" Val="1593628911"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="ADC_SERDES"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>
