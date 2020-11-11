@@ -194,7 +194,24 @@ module top (
   input DISCR_OUT20,
   input DISCR_OUT21,
   input DISCR_OUT22,
-  input DISCR_OUT23
+  input DISCR_OUT23,
+
+  // AD5668 DACs
+  output DAC0_DIN,
+  output DAC0_nSYNC0,
+  output DAC0_nSYNC1,
+  output DAC0_nSYNC2,
+  output DAC0_SCLK,
+  output DAC1_DIN,
+  output DAC1_nSYNC0,
+  output DAC1_nSYNC1,
+  output DAC1_nSYNC2,
+  output DAC1_SCLK,
+  output DAC2_DIN,
+  output DAC2_nSYNC0,
+  output DAC2_nSYNC1,
+  output DAC2_nSYNC2,
+  output DAC2_SCLK
 );
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
@@ -250,86 +267,43 @@ idelay_discr_clk_wiz IDELAY_DISCR_CLK_WIZ_0
 
 // IDELAY control; this should automatically be replicated to all banks where it is needed
 // (see https://forums.xilinx.com/t5/Memory-Interfaces-and-NoC/IDELAYCTRL-in-Kintex-MIG/m-p/524885#M6824)
+wire   idelayctrl_rdy;
 IDELAYCTRL delayctrl(.RDY(idelayctrl_rdy),.REFCLK(clk_200MHz),.RST(!idelay_discrclk_locked));
 
 // Input clocks and clock forwarding
-// Handled with ODDR -> OBUFDS
-// see page 128 of https://www.xilinx.com/support/documentation/user_guides/ug471_7Series_SelectIO.pdf
-// also https://forums.xilinx.com/t5/Other-FPGA-Architecture/drive-clock-out-from-FPGA/td-p/838391
-// and  https://forums.xilinx.com/t5/Other-FPGA-Architecture/Output-differential-clock-kintex-7/td-p/771524
-wire[5:0] adc_clk_P = {ADC5_CLOCK_P, ADC4_CLOCK_P,
-                       ADC3_CLOCK_P, ADC2_CLOCK_P,
-                       ADC1_CLOCK_P, ADC0_CLOCK_P};
-wire[5:0] adc_clk_N = {ADC5_CLOCK_M, ADC4_CLOCK_M,
-                       ADC3_CLOCK_M, ADC2_CLOCK_M,
-                       ADC1_CLOCK_M, ADC0_CLOCK_M};
-wire[5:0] adc_sysrf_P = {ADC5_SYSRF_P, ADC4_SYSRF_P,
-                         ADC3_SYSRF_P, ADC2_SYSRF_P,
-                         ADC1_SYSRF_P, ADC0_SYSRF_P};
-wire[5:0] adc_sysrf_N = {ADC5_SYSRF_M, ADC4_SYSRF_M,
-                         ADC3_SYSRF_M, ADC2_SYSRF_M,
-                         ADC1_SYSRF_M, ADC0_SYSRF_M};
-wire[5:0] adc_dclock_P = {ADC5_DCLK_P, ADC4_DCLK_P,
-                          ADC3_DCLK_P, ADC2_DCLK_P,
-                          ADC1_DCLK_P, ADC0_DCLK_P};
-wire[5:0] adc_dclock_N = {ADC5_DCLK_M, ADC4_DCLK_M,
-                          ADC3_DCLK_M, ADC2_DCLK_M,
-                          ADC1_DCLK_M, ADC0_DCLK_M};
-wire[5:0] adc_fclock_P = {ADC5_FCLK_P, ADC4_FCLK_P,
-                          ADC3_FCLK_P, ADC2_FCLK_P,
-                          ADC1_FCLK_P, ADC0_FCLK_P};
-wire[5:0] adc_fclock_N = {ADC5_FCLK_M, ADC4_FCLK_M,
-                          ADC3_FCLK_M, ADC2_FCLK_M,
-                          ADC1_FCLK_M, ADC0_FCLK_M};
-
 wire[5:0] i_adc_dclock;
 wire[5:0] i_adc_fclock;
 
-generate
-  genvar i;
-  for (i = 0; i < 6; i = i + 1) begin : io_clk_gen
-    wire oddr_clk_q;
-    ODDR #(
-           .DDR_CLK_EDGE("OPPOSITE_EDGE"),
-           .INIT(1'b0),
-           .SRTYPE("SYNC")
-         )
-    clk_forward
-    (
-      .Q(oddr_clk_q),
-      .C(i_adc_clock),
-      .D1(1'b0),
-      .D2(1'b1),
-      .CE(1'b1),
-      .R(1'b0),
-      .S(1'b0)
-    );
-    OBUFDS OBUF_ADC_CLOCK(.I(oddr_clk_q), .O(adc_clk_P[i]), .OB(adc_clk_N[i]));
-
-    wire oddr_sysrf_q;
-    ODDR #(
-           .DDR_CLK_EDGE("OPPOSITE_EDGE"),
-           .INIT(1'b0),
-           .SRTYPE("SYNC")
-         )
-    sysrf_forward
-    (
-      .Q(oddr_sysrf_q),
-      .C(i_adc_clock),
-      .D1(1'b0),
-      .D2(1'b1),
-      .CE(1'b1),
-      .R(1'b0),
-      .S(1'b0)
-    );
-    OBUFDS OBUF_ADC_SYSRF(.I(oddr_sysrf_q), .O(adc_sysrf_P[i]), .OB(adc_sysrf_N[i]));
-
-    IBUFGDS IBUFGDS_DCLOCK(.I(adc_dclock_P[i]), .IB(adc_dclock_N[i]), .O(i_adc_dclock[i]));
-    IBUFGDS IBUFGDS_FCLOCK(.I(adc_fclock_P[i]), .IB(adc_fclock_N[i]), .O(i_adc_fclock[i]));
-  end
-
-endgenerate
-
+ADC3424_clk_IO clk_IO_0(.enc_clk(i_adc_clock),
+                        .dclk_P(ADC0_DCLK_P), .dclk_N(ADC0_DCLK_M), .dclk_out(i_adc_dclock[0]),
+                        .fclk_P(ADC0_FCLK_P), .fclk_N(ADC0_FCLK_M), .fclk_out(i_adc_fclock[0]),
+                        .adc_clk_P(ADC0_CLOCK_P), .adc_clk_N(ADC0_CLOCK_M),
+                        .sysrf_P(ADC0_SYSRF_P), .sysrf_N(ADC0_SYSRF_M));
+ADC3424_clk_IO clk_IO_1(.enc_clk(i_adc_clock),
+                        .dclk_P(ADC1_DCLK_P), .dclk_N(ADC1_DCLK_M), .dclk_out(i_adc_dclock[1]),
+                        .fclk_P(ADC1_FCLK_P), .fclk_N(ADC1_FCLK_M), .fclk_out(i_adc_fclock[1]),
+                        .adc_clk_P(ADC1_CLOCK_P), .adc_clk_N(ADC1_CLOCK_M),
+                        .sysrf_P(ADC1_SYSRF_P), .sysrf_N(ADC1_SYSRF_M));
+ADC3424_clk_IO clk_IO_2(.enc_clk(i_adc_clock),
+                        .dclk_P(ADC2_DCLK_P), .dclk_N(ADC2_DCLK_M), .dclk_out(i_adc_dclock[2]),
+                        .fclk_P(ADC2_FCLK_P), .fclk_N(ADC2_FCLK_M), .fclk_out(i_adc_fclock[2]),
+                        .adc_clk_P(ADC2_CLOCK_P), .adc_clk_N(ADC2_CLOCK_M),
+                        .sysrf_P(ADC2_SYSRF_P), .sysrf_N(ADC2_SYSRF_M));
+ADC3424_clk_IO clk_IO_3(.enc_clk(i_adc_clock),
+                        .dclk_P(ADC3_DCLK_P), .dclk_N(ADC3_DCLK_M), .dclk_out(i_adc_dclock[3]),
+                        .fclk_P(ADC3_FCLK_P), .fclk_N(ADC3_FCLK_M), .fclk_out(i_adc_fclock[3]),
+                        .adc_clk_P(ADC3_CLOCK_P), .adc_clk_N(ADC3_CLOCK_M),
+                        .sysrf_P(ADC3_SYSRF_P), .sysrf_N(ADC3_SYSRF_M));
+ADC3424_clk_IO clk_IO_4(.enc_clk(i_adc_clock),
+                        .dclk_P(ADC4_DCLK_P), .dclk_N(ADC4_DCLK_M), .dclk_out(i_adc_dclock[4]),
+                        .fclk_P(ADC4_FCLK_P), .fclk_N(ADC4_FCLK_M), .fclk_out(i_adc_fclock[4]),
+                        .adc_clk_P(ADC4_CLOCK_P), .adc_clk_N(ADC4_CLOCK_M),
+                        .sysrf_P(ADC4_SYSRF_P), .sysrf_N(ADC4_SYSRF_M));
+ADC3424_clk_IO clk_IO_5(.enc_clk(i_adc_clock),
+                        .dclk_P(ADC5_DCLK_P), .dclk_N(ADC5_DCLK_M), .dclk_out(i_adc_dclock[5]),
+                        .fclk_P(ADC5_FCLK_P), .fclk_N(ADC5_FCLK_M), .fclk_out(i_adc_fclock[5]),
+                        .adc_clk_P(ADC5_CLOCK_P), .adc_clk_N(ADC5_CLOCK_M),
+                        .sysrf_P(ADC5_SYSRF_P), .sysrf_N(ADC5_SYSRF_M));
 
 // ADC / DISCR interface inputs
 localparam DEFAULT_DELAY = 5'b0;
@@ -381,6 +355,7 @@ wire[N_CHANNELS*N_ADC_BITS-1:0] adc_data;
 wire[N_CHANNELS*N_DISCR_BITS-1:0] discr_data;
 
 generate
+  genvar i;
   for (i = 0; i < N_CHANNELS; i = i + 1) begin : adc_discr_iface_gen
     adc_discr_channel ADC_DISCR_CHAN
     (
@@ -474,7 +449,21 @@ endgenerate
 //     12'hee8: adc delay reset [15:0]
 //     12'hee7: discr io reset [23:16] (defaults to 1)
 //     12'hee6: discr io reset [15:0] (defaults to 1)
+//
+//     ADC serial controls
 //     12'hee5: [0] ADC_RESET
+//     12'hee4: [5:0] adc spi chip sel
+//     12'hee3: adc spi task reg
+//     12'hee2: [7:0] adc spi wr data[23:16]
+//     12'hee1: adc spi wr data [15:0]
+//     12'hee0: adc spi rd data [7:0]
+//
+//     AD5668 DAC serial controls
+//     12'hedf: [2:0] dac spi sel (DAC0, DAC1, DAC2)
+//     12'hede: [2:0] dac chip sel (0, 1, 2)
+//     12'hedd: [0] dac spi task reg
+//     12'hedc: dac spi wr data [31:16]
+//     12'hedb: dac spi wr data [15:0]
 //
 //     DDR3 test signals
 //     12'hdff: page transfer addr[27:16]
@@ -525,6 +514,20 @@ wire[9:0] rdout_dpram_wr_addr;
 wire[31:0] rdout_dpram_data;
 wire wvb_reader_enable;
 wire wvb_reader_dpram_mode;
+
+// ADC serial interface
+wire adc_spi_ack;
+wire adc_spi_req;
+wire[23:0] adc_spi_wr_data;
+wire[7:0] adc_spi_rd_data;
+wire[5:0] adc_spi_sel;
+
+// AD5668 DAC controls
+wire dac_spi_ack;
+wire dac_spi_req;
+wire[31:0] dac_spi_wr_data;
+wire[2:0] dac_spi_sel;
+wire[2:0] dac_chip_sel;
 
 // DDR3 interface
 wire ddr3_ui_clk;
@@ -604,7 +607,20 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .adc_bitslip(adc_bitslip_xdom),
   .discr_bitslip(discr_bitslip_xdom),
 
+  // ADC serial controls
   .adc_reset(ADC_RESET),
+  .adc_spi_sel(adc_spi_sel),
+  .adc_spi_req(adc_spi_req),
+  .adc_spi_ack(adc_spi_ack),
+  .adc_spi_wr_data(adc_spi_wr_data),
+  .adc_spi_rd_data(adc_spi_rd_data),
+
+  // AD5668 DAC serial controls
+  .dac_spi_sel(dac_spi_sel),
+  .dac_chip_sel(dac_chip_sel),
+  .dac_spi_req(dac_spi_req),
+  .dac_spi_ack(dac_spi_ack),
+  .dac_spi_wr_data(dac_spi_wr_data),
 
   // DDR3 interface
   .ddr3_ui_clk(ddr3_ui_clk),
@@ -894,5 +910,99 @@ WVB_READER
 //  .dpram_addr(ddr3_dpram_addr),
 //  .dpram_wren(ddr3_dpram_wren)
 // );
+
+//
+// ADC3424 serial controls
+//
+wire[23:0] wide_adc_spi_rd_data;
+spi_master #(.P_RD_DATA_WIDTH(24), .P_WR_DATA_WIDTH(24)) ADC3424_SPI (
+  // Outputs
+  .rd_data(wide_adc_spi_rd_data),
+  .ack    (adc_spi_ack),
+  .mosi   (ADC_SDATA),
+  .sclk   (ADC_SCLK),
+  // Inputs
+  .clk    (lclk),
+  .rst    (lclk_rst),
+  // MOSI
+  .nb_mosi    (32'd24),
+  .y0_mosi    (1'b0),
+  .n0_mosi    (32'd50),
+  .n1_mosi    (32'd100),
+  // MISO
+  .nb_miso    (32'd24),
+  .n0_miso    (32'd1),
+  .n1_miso    (32'd100),
+  // SCLK
+  .nb_sclk    (32'd24),
+  .y0_sclk    (1'b0),
+  .n0_sclk    (32'd100),
+  .n1_sclk    (32'd50),
+  .n2_sclk    (32'd50),
+  .wr_req   (adc_spi_req),
+  .wr_data    (adc_spi_wr_data),
+  .rd_req   (adc_spi_req),
+  .miso   (ADC0_SDOUT)
+);
+assign adc_spi_rd_data = wide_adc_spi_rd_data[7:0];
+assign ADC0_SEN = !(adc_spi_req && adc_spi_sel[0]);
+assign ADC1_SEN = !(adc_spi_req && adc_spi_sel[1]);
+assign ADC2_SEN = !(adc_spi_req && adc_spi_sel[2]);
+assign ADC3_SEN = !(adc_spi_req && adc_spi_sel[3]);
+assign ADC4_SEN = !(adc_spi_req && adc_spi_sel[4]);
+assign ADC5_SEN = !(adc_spi_req && adc_spi_sel[5]);
+
+//
+// ADC5668 DAC serial controls
+//
+wire dac_spi_mosi;
+wire dac_spi_sclk;
+spi_master #(.P_RD_DATA_WIDTH(32), .P_WR_DATA_WIDTH(32)) AD5668_SPI (
+  // Outputs
+  .rd_data    (),
+  .ack    (dac_spi_ack),
+  .mosi   (dac_spi_mosi),
+  .sclk   (dac_spi_sclk),
+  // Inputs
+  .clk    (lclk),
+  .rst    (lclk_rst),
+  // MOSI
+  .nb_mosi    (32'd32),
+  .y0_mosi    (1'b0),
+  .n0_mosi    (32'd1),
+  .n1_mosi    (32'd100),
+  // MISO
+  .nb_miso    (32'd32),
+  .n0_miso    (32'd50),
+  .n1_miso    (32'd50),
+  // SCLK
+  .nb_sclk    (32'd32),
+  .y0_sclk    (1'b1),
+  .n0_sclk    (32'd50),
+  .n1_sclk    (32'd50),
+  .n2_sclk    (32'd50),
+  .wr_req   (dac_spi_req),
+  .wr_data    (dac_spi_wr_data),
+  .rd_req   (1'b0),
+  .miso   (1'b0)
+);
+
+assign DAC0_SCLK = dac_spi_sel[0] ? dac_spi_sclk : 1'b1;
+assign DAC0_DIN = dac_spi_sel[0] ? dac_spi_mosi : 1'b0;
+assign DAC0_nSYNC0 = !(dac_spi_req && dac_spi_sel[0] && dac_chip_sel[0]);
+assign DAC0_nSYNC1 = !(dac_spi_req && dac_spi_sel[0] && dac_chip_sel[1]);
+assign DAC0_nSYNC2 = !(dac_spi_req && dac_spi_sel[0] && dac_chip_sel[2]);
+
+assign DAC1_SCLK = dac_spi_sel[1] ? dac_spi_sclk : 1'b1;
+assign DAC1_DIN = dac_spi_sel[1] ? dac_spi_mosi : 1'b0;
+assign DAC1_nSYNC0 = !(dac_spi_req && dac_spi_sel[1] && dac_chip_sel[0]);
+assign DAC1_nSYNC1 = !(dac_spi_req && dac_spi_sel[1] && dac_chip_sel[1]);
+assign DAC1_nSYNC2 = !(dac_spi_req && dac_spi_sel[1] && dac_chip_sel[2]);
+
+assign DAC2_SCLK = dac_spi_sel[2] ? dac_spi_sclk : 1'b1;
+assign DAC2_DIN = dac_spi_sel[2] ? dac_spi_mosi : 1'b0;
+assign DAC2_nSYNC0 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[0]);
+assign DAC2_nSYNC1 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[1]);
+assign DAC2_nSYNC2 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[2]);
 
 endmodule

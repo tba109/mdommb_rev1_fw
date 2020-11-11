@@ -51,7 +51,20 @@ module xdom #(parameter N_CHANNELS = 24)
  output[N_CHANNELS*2-1:0] adc_bitslip,
  output[N_CHANNELS-1:0] discr_bitslip,
 
+ // ADC serial controls
  output reg adc_reset = 0,
+ output reg[5:0] adc_spi_sel = 0,
+ output adc_spi_req,
+ input adc_spi_ack,
+ output reg[23:0] adc_spi_wr_data = 0,
+ input[7:0] adc_spi_rd_data,
+
+ // AD5668 DAC serial controls
+ output reg[2:0] dac_spi_sel = 0,
+ output reg[2:0] dac_chip_sel = 0,
+ output dac_spi_req,
+ input dac_spi_ack,
+ output reg[31:0] dac_spi_wr_data = 0,
 
  // DDR3 interface
  input ddr3_ui_clk,
@@ -251,7 +264,7 @@ n_channel_mux #(.N_INPUTS(N_CHANNELS),
   );
 
 // delay tap_out mux
-reg[4:0] io_ctrl_sel;
+(* max_fanout = 20 *) reg[4:0] io_ctrl_sel;
 wire[9:0] delay_tap_mux_out;
 reg[9:0] delay_tap_mux_out_reg = 0;
 n_channel_mux #(.N_INPUTS(N_CHANNELS),
@@ -315,6 +328,42 @@ assign adc_delay_ce = adc_delay_ce_1;
 assign adc_delay_inc = adc_delay_inc_1;
 assign adc_bitslip = adc_bitslip_1;
 assign discr_bitslip = discr_bitslip_1;
+
+//
+// Task regs
+//
+wire[15:0] adc_spi_task_val;
+wire[15:0] adc_spi_task_req;
+wire[15:0] adc_spi_task_ack;
+task_reg #(.P_TASK_ADR(12'hee3)) ADC_SPI_TASK_0 (
+  .clk(clk),
+  .rst(rst),
+  .adr(y_adr),
+  .data(y_wr_data),
+  .wr(y_wr),
+  .req(adc_spi_task_req),
+  .ack(adc_spi_task_ack),
+  .val(adc_spi_task_val)
+);
+assign adc_spi_req = adc_spi_task_req[0];
+assign adc_spi_task_ack[0] = adc_spi_ack;
+
+wire[15:0] dac_spi_task_val;
+wire[15:0] dac_spi_task_req;
+wire[15:0] dac_spi_task_ack;
+task_reg #(.P_TASK_ADR(12'hedd)) DAC_SPI_TASK_0 (
+  .clk(clk),
+  .rst(rst),
+  .adr(y_adr),
+  .data(y_wr_data),
+  .wr(y_wr),
+  .req(dac_spi_task_req),
+  .ack(dac_spi_task_ack),
+  .val(dac_spi_task_val)
+);
+assign dac_spi_req = dac_spi_task_req[0];
+assign dac_spi_task_ack[0] = dac_spi_ack;
+
 
 //////////////////////////////////////////////////////////////////////////////
 // Read registers
@@ -438,6 +487,16 @@ always @(*)
       12'hee7: begin y_rd_data =       {8'b0, discr_io_reset[23:16]};                          end
       12'hee6: begin y_rd_data =       discr_io_reset[15:0];                                   end
       12'hee5: begin y_rd_data =       {15'b0, adc_reset};                                     end
+      12'hee4: begin y_rd_data =       {10'b0, adc_spi_sel};                                   end
+      12'hee3: begin y_rd_data =       adc_spi_task_val;                                       end
+      12'hee2: begin y_rd_data =       {8'b0, adc_spi_wr_data[23:16]};                         end
+      12'hee1: begin y_rd_data =       adc_spi_wr_data[15:0];                                  end
+      12'hee0: begin y_rd_data =       {8'b0, adc_spi_rd_data};                                end
+      12'hedf: begin y_rd_data =       {13'b0, dac_spi_sel};                                   end
+      12'hede: begin y_rd_data =       {13'b0, dac_chip_sel};                                   end
+      12'hedd: begin y_rd_data =       dac_spi_task_val;                                       end
+      12'hedc: begin y_rd_data =       dac_spi_wr_data[31:16];                                 end
+      12'hedb: begin y_rd_data =       dac_spi_wr_data[15:0];                                  end
       12'hdff: begin y_rd_data =       pg_req_addr[27:16];                                     end
       12'hdfe: begin y_rd_data =       pg_req_addr[15:0];                                      end
       12'hdfd: begin y_rd_data =       {15'b0, pg_optype};                                     end
@@ -482,7 +541,7 @@ always @(posedge clk)
 
     i_adc_delay_ce <= 0;
     i_adc_bitslip <= 0;
-    i_adc_bitslip <= 0;
+    i_discr_bitslip <= 0;
 
     if(y_wr)
       case(y_adr)
@@ -530,6 +589,13 @@ always @(posedge clk)
         12'hee7: begin discr_io_reset[23:16] <= y_wr_data[7:0];                                end
         12'hee6: begin discr_io_reset[15:0] <= y_wr_data;                                      end
         12'hee5: begin adc_reset <= y_wr_data[0];                                              end
+        12'hee4: begin adc_spi_sel <= y_wr_data[5:0];                                          end
+        12'hee2: begin adc_spi_wr_data[23:16] <= y_wr_data[7:0];                               end
+        12'hee1: begin adc_spi_wr_data[15:0] <= y_wr_data;                                     end
+        12'hedf: begin dac_spi_sel <= y_wr_data[2:0];                                          end
+        12'hede: begin dac_chip_sel <= y_wr_data[2:0];                                         end
+        12'hedc: begin dac_spi_wr_data[31:16] <= y_wr_data;                                    end
+        12'hedb: begin dac_spi_wr_data[15:0] <= y_wr_data;                                     end
         12'hdff: begin pg_req_addr[27:16] <= y_wr_data[11:0];                                  end
         12'hdfe: begin pg_req_addr[15:0] <= y_wr_data[15:0];                                   end
         12'hdfd: begin pg_optype <= y_wr_data[0];                                              end
