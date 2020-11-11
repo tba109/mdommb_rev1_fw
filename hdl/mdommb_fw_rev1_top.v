@@ -6,10 +6,10 @@
 
 module top (
   // 20 MHz oscillator
-	input QOSC_CLK_P1V8,
+  input QOSC_CLK_P1V8,
 
   // Debug UART signals
-	output FTD_UART_CTSn,
+  output FTD_UART_CTSn,
   input FTD_UART_RTSn,
   output FTD_UART_RXD,
   input FTD_UART_TXD,
