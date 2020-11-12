@@ -256,7 +256,7 @@ lclk_adcclk_wiz LCLK_ADCCLK_WIZ_0
   );
 wire lclk = clk_125MHz;
 wire lclk_rst = !lclk_adcclk_locked;
-assign i_adc_clock = clk_125MHz;
+wire i_adc_clock = clk_125MHz;
 
 wire discr_fclk_125MHz;
 idelay_discr_clk_wiz IDELAY_DISCR_CLK_WIZ_0
