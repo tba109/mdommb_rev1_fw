@@ -10,7 +10,7 @@
 // is still more data to write.
 //
 // Writes 32-bit words; order of 16-bit sub-words within the 32-bit words
-// set so that, when read as a sequence of 16-bit words through the 
+// set so that, when read as a sequence of 16-bit words through the
 // direct readout DPRAM read port, the order will be as written below
 //
 // Waveform Format 0:
@@ -75,7 +75,7 @@ wire[4:0] pre_conf;
 
 generate
 if (P_HDR_WIDTH == 80) begin
-  mDOM_wvb_hdr_bundle_0_fan_out HDR_FAN_OUT 
+  mDOM_wvb_hdr_bundle_0_fan_out HDR_FAN_OUT
    (
     .bundle(hdr_data),
     .evt_ltc(evt_ltc),
@@ -88,7 +88,7 @@ if (P_HDR_WIDTH == 80) begin
 end
 
 else begin
-  mDOM_wvb_hdr_bundle_1_fan_out HDR_FAN_OUT 
+  mDOM_wvb_hdr_bundle_1_fan_out HDR_FAN_OUT
    (
     .bundle(hdr_data),
     .evt_ltc(evt_ltc),
@@ -101,7 +101,7 @@ else begin
 end
 endgenerate
 
-// calculate evt_len 
+// calculate evt_len
 wire[P_WVB_ADR_WIDTH-1:0] addr_diff = stop_addr - start_addr;
 wire[15:0] evt_len = addr_diff + 16'd1;
 
@@ -125,7 +125,7 @@ localparam L_DPRAM_A_STOP_STREAM = 10'd1017;
 localparam L_RD_WAIT_CNT_MAX = 4;
 
 // FSM logic
-localparam 
+localparam
   S_IDLE = 0,
   S_CHAN_LEN = 1,
   S_HDR_0_LTC_2 = 2,
@@ -172,16 +172,16 @@ always @(posedge clk) begin
         dpram_a <= 0;
         dpram_len <= 0;
         rd_ctrl_more <= 0;
-        
+
         loop_s_ftr <= 0;
         wait_cnt <= 0;
         evt_len_reg <= 0;
 
-        if (req) begin          
+        if (req) begin
           // begin streaming the sample data
-          wvb_rdreq <= 1;     
+          wvb_rdreq <= 1;
           evt_len_reg <= evt_len;
-          
+
           fsm <= S_START_STREAM;
         end
       end
@@ -193,15 +193,15 @@ always @(posedge clk) begin
 
       S_CHAN_LEN: begin
         dpram_data <= {evt_len_reg, L_FMT, idx};
-                
-        wvb_rdreq <= 1;        
-        dpram_wren <= 1;        
+
+        wvb_rdreq <= 1;
+        dpram_wren <= 1;
         fsm <= S_HDR_0_LTC_2;
       end
 
       S_HDR_0_LTC_2: begin
         dpram_data <= {evt_ltc[47:32], hdr_0};
-        
+
         wvb_rdreq <= 1;
         dpram_wren <= 1;
         dpram_a <= dpram_a + 1;
@@ -226,7 +226,7 @@ always @(posedge clk) begin
         //  indicates we're starting a new DPRAM in mode 1)
         if ( (dpram_a < L_DPRAM_A_STOP_STREAM) ||
              (dpram_a == L_DPRAM_A_LAST) ) begin
-          wvb_rdreq <= 1;          
+          wvb_rdreq <= 1;
         end
 
         dpram_wren <= 1;
@@ -235,16 +235,16 @@ always @(posedge clk) begin
         fsm <= S_SAMPLE_WORD;
 
         if (dpram_mode == 0) begin
-          if ((dpram_a == L_DPRAM_A_LAST_DATA) 
+          if ((dpram_a == L_DPRAM_A_LAST_DATA)
                || wvb_eoe)  begin
-            // in dpram mode 0, stop writing data if we 
+            // in dpram mode 0, stop writing data if we
             // reach end of DPRAM or if we see the EOE
             wvb_rddone <= 1;
             fsm <= S_FTR;
           end
         end
 
-        else if (dpram_mode == 1) begin          
+        else if (dpram_mode == 1) begin
           if (wvb_eoe) begin
             fsm <= S_FTR;
             wvb_rddone <= 1;
@@ -280,7 +280,7 @@ always @(posedge clk) begin
 
       S_ACK: begin
         // convert to number of 16 bit words
-        dpram_len <= (dpram_a + 16'd1) << 1'b1; 
+        dpram_len <= (dpram_a + 16'd1) << 1'b1;
         ack <= 1;
 
         if (!req) begin
@@ -314,9 +314,9 @@ always @(posedge clk) begin
       S_RD_WAIT: begin
         wait_cnt <= wait_cnt + 1;
         wvb_rdreq <= 1;
-        
+
         if (wait_cnt == L_RD_WAIT_CNT_MAX) begin
-          fsm <= S_SAMPLE_WORD;  
+          fsm <= S_SAMPLE_WORD;
         end
       end
 

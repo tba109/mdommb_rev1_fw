@@ -122,6 +122,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/hdl/knight_rider/knight_rider.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PPRDIR/hdl/bundles/mDOM_trig_bundle/mDOM_trig_bundle_fan_in.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>

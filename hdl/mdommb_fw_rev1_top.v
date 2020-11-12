@@ -211,7 +211,12 @@ module top (
   output DAC2_nSYNC0,
   output DAC2_nSYNC1,
   output DAC2_nSYNC2,
-  output DAC2_SCLK
+  output DAC2_SCLK,
+
+  // LEDs
+  output LED_YELLOW,
+  output LED_GREEN,
+  output LED_ORANGE
 );
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
@@ -1004,5 +1009,14 @@ assign DAC2_DIN = dac_spi_sel[2] ? dac_spi_mosi : 1'b0;
 assign DAC2_nSYNC0 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[0]);
 assign DAC2_nSYNC1 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[1]);
 assign DAC2_nSYNC2 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[2]);
+
+//
+// LED test pattern
+//
+wire[2:0] kr_out;
+knight_rider KR_0(.clk(lclk), .rst(lclk_rst), .y(kr_out));
+assign LED_YELLOW = kr_out[0];
+assign LED_GREEN = kr_out[1];
+assign LED_ORANGE = kr_out[2];
 
 endmodule

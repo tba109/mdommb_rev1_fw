@@ -11,13 +11,14 @@ module negedge_detector
    );
 
    reg 	  ff;
-   
-   always @(posedge clk or negedge rst_n)
+
+   // always @(posedge clk or negedge rst_n)
+   always @(posedge clk)
      begin
 	if( !rst_n ) ff <= 1'b0;
 	else ff <= a;
      end
-   
+
    assign y = ff & !a;
-	
+
 endmodule

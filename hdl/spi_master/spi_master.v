@@ -197,7 +197,8 @@ module spi_master #(parameter P_RD_DATA_WIDTH=256, parameter P_WR_DATA_WIDTH=256
    ///////////////////////////////////////////////////////////////////////////////
    // FSM Flow
    // Main counter
-   always @(posedge clk or posedge rst)
+   // always @(posedge clk or posedge rst)
+   always @(posedge clk)
      if(rst)
        begin
 	  cnt <= 0;

@@ -17,9 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 2
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 create_project -in_memory -part xc7s100fgga676-2
 
 set_param project.singleFileAddWarning.threshold 0
@@ -50,6 +47,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/ft232r_hs/ft232r_hs.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/ft232r_proc_buffered/ft232r_proc_buffered.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/iter_integer_linear_cal/iter_integer_linear_calc.v
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/knight_rider/knight_rider.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_trig_bundle/mDOM_trig_bundle_fan_in.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_trig_bundle/mDOM_trig_bundle_fan_out.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_conf_bundle/mDOM_wvb_conf_bundle_fan_in.v
