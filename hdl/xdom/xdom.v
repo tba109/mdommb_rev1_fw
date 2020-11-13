@@ -558,11 +558,11 @@ always @(*)
                                         hbuf_full, hbuf_empty};                                end
       default:
         begin
-           y_rd_data = xdom_dpram_rd_data;
+          y_rd_data = xdom_dpram_rd_data;
         end
 
     endcase
- end
+end
 
 ///////////////////////////////////////////////////////////////////////////////
 // Write registers (not task regs)
@@ -584,13 +584,13 @@ always @(posedge clk)
     if(y_wr)
       case(y_adr)
         12'hffe: begin
-           wvb_trig_et <= y_wr_data[0];
-           wvb_trig_gt <= y_wr_data[1];
-           wvb_trig_lt <= y_wr_data[2];
-           wvb_trig_discr_trig_pol <= y_wr_data[3];
-           wvb_trig_discr_trig_en <= y_wr_data[4];
-           wvb_trig_thresh_trig_en <= y_wr_data[5];
-           wvb_trig_ext_trig_en <= y_wr_data[6];
+          wvb_trig_et <= y_wr_data[0];
+          wvb_trig_gt <= y_wr_data[1];
+          wvb_trig_lt <= y_wr_data[2];
+          wvb_trig_discr_trig_pol <= y_wr_data[3];
+          wvb_trig_discr_trig_en <= y_wr_data[4];
+          wvb_trig_thresh_trig_en <= y_wr_data[5];
+          wvb_trig_ext_trig_en <= y_wr_data[6];
         end
         12'hffd: begin wvb_trig_thr <= y_wr_data[11:0];                                        end
         12'hffc: begin xdom_trig_run[15:0] <= y_wr_data;                                       end
@@ -649,7 +649,7 @@ always @(posedge clk)
          end
         default: begin                                                                         end
       endcase
- end // always @ (posedge clk)
+end // always @ (posedge clk)
 
 // wire [15:0] dpram_wr_data_a = 16'b0;
 // wire        dpram_wr_a = 1'b0;
@@ -687,22 +687,22 @@ DIRECT_RDOUT_DPRAM RDOUT_DPRAM
 // place rbd logic here for now
 //
 always @(posedge clk) begin
-   if (rst) begin
-     dpram_busy <= 0;
-     dpram_len <= 0;
-   end
+  if (rst) begin
+    dpram_busy <= 0;
+    dpram_len <= 0;
+  end
 
-   else begin
-     if (rdout_dpram_run) begin
-        dpram_len <= dpram_len_in;
-        dpram_busy <= 1;
-     end
+  else begin
+    if (rdout_dpram_run) begin
+      dpram_len <= dpram_len_in;
+      dpram_busy <= 1;
+    end
 
-     else if (dpram_done) begin
-        dpram_busy <= 0;
-        dpram_len <= 0;
-     end
-   end
+    else if (dpram_done) begin
+      dpram_busy <= 0;
+      dpram_len <= 0;
+    end
+  end
 end
 
 //
