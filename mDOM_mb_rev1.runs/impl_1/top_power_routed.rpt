@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date             : Thu Nov 12 17:10:29 2020
+| Date             : Fri Nov 13 15:30:04 2020
 | Host             : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.965        |
+| Total On-Chip Power (W)  | 0.967        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.849        |
+| Dynamic (W)              | 0.851        |
 | Device Static (W)        | 0.116        |
 | Effective TJA (C/W)      | 2.4          |
 | Max Ambient (C)          | 82.6         |
@@ -52,20 +52,20 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.123 |       10 |       --- |             --- |
-| Slice Logic              |     0.028 |    34301 |       --- |             --- |
-|   LUT as Logic           |     0.022 |    11737 |     64000 |           18.34 |
-|   CARRY4                 |     0.003 |     1724 |     16000 |           10.78 |
-|   Register               |     0.003 |    16416 |    128000 |           12.83 |
+| Clocks                   |     0.121 |       10 |       --- |             --- |
+| Slice Logic              |     0.029 |    34951 |       --- |             --- |
+|   LUT as Logic           |     0.023 |    12045 |     64000 |           18.82 |
+|   CARRY4                 |     0.003 |     1752 |     16000 |           10.95 |
+|   Register               |     0.003 |    16658 |    128000 |           13.01 |
 |   LUT as Distributed RAM |    <0.001 |      384 |     17600 |            2.18 |
-|   F7/F8 Muxes            |    <0.001 |      383 |     64000 |            0.60 |
-|   Others                 |     0.000 |     1099 |       --- |             --- |
-| Signals                  |     0.044 |    26980 |       --- |             --- |
-| Block RAM                |     0.064 |       55 |       120 |           45.83 |
+|   F7/F8 Muxes            |    <0.001 |      387 |     64000 |            0.60 |
+|   Others                 |     0.000 |     1137 |       --- |             --- |
+| Signals                  |     0.045 |    27451 |       --- |             --- |
+| Block RAM                |     0.067 |       57 |       120 |           47.50 |
 | MMCM                     |     0.239 |        2 |         8 |           25.00 |
-| I/O                      |     0.351 |      176 |       400 |           44.00 |
+| I/O                      |     0.350 |      180 |       400 |           45.00 |
 | Static Power             |     0.116 |          |           |                 |
-| Total                    |     0.965 |          |           |                 |
+| Total                    |     0.967 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.304 |       0.287 |      0.017 |
+| Vccint    |       1.000 |     0.307 |       0.290 |      0.017 |
 | Vccaux    |       1.800 |     0.237 |       0.215 |      0.022 |
 | Vcco33    |       3.300 |     0.005 |       0.001 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -84,7 +84,7 @@ Table of Contents
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.009 |       0.005 |      0.004 |
+| Vccbram   |       1.000 |     0.010 |       0.006 |      0.004 |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
 +-----------+-------------+-----------+-------------+------------+
 
@@ -149,7 +149,7 @@ Table of Contents
 +------------------------------------------+-----------+
 | Name                                     | Power (W) |
 +------------------------------------------+-----------+
-| top                                      |     0.849 |
+| top                                      |     0.851 |
 |   AD5668_SPI                             |     0.007 |
 |     IILC_MISO_0                          |     0.002 |
 |     IILC_MOSI_0                          |     0.002 |
@@ -164,13 +164,15 @@ Table of Contents
 |     inst                                 |     0.132 |
 |   WVB_READER                             |     0.023 |
 |     RD_CTRL                              |     0.003 |
-|   XDOM_0                                 |     0.015 |
+|   XDOM_0                                 |     0.017 |
 |     CRSM_0                               |     0.002 |
-|     PG_DPRAM                             |     0.003 |
-|       U0                                 |     0.003 |
+|     PG_DPRAM                             |     0.002 |
+|       U0                                 |     0.002 |
 |     RDOUT_DPRAM                          |     0.003 |
 |       U0                                 |     0.003 |
 |     UART_DEBUG_0                         |     0.003 |
+|       UART_PROC_HS_0                     |     0.002 |
+|     UART_ICM_0                           |     0.003 |
 |       UART_PROC_HS_0                     |     0.002 |
 |   adc_discr_iface_gen[0].ADC_DISCR_CHAN  |     0.006 |
 |     ADC_SERDES_0                         |     0.003 |
@@ -313,7 +315,7 @@ Table of Contents
 |   waveform_acq_gen[0].WFM_ACQ            |     0.008 |
 |     WVB                                  |     0.008 |
 |       PTB                                |     0.001 |
-|       WBS                                |     0.003 |
+|       WBS                                |     0.004 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[10].WFM_ACQ           |     0.008 |
 |     WVB                                  |     0.007 |
@@ -346,27 +348,27 @@ Table of Contents
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[16].WFM_ACQ           |     0.006 |
-|     WVB                                  |     0.006 |
+|     WVB                                  |     0.005 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.001 |
 |   waveform_acq_gen[17].WFM_ACQ           |     0.006 |
 |     WVB                                  |     0.006 |
-|       PTB                                |     0.001 |
+|       PTB                                |     0.002 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.001 |
 |   waveform_acq_gen[18].WFM_ACQ           |     0.006 |
-|     WVB                                  |     0.006 |
-|       PTB                                |     0.002 |
+|     WVB                                  |     0.005 |
+|       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
-|       WR_CTRL                            |     0.002 |
+|       WR_CTRL                            |     0.001 |
 |   waveform_acq_gen[19].WFM_ACQ           |     0.006 |
-|     WVB                                  |     0.006 |
+|     WVB                                  |     0.005 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.001 |
 |   waveform_acq_gen[1].WFM_ACQ            |     0.008 |
-|     WVB                                  |     0.007 |
+|     WVB                                  |     0.008 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
@@ -381,10 +383,10 @@ Table of Contents
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.001 |
 |   waveform_acq_gen[22].WFM_ACQ           |     0.006 |
-|     WVB                                  |     0.006 |
+|     WVB                                  |     0.005 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
-|       WR_CTRL                            |     0.001 |
+|       WR_CTRL                            |     0.002 |
 |   waveform_acq_gen[23].WFM_ACQ           |     0.006 |
 |     WVB                                  |     0.005 |
 |       PTB                                |     0.001 |

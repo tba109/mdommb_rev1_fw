@@ -7,103 +7,110 @@
 //
 // currently contains:
 //    1.) Debug UART
-//    2.) Command, response, status
+//    2.) ICM UART
+//    3.) Command, response, status
 /////////////////////////////////////////////////////////////////////////////////
 module xdom #(parameter N_CHANNELS = 24)
 (
- input             clk,
- input             rst,
+  input             clk,
+  input             rst,
 
- // Version number
- input [15:0]      vnum,
+  // Version number
+  input [15:0]      vnum,
 
- // trigger/wvb conf
- output[19:0] xdom_trig_bundle,
- output[39:0] xdom_wvb_conf_bundle,
- output reg[N_CHANNELS-1:0] xdom_wvb_arm = 0,
- output reg[N_CHANNELS-1:0] xdom_trig_run = 0,
- output reg[N_CHANNELS-1:0] wvb_rst = 0,
+  // trigger/wvb conf
+  output[19:0] xdom_trig_bundle,
+  output[39:0] xdom_wvb_conf_bundle,
+  output reg[N_CHANNELS-1:0] xdom_wvb_arm = 0,
+  output reg[N_CHANNELS-1:0] xdom_trig_run = 0,
+  output reg[N_CHANNELS-1:0] wvb_rst = 0,
 
- // waveform buffer status
- input[N_CHANNELS-1:0] wvb_armed,
- input[N_CHANNELS-1:0] wvb_overflow,
- input[N_CHANNELS-1:0] wvb_hdr_full,
- input[N_CHANNELS*16 - 1:0] wfms_in_buf,
- input[N_CHANNELS*16 - 1:0] buf_wds_used,
+  // waveform buffer status
+  input[N_CHANNELS-1:0] wvb_armed,
+  input[N_CHANNELS-1:0] wvb_overflow,
+  input[N_CHANNELS-1:0] wvb_hdr_full,
+  input[N_CHANNELS*16 - 1:0] wfms_in_buf,
+  input[N_CHANNELS*16 - 1:0] buf_wds_used,
 
- // wvb reader
- input[15:0] dpram_len_in,
- input rdout_dpram_run,
- output reg dpram_busy = 0,
- input rdout_dpram_wren,
- input[9:0] rdout_dpram_wr_addr,
- input[31:0] rdout_dpram_data,
- output reg wvb_reader_enable = 0,
- output reg wvb_reader_dpram_mode = 0,
+  // wvb reader
+  input[15:0] dpram_len_in,
+  input rdout_dpram_run,
+  output reg dpram_busy = 0,
+  input rdout_dpram_wren,
+  input[9:0] rdout_dpram_wr_addr,
+  input[31:0] rdout_dpram_data,
+  output reg wvb_reader_enable = 0,
+  output reg wvb_reader_dpram_mode = 0,
 
- // ADC / DISCR IO controls
- input[N_CHANNELS*10-1:0] adc_delay_tap_out,
- output reg [N_CHANNELS-1:0] adc_io_reset = {N_CHANNELS{1'b1}},
- output reg [N_CHANNELS-1:0] discr_io_reset = {N_CHANNELS{1'b1}},
- output reg [N_CHANNELS-1:0] adc_delay_reset = 0,
- output[N_CHANNELS*2-1:0] adc_delay_ce,
- output[N_CHANNELS*2-1:0] adc_delay_inc,
- output[N_CHANNELS*2-1:0] adc_bitslip,
- output[N_CHANNELS-1:0] discr_bitslip,
+  // ADC / DISCR IO controls
+  input[N_CHANNELS*10-1:0] adc_delay_tap_out,
+  output reg [N_CHANNELS-1:0] adc_io_reset = {N_CHANNELS{1'b1}},
+  output reg [N_CHANNELS-1:0] discr_io_reset = {N_CHANNELS{1'b1}},
+  output reg [N_CHANNELS-1:0] adc_delay_reset = 0,
+  output[N_CHANNELS*2-1:0] adc_delay_ce,
+  output[N_CHANNELS*2-1:0] adc_delay_inc,
+  output[N_CHANNELS*2-1:0] adc_bitslip,
+  output[N_CHANNELS-1:0] discr_bitslip,
 
- // ADC serial controls
- output reg adc_reset = 0,
- output reg[5:0] adc_spi_sel = 0,
- output adc_spi_req,
- input adc_spi_ack,
- output reg[23:0] adc_spi_wr_data = 0,
- input[7:0] adc_spi_rd_data,
+  // ADC serial controls
+  output reg adc_reset = 0,
+  output reg[5:0] adc_spi_sel = 0,
+  output adc_spi_req,
+  input adc_spi_ack,
+  output reg[23:0] adc_spi_wr_data = 0,
+  input[7:0] adc_spi_rd_data,
 
- // AD5668 DAC serial controls
- output reg[2:0] dac_spi_sel = 0,
- output reg[2:0] dac_chip_sel = 0,
- output dac_spi_req,
- input dac_spi_ack,
- output reg[31:0] dac_spi_wr_data = 0,
+  // AD5668 DAC serial controls
+  output reg[2:0] dac_spi_sel = 0,
+  output reg[2:0] dac_chip_sel = 0,
+  output dac_spi_req,
+  input dac_spi_ack,
+  output reg[31:0] dac_spi_wr_data = 0,
 
- // DDR3 interface
- input ddr3_ui_clk,
- output reg[27:0] pg_req_addr = 0,
- output reg pg_optype = 0,
- output reg pg_req = 0,
- input pg_ack,
- output reg ddr3_sys_rst = 0,
- input ddr3_cal_complete,
- input ddr3_ui_sync_rst,
- input[11:0] ddr3_device_temp,
- input[7:0] ddr3_dpram_addr,
- input ddr3_dpram_wren,
- input[127:0] ddr3_dpram_din,
- output[127:0] ddr3_dpram_dout,
+  // DDR3 interface
+  input ddr3_ui_clk,
+  output reg[27:0] pg_req_addr = 0,
+  output reg pg_optype = 0,
+  output reg pg_req = 0,
+  input pg_ack,
+  output reg ddr3_sys_rst = 0,
+  input ddr3_cal_complete,
+  input ddr3_ui_sync_rst,
+  input[11:0] ddr3_device_temp,
+  input[7:0] ddr3_dpram_addr,
+  input ddr3_dpram_wren,
+  input[127:0] ddr3_dpram_din,
+  output[127:0] ddr3_dpram_dout,
 
- // hit buffer controller
- output reg hbuf_enable = 0,
- output reg[15:0] hbuf_start_pg = 0,
- output reg[15:0] hbuf_stop_pg = 0,
- input[15:0] hbuf_first_pg,
- input[15:0] hbuf_last_pg,
- output reg[15:0] hbuf_pg_clr_count = 0,
- output reg hbuf_pg_clr_req = 0,
- input hbuf_pg_clr_ack,
- output reg hbuf_flush_req = 0,
- input hbuf_flush_ack,
- input[15:0] hbuf_rd_pg_num,
- input[15:0] hbuf_wr_pg_num,
- input[15:0] hbuf_n_used_pgs,
- input hbuf_empty,
- input hbuf_full,
- input hbuf_buffered_data,
+  // hit buffer controller
+  output reg hbuf_enable = 0,
+  output reg[15:0] hbuf_start_pg = 0,
+  output reg[15:0] hbuf_stop_pg = 0,
+  input[15:0] hbuf_first_pg,
+  input[15:0] hbuf_last_pg,
+  output reg[15:0] hbuf_pg_clr_count = 0,
+  output reg hbuf_pg_clr_req = 0,
+  input hbuf_pg_clr_ack,
+  output reg hbuf_flush_req = 0,
+  input hbuf_flush_ack,
+  input[15:0] hbuf_rd_pg_num,
+  input[15:0] hbuf_wr_pg_num,
+  input[15:0] hbuf_n_used_pgs,
+  input hbuf_empty,
+  input hbuf_full,
+  input hbuf_buffered_data,
 
- // Debug FT232R I/O
- input             debug_txd,
- output            debug_rxd,
- input             debug_rts_n,
- output            debug_cts_n
+  // Debug FT232R I/O
+  input             debug_txd,
+  output            debug_rxd,
+  input             debug_rts_n,
+  output            debug_cts_n,
+
+  // ICM UART,
+  output            icm_tx,
+  input             icm_rx,
+  output            icm_rts,
+  input             icm_cts
 );
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -138,9 +145,40 @@ ft232r_proc_buffered UART_DEBUG_0
   .err_ack          (debug_err_ack)
   );
 
+///////////////////////////////////////////////////////////////////////////////
+// 2.) ICM UART
+wire [11:0] icm_logic_adr;
+wire [15:0] icm_logic_wr_data;
+wire        icm_logic_wr_req;
+wire        icm_logic_rd_req;
+wire        icm_err_req;
+wire [31:0] icm_err_data;
+wire [15:0] icm_logic_rd_data;
+wire        icm_logic_ack;
+wire        icm_err_ack;
+ft232r_proc_buffered UART_ICM_0
+ (
+  // Outputs
+  .rxd    (icm_tx),
+  .cts_n    (icm_rts),
+  .logic_adr  (icm_logic_adr[11:0]),
+  .logic_wr_data  (icm_logic_wr_data[15:0]),
+  .logic_wr_req (icm_logic_wr_req),
+  .logic_rd_req (icm_logic_rd_req),
+  .err_req    (icm_err_req),
+  .err_data   (icm_err_data[31:0]),
+  // Inputs
+  .clk    (clk),
+  .rst    (rst),
+  .txd    (icm_rx),
+  .rts_n    (icm_cts),
+  .logic_rd_data  (icm_logic_rd_data[15:0]),
+  .logic_ack  (icm_logic_ack),
+  .err_ack    (icm_err_ack)
+  );
 
 //////////////////////////////////////////////////////////////////////////////
-// 2.) Command, repsonse, status
+// 3.) Command, repsonse, status
 wire [11:0] y_adr;
 wire [15:0] y_wr_data;
 wire        y_wr;
@@ -157,8 +195,8 @@ crs_master CRSM_0
   .a1_ack           (),
   .a1_rd_data       (),
   .a1_buf_rd        (),
-  .a2_ack           (),
-  .a2_rd_data       (),
+  .a2_ack           (icm_logic_ack),
+  .a2_rd_data       (icm_logic_rd_data[15:0]),
   .a2_buf_rd        (),
   .a3_ack           (),
   .a3_rd_data       (),
@@ -181,13 +219,13 @@ crs_master CRSM_0
   .a1_adr           (),
   .a1_buf_empty     (),
   .a1_buf_wr_data   (),
-  .a2_wr_req        (),
-  .a2_bwr_req       (),
-  .a2_rd_req        (),
-  .a2_wr_data       (),
-  .a2_adr           (),
-  .a2_buf_empty     (),
-  .a2_buf_wr_data   (),
+  .a2_wr_req  (icm_logic_wr_req),
+  .a2_bwr_req (1'b0),
+  .a2_rd_req  (icm_logic_rd_req),
+  .a2_wr_data (icm_logic_wr_data),
+  .a2_adr   (icm_logic_adr[11:0]),
+  .a2_buf_empty (1'b1),
+  .a2_buf_wr_data (),
   .a3_wr_req        (),
   .a3_bwr_req       (),
   .a3_rd_req        (),

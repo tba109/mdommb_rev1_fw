@@ -14,6 +14,12 @@ module top (
   output FTD_UART_RXD,
   input FTD_UART_TXD,
 
+  // ICM UART
+  input FPGA_UART_CTS,
+  output FPGA_UART_RTS,
+  input FPGA_UART_RX,
+  output FPGA_UART_TX,
+
   // ADC interface
   output ADC0_CLOCK_P,
   output ADC0_CLOCK_M,
@@ -664,7 +670,13 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .debug_txd(FTD_UART_TXD),
   .debug_rxd(FTD_UART_RXD),
   .debug_rts_n(1'b0),
-  .debug_cts_n()
+  .debug_cts_n(),
+
+  // ICM UART
+  .icm_tx(FPGA_UART_TX),
+  .icm_rx(FPGA_UART_RX),
+  .icm_rts(FPGA_UART_RTS),
+  .icm_cts(FPGA_UART_CTS)
 );
 assign FTD_UART_CTSn = 0;
 

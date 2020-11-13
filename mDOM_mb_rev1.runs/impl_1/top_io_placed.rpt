@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date                      : Thu Nov 12 17:08:21 2020
+| Date                      : Fri Nov 13 15:27:12 2020
 | Host                      : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 | Command                   : report_io -file top_io_placed.rpt
 | Design                    : top
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|           201 |
+|           205 |
 +---------------+
 
 
@@ -232,8 +232,8 @@ Table of Contents
 | B13        |               |            | GND                          | GND         |                |         |            |      |                     |                      |     0.0 |            |           |          |          |                  |              |                   |              |
 | B14        |               | High Range | IO_L4P_T0_16                 | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | B15        |               | High Range | IO_L4N_T0_16                 | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
-| B16        |               | High Range | IO_L9P_T1_DQS_16             | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
-| B17        |               | High Range | IO_L9N_T1_DQS_16             | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
+| B16        | FPGA_UART_CTS | High Range | IO_L9P_T1_DQS_16             | INPUT       | LVCMOS18       |      16 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
+| B17        | FPGA_UART_RX  | High Range | IO_L9N_T1_DQS_16             | INPUT       | LVCMOS18       |      16 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | B18        |               |            | GND                          | GND         |                |         |            |      |                     |                      |     0.0 |            |           |          |          |                  |              |                   |              |
 | B19        | ADC5_CLOCK_P  | High Range | IO_L17P_T2_16                | OUTPUT      | DIFF_SSTL18_II |      16 |            | SLOW |                     |  NP_VTT_50_FP_VTT_50 |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | B20        | ADC5_CLOCK_M  | High Range | IO_L17N_T2_16                | OUTPUT      | DIFF_SSTL18_II |      16 |            | SLOW |                     |  NP_VTT_50_FP_VTT_50 |         | FIXED      |           |          |          | NONE             |              |                   |              |
@@ -311,8 +311,8 @@ Table of Contents
 | E14        |               | Dedicated  | VCCO_0                       | VCCO        |                |       0 |            |      |                     |                      |    1.80 |            |           |          |          |                  |              |                   |              |
 | E15        |               | High Range | IO_L2P_T0_16                 | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | E16        |               | High Range | IO_L2N_T0_16                 | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
-| E17        |               | High Range | IO_L10P_T1_16                | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
-| E18        |               | High Range | IO_L10N_T1_16                | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
+| E17        | FPGA_UART_RTS | High Range | IO_L10P_T1_16                | OUTPUT      | LVCMOS18       |      16 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |          | NONE             |              |                   |              |
+| E18        | FPGA_UART_TX  | High Range | IO_L10N_T1_16                | OUTPUT      | LVCMOS18       |      16 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | E19        |               |            | GND                          | GND         |                |         |            |      |                     |                      |     0.0 |            |           |          |          |                  |              |                   |              |
 | E20        | ADC5_DCLK_P   | High Range | IO_L14P_T2_SRCC_16           | INPUT       | DIFF_SSTL18_II |      16 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | E21        | ADC5_DCLK_M   | High Range | IO_L14N_T2_SRCC_16           | INPUT       | DIFF_SSTL18_II |      16 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
