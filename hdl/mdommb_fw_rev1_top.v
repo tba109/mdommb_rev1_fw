@@ -464,7 +464,7 @@ endgenerate
 //     ADC serial controls
 //     12'hee5: [0] ADC_RESET
 //     12'hee4: [5:0] adc spi chip sel
-//     12'hee3: adc spi task reg
+//     12'hee3: [0] adc spi task reg
 //     12'hee2: [7:0] adc spi wr data[23:16]
 //     12'hee1: adc spi wr data [15:0]
 //     12'hee0: adc spi rd data [7:0]
