@@ -85,6 +85,11 @@ always @(posedge clk) begin
       trig <= 1;
   end
 
+  if (cnt == 115) begin
+      width <= 0;
+      trig <= 1;
+  end
+
   if (cnt == 120) y0 <= 1;
   if (cnt == 130) begin
     width <= 3;

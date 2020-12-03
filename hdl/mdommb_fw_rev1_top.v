@@ -222,12 +222,14 @@ module top (
   // LEDs
   output LED_YELLOW,
   output LED_GREEN,
-  output LED_ORANGE
+  output LED_ORANGE,
+
+  output TRIG_OUT
 );
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h1;
+localparam[15:0] FW_VNUM = 16'h2;
 
 // number of ADC channels
 localparam N_CHANNELS = 24;
@@ -421,6 +423,7 @@ endgenerate
 //     12'hff6: test config  [11:0]
 //     12'hff5: post config [7:0]
 //     12'hff4: pre config [4:0]
+//
 //     12'heff: dpram_len [10:0]
 //     12'hefe:
 //             [0] dpram_done
@@ -475,6 +478,13 @@ endgenerate
 //     12'hedd: [0] dac spi task reg
 //     12'hedc: dac spi wr data [31:16]
 //     12'hedb: dac spi wr data [15:0]
+//
+//     AFE pulser controls
+//     12'heda: [15:0] AFE pulser width, units of 1 / 750 MHz
+//     12'hed9: [i] AFE pulser i IO reset
+//     12'hed8: [7:0] AFE pulser sw trig mask [23:16]
+//     12'hed7: [15:0] AFE pulser sw trig mask [15:0]
+//     12'hed6: [i] AFE pulser i trigger + sw_trig (based on ed8/7)
 //
 //     DDR3 test signals
 //     12'hdff: page transfer addr[27:16]
@@ -539,6 +549,11 @@ wire dac_spi_req;
 wire[31:0] dac_spi_wr_data;
 wire[2:0] dac_spi_sel;
 wire[2:0] dac_chip_sel;
+
+// AFE pulser
+wire[5:0] pulser_io_rst;
+wire[5:0] pulser_trig;
+wire[15:0] pulser_width;
 
 // DDR3 interface
 wire ddr3_ui_clk;
@@ -632,6 +647,11 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .dac_spi_req(dac_spi_req),
   .dac_spi_ack(dac_spi_ack),
   .dac_spi_wr_data(dac_spi_wr_data),
+
+  // AFE pulser
+  .pulser_io_rst(pulser_io_rst),
+  .pulser_trig(pulser_trig),
+  .pulser_width(pulser_width),
 
   // DDR3 interface
   .ddr3_ui_clk(ddr3_ui_clk),
@@ -1021,6 +1041,22 @@ assign DAC2_DIN = dac_spi_sel[2] ? dac_spi_mosi : 1'b0;
 assign DAC2_nSYNC0 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[0]);
 assign DAC2_nSYNC1 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[1]);
 assign DAC2_nSYNC2 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[2]);
+
+
+//
+// AFE pulser
+//
+// For the v1 test setup, TRIG_OUT is connected to AFE0_TP
+afe_pulser PULSER_0 (
+  .clk(lclk),
+  .rst(lclk_rst),
+  .fastclk(clk_375MHz),
+  .io_rst(pulser_io_rst[0]),
+  .trig(pulser_trig[0]),
+  .y0(1'b0),
+  .width(pulser_width),
+  .out(TRIG_OUT)
+);
 
 //
 // LED test pattern

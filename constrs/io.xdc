@@ -343,3 +343,6 @@ set_property PACKAGE_PIN V6 [get_ports LED_ORANGE]
 set_property IOSTANDARD LVCMOS33 [get_ports LED_ORANGE]
 set_property PACKAGE_PIN U2 [get_ports LED_YELLOW]
 set_property IOSTANDARD LVCMOS33 [get_ports LED_YELLOW]
+
+set_property PACKAGE_PIN U1 [get_ports TRIG_OUT]
+set_property IOSTANDARD LVCMOS33 [get_ports TRIG_OUT]

@@ -67,6 +67,11 @@ module xdom #(parameter N_CHANNELS = 24)
   input dac_spi_ack,
   output reg[31:0] dac_spi_wr_data = 0,
 
+  // AFE pulser
+  output reg[5:0] pulser_io_rst = 6'h3f,
+  output reg[5:0] pulser_trig = 0,
+  output reg[15:0] pulser_width = 0,
+
   // DDR3 interface
   input ddr3_ui_clk,
   output reg[27:0] pg_req_addr = 0,
@@ -467,6 +472,8 @@ always @(posedge clk) begin
 end
 wire pg_clr_req_val = hbuf_pg_clr_req || hbuf_pg_clr_ack;
 
+reg[N_CHANNELS-1:0] pulser_sw_trig_mask = 0;
+
 always @(*)
  begin
     case(y_adr)
@@ -531,10 +538,15 @@ always @(*)
       12'hee1: begin y_rd_data =       adc_spi_wr_data[15:0];                                  end
       12'hee0: begin y_rd_data =       {8'b0, adc_spi_rd_data};                                end
       12'hedf: begin y_rd_data =       {13'b0, dac_spi_sel};                                   end
-      12'hede: begin y_rd_data =       {13'b0, dac_chip_sel};                                   end
+      12'hede: begin y_rd_data =       {13'b0, dac_chip_sel};                                  end
       12'hedd: begin y_rd_data =       dac_spi_task_val;                                       end
       12'hedc: begin y_rd_data =       dac_spi_wr_data[31:16];                                 end
       12'hedb: begin y_rd_data =       dac_spi_wr_data[15:0];                                  end
+      12'heda: begin y_rd_data =       pulser_width;                                           end
+      12'hed9: begin y_rd_data =       {10'b0, pulser_io_rst};                                 end
+      12'hed8: begin y_rd_data =       {8'b0, pulser_sw_trig_mask[N_CHANNELS-1:16]};           end
+      12'hed7: begin y_rd_data =       pulser_sw_trig_mask[15:0];                              end
+      12'hed6: begin y_rd_data =       {10'b0, pulser_trig};                                   end
       12'hdff: begin y_rd_data =       pg_req_addr[27:16];                                     end
       12'hdfe: begin y_rd_data =       pg_req_addr[15:0];                                      end
       12'hdfd: begin y_rd_data =       {15'b0, pg_optype};                                     end
@@ -581,6 +593,8 @@ always @(posedge clk)
     i_adc_bitslip <= 0;
     i_discr_bitslip <= 0;
 
+    pulser_trig <= 0;
+
     if(y_wr)
       case(y_adr)
         12'hffe: begin
@@ -612,13 +626,13 @@ always @(posedge clk)
         12'hef0: begin wvb_rst[N_CHANNELS-1:16] <= y_wr_data[7:0];                             end
         12'heee: begin io_ctrl_sel <= y_wr_data[4:0];                                          end
         12'heed: begin
-           i_adc_delay_inc[0] <= y_wr_data[0];
-           i_adc_delay_ce[0] <= y_wr_data[1];
-           i_adc_bitslip[0] <= y_wr_data[2];
-           i_adc_delay_inc[1] <= y_wr_data[4];
-           i_adc_delay_ce[1] <= y_wr_data[5];
-           i_adc_bitslip[1] <= y_wr_data[6];
-           i_discr_bitslip <= y_wr_data[8];
+          i_adc_delay_inc[0] <= y_wr_data[0];
+          i_adc_delay_ce[0] <= y_wr_data[1];
+          i_adc_bitslip[0] <= y_wr_data[2];
+          i_adc_delay_inc[1] <= y_wr_data[4];
+          i_adc_delay_ce[1] <= y_wr_data[5];
+          i_adc_bitslip[1] <= y_wr_data[6];
+          i_discr_bitslip <= y_wr_data[8];
         end
         12'heeb: begin adc_io_reset[23:16] <= y_wr_data[7:0];                                  end
         12'heea: begin adc_io_reset[15:0] <= y_wr_data;                                        end
@@ -634,6 +648,14 @@ always @(posedge clk)
         12'hede: begin dac_chip_sel <= y_wr_data[2:0];                                         end
         12'hedc: begin dac_spi_wr_data[31:16] <= y_wr_data;                                    end
         12'hedb: begin dac_spi_wr_data[15:0] <= y_wr_data;                                     end
+        12'heda: begin pulser_width <= y_wr_data;                                              end
+        12'hed9: begin pulser_io_rst <= y_wr_data[5:0];                                        end
+        12'hed8: begin pulser_sw_trig_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];                 end
+        12'hed7: begin pulser_sw_trig_mask[15:0] <= y_wr_data;                                 end
+        12'hed6: begin
+          pulser_trig <= y_wr_data[5:0];
+          xdom_trig_run <= pulser_sw_trig_mask;
+        end
         12'hdff: begin pg_req_addr[27:16] <= y_wr_data[11:0];                                  end
         12'hdfe: begin pg_req_addr[15:0] <= y_wr_data[15:0];                                   end
         12'hdfd: begin pg_optype <= y_wr_data[0];                                              end
@@ -644,9 +666,9 @@ always @(posedge clk)
         12'hcfd: begin hbuf_stop_pg <= y_wr_data;                                              end
         12'hcfa: begin hbuf_pg_clr_count <= y_wr_data;                                         end
         12'hcf9: begin
-           flush_req_start <= y_wr_data[0];
-           pg_clr_req_start <= y_wr_data[1];
-         end
+          flush_req_start <= y_wr_data[0];
+          pg_clr_req_start <= y_wr_data[1];
+        end
         default: begin                                                                         end
       endcase
 end // always @ (posedge clk)
