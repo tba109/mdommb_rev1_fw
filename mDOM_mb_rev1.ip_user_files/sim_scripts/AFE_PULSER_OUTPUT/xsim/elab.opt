@@ -1,0 +1,1 @@
+--relax --debug typical --mt auto -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot AFE_PULSER_OUTPUT xil_defaultlib.AFE_PULSER_OUTPUT xil_defaultlib.glbl -log elaborate.log

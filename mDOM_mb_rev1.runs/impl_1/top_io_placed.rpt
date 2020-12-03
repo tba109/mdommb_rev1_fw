@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date                      : Wed Nov 25 12:03:10 2020
+| Date                      : Thu Dec  3 17:25:30 2020
 | Host                      : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 | Command                   : report_io -file top_io_placed.rpt
 | Design                    : top
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|           205 |
+|           206 |
 +---------------+
 
 
@@ -607,7 +607,7 @@ Table of Contents
 | T24        |               | High Range | IO_L12N_T1_MRCC_14           | User IO     |                |      14 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | T25        | ADC_SDATA     | High Range | IO_L10P_T1_D14_14            | OUTPUT      | LVCMOS18       |      14 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | T26        |               |            | GND                          | GND         |                |         |            |      |                     |                      |     0.0 |            |           |          |          |                  |              |                   |              |
-| U1         |               | High Range | IO_L11P_T1_SRCC_34           | User IO     |                |      34 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
+| U1         | TRIG_OUT      | High Range | IO_L11P_T1_SRCC_34           | OUTPUT      | LVCMOS33       |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | U2         | LED_YELLOW    | High Range | IO_L17N_T2_34                | OUTPUT      | LVCMOS33       |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | U3         |               |            | GND                          | GND         |                |         |            |      |                     |                      |     0.0 |            |           |          |          |                  |              |                   |              |
 | U4         |               | High Range | IO_L15N_T2_DQS_34            | User IO     |                |      34 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |

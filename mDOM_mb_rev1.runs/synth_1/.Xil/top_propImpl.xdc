@@ -409,3 +409,5 @@ set_property src_info {type:XDC file:1 line:342 export:INPUT save:INPUT read:REA
 set_property PACKAGE_PIN V6 [get_ports LED_ORANGE]
 set_property src_info {type:XDC file:1 line:344 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN U2 [get_ports LED_YELLOW]
+set_property src_info {type:XDC file:1 line:347 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN U1 [get_ports TRIG_OUT]
