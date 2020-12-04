@@ -20,6 +20,10 @@ module top (
   input FPGA_UART_RX,
   output FPGA_UART_TX,
 
+  // MCU UART
+  input MCU_USART6_TX,
+  output MCU_USART6_RX,
+
   // ADC interface
   output ADC0_CLOCK_P,
   output ADC0_CLOCK_M,
@@ -696,7 +700,13 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .icm_tx(FPGA_UART_TX),
   .icm_rx(FPGA_UART_RX),
   .icm_rts(FPGA_UART_RTS),
-  .icm_cts(FPGA_UART_CTS)
+  .icm_cts(FPGA_UART_CTS),
+
+  // MCU UART
+  .mcu_tx(MCU_USART6_TX),
+  .mcu_rx(MCU_USART6_RX),
+  .mcu_rts_n(1'b0),
+  .mcu_cts_n()
 );
 assign FTD_UART_CTSn = 0;
 

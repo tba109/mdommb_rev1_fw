@@ -306,6 +306,11 @@ set_property IOSTANDARD LVCMOS18 [get_ports FPGA_UART_RX]
 set_property PACKAGE_PIN E18 [get_ports FPGA_UART_TX]
 set_property IOSTANDARD LVCMOS18 [get_ports FPGA_UART_TX]
 
+set_property PACKAGE_PIN F3 [get_ports MCU_USART6_RX]
+set_property IOSTANDARD LVCMOS18 [get_ports MCU_USART6_RX]
+set_property PACKAGE_PIN F4 [get_ports MCU_USART6_TX]
+set_property IOSTANDARD LVCMOS18 [get_ports MCU_USART6_TX]
+
 set_property PACKAGE_PIN T5 [get_ports DAC0_DIN]
 set_property IOSTANDARD LVCMOS33 [get_ports DAC0_DIN]
 set_property PACKAGE_PIN P6 [get_ports DAC0_nSYNC0]

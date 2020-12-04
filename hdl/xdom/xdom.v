@@ -8,7 +8,8 @@
 // currently contains:
 //    1.) Debug UART
 //    2.) ICM UART
-//    3.) Command, response, status
+//    3.) MCU UART
+//    4.) Command, response, status
 /////////////////////////////////////////////////////////////////////////////////
 module xdom #(parameter N_CHANNELS = 24)
 (
@@ -111,11 +112,17 @@ module xdom #(parameter N_CHANNELS = 24)
   input             debug_rts_n,
   output            debug_cts_n,
 
-  // ICM UART,
+  // ICM UART
   output            icm_tx,
   input             icm_rx,
   output            icm_rts,
-  input             icm_cts
+  input             icm_cts,
+
+  // MCU UART
+  input mcu_tx,
+  output mcu_rx,
+  input mcu_rts_n,
+  output mcu_cts_n
 );
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -180,10 +187,42 @@ ft232r_proc_buffered UART_ICM_0
   .logic_rd_data  (icm_logic_rd_data[15:0]),
   .logic_ack  (icm_logic_ack),
   .err_ack    (icm_err_ack)
-  );
+);
+
+///////////////////////////////////////////////////////////////////////////////
+// 3.) MCU UART
+wire [11:0] mcu_logic_adr;
+wire [15:0] mcu_logic_wr_data;
+wire        mcu_logic_wr_req;
+wire        mcu_logic_rd_req;
+wire        mcu_err_req;
+wire [31:0] mcu_err_data;
+wire [15:0] mcu_logic_rd_data;
+wire        mcu_logic_ack;
+wire        mcu_err_ack;
+ft232r_proc_buffered UART_MCU_0
+ (
+  // Outputs
+  .rxd    (mcu_rx),
+  .cts_n    (mcu_cts_n),
+  .logic_adr  (mcu_logic_adr[11:0]),
+  .logic_wr_data  (mcu_logic_wr_data[15:0]),
+  .logic_wr_req (mcu_logic_wr_req),
+  .logic_rd_req (mcu_logic_rd_req),
+  .err_req    (mcu_err_req),
+  .err_data   (mcu_err_data[31:0]),
+  // Inputs
+  .clk    (clk),
+  .rst    (rst),
+  .txd    (mcu_tx),
+  .rts_n    (mcu_rts_n),
+  .logic_rd_data  (mcu_logic_rd_data[15:0]),
+  .logic_ack  (mcu_logic_ack),
+  .err_ack    (mcu_err_ack)
+);
 
 //////////////////////////////////////////////////////////////////////////////
-// 3.) Command, repsonse, status
+// 4.) Command, response, status
 wire [11:0] y_adr;
 wire [15:0] y_wr_data;
 wire        y_wr;
@@ -197,8 +236,8 @@ crs_master CRSM_0
   .a0_ack           (debug_logic_ack),
   .a0_rd_data       (debug_logic_rd_data[15:0]),
   .a0_buf_rd        (),
-  .a1_ack           (),
-  .a1_rd_data       (),
+  .a1_ack           (mcu_logic_ack),
+  .a1_rd_data       (mcu_logic_rd_data[15:0]),
   .a1_buf_rd        (),
   .a2_ack           (icm_logic_ack),
   .a2_rd_data       (icm_logic_rd_data[15:0]),
@@ -217,12 +256,12 @@ crs_master CRSM_0
   .a0_adr           (debug_logic_adr[11:0]),
   .a0_buf_empty     (1'b1),
   .a0_buf_wr_data   (),
-  .a1_wr_req        (),
-  .a1_bwr_req       (),
-  .a1_rd_req        (),
-  .a1_wr_data       (),
-  .a1_adr           (),
-  .a1_buf_empty     (),
+  .a1_wr_req        (mcu_logic_wr_req),
+  .a1_bwr_req       (1'b0),
+  .a1_rd_req        (mcu_logic_rd_req),
+  .a1_wr_data       (mcu_logic_wr_data[15:0]),
+  .a1_adr           (mcu_logic_adr[11:0]),
+  .a1_buf_empty     (1'b1),
   .a1_buf_wr_data   (),
   .a2_wr_req  (icm_logic_wr_req),
   .a2_bwr_req (1'b0),
@@ -238,7 +277,7 @@ crs_master CRSM_0
   .a3_adr           (),
   .a3_buf_empty     (),
   .a3_buf_wr_data   ()
-  );
+);
 
 // trig bundle
 reg wvb_trig_et = 0;
