@@ -7,20 +7,26 @@
 
 module afe_pulser_tb();
 
-parameter CLK_PERIOD = 12;
-parameter FASTCLK_PERIOD = 4;
+parameter CLK_PERIOD = 8;
+parameter FASTCLK_PERIOD = 1;
 
-reg clk;
+reg lclk;
+reg divclk;
 reg fastclk;
 initial begin
   // clock initialization
-  clk = 1'b0;
+  lclk = 1'b0;
   fastclk = 1'b0;
+  #3
+  divclk = 1'b0;
 end
 
 // clock drivers
-always @(clk)
-  #(CLK_PERIOD / 2.0) clk <= !clk;
+always @(lclk)
+  #(CLK_PERIOD / 2.0) lclk <= !lclk;
+
+always @(divclk)
+  #(CLK_PERIOD / 2.0) divclk <= !divclk;
 
 always @(fastclk)
   #(FASTCLK_PERIOD / 2.0) fastclk <= !fastclk;
@@ -28,12 +34,15 @@ always @(fastclk)
 reg trig = 0;
 reg[15:0] width = 0;
 reg io_rst = 1;
-reg rst = 0;
+reg lclk_rst = 0;
+reg divclk_rst = 0;
 wire pulser_out;
 reg y0 = 0;
 afe_pulser pulser_0 (
-  .clk(clk),
-  .rst(rst),
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .divclk(divclk),
+  .divclk_rst(divclk_rst),
   .fastclk(fastclk),
   .io_rst(io_rst),
   .trig(trig),
@@ -43,7 +52,7 @@ afe_pulser pulser_0 (
 );
 
 integer cnt = 0;
-always @(posedge clk) begin
+always @(posedge lclk) begin
   cnt <= cnt + 1;
   trig <= 0;
 

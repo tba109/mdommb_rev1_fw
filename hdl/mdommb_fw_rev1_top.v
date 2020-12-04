@@ -229,7 +229,7 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h2;
+localparam[15:0] FW_VNUM = 16'h3;
 
 // number of ADC channels
 localparam N_CHANNELS = 24;
@@ -480,7 +480,7 @@ endgenerate
 //     12'hedb: dac spi wr data [15:0]
 //
 //     AFE pulser controls
-//     12'heda: [15:0] AFE pulser width, units of 1 / 750 MHz
+//     12'heda: [15:0] AFE pulser width, units of 1 ns
 //     12'hed9: [i] AFE pulser i IO reset
 //     12'hed8: [7:0] AFE pulser sw trig mask [23:16]
 //     12'hed7: [15:0] AFE pulser sw trig mask [15:0]
@@ -1048,9 +1048,11 @@ assign DAC2_nSYNC2 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[2]);
 //
 // For the v1 test setup, TRIG_OUT is connected to AFE0_TP
 afe_pulser PULSER_0 (
-  .clk(lclk),
-  .rst(lclk_rst),
-  .fastclk(clk_375MHz),
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .divclk(discr_fclk_125MHz),
+  .divclk_rst(!idelay_discrclk_locked),
+  .fastclk(clk_500MHz),
   .io_rst(pulser_io_rst[0]),
   .trig(pulser_trig[0]),
   .y0(1'b0),
