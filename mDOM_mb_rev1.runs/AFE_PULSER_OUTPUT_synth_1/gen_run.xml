@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="AFE_PULSER_OUTPUT_synth_1" LaunchPart="xc7s100fgga676-2" LaunchTime="1607018771">
+<GenRun Id="AFE_PULSER_OUTPUT_synth_1" LaunchPart="xc7s100fgga676-2" LaunchTime="1607093629">
   <File Type="PA-TCL" Name="AFE_PULSER_OUTPUT.tcl"/>
   <File Type="REPORTS-TCL" Name="AFE_PULSER_OUTPUT_reports.tcl"/>
   <File Type="RDS-RDS" Name="AFE_PULSER_OUTPUT.vds"/>

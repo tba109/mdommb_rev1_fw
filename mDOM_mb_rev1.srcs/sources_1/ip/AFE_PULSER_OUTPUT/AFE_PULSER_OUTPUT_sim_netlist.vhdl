@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
--- Date        : Thu Dec  3 13:06:50 2020
+-- Date        : Fri Dec  4 09:54:31 2020
 -- Host        : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT_sim_netlist.vhdl
+--               C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT_sim_netlist.vhdl
 -- Design      : AFE_PULSER_OUTPUT
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -16,20 +16,20 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz is
   port (
-    data_out_from_device : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    data_out_from_device : in STD_LOGIC_VECTOR ( 7 downto 0 );
     data_out_to_pins : out STD_LOGIC_VECTOR ( 0 to 0 );
     clk_in : in STD_LOGIC;
     clk_div_in : in STD_LOGIC;
     io_reset : in STD_LOGIC
   );
   attribute DEV_W : integer;
-  attribute DEV_W of AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz : entity is 6;
+  attribute DEV_W of AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz : entity is 8;
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz : entity is "AFE_PULSER_OUTPUT_selectio_wiz";
   attribute SYS_W : integer;
   attribute SYS_W of AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz : entity is 1;
   attribute num_serial_bits : integer;
-  attribute num_serial_bits of AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz : entity is 6;
+  attribute num_serial_bits of AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz : entity is 8;
 end AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz;
 
 architecture STRUCTURE of AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz is
@@ -55,7 +55,7 @@ begin
     generic map(
       DATA_RATE_OQ => "DDR",
       DATA_RATE_TQ => "SDR",
-      DATA_WIDTH => 6,
+      DATA_WIDTH => 8,
       INIT_OQ => '0',
       INIT_TQ => '0',
       IS_CLKDIV_INVERTED => '0',
@@ -88,8 +88,8 @@ begin
       D4 => data_out_from_device(3),
       D5 => data_out_from_device(4),
       D6 => data_out_from_device(5),
-      D7 => '0',
-      D8 => '0',
+      D7 => data_out_from_device(6),
+      D8 => data_out_from_device(7),
       OCE => '1',
       OFB => \NLW_pins[0].oserdese2_master_OFB_UNCONNECTED\,
       OQ => data_out_to_pins_int,
@@ -115,7 +115,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity AFE_PULSER_OUTPUT is
   port (
-    data_out_from_device : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    data_out_from_device : in STD_LOGIC_VECTOR ( 7 downto 0 );
     data_out_to_pins : out STD_LOGIC_VECTOR ( 0 to 0 );
     clk_in : in STD_LOGIC;
     clk_div_in : in STD_LOGIC;
@@ -124,22 +124,22 @@ entity AFE_PULSER_OUTPUT is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of AFE_PULSER_OUTPUT : entity is true;
   attribute DEV_W : integer;
-  attribute DEV_W of AFE_PULSER_OUTPUT : entity is 6;
+  attribute DEV_W of AFE_PULSER_OUTPUT : entity is 8;
   attribute SYS_W : integer;
   attribute SYS_W of AFE_PULSER_OUTPUT : entity is 1;
 end AFE_PULSER_OUTPUT;
 
 architecture STRUCTURE of AFE_PULSER_OUTPUT is
-  attribute DEV_W of inst : label is 6;
+  attribute DEV_W of inst : label is 8;
   attribute SYS_W of inst : label is 1;
   attribute num_serial_bits : integer;
-  attribute num_serial_bits of inst : label is 6;
+  attribute num_serial_bits of inst : label is 8;
 begin
 inst: entity work.AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz
      port map (
       clk_div_in => clk_div_in,
       clk_in => clk_in,
-      data_out_from_device(5 downto 0) => data_out_from_device(5 downto 0),
+      data_out_from_device(7 downto 0) => data_out_from_device(7 downto 0),
       data_out_to_pins(0) => data_out_to_pins(0),
       io_reset => io_reset
     );

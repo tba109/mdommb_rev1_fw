@@ -627,11 +627,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Dec 03 18:06:07 UTC 2020</spirit:value>
+            <spirit:value>Fri Dec 04 14:53:47 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2ec072d1</spirit:value>
+            <spirit:value>9:b007bd6b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -647,11 +647,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Dec 03 18:06:09 UTC 2020</spirit:value>
+            <spirit:value>Fri Dec 04 14:53:47 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2ec072d1</spirit:value>
+            <spirit:value>9:b007bd6b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -662,7 +662,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2ec072d1</spirit:value>
+            <spirit:value>9:b007bd6b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -678,11 +678,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Dec 03 18:06:09 UTC 2020</spirit:value>
+            <spirit:value>Fri Dec 04 14:53:47 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2ec072d1</spirit:value>
+            <spirit:value>9:b007bd6b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -698,11 +698,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Dec 03 18:06:09 UTC 2020</spirit:value>
+            <spirit:value>Fri Dec 04 14:53:47 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f3d744f5</spirit:value>
+            <spirit:value>9:2dfc18ef</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -718,11 +718,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Dec 03 18:06:09 UTC 2020</spirit:value>
+            <spirit:value>Fri Dec 04 14:53:47 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f3d744f5</spirit:value>
+            <spirit:value>9:2dfc18ef</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -736,11 +736,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Dec 03 18:06:10 UTC 2020</spirit:value>
+            <spirit:value>Fri Dec 04 14:53:47 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2ec072d1</spirit:value>
+            <spirit:value>9:b007bd6b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -754,11 +754,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Dec 03 18:06:50 UTC 2020</spirit:value>
+            <spirit:value>Fri Dec 04 14:54:31 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2ec072d1</spirit:value>
+            <spirit:value>9:b007bd6b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1118,7 +1118,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DATA_RATE_STRING&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_SYSTEM_DATA_WIDTH&apos;)))-1)">5</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DATA_RATE_STRING&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_SYSTEM_DATA_WIDTH&apos;)))-1)">7</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -2026,7 +2026,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DATA_RATE_STRING&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_SYSTEM_DATA_WIDTH&apos;)))-1)">5</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DATA_RATE_STRING&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_SYSTEM_DATA_WIDTH&apos;)))-1)">7</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -2135,7 +2135,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_SERIALIZATION_FACTOR</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_SERIALIZATION_FACTOR" spirit:order="50">6</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_SERIALIZATION_FACTOR" spirit:order="50">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>C_USE_PHASE_DETECTOR</spirit:name>
@@ -2275,7 +2275,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DATA_RATE_STRING</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DATA_RATE_STRING" spirit:order="85">6</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DATA_RATE_STRING" spirit:order="85">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DEVICE</spirit:name>
@@ -2603,7 +2603,7 @@
     <spirit:parameter>
       <spirit:name>SERIALIZATION_FACTOR</spirit:name>
       <spirit:displayName>Serialization Factor</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.SERIALIZATION_FACTOR" spirit:choiceRef="choice_list_9b5fec69" spirit:order="10">6</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.SERIALIZATION_FACTOR" spirit:choiceRef="choice_list_9b5fec69" spirit:order="10">8</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ENABLE_BITSLIP</spirit:name>

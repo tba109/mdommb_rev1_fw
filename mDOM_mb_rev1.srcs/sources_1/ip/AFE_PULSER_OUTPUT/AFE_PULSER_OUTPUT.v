@@ -53,13 +53,13 @@
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "AFE_PULSER_OUTPUT,selectio_wiz_v5_1_13,{component_name=AFE_PULSER_OUTPUT,bus_dir=OUTPUTS,bus_sig_type=SINGLE,bus_io_std=LVCMOS33,use_serialization=true,use_phase_detector=false,serialization_factor=6,enable_bitslip=false,enable_train=false,system_data_width=1,bus_in_delay=NONE,bus_out_delay=NONE,clk_sig_type=SINGLE,clk_io_std=LVCMOS18,clk_buf=BUFIO2,active_edge=RISING,clk_delay=NONE,selio_bus_in_delay=NONE,selio_bus_out_delay=NONE,selio_clk_buf=MMCM,selio_active_edge=DDR,selio_ddr_alignment=SAME_EDGE_PIPELINED,selio_oddr_alignment=SAME_EDGE,ddr_alignment=C0,selio_interface_type=NETWORKING,interface_type=NETWORKING,selio_bus_in_tap=0,selio_bus_out_tap=0,selio_clk_io_std=LVCMOS33,selio_clk_sig_type=SINGLE}" *)
+(* CORE_GENERATION_INFO = "AFE_PULSER_OUTPUT,selectio_wiz_v5_1_13,{component_name=AFE_PULSER_OUTPUT,bus_dir=OUTPUTS,bus_sig_type=SINGLE,bus_io_std=LVCMOS33,use_serialization=true,use_phase_detector=false,serialization_factor=8,enable_bitslip=false,enable_train=false,system_data_width=1,bus_in_delay=NONE,bus_out_delay=NONE,clk_sig_type=SINGLE,clk_io_std=LVCMOS18,clk_buf=BUFIO2,active_edge=RISING,clk_delay=NONE,selio_bus_in_delay=NONE,selio_bus_out_delay=NONE,selio_clk_buf=MMCM,selio_active_edge=DDR,selio_ddr_alignment=SAME_EDGE_PIPELINED,selio_oddr_alignment=SAME_EDGE,ddr_alignment=C0,selio_interface_type=NETWORKING,interface_type=NETWORKING,selio_bus_in_tap=0,selio_bus_out_tap=0,selio_clk_io_std=LVCMOS33,selio_clk_sig_type=SINGLE}" *)
 
 module AFE_PULSER_OUTPUT
    // width of the data for the system
  #(parameter SYS_W = 1,
    // width of the data for the device
-   parameter DEV_W = 6)
+   parameter DEV_W = 8)
  (
   // From the device out to the system
   input  [DEV_W-1:0] data_out_from_device,

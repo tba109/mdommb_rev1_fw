@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date                      : Thu Dec  3 17:25:30 2020
+| Date                      : Mon Dec  7 14:59:44 2020
 | Host                      : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 | Command                   : report_io -file top_io_placed.rpt
 | Design                    : top
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|           206 |
+|           208 |
 +---------------+
 
 
@@ -323,8 +323,8 @@ Table of Contents
 | E26        | ADC4_DCLK_M   | High Range | IO_L11N_T1_SRCC_15           | INPUT       | DIFF_SSTL18_II |      15 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | F1         |               |            | GND                          | GND         |                |         |            |      |                     |                      |     0.0 |            |           |          |          |                  |              |                   |              |
 | F2         |               | High Range | IO_L7N_T1_AD6N_35            | User IO     |                |      35 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
-| F3         |               | High Range | IO_L8P_T1_AD14P_35           | User IO     |                |      35 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
-| F4         |               | High Range | IO_L3N_T0_DQS_AD5N_35        | User IO     |                |      35 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
+| F3         | MCU_USART6_RX | High Range | IO_L8P_T1_AD14P_35           | OUTPUT      | LVCMOS18       |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |          | NONE             |              |                   |              |
+| F4         | MCU_USART6_TX | High Range | IO_L3N_T0_DQS_AD5N_35        | INPUT       | LVCMOS18       |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | F5         |               | High Range | IO_L1N_T0_AD4N_35            | User IO     |                |      35 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | F6         |               |            | GND                          | GND         |                |         |            |      |                     |                      |     0.0 |            |           |          |          |                  |              |                   |              |
 | F7         |               | High Range | IO_L16P_T2_36                | User IO     |                |      36 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |

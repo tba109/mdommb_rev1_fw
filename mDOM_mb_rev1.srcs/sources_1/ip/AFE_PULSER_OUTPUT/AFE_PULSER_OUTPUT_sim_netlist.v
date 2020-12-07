@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-// Date        : Thu Dec  3 13:06:50 2020
+// Date        : Fri Dec  4 09:54:31 2020
 // Host        : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT_sim_netlist.v
+//               C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT_sim_netlist.v
 // Design      : AFE_PULSER_OUTPUT
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* DEV_W = "6" *) (* SYS_W = "1" *) 
+(* DEV_W = "8" *) (* SYS_W = "1" *) 
 (* NotValidForBitStream *)
 module AFE_PULSER_OUTPUT
    (data_out_from_device,
@@ -20,7 +20,7 @@ module AFE_PULSER_OUTPUT
     clk_in,
     clk_div_in,
     io_reset);
-  input [5:0]data_out_from_device;
+  input [7:0]data_out_from_device;
   output [0:0]data_out_to_pins;
   input clk_in;
   input clk_div_in;
@@ -28,13 +28,13 @@ module AFE_PULSER_OUTPUT
 
   wire clk_div_in;
   wire clk_in;
-  wire [5:0]data_out_from_device;
+  wire [7:0]data_out_from_device;
   (* DRIVE = "12" *) (* IOSTANDARD = "LVCMOS33" *) (* SLEW = "SLOW" *) wire [0:0]data_out_to_pins;
   wire io_reset;
 
-  (* DEV_W = "6" *) 
+  (* DEV_W = "8" *) 
   (* SYS_W = "1" *) 
-  (* num_serial_bits = "6" *) 
+  (* num_serial_bits = "8" *) 
   AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz inst
        (.clk_div_in(clk_div_in),
         .clk_in(clk_in),
@@ -43,15 +43,15 @@ module AFE_PULSER_OUTPUT
         .io_reset(io_reset));
 endmodule
 
-(* DEV_W = "6" *) (* ORIG_REF_NAME = "AFE_PULSER_OUTPUT_selectio_wiz" *) (* SYS_W = "1" *) 
-(* num_serial_bits = "6" *) 
+(* DEV_W = "8" *) (* ORIG_REF_NAME = "AFE_PULSER_OUTPUT_selectio_wiz" *) (* SYS_W = "1" *) 
+(* num_serial_bits = "8" *) 
 module AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz
    (data_out_from_device,
     data_out_to_pins,
     clk_in,
     clk_div_in,
     io_reset);
-  input [5:0]data_out_from_device;
+  input [7:0]data_out_from_device;
   output [0:0]data_out_to_pins;
   input clk_in;
   input clk_div_in;
@@ -59,7 +59,7 @@ module AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz
 
   wire clk_div_in;
   wire clk_in;
-  wire [5:0]data_out_from_device;
+  wire [7:0]data_out_from_device;
   wire [0:0]data_out_to_pins;
   wire data_out_to_pins_int;
   wire io_reset;
@@ -79,7 +79,7 @@ module AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz
   OSERDESE2 #(
     .DATA_RATE_OQ("DDR"),
     .DATA_RATE_TQ("SDR"),
-    .DATA_WIDTH(6),
+    .DATA_WIDTH(8),
     .INIT_OQ(1'b0),
     .INIT_TQ(1'b0),
     .IS_CLKDIV_INVERTED(1'b0),
@@ -111,8 +111,8 @@ module AFE_PULSER_OUTPUT_AFE_PULSER_OUTPUT_selectio_wiz
         .D4(data_out_from_device[3]),
         .D5(data_out_from_device[4]),
         .D6(data_out_from_device[5]),
-        .D7(1'b0),
-        .D8(1'b0),
+        .D7(data_out_from_device[6]),
+        .D8(data_out_from_device[7]),
         .OCE(1'b1),
         .OFB(\NLW_pins[0].oserdese2_master_OFB_UNCONNECTED ),
         .OQ(data_out_to_pins_int),

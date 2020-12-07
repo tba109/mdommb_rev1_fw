@@ -60,6 +60,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/mdom_trigger/mdom_trigger.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/n_channel_mux/n_channel_mux.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/negedge_detector/negedge_detector.v
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/one_shot/one_shot.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/posedge_detector/posedge_detector.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/pretrigger_buffer/pretrigger_buffer.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/rs232_des/rs232_des.v

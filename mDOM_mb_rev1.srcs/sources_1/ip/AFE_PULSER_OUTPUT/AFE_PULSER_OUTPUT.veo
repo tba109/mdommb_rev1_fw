@@ -57,7 +57,7 @@
   AFE_PULSER_OUTPUT 
   instance_name
  (
-   .data_out_from_device(data_out_from_device), // input [5:0] data_out_from_device
+   .data_out_from_device(data_out_from_device), // input [7:0] data_out_from_device
    .data_out_to_pins(data_out_to_pins), // output [0:0] data_out_to_pins
    .clk_in(clk_in), // input clk_in                            
    .clk_div_in(clk_div_in), // input clk_div_in                        
