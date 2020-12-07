@@ -229,7 +229,7 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h3;
+localparam[15:0] FW_VNUM = 16'h4;
 
 // number of ADC channels
 localparam N_CHANNELS = 24;
@@ -1055,7 +1055,7 @@ afe_pulser PULSER_0 (
   .fastclk(clk_500MHz),
   .io_rst(pulser_io_rst[0]),
   .trig(pulser_trig[0]),
-  .y0(1'b0),
+  .y0(1'b1),
   .width(pulser_width),
   .out(TRIG_OUT)
 );
