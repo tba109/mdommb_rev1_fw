@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date             : Mon Dec  7 15:01:58 2020
+| Date             : Thu Dec 10 15:32:45 2020
 | Host             : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.981        |
+| Total On-Chip Power (W)  | 0.982        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.865        |
+| Dynamic (W)              | 0.866        |
 | Device Static (W)        | 0.116        |
 | Effective TJA (C/W)      | 2.4          |
 | Max Ambient (C)          | 82.6         |
@@ -52,20 +52,20 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.121 |       10 |       --- |             --- |
-| Slice Logic              |     0.036 |    35977 |       --- |             --- |
-|   LUT as Logic           |     0.029 |    12414 |     64000 |           19.40 |
+| Clocks                   |     0.123 |       10 |       --- |             --- |
+| Slice Logic              |     0.036 |    36036 |       --- |             --- |
+|   LUT as Logic           |     0.029 |    12435 |     64000 |           19.43 |
 |   CARRY4                 |     0.004 |     1795 |     16000 |           11.22 |
-|   Register               |     0.003 |    17014 |    128000 |           13.29 |
+|   Register               |     0.003 |    17067 |    128000 |           13.33 |
 |   LUT as Distributed RAM |    <0.001 |      384 |     17600 |            2.18 |
-|   F7/F8 Muxes            |    <0.001 |      482 |     64000 |            0.75 |
+|   F7/F8 Muxes            |    <0.001 |      478 |     64000 |            0.75 |
 |   Others                 |     0.000 |     1183 |       --- |             --- |
-| Signals                  |     0.053 |    28072 |       --- |             --- |
-| Block RAM                |     0.066 |       59 |       120 |           49.17 |
+| Signals                  |     0.052 |    28128 |       --- |             --- |
+| Block RAM                |     0.065 |       59 |       120 |           49.17 |
 | MMCM                     |     0.239 |        2 |         8 |           25.00 |
 | I/O                      |     0.350 |      183 |       400 |           45.75 |
 | Static Power             |     0.116 |          |           |                 |
-| Total                    |     0.981 |          |           |                 |
+| Total                    |     0.982 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.321 |       0.304 |      0.017 |
+| Vccint    |       1.000 |     0.322 |       0.305 |      0.017 |
 | Vccaux    |       1.800 |     0.237 |       0.215 |      0.022 |
 | Vcco33    |       3.300 |     0.005 |       0.001 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -149,12 +149,12 @@ Table of Contents
 +------------------------------------------+-----------+
 | Name                                     | Power (W) |
 +------------------------------------------+-----------+
-| top                                      |     0.865 |
+| top                                      |     0.866 |
 |   AD5668_SPI                             |     0.007 |
 |     IILC_MISO_0                          |     0.002 |
 |     IILC_MOSI_0                          |     0.002 |
 |     IILC_SCLK_0                          |     0.001 |
-|   ADC3424_SPI                            |     0.007 |
+|   ADC3424_SPI                            |     0.008 |
 |     IILC_MISO_0                          |     0.001 |
 |     IILC_MOSI_0                          |     0.002 |
 |     IILC_SCLK_0                          |     0.002 |
@@ -361,11 +361,11 @@ Table of Contents
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[18].WFM_ACQ           |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
-|   waveform_acq_gen[19].WFM_ACQ           |     0.007 |
+|   waveform_acq_gen[19].WFM_ACQ           |     0.008 |
 |     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
@@ -410,7 +410,7 @@ Table of Contents
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
-|   waveform_acq_gen[5].WFM_ACQ            |     0.007 |
+|   waveform_acq_gen[5].WFM_ACQ            |     0.008 |
 |     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
