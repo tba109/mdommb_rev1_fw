@@ -16,7 +16,9 @@
 // Waveform Format 0:
 //
 // CHANNEL      - [15] 1
-//                [14:8] Waveform Format
+//                [14:13] 0
+//                [12] 1
+//                [11:8] Waveform Format
 //                [7:0]  Channel Number
 // EVT_LEN      - Number of samples in the waveform
 // HDR_0        - [15:11] - preconf (will be 0 for hdr fmt 1)
@@ -117,7 +119,7 @@ wire wvb_eoe = wvb_data[0];
 wire[15:0] hdr_0 = {pre_conf, cnst_run, 8'b0, trig_src};
 
 // constants
-localparam L_FMT = 8'h80;
+localparam L_FMT = 8'h90;
 localparam L_DPRAM_A_LAST_DATA=10'd1021;
 localparam L_DPRAM_A_LAST_DATA_CONTINUE=10'd1022;
 localparam L_DPRAM_A_LAST = 10'd1023;

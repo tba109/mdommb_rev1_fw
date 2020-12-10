@@ -417,7 +417,7 @@ assign discr_bitslip = discr_bitslip_1;
 wire[15:0] adc_spi_task_val;
 wire[15:0] adc_spi_task_req;
 wire[15:0] adc_spi_task_ack;
-task_reg #(.P_TASK_ADR(12'hee3)) ADC_SPI_TASK_0 (
+task_reg #(.P_TASK_ADR(12'hbdb)) ADC_SPI_TASK_0 (
   .clk(clk),
   .rst(rst),
   .adr(y_adr),
@@ -433,7 +433,7 @@ assign adc_spi_task_ack[0] = adc_spi_ack;
 wire[15:0] dac_spi_task_val;
 wire[15:0] dac_spi_task_req;
 wire[15:0] dac_spi_task_ack;
-task_reg #(.P_TASK_ADR(12'hedd)) DAC_SPI_TASK_0 (
+task_reg #(.P_TASK_ADR(12'hbd5)) DAC_SPI_TASK_0 (
   .clk(clk),
   .rst(rst),
   .adr(y_adr),
@@ -512,12 +512,19 @@ end
 wire pg_clr_req_val = hbuf_pg_clr_req || hbuf_pg_clr_ack;
 
 reg[N_CHANNELS-1:0] pulser_sw_trig_mask = 0;
+reg[N_CHANNELS-1:0] sw_trig_mask = 0;
+reg[N_CHANNELS-1:0] trig_arm_mask = 0;
 
 always @(*)
  begin
     case(y_adr)
       12'hfff: begin y_rd_data =       vnum;                                                   end
-      12'hffe: begin y_rd_data =       {9'b0,
+      12'hdff: begin y_rd_data =       {15'b0, dpram_done};                                    end
+      12'hdfe: begin y_rd_data =       dpram_len;                                              end
+      12'hdf9: begin y_rd_data =       {15'b0, dpram_sel};                                     end
+      12'hdf4: begin y_rd_data =       {15'b0, wvb_reader_enable};                             end
+      12'hdf2: begin y_rd_data =       {15'b0, wvb_reader_dpram_mode};                         end
+      12'hbfe: begin y_rd_data =       {9'b0,
                                         wvb_trig_ext_trig_en,
                                         wvb_trig_thresh_trig_en,
                                         wvb_trig_discr_trig_en,
@@ -525,35 +532,31 @@ always @(*)
                                         wvb_trig_lt,
                                         wvb_trig_gt,
                                         wvb_trig_et};                                          end
-      12'hffd: begin y_rd_data =       {4'b0, wvb_trig_thr};                                   end
-      12'hffc: begin y_rd_data =       xdom_trig_run[15:0];                                    end
-      12'hffb: begin y_rd_data =       {15'b0, wvb_trig_mode};                                 end
-      12'hffa: begin y_rd_data =       xdom_wvb_arm[15:0];                                     end
-      12'hff9: begin y_rd_data =       wvb_armed[15:0];                                        end
-      12'hff8: begin y_rd_data =       {15'b0, wvb_cnst_run};                                  end
-      12'hff7: begin y_rd_data =       {4'b0, wvb_cnst_config};                                end
-      12'hff6: begin y_rd_data =       {4'b0, wvb_test_config};                                end
-      12'hff5: begin y_rd_data =       {8'b0, wvb_post_config};                                end
-      12'hff4: begin y_rd_data =       {11'b0, wvb_pre_config};                                end
-      12'heff: begin y_rd_data =       dpram_len;                                              end
-      12'hefe: begin y_rd_data =       {15'b0, dpram_done};                                    end
-      12'hefd: begin y_rd_data =       {15'b0, dpram_sel};                                     end
-      12'hefc: begin y_rd_data =       buf_n_wfms_mux_out_reg;                                 end
-      12'hefb: begin y_rd_data =       wds_used_mux_out_reg;                                   end
-      12'hefa: begin y_rd_data =       wvb_overflow[15:0];                                     end
-      12'hef9: begin y_rd_data =       wvb_rst[15:0];                                          end
-      12'hef8: begin y_rd_data =       {15'b0, wvb_reader_enable};                             end
-      12'hef7: begin y_rd_data =       {15'b0, wvb_reader_dpram_mode};                         end
-      12'hef6: begin y_rd_data =       wvb_hdr_full[15:0];                                     end
-      12'hef5: begin y_rd_data =       {11'b0, buf_status_sel};                                end
-      12'hef4: begin y_rd_data =       {8'b0, xdom_trig_run[N_CHANNELS-1:16]};                 end
-      12'hef3: begin y_rd_data =       {8'b0, xdom_wvb_arm[N_CHANNELS-1:16]};                  end
-      12'hef2: begin y_rd_data =       {8'b0, wvb_armed[N_CHANNELS-1:16]};                     end
-      12'hef1: begin y_rd_data =       {8'b0, wvb_overflow[N_CHANNELS-1:16]};                  end
-      12'hef0: begin y_rd_data =       {8'b0, wvb_rst[N_CHANNELS-1:16]};                       end
-      12'heef: begin y_rd_data =       {8'b0, wvb_hdr_full[N_CHANNELS-1:16]};                  end
-      12'heee: begin y_rd_data =       {11'b0, io_ctrl_sel};                                   end
-      12'heed: begin y_rd_data =       {7'b0,
+      12'hbfd: begin y_rd_data =       {4'b0, wvb_trig_thr};                                   end
+      12'hbfc: begin y_rd_data =       {8'b0, sw_trig_mask[N_CHANNELS-1:16]};                  end
+      12'hbfb: begin y_rd_data =       sw_trig_mask[15:0];                                     end
+      12'hbfa: begin y_rd_data =       {8'b0, trig_arm_mask[N_CHANNELS-1:16]};                 end
+      12'hbf9: begin y_rd_data =       trig_arm_mask[15:0];                                    end
+      12'hbf8: begin y_rd_data =       16'b0;                                                  end
+      12'hbf7: begin y_rd_data =       {15'b0, wvb_trig_mode};                                 end
+      12'hbf6: begin y_rd_data =       {8'b0, wvb_armed[N_CHANNELS-1:16]};                     end
+      12'hbf5: begin y_rd_data =       wvb_armed[15:0];                                        end
+      12'hbf4: begin y_rd_data =       {15'b0, wvb_cnst_run};                                  end
+      12'hbf3: begin y_rd_data =       {4'b0, wvb_cnst_config};                                end
+      12'hbf2: begin y_rd_data =       {4'b0, wvb_test_config};                                end
+      12'hbf1: begin y_rd_data =       {8'b0, wvb_post_config};                                end
+      12'hbf0: begin y_rd_data =       {11'b0, wvb_pre_config};                                end
+      12'hbef: begin y_rd_data =       {11'b0, buf_status_sel};                                end
+      12'hbee: begin y_rd_data =       buf_n_wfms_mux_out_reg;                                 end
+      12'hbed: begin y_rd_data =       wds_used_mux_out_reg;                                   end
+      12'hbec: begin y_rd_data =       {8'b0, wvb_overflow[N_CHANNELS-1:16]};                  end
+      12'hbeb: begin y_rd_data =       wvb_overflow[15:0];                                     end
+      12'hbea: begin y_rd_data =       {8'b0, wvb_rst[N_CHANNELS-1:16]};                       end
+      12'hbe9: begin y_rd_data =       wvb_rst[15:0];                                          end
+      12'hbe8: begin y_rd_data =       {8'b0, wvb_hdr_full[N_CHANNELS-1:16]};                  end
+      12'hbe7: begin y_rd_data =       wvb_hdr_full[15:0];                                     end
+      12'hbe6: begin y_rd_data =       {11'b0, io_ctrl_sel};                                   end
+      12'hbe5: begin y_rd_data =       {7'b0,
                                         i_discr_bitslip,
                                         1'b0,
                                         i_adc_bitslip[1],
@@ -563,48 +566,48 @@ always @(*)
                                         i_adc_bitslip[0],
                                         i_adc_delay_ce[0],
                                         i_adc_delay_inc[0]};                                   end
-      12'heec: begin y_rd_data =       {6'b0, delay_tap_mux_out_reg};                          end
-      12'heeb: begin y_rd_data =       {8'b0, adc_io_reset[23:16]};                            end
-      12'heea: begin y_rd_data =       adc_io_reset[15:0];                                     end
-      12'hee9: begin y_rd_data =       {8'b0, adc_delay_reset[23:16]};                         end
-      12'hee8: begin y_rd_data =       adc_delay_reset[15:0];                                  end
-      12'hee7: begin y_rd_data =       {8'b0, discr_io_reset[23:16]};                          end
-      12'hee6: begin y_rd_data =       discr_io_reset[15:0];                                   end
-      12'hee5: begin y_rd_data =       {15'b0, adc_reset};                                     end
-      12'hee4: begin y_rd_data =       {10'b0, adc_spi_sel};                                   end
-      12'hee3: begin y_rd_data =       adc_spi_task_val;                                       end
-      12'hee2: begin y_rd_data =       {8'b0, adc_spi_wr_data[23:16]};                         end
-      12'hee1: begin y_rd_data =       adc_spi_wr_data[15:0];                                  end
-      12'hee0: begin y_rd_data =       {8'b0, adc_spi_rd_data};                                end
-      12'hedf: begin y_rd_data =       {13'b0, dac_spi_sel};                                   end
-      12'hede: begin y_rd_data =       {13'b0, dac_chip_sel};                                  end
-      12'hedd: begin y_rd_data =       dac_spi_task_val;                                       end
-      12'hedc: begin y_rd_data =       dac_spi_wr_data[31:16];                                 end
-      12'hedb: begin y_rd_data =       dac_spi_wr_data[15:0];                                  end
-      12'heda: begin y_rd_data =       pulser_width;                                           end
-      12'hed9: begin y_rd_data =       {10'b0, pulser_io_rst};                                 end
-      12'hed8: begin y_rd_data =       {8'b0, pulser_sw_trig_mask[N_CHANNELS-1:16]};           end
-      12'hed7: begin y_rd_data =       pulser_sw_trig_mask[15:0];                              end
-      12'hed6: begin y_rd_data =       {10'b0, pulser_trig};                                   end
-      12'hdff: begin y_rd_data =       pg_req_addr[27:16];                                     end
-      12'hdfe: begin y_rd_data =       pg_req_addr[15:0];                                      end
-      12'hdfd: begin y_rd_data =       {15'b0, pg_optype};                                     end
-      12'hdfc: begin y_rd_data =       {15'b0, pg_task_val};                                   end
-      12'hdfb: begin y_rd_data =       {15'b0, ddr3_sys_rst};                                  end
-      12'hdfa: begin y_rd_data =       {15'b0, ddr3_cal_complete};                             end
-      12'hdf9: begin y_rd_data =       {5'b0, ddr3_device_temp};                               end
-      12'hdf8: begin y_rd_data =       {15'b0, ddr3_ui_sync_rst};                              end
-      12'hcff: begin y_rd_data =       {15'b0, hbuf_enable};                                   end
-      12'hcfe: begin y_rd_data =       hbuf_start_pg;                                          end
-      12'hcfd: begin y_rd_data =       hbuf_stop_pg;                                           end
-      12'hcfc: begin y_rd_data =       hbuf_first_pg;                                          end
-      12'hcfb: begin y_rd_data =       hbuf_last_pg;                                           end
-      12'hcfa: begin y_rd_data =       hbuf_pg_clr_count;                                      end
-      12'hcf9: begin y_rd_data =       {14'b0, pg_clr_req_val, flush_req_val};                 end
-      12'hcf8: begin y_rd_data =       hbuf_rd_pg_num;                                         end
-      12'hcf7: begin y_rd_data =       hbuf_wr_pg_num;                                         end
-      12'hcf6: begin y_rd_data =       hbuf_n_used_pgs;                                        end
-      12'hcf5: begin y_rd_data =       {13'b0,
+      12'hbe4: begin y_rd_data =       {6'b0, delay_tap_mux_out_reg};                          end
+      12'hbe3: begin y_rd_data =       {8'b0, adc_io_reset[23:16]};                            end
+      12'hbe2: begin y_rd_data =       adc_io_reset[15:0];                                     end
+      12'hbe1: begin y_rd_data =       {8'b0, adc_delay_reset[23:16]};                         end
+      12'hbe0: begin y_rd_data =       adc_delay_reset[15:0];                                  end
+      12'hbdf: begin y_rd_data =       {8'b0, discr_io_reset[23:16]};                          end
+      12'hbde: begin y_rd_data =       discr_io_reset[15:0];                                   end
+      12'hbdd: begin y_rd_data =       {15'b0, adc_reset};                                     end
+      12'hbdc: begin y_rd_data =       {10'b0, adc_spi_sel};                                   end
+      12'hbdb: begin y_rd_data =       adc_spi_task_val;                                       end
+      12'hbda: begin y_rd_data =       {8'b0, adc_spi_wr_data[23:16]};                         end
+      12'hbd9: begin y_rd_data =       adc_spi_wr_data[15:0];                                  end
+      12'hbd8: begin y_rd_data =       {8'b0, adc_spi_rd_data};                                end
+      12'hbd7: begin y_rd_data =       {13'b0, dac_spi_sel};                                   end
+      12'hbd6: begin y_rd_data =       {13'b0, dac_chip_sel};                                  end
+      12'hbd5: begin y_rd_data =       dac_spi_task_val;                                       end
+      12'hbd4: begin y_rd_data =       dac_spi_wr_data[31:16];                                 end
+      12'hbd3: begin y_rd_data =       dac_spi_wr_data[15:0];                                  end
+      12'hbd2: begin y_rd_data =       pulser_width;                                           end
+      12'hbd1: begin y_rd_data =       {10'b0, pulser_io_rst};                                 end
+      12'hbd0: begin y_rd_data =       {8'b0, pulser_sw_trig_mask[N_CHANNELS-1:16]};           end
+      12'hbcf: begin y_rd_data =       pulser_sw_trig_mask[15:0];                              end
+      12'hbce: begin y_rd_data =       {10'b0, pulser_trig};                                   end
+      12'hbcd: begin y_rd_data =       pg_req_addr[27:16];                                     end
+      12'hbcc: begin y_rd_data =       pg_req_addr[15:0];                                      end
+      12'hbcb: begin y_rd_data =       {15'b0, pg_optype};                                     end
+      12'hbca: begin y_rd_data =       {15'b0, pg_task_val};                                   end
+      12'hbc9: begin y_rd_data =       {15'b0, ddr3_sys_rst};                                  end
+      12'hbc8: begin y_rd_data =       {15'b0, ddr3_cal_complete};                             end
+      12'hbc7: begin y_rd_data =       {5'b0, ddr3_device_temp};                               end
+      12'hbc6: begin y_rd_data =       {15'b0, ddr3_ui_sync_rst};                              end
+      12'hbc5: begin y_rd_data =       {15'b0, hbuf_enable};                                   end
+      12'hbc4: begin y_rd_data =       hbuf_start_pg;                                          end
+      12'hbc3: begin y_rd_data =       hbuf_stop_pg;                                           end
+      12'hbc2: begin y_rd_data =       hbuf_first_pg;                                          end
+      12'hbc1: begin y_rd_data =       hbuf_last_pg;                                           end
+      12'hbc0: begin y_rd_data =       hbuf_pg_clr_count;                                      end
+      12'hbbf: begin y_rd_data =       {14'b0, pg_clr_req_val, flush_req_val};                 end
+      12'hbbe: begin y_rd_data =       hbuf_rd_pg_num;                                         end
+      12'hbbd: begin y_rd_data =       hbuf_wr_pg_num;                                         end
+      12'hbbc: begin y_rd_data =       hbuf_n_used_pgs;                                        end
+      12'hbbb: begin y_rd_data =       {13'b0,
                                         hbuf_buffered_data,
                                         hbuf_full, hbuf_empty};                                end
       default:
@@ -636,7 +639,11 @@ always @(posedge clk)
 
     if(y_wr)
       case(y_adr)
-        12'hffe: begin
+        12'hdff: begin dpram_done <= y_wr_data[0];                                             end
+        12'hdf9: begin dpram_sel <= y_wr_data[0];                                              end
+        12'hdf4: begin wvb_reader_enable <= y_wr_data[0];                                      end
+        12'hdf2: begin wvb_reader_dpram_mode <= y_wr_data[0];                                  end
+        12'hbfe: begin
           wvb_trig_et <= y_wr_data[0];
           wvb_trig_gt <= y_wr_data[1];
           wvb_trig_lt <= y_wr_data[2];
@@ -645,26 +652,26 @@ always @(posedge clk)
           wvb_trig_thresh_trig_en <= y_wr_data[5];
           wvb_trig_ext_trig_en <= y_wr_data[6];
         end
-        12'hffd: begin wvb_trig_thr <= y_wr_data[11:0];                                        end
-        12'hffc: begin xdom_trig_run[15:0] <= y_wr_data;                                       end
-        12'hffb: begin wvb_trig_mode <= y_wr_data[0];                                          end
-        12'hffa: begin xdom_wvb_arm[15:0]  <= y_wr_data;                                       end
-        12'hff8: begin wvb_cnst_run <= y_wr_data[0];                                           end
-        12'hff7: begin wvb_cnst_config <= y_wr_data[11:0];                                     end
-        12'hff6: begin wvb_test_config <= y_wr_data[11:0];                                     end
-        12'hff5: begin wvb_post_config <= y_wr_data[7:0];                                      end
-        12'hff4: begin wvb_pre_config <= y_wr_data[4:0];                                       end
-        12'hefe: begin dpram_done <= y_wr_data[0];                                             end
-        12'hefd: begin dpram_sel <= y_wr_data[0];                                              end
-        12'hef9: begin wvb_rst[15:0] <= y_wr_data;                                             end
-        12'hef8: begin wvb_reader_enable <= y_wr_data[0];                                      end
-        12'hef7: begin wvb_reader_dpram_mode <= y_wr_data[0];                                  end
-        12'hef5: begin buf_status_sel <= y_wr_data[4:0];                                       end
-        12'hef4: begin xdom_trig_run[N_CHANNELS-1:16] <= y_wr_data[7:0];                       end
-        12'hef3: begin xdom_wvb_arm[N_CHANNELS-1:16] <= y_wr_data[7:0];                        end
-        12'hef0: begin wvb_rst[N_CHANNELS-1:16] <= y_wr_data[7:0];                             end
-        12'heee: begin io_ctrl_sel <= y_wr_data[4:0];                                          end
-        12'heed: begin
+        12'hbfd: begin wvb_trig_thr <= y_wr_data[11:0];                                        end
+        12'hbfc: begin sw_trig_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];                        end
+        12'hbfb: begin sw_trig_mask[15:0] <= y_wr_data;                                        end
+        12'hbfa: begin trig_arm_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];                       end
+        12'hbf9: begin trig_arm_mask[15:0] <= y_wr_data;                                       end
+        12'hbf8: begin
+          if (y_wr_data[0]) xdom_trig_run <= sw_trig_mask;
+          if (y_wr_data[1]) xdom_wvb_arm <= trig_arm_mask;
+        end
+        12'hbf7: begin wvb_trig_mode <= y_wr_data[0];                                          end
+        12'hbf4: begin wvb_cnst_run <= y_wr_data[0];                                           end
+        12'hbf3: begin wvb_cnst_config <= y_wr_data[11:0];                                     end
+        12'hbf2: begin wvb_test_config <= y_wr_data[11:0];                                     end
+        12'hbf1: begin wvb_post_config <= y_wr_data[7:0];                                      end
+        12'hbf0: begin wvb_pre_config <= y_wr_data[4:0];                                       end
+        12'hbef: begin buf_status_sel <= y_wr_data[4:0];                                       end
+        12'hbea: begin wvb_rst[N_CHANNELS-1:16] <= y_wr_data[7:0];                             end
+        12'hbe9: begin wvb_rst[15:0] <= y_wr_data;                                             end
+        12'hbe6: begin io_ctrl_sel <= y_wr_data[4:0];                                          end
+        12'hbe5: begin
           i_adc_delay_inc[0] <= y_wr_data[0];
           i_adc_delay_ce[0] <= y_wr_data[1];
           i_adc_bitslip[0] <= y_wr_data[2];
@@ -673,38 +680,38 @@ always @(posedge clk)
           i_adc_bitslip[1] <= y_wr_data[6];
           i_discr_bitslip <= y_wr_data[8];
         end
-        12'heeb: begin adc_io_reset[23:16] <= y_wr_data[7:0];                                  end
-        12'heea: begin adc_io_reset[15:0] <= y_wr_data;                                        end
-        12'hee9: begin adc_delay_reset[23:16] <= y_wr_data[7:0];                               end
-        12'hee8: begin adc_delay_reset[15:0] <= y_wr_data;                                     end
-        12'hee7: begin discr_io_reset[23:16] <= y_wr_data[7:0];                                end
-        12'hee6: begin discr_io_reset[15:0] <= y_wr_data;                                      end
-        12'hee5: begin adc_reset <= y_wr_data[0];                                              end
-        12'hee4: begin adc_spi_sel <= y_wr_data[5:0];                                          end
-        12'hee2: begin adc_spi_wr_data[23:16] <= y_wr_data[7:0];                               end
-        12'hee1: begin adc_spi_wr_data[15:0] <= y_wr_data;                                     end
-        12'hedf: begin dac_spi_sel <= y_wr_data[2:0];                                          end
-        12'hede: begin dac_chip_sel <= y_wr_data[2:0];                                         end
-        12'hedc: begin dac_spi_wr_data[31:16] <= y_wr_data;                                    end
-        12'hedb: begin dac_spi_wr_data[15:0] <= y_wr_data;                                     end
-        12'heda: begin pulser_width <= y_wr_data;                                              end
-        12'hed9: begin pulser_io_rst <= y_wr_data[5:0];                                        end
-        12'hed8: begin pulser_sw_trig_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];                 end
-        12'hed7: begin pulser_sw_trig_mask[15:0] <= y_wr_data;                                 end
-        12'hed6: begin
+        12'hbe3: begin adc_io_reset[23:16] <= y_wr_data[7:0];                                  end
+        12'hbe2: begin adc_io_reset[15:0] <= y_wr_data;                                        end
+        12'hbe1: begin adc_delay_reset[23:16] <= y_wr_data[7:0];                               end
+        12'hbe0: begin adc_delay_reset[15:0] <= y_wr_data;                                     end
+        12'hbdf: begin discr_io_reset[23:16] <= y_wr_data[7:0];                                end
+        12'hbde: begin discr_io_reset[15:0] <= y_wr_data;                                      end
+        12'hbdd: begin adc_reset <= y_wr_data[0];                                              end
+        12'hbdc: begin adc_spi_sel <= y_wr_data[5:0];                                          end
+        12'hbda: begin adc_spi_wr_data[23:16] <= y_wr_data[7:0];                               end
+        12'hbd9: begin adc_spi_wr_data[15:0] <= y_wr_data;                                     end
+        12'hbd7: begin dac_spi_sel <= y_wr_data[2:0];                                          end
+        12'hbd6: begin dac_chip_sel <= y_wr_data[2:0];                                         end
+        12'hbd4: begin dac_spi_wr_data[31:16] <= y_wr_data;                                    end
+        12'hbd3: begin dac_spi_wr_data[15:0] <= y_wr_data;                                     end
+        12'hbd2: begin pulser_width <= y_wr_data;                                              end
+        12'hbd1: begin pulser_io_rst <= y_wr_data[5:0];                                        end
+        12'hbd0: begin pulser_sw_trig_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];                 end
+        12'hbcf: begin pulser_sw_trig_mask[15:0] <= y_wr_data;                                 end
+        12'hbce: begin
           pulser_trig <= y_wr_data[5:0];
           xdom_trig_run <= pulser_sw_trig_mask;
         end
-        12'hdff: begin pg_req_addr[27:16] <= y_wr_data[11:0];                                  end
-        12'hdfe: begin pg_req_addr[15:0] <= y_wr_data[15:0];                                   end
-        12'hdfd: begin pg_optype <= y_wr_data[0];                                              end
-        12'hdfc: begin pg_req_start <= y_wr_data[0];                                           end
-        12'hdfb: begin ddr3_sys_rst <= y_wr_data[0];                                           end
-        12'hcff: begin hbuf_enable <= y_wr_data[0];                                            end
-        12'hcfe: begin hbuf_start_pg <= y_wr_data;                                             end
-        12'hcfd: begin hbuf_stop_pg <= y_wr_data;                                              end
-        12'hcfa: begin hbuf_pg_clr_count <= y_wr_data;                                         end
-        12'hcf9: begin
+        12'hbcd: begin pg_req_addr[27:16] <= y_wr_data[11:0];                                  end
+        12'hbcc: begin pg_req_addr[15:0] <= y_wr_data[15:0];                                   end
+        12'hbcb: begin pg_optype <= y_wr_data[0];                                              end
+        12'hbca: begin pg_req_start <= y_wr_data[0];                                           end
+        12'hbc9: begin ddr3_sys_rst <= y_wr_data[0];                                           end
+        12'hbc5: begin hbuf_enable <= y_wr_data[0];                                            end
+        12'hbc4: begin hbuf_start_pg <= y_wr_data;                                             end
+        12'hbc3: begin hbuf_stop_pg <= y_wr_data;                                              end
+        12'hbc0: begin hbuf_pg_clr_count <= y_wr_data;                                         end
+        12'hbbf: begin
           flush_req_start <= y_wr_data[0];
           pg_clr_req_start <= y_wr_data[1];
         end

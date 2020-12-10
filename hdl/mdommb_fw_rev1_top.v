@@ -233,7 +233,7 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h4;
+localparam[15:0] FW_VNUM = 16'h5;
 
 // number of ADC channels
 localparam N_CHANNELS = 24;
@@ -404,7 +404,13 @@ endgenerate
 // xDOM interface
 // Addressing:
 //     12'hfff: Version/build number
-//     12'hffe: trig settings
+//     12'hdff: [0] dpram_done
+//     12'hdfe: [10:0] dpram_len
+//     12'hdf9: [0] dpram_sel (0: ddr3 transfer dpram, 1: direct rdout (rd only))
+//     12'hdf4: wvb_reader enable
+//     12'hdf2: wvb_reader dpram mode
+//
+//     12'hbfe: trig settings
 //             [0] et
 //             [1] gt
 //             [2] lt
@@ -412,46 +418,36 @@ endgenerate
 //             [4] dicr_trig_en
 //             [5] thresh_trig_en
 //             [6] ext_trig_en
-//     12'hffd: trig threshold [11:0]
-//     12'hffc:
-//             [i] sw_trig (channel i, up to 15)
-//     12'hffb:
-//             [0] trig_mode
-//     12'hffa:
-//             [i] trig_arm (channel i)
-//     12'hff9:
-//             [i] trig_armed (channel i)
-//     12'hff8:
-//             [0] cnst_run
-//     12'hff7: const config [11:0]
-//     12'hff6: test config  [11:0]
-//     12'hff5: post config [7:0]
-//     12'hff4: pre config [4:0]
+//     12'hbfd: trig threshold [11:0] (currently common to all channels)
+//     12'hbfc: [7:0] sw_trig_mask [23:16]
+//     12'hbfb: sw_trig_mask [15:0]
+//     12'hbfa: [7:0] trig_arm_mask [23:16]
+//     12'hbf9: trig_arm_mask [15:0]
+//     12'hbf8:
+//             [0] sw_trig (see mask)
+//             [1] trig_arm (see mask)
+//     12'hbf7: [0] trig_mode
+//     12'hbf6: [7:0] trig_armed [23:16]
+//     12'hbf5: trig_armed [15:0]
+//     12'hbf4: [0] cnst_run
+//     12'hbf3: const config [11:0]
+//     12'hbf2: test config  [11:0]
+//     12'hbf1: post config [7:0]
+//     12'hbf0: pre config [4:0]
 //
-//     12'heff: dpram_len [10:0]
-//     12'hefe:
-//             [0] dpram_done
-//     12'hefd:
-//             [0] dpram_sel (0: ddr3 transfer dpram, 1: direct rdout (rd only))
-//     12'hefc: n_waveforms in waveform buffer
-//     12'hefb: words used in waveform buffer
-//     12'hefa: waveform buffer overflow [15:0]
-//     12'hef9: waveform buffer reset [15:0]
-//     12'hef8: wvb_reader enable
-//     12'hef7: wvb_reader dpram mode
-//     12'hef6: wvb header full ([i] for channel i, up to 15)
-//     12'hef5: chan select for waveform buffer n_words/n_wfms
-//              (efa and ef9)
-//     12'hef4: sw_trig[23:16]
-//     12'hef3: trig_arm[23:16]
-//     12'hef2: trig_armed[23:16]
-//     12'hef1: waveform buffer overflow [23:16]
-//     12'hef0: waveform buffer reset [23:16]
-//     12'heef: wvb header full [23:16]
+//     12'hbef: chan select for waveform buffer n_words/n_wfms
+//     12'hbee: n_waveforms in waveform buffer
+//     12'hbed: words used in waveform buffer
+//     12'hbec: waveform buffer overflow [23:16]
+//     12'hbeb: waveform buffer overflow [15:0]
+//     12'hbea: waveform buffer reset [23:16]
+//     12'hbe9: waveform buffer reset [15:0]
+//     12'hbe8: wvb header full [23:16]
+//     12'hbe7: wvb header full ([i] for channel i, up to 15)
 //
 //     ADC / DISCR IO controls
-//     12'heee: [4:0] IO control chan select (0-23)
-//     12'heed: the following apply to the channel selected in reg 12'heee
+//     12'hbe6: [4:0] IO control chan select (0-23)
+//     12'hbe5: the following apply to the channel selected in reg 12'heee
 //              [0] D0 delay_inc
 //              [1] D0 delay_ce
 //              [2] D0 bitslip
@@ -459,60 +455,60 @@ endgenerate
 //              [5] D1 delay_ce
 //              [6] D1 bitslip
 //              [8] discr bitslip
-//     12'heec: [4:0] D0 delay tapout
+//     12'hbe4: [4:0] D0 delay tapout
 //              [9:5] D1 delay tapout
-//     12'heeb: adc io reset [23:16] (defaults to 1)
-//     12'heea: adc io reset [15:0] (defaults to 1)
-//     12'hee9: adc delay reset [23:16]
-//     12'hee8: adc delay reset [15:0]
-//     12'hee7: discr io reset [23:16] (defaults to 1)
-//     12'hee6: discr io reset [15:0] (defaults to 1)
+//     12'hbe3: adc io reset [23:16] (defaults to 1)
+//     12'hbe2: adc io reset [15:0] (defaults to 1)
+//     12'hbe1: adc delay reset [23:16]
+//     12'hbe0: adc delay reset [15:0]
+//     12'hbdf: discr io reset [23:16] (defaults to 1)
+//     12'hbde: discr io reset [15:0] (defaults to 1)
 //
 //     ADC serial controls
-//     12'hee5: [0] ADC_RESET
-//     12'hee4: [5:0] adc spi chip sel
-//     12'hee3: [0] adc spi task reg
-//     12'hee2: [7:0] adc spi wr data[23:16]
-//     12'hee1: adc spi wr data [15:0]
-//     12'hee0: adc spi rd data [7:0]
+//     12'hbdd: [0] ADC_RESET
+//     12'hbdc: [5:0] adc spi chip sel
+//     12'hbdb: [0] adc spi task reg
+//     12'hbda: [7:0] adc spi wr data[23:16]
+//     12'hbd9: adc spi wr data [15:0]
+//     12'hbd8: adc spi rd data [7:0]
 //
 //     AD5668 DAC serial controls
-//     12'hedf: [2:0] dac spi sel (DAC0, DAC1, DAC2)
-//     12'hede: [2:0] dac chip sel (0, 1, 2)
-//     12'hedd: [0] dac spi task reg
-//     12'hedc: dac spi wr data [31:16]
-//     12'hedb: dac spi wr data [15:0]
+//     12'hbd7: [2:0] dac spi sel (DAC0, DAC1, DAC2)
+//     12'hbd6: [2:0] dac chip sel (0, 1, 2)
+//     12'hbd5: [0] dac spi task reg
+//     12'hbd4: dac spi wr data [31:16]
+//     12'hbd3: dac spi wr data [15:0]
 //
 //     AFE pulser controls
-//     12'heda: [15:0] AFE pulser width, units of 1 ns
-//     12'hed9: [i] AFE pulser i IO reset
-//     12'hed8: [7:0] AFE pulser sw trig mask [23:16]
-//     12'hed7: [15:0] AFE pulser sw trig mask [15:0]
-//     12'hed6: [i] AFE pulser i trigger + sw_trig (based on ed8/7)
+//     12'hbd2: [15:0] AFE pulser width, units of 1 ns
+//     12'hbd1: [i] AFE pulser i IO reset
+//     12'hbd0: [7:0] AFE pulser sw trig mask [23:16]
+//     12'hbcf: [15:0] AFE pulser sw trig mask [15:0]
+//     12'hbce: [i] AFE pulser i trigger + sw_trig (based on mask)
 //
 //     DDR3 test signals
-//     12'hdff: page transfer addr[27:16]
-//     12'hdfe: page transger addr[15:0]
-//     12'hdfd: [0] pg transfer optype (0 read, 1 write)
-//     12'hdfc: [0] pg transfer task reg
-//     12'hdfb: DDR3 sys rst (active low)
-//     12'hdfa: DDR3 cal complete
-//     12'hdf9: [11:0] mem interface device temp
-//     12'hdf8: [0] ddr3 ui sync rst
+//     12'hbcd: page transfer addr[27:16]
+//     12'hbcc: page transger addr[15:0]
+//     12'hbcb: [0] pg transfer optype (0 read, 1 write)
+//     12'hbca: [0] pg transfer task reg
+//     12'hbc9: DDR3 sys rst (active low)
+//     12'hbc8: DDR3 cal complete
+//     12'hbc7: [11:0] mem interface device temp
+//     12'hbc6: [0] ddr3 ui sync rst
 //
 //     hit buffer controller
-//     12'hcff: [0] enable
-//     12'hcfe: [15:0] start_pg
-//     12'hcfd: [15:0] stop_pg
-//     12'hcfc: [15:0] first_pg (readback)
-//     12'hcfb: [15:0] last_pg (readback)
-//     12'hcfa: [15:0] pg_clr_count
-//     12'hcf9: [0] flush_task
+//     12'hbc5: [0] enable
+//     12'hbc4: [15:0] start_pg
+//     12'hbc3: [15:0] stop_pg
+//     12'hbc2: [15:0] first_pg (readback)
+//     12'hbc1: [15:0] last_pg (readback)
+//     12'hbc0: [15:0] pg_clr_count
+//     12'hbbf: [0] flush_task
 //              [1] pg_clr_task
-//     12'hcf8: [15:0] rd_pg_num
-//     12'hcf7: [15:0] wr_pg_num
-//     12'hcf6: [15:0] n_used_pgs
-//     12'hcf5: [0] empty
+//     12'hbbe: [15:0] rd_pg_num
+//     12'hbbd: [15:0] wr_pg_num
+//     12'hbbc: [15:0] n_used_pgs
+//     12'hbbb: [0] empty
 //              [1] full
 //              [2] buffered_data
 
