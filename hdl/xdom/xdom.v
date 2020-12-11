@@ -457,7 +457,7 @@ wire [15:0] direct_rdout_dpram_data;
 reg[15:0] xdom_dpram_rd_data;
 
 // dpram rd mux sel
-reg dpram_sel = 0;
+reg[15:0] dpram_sel = 0;
 reg[15:0] test_ctrl_reg = 16'b0;
 reg dpram_done = 0;
 
@@ -521,7 +521,7 @@ always @(*)
       12'hfff: begin y_rd_data =       vnum;                                                   end
       12'hdff: begin y_rd_data =       {15'b0, dpram_done};                                    end
       12'hdfe: begin y_rd_data =       dpram_len;                                              end
-      12'hdf9: begin y_rd_data =       {15'b0, dpram_sel};                                     end
+      12'hdf9: begin y_rd_data =       dpram_sel;                                              end
       12'hdf4: begin y_rd_data =       {15'b0, wvb_reader_enable};                             end
       12'hdf2: begin y_rd_data =       {15'b0, wvb_reader_dpram_mode};                         end
       12'hbfe: begin y_rd_data =       {9'b0,
@@ -640,7 +640,7 @@ always @(posedge clk)
     if(y_wr)
       case(y_adr)
         12'hdff: begin dpram_done <= y_wr_data[0];                                             end
-        12'hdf9: begin dpram_sel <= y_wr_data[0];                                              end
+        12'hdf9: begin dpram_sel <= y_wr_data;                                                 end
         12'hdf4: begin wvb_reader_enable <= y_wr_data[0];                                      end
         12'hdf2: begin wvb_reader_dpram_mode <= y_wr_data[0];                                  end
         12'hbfe: begin
@@ -781,7 +781,10 @@ always @(*) begin
     // 0: xdom_dpram_rd_data = dpram_rd_data_b;
     0: xdom_dpram_rd_data = ddr3_dpram_xdom_out;
     1: xdom_dpram_rd_data = direct_rdout_dpram_data;
-    default: xdom_dpram_rd_data = dpram_rd_data_b;
+    2: xdom_dpram_rd_data = direct_rdout_dpram_data;
+    3: xdom_dpram_rd_data = direct_rdout_dpram_data;
+    4: xdom_dpram_rd_data = direct_rdout_dpram_data;
+    default: xdom_dpram_rd_data = direct_rdout_dpram_data;
   endcase
 end
 
