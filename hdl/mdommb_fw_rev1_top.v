@@ -233,7 +233,7 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h6;
+localparam[15:0] FW_VNUM = 16'h7;
 
 // number of ADC channels
 localparam N_CHANNELS = 24;
@@ -511,6 +511,13 @@ endgenerate
 //     12'hbbb: [0] empty
 //              [1] full
 //              [2] buffered_data
+//
+//     rate scalers
+//     12'hbba: scaler_period [31:16] (8 ns units)
+//     12'hbb9: scaler_period [15:0] (8 ns units)
+//     12'hbb8: [4:0] scaler readback channel select
+//     12'hbb7: scaler readback [31:16]
+//     12'hbb6: scaler readback [15:0]
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
@@ -592,6 +599,10 @@ wire[15:0] hbuf_n_used_pgs;
 wire hbuf_empty;
 wire hbuf_full;
 wire hbuf_buffered_data;
+
+// discr scalers
+wire[31:0] scaler_period_xdom;
+wire[N_CHANNELS*32-1:0] scaler_out;
 
 xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
 (
@@ -686,6 +697,10 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .hbuf_full(hbuf_full),
   .hbuf_buffered_data(hbuf_buffered_data),
 
+  // scalers
+  .scaler_period(scaler_period_xdom),
+  .scaler_out(scaler_out),
+
   // debug UART
   .debug_txd(FTD_UART_TXD),
   .debug_rxd(FTD_UART_RXD),
@@ -751,7 +766,7 @@ generate
       .rst(lclk_rst || xdom_wvb_rst[i]),
 
       .adc_data(adc_data[N_ADC_BITS*(i+1)-1 : N_ADC_BITS*i]),
-      .discr_data(discr_data[N_DISCR_BITS*(i+1)- 1 : N_DISCR_BITS*i]),
+      .discr_data(discr_data[N_DISCR_BITS*(i+1)-1 : N_DISCR_BITS*i]),
 
       // WVB reader interface
       .wvb_data_out(wvb_data_out[22*(i+1)-1 : 22*i]),
@@ -779,6 +794,26 @@ generate
       .xdom_wvb_config_bundle(xdom_wvb_conf_bundle_reg),
       .xdom_wvb_armed(wvb_armed[i]),
       .xdom_wvb_overflow(wvb_overflow[i])
+    );
+  end
+endgenerate
+
+// scalers
+(* max_fanout = 5 *) reg[31:0] scaler_period = 0;
+always @(posedge lclk) begin
+  scaler_period <= scaler_period_xdom;
+end
+
+generate
+  for (i = 0; i < N_CHANNELS; i = i + 1) begin : scaler_gen
+    discr_scaler SCALER (
+      .clk(lclk),
+      .rst(lclk_rst || xdom_wvb_rst[i]),
+      .a(discr_data[N_DISCR_BITS*(i+1)-1 : N_DISCR_BITS*i]),
+      .period(scaler_period),
+      .n_pedge_out(scaler_out[32*(i+1)-1 : 32*i]),
+      .valid(),
+      .update_out()
     );
   end
 endgenerate

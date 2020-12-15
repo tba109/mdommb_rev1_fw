@@ -106,6 +106,10 @@ module xdom #(parameter N_CHANNELS = 24)
   input hbuf_full,
   input hbuf_buffered_data,
 
+  // discr scalers
+  (* max_fanout = 5 *) output reg[31:0] scaler_period = 0,
+  input[N_CHANNELS*32-1:0] scaler_out,
+
   // Debug FT232R I/O
   input             debug_txd,
   output            debug_rxd,
@@ -323,8 +327,8 @@ mDOM_wvb_conf_bundle_fan_in WVB_CONF_FAN_IN
    .cnst_run(wvb_cnst_run)
   );
 
-reg[4:0] buf_status_sel;
 // buffer status mux
+reg[4:0] buf_status_sel;
 wire[15:0] wds_used_mux_out;
 reg[15:0] wds_used_mux_out_reg = 0;
 n_channel_mux #(.N_INPUTS(N_CHANNELS),
@@ -357,11 +361,24 @@ n_channel_mux #(.N_INPUTS(N_CHANNELS),
    .out(delay_tap_mux_out)
   );
 
+// scaler mux
+reg[4:0] scaler_sel;
+wire[31:0] scaler_mux_out;
+reg[31:0] scaler_mux_out_reg;
+n_channel_mux #(.N_INPUTS(N_CHANNELS),
+                .INPUT_WIDTH(32)) SCALER_MUX
+  (
+   .in(scaler_out),
+   .sel(scaler_sel),
+   .out(scaler_mux_out)
+  );
+
 // register mux outputs
 always @(posedge clk) begin
   wds_used_mux_out_reg <= wds_used_mux_out;
   buf_n_wfms_mux_out_reg <= buf_n_wfms_mux_out;
   delay_tap_mux_out_reg <= delay_tap_mux_out;
+  scaler_mux_out_reg <= scaler_mux_out;
 end
 
 // ADC / DISCR IO demuxing
@@ -610,6 +627,11 @@ always @(*)
       12'hbbb: begin y_rd_data =       {13'b0,
                                         hbuf_buffered_data,
                                         hbuf_full, hbuf_empty};                                end
+      12'hbba: begin y_rd_data =        scaler_period[31:16];                                  end
+      12'hbb9: begin y_rd_data =        scaler_period[15:0];                                   end
+      12'hbb8: begin y_rd_data =        {11'b0, scaler_sel};                                   end
+      12'hbb7: begin y_rd_data =        scaler_mux_out_reg[31:16];                             end
+      12'hbb6: begin y_rd_data =        scaler_mux_out_reg[15:0];                              end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
@@ -715,6 +737,9 @@ always @(posedge clk)
           flush_req_start <= y_wr_data[0];
           pg_clr_req_start <= y_wr_data[1];
         end
+        12'hbba: begin scaler_period[31:16] <= y_wr_data;                                      end
+        12'hbb9: begin scaler_period[15:0] <= y_wr_data;                                       end
+        12'hbb8: begin scaler_sel <= y_wr_data[4:0];                                           end
         default: begin                                                                         end
       endcase
 end // always @ (posedge clk)
