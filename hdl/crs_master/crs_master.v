@@ -1,24 +1,34 @@
-//////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 // Tyler Anderson Mon Apr  1 09:55:34 EDT 2019
 //
 // crs_master.v
 //
 // Command, response and status.
-// Allows 4 peripherals (a0,a1,a2,a3) to access the system commandand response
-// bus (y).
-//
+// Allows 4 peripherals (a0,a1,a2,a3) to access the system commandand response bus (y).
 // Includes provisions for reading in buffered data.
-//////////////////////////////////////////////////////////////////////////////////
+//
+// Thu 08/01/2019_ 9:33:46.68
+// -- Add a priority override
+// -- When UART was at 60MHz with this module at 20MHz phase locked to 0deg, the indexing logic
+//    was getting stuck because the UART req flag was clearing. Add a term to also clear
+//    the y_req when y_ack is asserted.
+////////////////////////////////////////////////////////////////////////////////////////////////
 module crs_master
   (
    // System inputs
    input 	     clk,
    input 	     rst,
    // System bus
-   (* max_fanout = 20 *) output reg [11:0] y_adr=0,
-   output reg [15:0] y_wr_data=0,
+   output [11:0]     y_adr,
+   output [15:0]     y_wr_data,
    input [15:0]      y_rd_data,
-   output reg 	     y_wr=0,
+   output 	     y_wr,
+   // Priority override bus
+   input 	     po_en, // priority override enable
+   input 	     po_wr, // priority override write strobe
+   input [11:0]      po_adr, // priority override address
+   output [15:0]     po_rd_data, // priority override read data
+   input [15:0]      po_wr_data, // priority override write data
    // Peripheral 0
    input 	     a0_wr_req,
    input 	     a0_bwr_req,
@@ -81,6 +91,10 @@ module crs_master
    reg 		     y_req = 0;
    reg 		     y_ack = 0;
    wire 	     y_ack_ne;
+   reg [11:0] 	     i_y_adr=0;
+   reg [15:0] 	     i_y_wr_data=0;
+   wire [15:0] 	     i_y_rd_data;
+   reg 		     i_y_wr=0;
    negedge_detector NEDGE_0(.clk(clk),.rst_n(!rst),.a(y_ack),.y(y_ack_ne));
 
    ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -107,6 +121,14 @@ module crs_master
        S_RD_WAIT:       state_str = "S_RD_WAIT";
      endcase // case (fsm)
 `endif
+
+   ///////////////////////////////////////////////////////////////////////////////////////////////
+   // Output assignments
+   assign y_adr      = po_en       ? po_adr     : i_y_adr;
+   assign y_wr_data  = po_en       ? po_wr_data : i_y_wr_data;
+   assign y_wr       = po_en       ? po_wr      : i_y_wr;
+   assign po_rd_data = i_y_rd_data;
+   assign i_y_rd_data = y_rd_data;
 
    ///////////////////////////////////////////////////////////////////////////////////////////////
    // Helper logic
@@ -202,14 +224,14 @@ module crs_master
        case(i_index)
 	 0:
 	   begin
-	      if(a0_wr_req || a0_bwr_req || a0_rd_req)
+	      if(a0_wr_req || a0_bwr_req || a0_rd_req || y_ack)
 		begin
 		   y_req <= 1;
 		   busy <= 1;
 		   if(y_ack)
 		     y_req <= 0;
 		end
-	      else if(y_ack_ne || !busy)
+	      else if(!busy || y_ack_ne)
 		begin
 		   y_req <= 0;
 		   i_index <= i_index + 1;
@@ -220,7 +242,7 @@ module crs_master
 
 	 1:
 	   begin
-	      if(a1_wr_req || a1_bwr_req || a1_rd_req)
+	      if(a1_wr_req || a1_bwr_req || a1_rd_req || y_ack)
 		begin
 		   y_req <= 1;
 		   busy <= 1;
@@ -236,7 +258,7 @@ module crs_master
 
 	 2:
 	   begin
-	      if(a2_wr_req || a2_bwr_req || a2_rd_req)
+	      if(a2_wr_req || a2_bwr_req || a2_rd_req || y_ack)
 		begin
 		   y_req <= 1;
 		   busy <= 1;
@@ -252,7 +274,7 @@ module crs_master
 
 	 3:
 	   begin
-	      if(a3_wr_req || a3_bwr_req || a3_rd_req)
+	      if(a3_wr_req || a3_bwr_req || a3_rd_req || y_ack)
 		begin
 		   y_req <= 1;
 		   busy <= 1;
@@ -275,26 +297,26 @@ module crs_master
 	  i_ack <= 0;
 	  y_ack <= 0;
 	  i_buf_rd <= 0;
-	  y_wr <= 0;
-	  y_wr_data <= 0;
-	  y_adr <= 0;
+	  i_y_wr <= 0;
+	  i_y_wr_data <= 0;
+	  i_y_adr <= 0;
 	  fsm <= S_IDLE;
        end
      else
        begin
-	  y_wr <= 0;
+	  i_y_wr <= 0;
 	  i_buf_rd <= 0;
 	  case(fsm)
 	    S_IDLE:
 	      begin
 		 i_ack <= 0;
 		 y_ack <= 0;
-		 y_adr <= i_adr;
+		 i_y_adr <= i_adr;
 		 rd_wait_cnt <= 0;
 		 if(i_wr_req)
 		   begin
-		      y_wr <= 1;
-		      y_wr_data <= i_wr_data[15:0];
+		      i_y_wr <= 1;
+		      i_y_wr_data <= i_wr_data[15:0];
 		      fsm <= S_ACK;
 		   end
 		 else if(i_bwr_req)
@@ -320,9 +342,9 @@ module crs_master
 
 	    S_BWR_WRITE:
 	      begin
-		 y_wr <= 1;
-		 y_wr_data <= i_buf_wr_data[15:0];
-		 y_adr <= i_buf_wr_data[27:16];
+		 i_y_wr <= 1;
+		 i_y_wr_data <= i_buf_wr_data[15:0];
+		 i_y_adr <= i_buf_wr_data[27:16];
 		 fsm <= S_BWR_BUF_EMPTY;
 	      end
 
@@ -330,7 +352,7 @@ module crs_master
 	      begin
 		 i_ack <= 1;
 		 y_ack <= 1;
-		 i_rd_data <= y_rd_data;
+		 i_rd_data <= i_y_rd_data;
 		 if(!y_req && !i_wr_req && !i_bwr_req && !i_rd_req)
 		   begin
 		      y_ack <= 0;

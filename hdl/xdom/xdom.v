@@ -8,7 +8,7 @@
 // currently contains:
 //    1.) Debug UART
 //    2.) ICM UART
-//    3.) MCU UART
+//    3.) MCU UART (unused on the mDOM)
 //    4.) Command, response, status
 /////////////////////////////////////////////////////////////////////////////////
 module xdom #(parameter N_CHANNELS = 24)
@@ -127,7 +127,14 @@ module xdom #(parameter N_CHANNELS = 24)
   input mcu_tx,
   output mcu_rx,
   input mcu_rts_n,
-  output mcu_cts_n
+  output mcu_cts_n,
+
+  // priority input / FMC
+  input po_wr,
+  input po_en,
+  input[11:0] po_a,
+  input[15:0] po_din,
+  output[15:0] po_dout
 );
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -283,7 +290,13 @@ crs_master CRSM_0
   .a3_wr_data       (),
   .a3_adr           (),
   .a3_buf_empty     (),
-  .a3_buf_wr_data   ()
+  .a3_buf_wr_data   (),
+  // Priority Override
+  .po_en            (po_en),
+  .po_wr            (po_wr),
+  .po_adr           (po_a),
+  .po_wr_data       (po_din),
+  .po_rd_data       (po_dout)
 );
 
 // trig bundle
@@ -761,11 +774,11 @@ always @(posedge clk)
 end // always @ (posedge clk)
 
 // AFE pulser trigger outputs
-wire[5:0] periodic_pulser_trig;
+wire periodic_pulser_trig;
 periodic_trigger_gen TRIG_GEN(.clk(clk), .rst(rst),
                               .period(afe_pulser_period),
                               .trig(periodic_pulser_trig));
-assign pulser_trig_out = pulser_trig_single | (periodic_pulser_trig & periodic_pulser_enable);
+assign pulser_trig_out = pulser_trig_single | ({6{periodic_pulser_trig}} & periodic_pulser_enable);
 
 // wire [15:0] dpram_wr_data_a = 16'b0;
 // wire        dpram_wr_a = 1'b0;

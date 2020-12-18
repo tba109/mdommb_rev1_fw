@@ -223,6 +223,43 @@ module top (
   output DAC2_nSYNC2,
   output DAC2_SCLK,
 
+  // FMC interface
+  input  FMC_A11,
+  input  FMC_A10,
+  input  FMC_A9,
+  input  FMC_A8,
+  input  FMC_A7,
+  input  FMC_A6,
+  input  FMC_A5,
+  input  FMC_A4,
+  input  FMC_A3,
+  input  FMC_A2,
+  input  FMC_A1,
+  input  FMC_A0,
+  inout  FMC_D15,
+  inout  FMC_D14,
+  inout  FMC_D13,
+  inout  FMC_D12,
+  inout  FMC_D11,
+  inout  FMC_D10,
+  inout  FMC_D9,
+  inout  FMC_D8,
+  inout  FMC_D7,
+  inout  FMC_D6,
+  inout  FMC_D5,
+  inout  FMC_D4,
+  inout  FMC_D3,
+  inout  FMC_D2,
+  inout  FMC_D1,
+  inout  FMC_D0,
+  input  FMC_CEn,
+  input  FMC_OEn,
+  input  FMC_WEn,
+  output FMC_IRQ3,
+  output FMC_IRQ2,
+  output FMC_IRQ1,
+  output FMC_IRQ0,
+
   // LEDs
   output LED_YELLOW,
   output LED_GREEN,
@@ -233,7 +270,7 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h8;
+localparam[15:0] FW_VNUM = 16'h9;
 
 // number of ADC channels
 localparam N_CHANNELS = 24;
@@ -612,6 +649,92 @@ wire[31:0] scaler_period_xdom;
 wire[31:0] scaler_inhibit_len_xdom;
 wire[N_CHANNELS*32-1:0] scaler_out;
 
+// FMC, copied directly from D-Egg firmware
+wire [15:0] i_fmc_din;
+wire [15:0] i_fmc_dout;
+wire [11:0] i_fmc_a;
+wire        i_fmc_oen;
+wire        i_fmc_wen;
+wire        i_fmc_wen_ne;
+wire        i_fmc_cen;
+assign FMC_D15  = (i_fmc_oen==0) ? i_fmc_dout[15] : 1'bz;
+assign FMC_D14  = (i_fmc_oen==0) ? i_fmc_dout[14] : 1'bz;
+assign FMC_D13  = (i_fmc_oen==0) ? i_fmc_dout[13] : 1'bz;
+assign FMC_D12  = (i_fmc_oen==0) ? i_fmc_dout[12] : 1'bz;
+assign FMC_D11  = (i_fmc_oen==0) ? i_fmc_dout[11] : 1'bz;
+assign FMC_D10  = (i_fmc_oen==0) ? i_fmc_dout[10] : 1'bz;
+assign FMC_D9   = (i_fmc_oen==0) ? i_fmc_dout[9]  : 1'bz;
+assign FMC_D8   = (i_fmc_oen==0) ? i_fmc_dout[8]  : 1'bz;
+assign FMC_D7   = (i_fmc_oen==0) ? i_fmc_dout[7]  : 1'bz;
+assign FMC_D6   = (i_fmc_oen==0) ? i_fmc_dout[6]  : 1'bz;
+assign FMC_D5   = (i_fmc_oen==0) ? i_fmc_dout[5]  : 1'bz;
+assign FMC_D4   = (i_fmc_oen==0) ? i_fmc_dout[4]  : 1'bz;
+assign FMC_D3   = (i_fmc_oen==0) ? i_fmc_dout[3]  : 1'bz;
+assign FMC_D2   = (i_fmc_oen==0) ? i_fmc_dout[2]  : 1'bz;
+assign FMC_D1   = (i_fmc_oen==0) ? i_fmc_dout[1]  : 1'bz;
+assign FMC_D0   = (i_fmc_oen==0) ? i_fmc_dout[0]  : 1'bz;
+assign i_fmc_din[15] = FMC_D15;
+assign i_fmc_din[14] = FMC_D14;
+assign i_fmc_din[13] = FMC_D13;
+assign i_fmc_din[12] = FMC_D12;
+assign i_fmc_din[11] = FMC_D11;
+assign i_fmc_din[10] = FMC_D10;
+assign i_fmc_din[9]  = FMC_D9;
+assign i_fmc_din[8]  = FMC_D8;
+assign i_fmc_din[7]  = FMC_D7;
+assign i_fmc_din[6]  = FMC_D6;
+assign i_fmc_din[5]  = FMC_D5;
+assign i_fmc_din[4]  = FMC_D4;
+assign i_fmc_din[3]  = FMC_D3;
+assign i_fmc_din[2]  = FMC_D2;
+assign i_fmc_din[1]  = FMC_D1;
+assign i_fmc_din[0]  = FMC_D0;
+assign i_fmc_a[11]   = FMC_A11;
+assign i_fmc_a[10]   = FMC_A10;
+assign i_fmc_a[9]    = FMC_A9;
+assign i_fmc_a[8]    = FMC_A8;
+assign i_fmc_a[7]    = FMC_A7;
+assign i_fmc_a[6]    = FMC_A6;
+assign i_fmc_a[5]    = FMC_A5;
+assign i_fmc_a[4]    = FMC_A4;
+assign i_fmc_a[3]    = FMC_A3;
+assign i_fmc_a[2]    = FMC_A2;
+assign i_fmc_a[1]    = FMC_A1;
+assign i_fmc_a[0]    = FMC_A0;
+assign i_fmc_oen     = FMC_OEn;
+assign i_fmc_cen     = FMC_CEn;
+assign i_fmc_wen     = FMC_WEn;
+
+// set IRQs to 0 for now
+assign FMC_IRQ3 = 0;
+assign FMC_IRQ2 = 0;
+assign FMC_IRQ1 = 0;
+assign FMC_IRQ0 = 0;
+
+wire        i_fmc_wen_s;
+// synchronize FMC WEn
+// and register FMC CEn, adr, data for write operations
+sync SYNC_FMC_WEN_0(.clk(lclk),.rst_n(!lclk_rst),.a(i_fmc_wen),.y(i_fmc_wen_s));
+negedge_detector NE_0(.clk(lclk),.rst_n(!lclk_rst),.a(i_fmc_wen_s),.y(i_fmc_wen_ne));
+(* max_fanout = 20 *) reg[11:0] i_fmc_a_1 = 12'b0;
+(* max_fanout = 20 *) reg[15:0] i_fmc_din_1 = 16'b0;
+reg i_fmc_cen_1 = 0;
+always @(posedge lclk) begin
+ i_fmc_a_1 <= i_fmc_a;
+ i_fmc_din_1 <= i_fmc_din;
+ i_fmc_cen_1 <= i_fmc_cen;
+end
+
+// fmc write enable will be high for one lclk cycle
+// following an fmc_wen negative edge
+// burst writing is not supported
+wire lclk_fmc_wren = i_fmc_wen_ne && !i_fmc_cen_1;
+
+// select fmc addr, CEn based on whether
+// a read operation is in progress
+wire[11:0] fmc_addr_mux = i_fmc_oen == 0 ? i_fmc_a : i_fmc_a_1;
+wire fmc_cen_mux = i_fmc_oen == 0 ? i_fmc_cen : i_fmc_cen_1;
+
 xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
 (
   .clk(lclk),
@@ -726,14 +849,21 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .mcu_tx(1'b1),
   .mcu_rx(),
   .mcu_rts_n(1'b0),
-  .mcu_cts_n()
+  .mcu_cts_n(),
+
+  // priority input / FMC
+  .po_wr(lclk_fmc_wren),
+  .po_en(!fmc_cen_mux),
+  .po_a(fmc_addr_mux),
+  .po_din(i_fmc_din_1),
+  .po_dout(i_fmc_dout)
 );
 assign FTD_UART_CTSn = 0;
 
 //
 // placeholder LTC counter
 //
-reg[47:0] ltc = 0;
+(* max_fanout = 5 *) reg[47:0] ltc = 0;
 always @(posedge lclk) begin
   if (lclk_rst) begin
     ltc <= 0;
