@@ -7,6 +7,9 @@
 module top (
   // 20 MHz oscillator
   input QOSC_CLK_P1V8,
+  // ICM clock
+  input FPGA_CLOCK_P,
+  input FPGA_CLOCK_N,
 
   // Debug UART signals
   output FTD_UART_CTSn,
@@ -272,6 +275,9 @@ module top (
 
 localparam[15:0] FW_VNUM = 16'h9;
 
+// 1 for icm clock, 0 for Q_OSC
+localparam CLK_SRC = 1;
+
 // number of ADC channels
 localparam N_CHANNELS = 24;
 localparam N_ADC_BITS = 12;
@@ -286,6 +292,10 @@ localparam P_HDR_WIDTH = P_WVB_ADR_WIDTH == 10 ? 71 : 80;
 //
 // clock generation
 //
+wire icm_fpga_clk;
+IBUFGDS IBUFDGS_FPGACLK(.I(FPGA_CLOCK_P), .IB(FPGA_CLOCK_N), .O(icm_fpga_clk));
+
+wire osc_20MHz = CLK_SRC == 0 ? QOSC_CLK_P1V8 : icm_fpga_clk;
 
 // generate 125 MHz, 200 MHz, 375 MHz, 500 MHz clocks
 wire lclk_adcclk_locked;
@@ -297,7 +307,7 @@ wire clk_375MHz;
 wire clk_500MHz;
 lclk_adcclk_wiz LCLK_ADCCLK_WIZ_0
   (
-   .clk_in1(QOSC_CLK_P1V8),
+   .clk_in1(osc_20MHz),
    .clk_out1(clk_125MHz),
    .clk_out2(clk_375MHz),
    .locked(lclk_adcclk_locked),
@@ -310,7 +320,7 @@ wire i_adc_clock = clk_125MHz;
 wire discr_fclk_125MHz;
 idelay_discr_clk_wiz IDELAY_DISCR_CLK_WIZ_0
   (
-   .clk_in1(QOSC_CLK_P1V8),
+   .clk_in1(osc_20MHz),
    .clk_out1(clk_200MHz),
    .clk_out2(clk_500MHz),
    .clk_out3(discr_fclk_125MHz),

@@ -1,6 +1,6 @@
 # clocks and timing constraints
 
-#create_clock -name fpga_clk -period 50.000 [get_ports {FPGA_CLOCK_P}]
+create_clock -name fpga_clk -period 50.000 [get_ports {FPGA_CLOCK_P}]
 create_clock -name qosc_clk -period 50.000 [get_ports {QOSC_CLK_P1V8}]
 
 # DDR input constraints are described in the following Xilinx forum thread
