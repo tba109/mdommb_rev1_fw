@@ -20,7 +20,8 @@ always @(lclk)
   #(CLK_PERIOD / 2.0) lclk <= !lclk;
 
 reg rst;
-reg[31:0] period ;
+reg[31:0] period;
+reg[31:0] inhibit_len;
 reg[7:0] discr_bits;
 wire valid;
 wire[3:0] n_pedge_out;
@@ -28,7 +29,8 @@ wire update_out;
 discr_scaler #(.P_N_WIDTH(4)) SCALER (
   .clk(lclk),
   .rst(rst),
-  .a(discr_bits),
+  .discr_in(discr_bits),
+  .inhibit_len(inhibit_len),
   .period(period),
   .valid(valid),
   .n_pedge_out(n_pedge_out),
@@ -37,6 +39,7 @@ discr_scaler #(.P_N_WIDTH(4)) SCALER (
 
 initial begin
   period = 3;
+  inhibit_len = 0;
   rst = 1;
   discr_bits = 0;
 end
@@ -65,6 +68,14 @@ always @(posedge lclk) begin
 
   // test overflow
   if (cnt > 40 && cnt < 50) discr_bits <= 8'b01010101;
+
+  if (cnt == 55) begin
+    inhibit_len <= 3;
+  end
+
+  if (cnt > 60 && cnt < 80) begin
+    discr_bits <= 8'b01010101;
+  end
 end
 
 endmodule

@@ -20,9 +20,9 @@ module top (
   input FPGA_UART_RX,
   output FPGA_UART_TX,
 
-  // MCU UART
+  // MCU/CPLD UART
   input MCU_USART6_TX,
-  output MCU_USART6_RX,
+  input MCU_USART6_RX,
 
   // ADC interface
   output ADC0_CLOCK_P,
@@ -233,7 +233,7 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h7;
+localparam[15:0] FW_VNUM = 16'h8;
 
 // number of ADC channels
 localparam N_CHANNELS = 24;
@@ -484,7 +484,7 @@ endgenerate
 //     12'hbd1: [i] AFE pulser i IO reset
 //     12'hbd0: [7:0] AFE pulser sw trig mask [23:16]
 //     12'hbcf: [15:0] AFE pulser sw trig mask [15:0]
-//     12'hbce: [i] AFE pulser i trigger + sw_trig (based on mask)
+//     12'hbce: [i] AFE pulser i single trigger + sw_trig (based on mask)
 //
 //     DDR3 test signals
 //     12'hbcd: page transfer addr[27:16]
@@ -518,6 +518,13 @@ endgenerate
 //     12'hbb8: [4:0] scaler readback channel select
 //     12'hbb7: scaler readback [31:16]
 //     12'hbb6: scaler readback [15:0]
+//     12'hbb5: scaler inhibit length [31:16]
+//     12'hbb4: scaler inhibit length [15:0]
+//
+//     12'hbb3: AFE pulser period [31:16]
+//     12'hbb2: AFE pulser period [15:0]
+//     12'hbb1: [5:0] Periodic pulse mode enable (for AFEi_TP)
+
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
@@ -602,6 +609,7 @@ wire hbuf_buffered_data;
 
 // discr scalers
 wire[31:0] scaler_period_xdom;
+wire[31:0] scaler_inhibit_len_xdom;
 wire[N_CHANNELS*32-1:0] scaler_out;
 
 xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
@@ -661,7 +669,7 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
 
   // AFE pulser
   .pulser_io_rst(pulser_io_rst),
-  .pulser_trig(pulser_trig),
+  .pulser_trig_out(pulser_trig),
   .pulser_width(pulser_width),
 
   // DDR3 interface
@@ -699,6 +707,7 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
 
   // scalers
   .scaler_period(scaler_period_xdom),
+  .scaler_inhibit_len(scaler_inhibit_len_xdom),
   .scaler_out(scaler_out),
 
   // debug UART
@@ -714,8 +723,8 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .icm_cts(FPGA_UART_CTS),
 
   // MCU UART
-  .mcu_tx(MCU_USART6_TX),
-  .mcu_rx(MCU_USART6_RX),
+  .mcu_tx(1'b1),
+  .mcu_rx(),
   .mcu_rts_n(1'b0),
   .mcu_cts_n()
 );
@@ -800,8 +809,10 @@ endgenerate
 
 // scalers
 (* max_fanout = 5 *) reg[31:0] scaler_period = 0;
+(* max_fanout = 5 *) reg[31:0] scaler_inhibit_len = 0;
 always @(posedge lclk) begin
   scaler_period <= scaler_period_xdom;
+  scaler_inhibit_len <= scaler_inhibit_len_xdom;
 end
 
 generate
@@ -809,8 +820,9 @@ generate
     discr_scaler SCALER (
       .clk(lclk),
       .rst(lclk_rst || xdom_wvb_rst[i]),
-      .a(discr_data[N_DISCR_BITS*(i+1)-1 : N_DISCR_BITS*i]),
+      .discr_in(discr_data[N_DISCR_BITS*(i+1)-1 : N_DISCR_BITS*i]),
       .period(scaler_period),
+      .inhibit_len(scaler_inhibit_len),
       .n_pedge_out(scaler_out[32*(i+1)-1 : 32*i]),
       .valid(),
       .update_out()

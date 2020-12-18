@@ -70,7 +70,7 @@ module xdom #(parameter N_CHANNELS = 24)
 
   // AFE pulser
   output reg[5:0] pulser_io_rst = 6'h3f,
-  output reg[5:0] pulser_trig = 0,
+  output[5:0] pulser_trig_out,
   output reg[15:0] pulser_width = 0,
 
   // DDR3 interface
@@ -108,6 +108,7 @@ module xdom #(parameter N_CHANNELS = 24)
 
   // discr scalers
   (* max_fanout = 5 *) output reg[31:0] scaler_period = 0,
+  (* max_fanout = 5 *) output reg[31:0] scaler_inhibit_len = 0,
   input[N_CHANNELS*32-1:0] scaler_out,
 
   // Debug FT232R I/O
@@ -194,7 +195,8 @@ ft232r_proc_buffered UART_ICM_0
 );
 
 ///////////////////////////////////////////////////////////////////////////////
-// 3.) MCU UART
+// 3.) MCU UART (unused on mDOM)
+// note: unused in the mDOM, will be held in reset
 wire [11:0] mcu_logic_adr;
 wire [15:0] mcu_logic_wr_data;
 wire        mcu_logic_wr_req;
@@ -217,7 +219,8 @@ ft232r_proc_buffered UART_MCU_0
   .err_data   (mcu_err_data[31:0]),
   // Inputs
   .clk    (clk),
-  .rst    (rst),
+  // .rst    (rst),
+  .rst    (1'b1),
   .txd    (mcu_tx),
   .rts_n    (mcu_rts_n),
   .logic_rd_data  (mcu_logic_rd_data[15:0]),
@@ -531,6 +534,9 @@ wire pg_clr_req_val = hbuf_pg_clr_req || hbuf_pg_clr_ack;
 reg[N_CHANNELS-1:0] pulser_sw_trig_mask = 0;
 reg[N_CHANNELS-1:0] sw_trig_mask = 0;
 reg[N_CHANNELS-1:0] trig_arm_mask = 0;
+reg[31:0] afe_pulser_period = 0;
+reg[5:0] pulser_trig_single = 0;
+reg[5:0] periodic_pulser_enable = 0;
 
 always @(*)
  begin
@@ -605,7 +611,7 @@ always @(*)
       12'hbd1: begin y_rd_data =       {10'b0, pulser_io_rst};                                 end
       12'hbd0: begin y_rd_data =       {8'b0, pulser_sw_trig_mask[N_CHANNELS-1:16]};           end
       12'hbcf: begin y_rd_data =       pulser_sw_trig_mask[15:0];                              end
-      12'hbce: begin y_rd_data =       {10'b0, pulser_trig};                                   end
+      12'hbce: begin y_rd_data =       {10'b0, pulser_trig_single};                            end
       12'hbcd: begin y_rd_data =       pg_req_addr[27:16];                                     end
       12'hbcc: begin y_rd_data =       pg_req_addr[15:0];                                      end
       12'hbcb: begin y_rd_data =       {15'b0, pg_optype};                                     end
@@ -632,6 +638,11 @@ always @(*)
       12'hbb8: begin y_rd_data =        {11'b0, scaler_sel};                                   end
       12'hbb7: begin y_rd_data =        scaler_mux_out_reg[31:16];                             end
       12'hbb6: begin y_rd_data =        scaler_mux_out_reg[15:0];                              end
+      12'hbb5: begin y_rd_data =        scaler_inhibit_len[31:16];                             end
+      12'hbb4: begin y_rd_data =        scaler_inhibit_len[15:0];                              end
+      12'hbb3: begin y_rd_data =        afe_pulser_period[31:16];                              end
+      12'hbb2: begin y_rd_data =        afe_pulser_period[15:0];                               end
+      12'hbb1: begin y_rd_data =        {10'b0, periodic_pulser_enable};                       end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
@@ -657,7 +668,7 @@ always @(posedge clk)
     i_adc_bitslip <= 0;
     i_discr_bitslip <= 0;
 
-    pulser_trig <= 0;
+    pulser_trig_single <= 0;
 
     if(y_wr)
       case(y_adr)
@@ -721,7 +732,7 @@ always @(posedge clk)
         12'hbd0: begin pulser_sw_trig_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];                 end
         12'hbcf: begin pulser_sw_trig_mask[15:0] <= y_wr_data;                                 end
         12'hbce: begin
-          pulser_trig <= y_wr_data[5:0];
+          pulser_trig_single <= y_wr_data[5:0];
           xdom_trig_run <= pulser_sw_trig_mask;
         end
         12'hbcd: begin pg_req_addr[27:16] <= y_wr_data[11:0];                                  end
@@ -740,9 +751,21 @@ always @(posedge clk)
         12'hbba: begin scaler_period[31:16] <= y_wr_data;                                      end
         12'hbb9: begin scaler_period[15:0] <= y_wr_data;                                       end
         12'hbb8: begin scaler_sel <= y_wr_data[4:0];                                           end
+        12'hbb5: begin scaler_inhibit_len[31:16] <= y_wr_data;                                 end
+        12'hbb4: begin scaler_inhibit_len[15:0] <= y_wr_data;                                  end
+        12'hbb3: begin afe_pulser_period[31:16] <= y_wr_data;                                  end
+        12'hbb2: begin afe_pulser_period[15:0] <= y_wr_data;                                   end
+        12'hbb1: begin periodic_pulser_enable <= y_wr_data[5:0];                               end
         default: begin                                                                         end
       endcase
 end // always @ (posedge clk)
+
+// AFE pulser trigger outputs
+wire[5:0] periodic_pulser_trig;
+periodic_trigger_gen TRIG_GEN(.clk(clk), .rst(rst),
+                              .period(afe_pulser_period),
+                              .trig(periodic_pulser_trig));
+assign pulser_trig_out = pulser_trig_single | (periodic_pulser_trig & periodic_pulser_enable);
 
 // wire [15:0] dpram_wr_data_a = 16'b0;
 // wire        dpram_wr_a = 1'b0;
