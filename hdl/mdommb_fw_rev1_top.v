@@ -273,10 +273,10 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h9;
+localparam[15:0] FW_VNUM = 16'ha;
 
 // 1 for icm clock, 0 for Q_OSC
-localparam CLK_SRC = 1;
+localparam CLK_SRC = 0;
 
 // number of ADC channels
 localparam N_CHANNELS = 24;
