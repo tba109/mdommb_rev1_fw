@@ -48,6 +48,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/err_mngr/err_mngr.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/ft232r_hs/ft232r_hs.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/ft232r_proc_buffered/ft232r_proc_buffered.v
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/discr_scaler/inhibit_generator.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/iter_integer_linear_cal/iter_integer_linear_calc.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/knight_rider/knight_rider.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_trig_bundle/mDOM_trig_bundle_fan_in.v
@@ -62,6 +63,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/n_channel_mux/n_channel_mux.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/negedge_detector/negedge_detector.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/one_shot/one_shot.v
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/periodic_trigger_gen/periodic_trigger_gen.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/posedge_detector/posedge_detector.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/pretrigger_buffer/pretrigger_buffer.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/rs232_des/rs232_des.v

@@ -169,7 +169,7 @@ set rc [catch {
   create_msg_db write_bitstream.pb
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
   catch { write_mem_info -force top.mmi }
-  write_bitstream -force top.bit 
+  write_bitstream -force top.bit -bin_file
   catch {write_debug_probes -quiet -force top}
   catch {file copy -force top.ltx debug_nets.ltx}
   close_msg_db -file write_bitstream.pb
