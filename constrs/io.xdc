@@ -349,6 +349,8 @@ set_property IOSTANDARD LVCMOS33 [get_ports LED_ORANGE]
 set_property PACKAGE_PIN U2 [get_ports LED_YELLOW]
 set_property IOSTANDARD LVCMOS33 [get_ports LED_YELLOW]
 
+set_property PACKAGE_PIN V2 [get_ports TRIG_IN]
+set_property IOSTANDARD LVCMOS33 [get_ports TRIG_IN]
 set_property PACKAGE_PIN U1 [get_ports TRIG_OUT]
 set_property IOSTANDARD LVCMOS33 [get_ports TRIG_OUT]
 
@@ -427,3 +429,4 @@ set_property PACKAGE_PIN J4 [get_ports FPGA_CLOCK_P]
 set_property IOSTANDARD DIFF_SSTL18_II [get_ports FPGA_CLOCK_P]
 set_property PACKAGE_PIN H4 [get_ports FPGA_CLOCK_N]
 set_property IOSTANDARD DIFF_SSTL18_II [get_ports FPGA_CLOCK_N]
+

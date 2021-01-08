@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date                      : Mon Dec 21 12:39:38 2020
+| Date                      : Fri Jan  8 14:54:47 2021
 | Host                      : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 | Command                   : report_io -file top_io_placed.rpt
 | Design                    : top
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|           245 |
+|           246 |
 +---------------+
 
 
@@ -634,7 +634,7 @@ Table of Contents
 | U25        |               | High Range | IO_L11P_T1_SRCC_14           | User IO     |                |      14 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | U26        | ADC0_SDOUT    | High Range | IO_L10N_T1_D15_14            | INPUT       | LVCMOS18       |      14 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | V1         |               | High Range | IO_L11N_T1_SRCC_34           | User IO     |                |      34 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
-| V2         |               | High Range | IO_L12N_T1_MRCC_34           | User IO     |                |      34 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
+| V2         | TRIG_IN       | High Range | IO_L12N_T1_MRCC_34           | INPUT       | LVCMOS33       |      34 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | V3         | DAC2_DIN      | High Range | IO_L12P_T1_MRCC_34           | OUTPUT      | LVCMOS33       |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | V4         |               | High Range | IO_L18P_T2_34                | User IO     |                |      34 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | V5         |               | High Range | VCCO_34                      | VCCO        |                |      34 |            |      |                     |                      |    3.30 |            |           |          |          |                  |              |                   |              |
