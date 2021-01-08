@@ -268,12 +268,13 @@ module top (
   output LED_GREEN,
   output LED_ORANGE,
 
+  input TRIG_IN,
   output TRIG_OUT
 );
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'ha;
+localparam[15:0] FW_VNUM = 16'hc;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 0;
@@ -905,6 +906,10 @@ always @(posedge lclk) begin
   xdom_wvb_conf_bundle_reg <= xdom_wvb_conf_bundle;
 end
 
+// external trigger
+wire ext_trig_s;
+sync SYNC_TRIG_IN(.clk(lclk),.rst_n(!lclk_rst),.a(TRIG_IN),.y(ext_trig_s));
+
 generate
   for (i = 0; i < N_CHANNELS; i = i + 1) begin : waveform_acq_gen
     waveform_acquisition #(.P_ADR_WIDTH(P_WVB_ADR_WIDTH),
@@ -932,7 +937,7 @@ generate
       .ltc_in(ltc),
 
       // External
-      .ext_trig_in(1'b0),
+      .ext_trig_in(ext_trig_s),
       .wvb_trig_out(),
       .wvb_trig_test_out(),
 

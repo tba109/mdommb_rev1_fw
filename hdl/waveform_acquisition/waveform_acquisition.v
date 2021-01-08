@@ -56,14 +56,16 @@ module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
   output          xdom_wvb_overflow
 );
 
-// register synchronous reset & xdom bundles
+// register synchronous reset & xdom bundles & ext_trig_in
 (* max_fanout = 20 *) reg i_rst = 0;
 (* DONT_TOUCH = "true" *) reg[P_WVB_TRIG_BUNDLE_WIDTH-1:0] i_xdom_wvb_trig_bundle = 0;
 (* DONT_TOUCH = "true" *) reg[P_WVB_CONFIG_BUNDLE_WIDTH-1:0] i_xdom_wvb_config_bundle= 0;
+(* DONT_TOUCH = "true" *) reg i_ext_trig_in = 0;
 always @(posedge clk) begin
   i_rst <= rst;
   i_xdom_wvb_trig_bundle <= xdom_wvb_trig_bundle;
   i_xdom_wvb_config_bundle <= xdom_wvb_config_bundle;
+  i_ext_trig_in <= ext_trig_in;
 end
 
 // trig fan out
@@ -155,7 +157,7 @@ mdom_trigger MDOM_TRIG
 
    // ext trig
    .ext_trig_en(wvb_trig_ext_trig_en),
-   .ext_run(ext_trig_in),
+   .ext_run(i_ext_trig_in),
 
    // discr trig
    .discr_trig_en(wvb_trig_discr_trig_en),
