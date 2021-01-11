@@ -73,6 +73,14 @@ module xdom #(parameter N_CHANNELS = 24)
   output[5:0] pulser_trig_out,
   output reg[15:0] pulser_width = 0,
 
+  // ADS8332 monitoring ADCs
+  output slo_adc_req,
+  input slo_adc_ack,
+  output reg[18:0] slo_adc_wr_data = 0,
+  input[18:0] slo_adc_rd_data,
+  output reg slo_adc_chip_sel = 0,
+  output slo_adc_nconvst,
+
   // DDR3 interface
   input ddr3_ui_clk,
   output reg[27:0] pg_req_addr = 0,
@@ -445,6 +453,22 @@ assign adc_bitslip = adc_bitslip_1;
 assign discr_bitslip = discr_bitslip_1;
 
 //
+// One shots
+//
+reg slo_nconvst_os = 0;
+one_shot OS_NCONVST (
+  .clk(clk),
+  .rst_n(!rst),
+  .n0(32'd0),
+  .n1(32'd60),
+  .trig(slo_nconvst_os),
+  .a0(1'b1),
+  .a1(1'b0),
+  .busy(),
+  .y(slo_adc_nconvst)
+);
+
+//
 // Task regs
 //
 wire[15:0] adc_spi_task_val;
@@ -479,20 +503,21 @@ task_reg #(.P_TASK_ADR(12'hbd5)) DAC_SPI_TASK_0 (
 assign dac_spi_req = dac_spi_task_req[0];
 assign dac_spi_task_ack[0] = dac_spi_ack;
 
-
-//////////////////////////////////////////////////////////////////////////////
-// Read registers
-reg[15:0] dpram_len;
-
-wire [15:0] dpram_rd_data_a;
-wire [15:0] dpram_rd_data_b;
-wire [15:0] direct_rdout_dpram_data;
-reg[15:0] xdom_dpram_rd_data;
-
-// dpram rd mux sel
-reg[15:0] dpram_sel = 0;
-reg[15:0] test_ctrl_reg = 16'b0;
-reg dpram_done = 0;
+wire[15:0] slo_spi_task_val;
+wire[15:0] slo_spi_task_req;
+wire[15:0] slo_spi_task_ack;
+task_reg #(.P_TASK_ADR(12'heff)) SLO_ADC_SPI_TASK_0 (
+  .clk(clk),
+  .rst(rst),
+  .adr(y_adr),
+  .data(y_wr_data),
+  .wr(y_wr),
+  .req(slo_spi_task_req),
+  .ack(slo_spi_task_ack),
+  .val(slo_spi_task_val)
+);
+assign slo_adc_req = slo_spi_task_req[2];
+assign slo_spi_task_ack[2] = slo_adc_ack;
 
 // pg op task reg
 reg pg_req_start = 0;
@@ -544,6 +569,20 @@ always @(posedge clk) begin
 end
 wire pg_clr_req_val = hbuf_pg_clr_req || hbuf_pg_clr_ack;
 
+//////////////////////////////////////////////////////////////////////////////
+// Read registers
+reg[15:0] dpram_len;
+
+wire [15:0] dpram_rd_data_a;
+wire [15:0] dpram_rd_data_b;
+wire [15:0] direct_rdout_dpram_data;
+reg[15:0] xdom_dpram_rd_data;
+
+// dpram rd mux sel
+reg[15:0] dpram_sel = 0;
+reg[15:0] test_ctrl_reg = 16'b0;
+reg dpram_done = 0;
+
 reg[N_CHANNELS-1:0] pulser_sw_trig_mask = 0;
 reg[N_CHANNELS-1:0] sw_trig_mask = 0;
 reg[N_CHANNELS-1:0] trig_arm_mask = 0;
@@ -555,11 +594,18 @@ always @(*)
  begin
     case(y_adr)
       12'hfff: begin y_rd_data =       vnum;                                                   end
+      12'heff: begin y_rd_data =       slo_spi_task_val;                                       end
       12'hdff: begin y_rd_data =       {15'b0, dpram_done};                                    end
       12'hdfe: begin y_rd_data =       dpram_len;                                              end
       12'hdf9: begin y_rd_data =       dpram_sel;                                              end
+      12'hdf8: begin y_rd_data =       {13'b0, slo_adc_wr_data[18:16]};                        end
+      12'hdf7: begin y_rd_data =       {13'b0, slo_adc_rd_data[18:16]};                        end
+      12'hdf6: begin y_rd_data =       {15'b0, slo_adc_chip_sel};                              end
+      12'hdf5: begin y_rd_data =       {15'b0, slo_adc_nconvst};                               end
       12'hdf4: begin y_rd_data =       {15'b0, wvb_reader_enable};                             end
       12'hdf2: begin y_rd_data =       {15'b0, wvb_reader_dpram_mode};                         end
+      12'hde4: begin y_rd_data =       slo_adc_wr_data[15:0];                                  end
+      12'hde3: begin y_rd_data =       slo_adc_rd_data[15:0];                                  end
       12'hbfe: begin y_rd_data =       {9'b0,
                                         wvb_trig_ext_trig_en,
                                         wvb_trig_thresh_trig_en,
@@ -683,12 +729,18 @@ always @(posedge clk)
 
     pulser_trig_single <= 0;
 
+    slo_nconvst_os <= 0;
+
     if(y_wr)
       case(y_adr)
         12'hdff: begin dpram_done <= y_wr_data[0];                                             end
         12'hdf9: begin dpram_sel <= y_wr_data;                                                 end
+        12'hdf8: begin slo_adc_wr_data[18:16] <= y_wr_data[2:0];                               end
+        12'hdf6: begin slo_adc_chip_sel <= y_wr_data[0];                                       end
+        12'hdf5: begin slo_nconvst_os <= y_wr_data[0];                                         end
         12'hdf4: begin wvb_reader_enable <= y_wr_data[0];                                      end
         12'hdf2: begin wvb_reader_dpram_mode <= y_wr_data[0];                                  end
+        12'hde4: begin slo_adc_wr_data[15:0] <= y_wr_data;                                     end
         12'hbfe: begin
           wvb_trig_et <= y_wr_data[0];
           wvb_trig_gt <= y_wr_data[1];

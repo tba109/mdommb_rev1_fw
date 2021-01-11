@@ -269,12 +269,25 @@ module top (
   output LED_ORANGE,
 
   input TRIG_IN,
-  output TRIG_OUT
+  output TRIG_OUT,
+
+  // ADS8332 monitoring ADCs
+  output MON_ADC1_CONVn,
+  output MON_ADC1_CSn,
+  output MON_ADC1_SCLK,
+  output MON_ADC1_SDI,
+  input MON_ADC1_SDO,
+  output MON_ADC2_CONVn,
+  output MON_ADC2_CSn,
+  output MON_ADC2_SCLK,
+  output MON_ADC2_SDI,
+  input MON_ADC2_SDO
 );
+
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'hc;
+localparam[15:0] FW_VNUM = 16'hd;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 0;
@@ -452,11 +465,18 @@ endgenerate
 // xDOM interface
 // Addressing:
 //     12'hfff: Version/build number
+//     12'heff: [2]: SLO ADC task reg
 //     12'hdff: [0] dpram_done
 //     12'hdfe: [10:0] dpram_len
 //     12'hdf9: [0] dpram_sel (0: ddr3 transfer dpram, 1: direct rdout (rd only))
+//     12'hdf8: SLO ADC SPI write data [18:16]
+//     12'hdf7: SLO ADC SPI read data [18:16]
+//     12'hdf6: SLO ADC chip select: 0 - ADC1, 1 - ADC2
+//     12'hdf5: SLO ADC nCONVST one shot
 //     12'hdf4: wvb_reader enable
 //     12'hdf2: wvb_reader dpram mode
+//     12'hde4: SLO ADC SPI write data [15:0]
+//     12'hde3: SLO ADC SPI read data [15:0]
 //
 //     12'hbfe: trig settings
 //             [0] et
@@ -616,6 +636,14 @@ wire[2:0] dac_chip_sel;
 wire[5:0] pulser_io_rst;
 wire[5:0] pulser_trig;
 wire[15:0] pulser_width;
+
+// ADS8332 monitoring ADCs
+wire slo_adc_req;
+wire slo_adc_ack;
+wire[18:0] slo_adc_wr_data;
+wire[18:0] slo_adc_rd_data;
+wire slo_adc_chip_sel;
+wire slo_adc_nconvst;
 
 // DDR3 interface
 wire ddr3_ui_clk;
@@ -805,6 +833,14 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .pulser_io_rst(pulser_io_rst),
   .pulser_trig_out(pulser_trig),
   .pulser_width(pulser_width),
+
+  // ADS8332 monitoring ADCs
+  .slo_adc_req(slo_adc_req),
+  .slo_adc_ack(slo_adc_ack),
+  .slo_adc_wr_data(slo_adc_wr_data),
+  .slo_adc_rd_data(slo_adc_rd_data),
+  .slo_adc_chip_sel(slo_adc_chip_sel),
+  .slo_adc_nconvst(slo_adc_nconvst),
 
   // DDR3 interface
   .ddr3_ui_clk(ddr3_ui_clk),
@@ -1240,6 +1276,49 @@ assign DAC2_nSYNC0 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[0]);
 assign DAC2_nSYNC1 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[1]);
 assign DAC2_nSYNC2 = !(dac_spi_req && dac_spi_sel[2] && dac_chip_sel[2]);
 
+// ADS8332 monitoring ADCs SPI
+wire slo_adc_mosi;
+wire slo_adc_miso;
+wire slo_adc_sclk;
+spi_master #(.P_RD_DATA_WIDTH(19), .P_WR_DATA_WIDTH(19)) ADS8332_SPI (
+  // Outputs
+  .rd_data (slo_adc_rd_data),
+  .ack     (slo_adc_ack),
+  .mosi    (slo_adc_mosi),
+  .sclk    (slo_adc_sclk),
+  // Inputs
+  .clk     (lclk),
+  .rst     (rst),
+  // MOSI
+  .nb_mosi (8'd19),
+  .y0_mosi (1'b0),
+  .n0_mosi (20),
+  .n1_mosi (60),
+  // MISO
+  .nb_miso (8'd19),
+  .n0_miso (1),
+  .n1_miso (60),
+  // SCLK
+  .nb_sclk (8'd19),
+  .y0_sclk (1'b1),
+  .n0_sclk (70),
+  .n1_sclk (30),
+  .n2_sclk (30),
+  .wr_req  (slo_adc_req),
+  .wr_data (slo_adc_wr_data),
+  .rd_req  (slo_adc_req),
+  .miso    (slo_adc_miso)
+);
+
+assign MON_ADC1_CONVn = slo_adc_nconvst;
+assign MON_ADC1_CSn = !(slo_adc_chip_sel == 0 && slo_adc_req);
+assign MON_ADC1_SCLK = slo_adc_chip_sel == 0 ? slo_adc_sclk : 1'b1;
+assign MON_ADC1_SDI = slo_adc_chip_sel == 0 ? slo_adc_mosi : 1'b0;
+assign MON_ADC2_CONVn = slo_adc_nconvst;
+assign MON_ADC2_CSn = !(slo_adc_chip_sel == 1 && slo_adc_req);
+assign MON_ADC2_SCLK = slo_adc_chip_sel == 1 ? slo_adc_sclk : 1'b1;
+assign MON_ADC2_SDI = slo_adc_chip_sel == 1 ? slo_adc_mosi : 1'b0;
+assign slo_adc_miso = slo_adc_chip_sel == 0 ? MON_ADC1_SDO : MON_ADC2_SDO;
 
 //
 // AFE pulser
