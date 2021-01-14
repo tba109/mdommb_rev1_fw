@@ -41,6 +41,9 @@ module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
   output wvb_trig_out,
   output wvb_trig_test_out,
 
+  // for TOT scaler
+  output thresh_tot_out,
+
   // Rate scaler
   // input[P_RATE_SCALER_CTRL_BUNDLE_WIDTH-1:0] rate_scaler_ctrl_bundle,
   // output[P_RATE_SCALER_STS_BUNDLE_WIDTH-1:0] rate_scaler_sts_bundle,
@@ -170,6 +173,7 @@ mdom_trigger MDOM_TRIG
    .discr_tot(discr_tot)
   );
 assign wvb_trig_out = wvb_trig;
+assign thresh_tot_out = thresh_tot;
 
 waveform_buffer
   #(.P_DATA_WIDTH(P_DATA_WIDTH),

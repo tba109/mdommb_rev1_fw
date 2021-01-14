@@ -59,7 +59,7 @@ module one_shot #(parameter P_N_WIDTH=32, parameter P_IO_WIDTH=1)
             2:
               begin
                  cnt <= cnt + 1;
-                 if(cnt== n1-1)
+                 if(cnt >= n1-1)
                    begin
                       cnt <= 0;
                       fsm <= 0;

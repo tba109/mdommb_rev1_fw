@@ -3,6 +3,9 @@
 //
 // Counts positive edges in the discriminator bitstream
 //
+// Also used for ADC threshold scalers,
+// which treat the over-threshold signal as a 1-bit discriminator
+//
 // based on bitstream_counter.v, by Tyler Anderson, from the mDOT project
 //
 
@@ -22,11 +25,22 @@ module discr_scaler #(parameter P_N_WIDTH=32, P_INPUT_WIDTH=8)
   output               update_out
 );
 
-wire[7:0] discr_in_1;
-wire[7:0] inhibit_bits;
+wire[P_INPUT_WIDTH-1:0] discr_in_1;
+wire[P_INPUT_WIDTH-1:0] inhibit_bits;
 generate
   if (P_INPUT_WIDTH == 8) begin
-    inhibit_generator #(.P_N_WIDTH(P_N_WIDTH)) INH_GEN (
+    // 8 bit inhibit generator
+    inhibit_generator_8b #(.P_N_WIDTH(P_N_WIDTH)) INH_GEN (
+      .clk(clk),
+      .rst(rst),
+      .bits_in(discr_in),
+      .inhibit_len(inhibit_len),
+      .inhibit_bits(inhibit_bits),
+      .bits_out(discr_in_1)
+    );
+  end else if (P_INPUT_WIDTH == 1) begin
+    // 1 bit inhibit generator
+    inhibit_generator_1b #(.P_N_WIDTH(P_N_WIDTH)) INH_GEN (
       .clk(clk),
       .rst(rst),
       .bits_in(discr_in),
@@ -35,7 +49,7 @@ generate
       .bits_out(discr_in_1)
     );
   end else begin
-    invalid_module_conf ONLY_P_INPUT_WIDTH_8_IS_SUPPORTED();
+    invalid_module_conf ONLY_P_INPUT_WIDTH_8_OR_1_IS_SUPPORTED();
   end
 endgenerate
 

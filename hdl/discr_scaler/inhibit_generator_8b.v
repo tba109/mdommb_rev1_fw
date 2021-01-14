@@ -5,9 +5,9 @@
 //
 // outputs inhibit bits and pipelined input bits
 //
-// currently works only with 8 bit input
+// works only with 8 bit input
 
-module inhibit_generator #(parameter P_N_WIDTH=32)
+module inhibit_generator_8b #(parameter P_N_WIDTH=32)
 (
   input          clk,
   input          rst,
@@ -104,7 +104,7 @@ always @(posedge clk) begin
           inhibit_bits <= last_cycle_inh_bits;
         end
 
-        if (|trig && i_inhibit_len > 1) begin
+        if (|inhibit_trig && i_inhibit_len > 1) begin
           cnt <= 1;
           fsm <= S_INHIBITED;
         end else begin

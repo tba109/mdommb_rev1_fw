@@ -287,7 +287,7 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'hd;
+localparam[15:0] FW_VNUM = 16'he;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 0;
@@ -584,8 +584,8 @@ endgenerate
 //     12'hbba: scaler_period [31:16] (8 ns units)
 //     12'hbb9: scaler_period [15:0] (8 ns units)
 //     12'hbb8: [4:0] scaler readback channel select
-//     12'hbb7: scaler readback [31:16]
-//     12'hbb6: scaler readback [15:0]
+//     12'hbb7: discr scaler readback [31:16]
+//     12'hbb6: discr scaler readback [15:0]
 //     12'hbb5: scaler inhibit length [31:16]
 //     12'hbb4: scaler inhibit length [15:0]
 //
@@ -593,6 +593,8 @@ endgenerate
 //     12'hbb2: AFE pulser period [15:0]
 //     12'hbb1: [5:0] Periodic pulse mode enable (for AFEi_TP)
 
+//     12'hbb0: thresh scaler readback [31:16]
+//     12'hbaf: thresh scaler readback [15:0]
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
@@ -686,7 +688,9 @@ wire hbuf_buffered_data;
 // discr scalers
 wire[31:0] scaler_period_xdom;
 wire[31:0] scaler_inhibit_len_xdom;
-wire[N_CHANNELS*32-1:0] scaler_out;
+wire[N_CHANNELS*32-1:0] disc_scaler_out;
+// thresh scaler
+wire[N_CHANNELS*32-1:0] thresh_scaler_out;
 
 // FMC, copied directly from D-Egg firmware
 wire [15:0] i_fmc_din;
@@ -878,7 +882,8 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   // scalers
   .scaler_period(scaler_period_xdom),
   .scaler_inhibit_len(scaler_inhibit_len_xdom),
-  .scaler_out(scaler_out),
+  .disc_scaler_out(disc_scaler_out),
+  .thresh_scaler_out(thresh_scaler_out),
 
   // debug UART
   .debug_txd(FTD_UART_TXD),
@@ -934,6 +939,8 @@ wire[N_CHANNELS-1:0] wvb_rddone;
 wire[N_CHANNELS*22-1:0] wvb_data_out;
 wire[N_CHANNELS*P_HDR_WIDTH-1:0] wvb_hdr_data;
 
+wire[N_CHANNELS-1:0] thresh_tot_out;
+
 // register the xdom trigger/wvb configuration
 (* max_fanout = 5 *) reg[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle_reg;
 (* max_fanout = 5 *) reg[L_WIDTH_MDOM_WVB_CONF_BUNDLE-1:0] xdom_wvb_conf_bundle_reg;
@@ -977,6 +984,8 @@ generate
       .wvb_trig_out(),
       .wvb_trig_test_out(),
 
+      .thresh_tot_out(thresh_tot_out[i]),
+
       // XDOM interface
       .xdom_arm(xdom_arm[i]),
       .xdom_trig_run(xdom_trig_run[i]),
@@ -998,13 +1007,24 @@ end
 
 generate
   for (i = 0; i < N_CHANNELS; i = i + 1) begin : scaler_gen
-    discr_scaler SCALER (
+    discr_scaler DISC_SCALER (
       .clk(lclk),
       .rst(lclk_rst || xdom_wvb_rst[i]),
       .discr_in(discr_data[N_DISCR_BITS*(i+1)-1 : N_DISCR_BITS*i]),
       .period(scaler_period),
       .inhibit_len(scaler_inhibit_len),
-      .n_pedge_out(scaler_out[32*(i+1)-1 : 32*i]),
+      .n_pedge_out(disc_scaler_out[32*(i+1)-1 : 32*i]),
+      .valid(),
+      .update_out()
+    );
+
+    discr_scaler #(.P_INPUT_WIDTH(1)) THRESH_SCALER (
+      .clk(lclk),
+      .rst(lclk_rst || xdom_wvb_rst[i]),
+      .discr_in(thresh_tot_out[i]),
+      .period(scaler_period),
+      .inhibit_len(scaler_inhibit_len),
+      .n_pedge_out(thresh_scaler_out[32*(i+1)-1 : 32*i]),
       .valid(),
       .update_out()
     );

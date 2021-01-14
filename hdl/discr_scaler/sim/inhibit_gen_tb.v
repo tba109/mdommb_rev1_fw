@@ -24,7 +24,7 @@ reg[7:0] discr_bits;
 reg[31:0] inhibit_len;
 wire[7:0] inhibit_bits;
 wire[7:0] bits_out;
-inhibit_generator INHIBIT_GEN (
+inhibit_generator_8b INHIBIT_GEN (
   .clk(lclk),
   .rst(rst),
   .bits_in(discr_bits),

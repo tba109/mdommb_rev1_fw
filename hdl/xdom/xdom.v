@@ -117,7 +117,9 @@ module xdom #(parameter N_CHANNELS = 24)
   // discr scalers
   (* max_fanout = 5 *) output reg[31:0] scaler_period = 0,
   (* max_fanout = 5 *) output reg[31:0] scaler_inhibit_len = 0,
-  input[N_CHANNELS*32-1:0] scaler_out,
+  input[N_CHANNELS*32-1:0] disc_scaler_out,
+  // thresh scaler
+  input[N_CHANNELS*32-1:0] thresh_scaler_out,
 
   // Debug FT232R I/O
   input             debug_txd,
@@ -387,14 +389,24 @@ n_channel_mux #(.N_INPUTS(N_CHANNELS),
 
 // scaler mux
 reg[4:0] scaler_sel;
-wire[31:0] scaler_mux_out;
-reg[31:0] scaler_mux_out_reg;
+wire[31:0] disc_scaler_mux_out;
+reg[31:0] disc_scaler_mux_out_reg;
 n_channel_mux #(.N_INPUTS(N_CHANNELS),
-                .INPUT_WIDTH(32)) SCALER_MUX
+                .INPUT_WIDTH(32)) DISC_SCALER_MUX
   (
-   .in(scaler_out),
+   .in(disc_scaler_out),
    .sel(scaler_sel),
-   .out(scaler_mux_out)
+   .out(disc_scaler_mux_out)
+  );
+
+wire[31:0] thresh_scaler_mux_out;
+reg[31:0] thresh_scaler_mux_out_reg;
+n_channel_mux #(.N_INPUTS(N_CHANNELS),
+                .INPUT_WIDTH(32)) THRESH_SCALER_MUX
+  (
+   .in(thresh_scaler_out),
+   .sel(scaler_sel),
+   .out(thresh_scaler_mux_out)
   );
 
 // register mux outputs
@@ -402,7 +414,8 @@ always @(posedge clk) begin
   wds_used_mux_out_reg <= wds_used_mux_out;
   buf_n_wfms_mux_out_reg <= buf_n_wfms_mux_out;
   delay_tap_mux_out_reg <= delay_tap_mux_out;
-  scaler_mux_out_reg <= scaler_mux_out;
+  disc_scaler_mux_out_reg <= disc_scaler_mux_out;
+  thresh_scaler_mux_out_reg <= thresh_scaler_mux_out;
 end
 
 // ADC / DISCR IO demuxing
@@ -695,13 +708,15 @@ always @(*)
       12'hbba: begin y_rd_data =        scaler_period[31:16];                                  end
       12'hbb9: begin y_rd_data =        scaler_period[15:0];                                   end
       12'hbb8: begin y_rd_data =        {11'b0, scaler_sel};                                   end
-      12'hbb7: begin y_rd_data =        scaler_mux_out_reg[31:16];                             end
-      12'hbb6: begin y_rd_data =        scaler_mux_out_reg[15:0];                              end
+      12'hbb7: begin y_rd_data =        disc_scaler_mux_out_reg[31:16];                        end
+      12'hbb6: begin y_rd_data =        disc_scaler_mux_out_reg[15:0];                         end
       12'hbb5: begin y_rd_data =        scaler_inhibit_len[31:16];                             end
       12'hbb4: begin y_rd_data =        scaler_inhibit_len[15:0];                              end
       12'hbb3: begin y_rd_data =        afe_pulser_period[31:16];                              end
       12'hbb2: begin y_rd_data =        afe_pulser_period[15:0];                               end
       12'hbb1: begin y_rd_data =        {10'b0, periodic_pulser_enable};                       end
+      12'hbb0: begin y_rd_data =        thresh_scaler_mux_out_reg[31:16];                      end
+      12'hbaf: begin y_rd_data =        thresh_scaler_mux_out_reg[15:0];                       end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
