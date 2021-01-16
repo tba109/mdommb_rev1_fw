@@ -281,13 +281,35 @@ module top (
   output MON_ADC2_CSn,
   output MON_ADC2_SCLK,
   output MON_ADC2_SDI,
-  input MON_ADC2_SDO
+  input MON_ADC2_SDO,
+
+  // DDR3 related
+  output DDR3_CLK100_OUT,
+  output DDR3_VTT_S3,
+  output DDR3_VTT_S5,
+
+  inout[15:0] ddr3_dq,
+  inout[1:0] ddr3_dqs_n,
+  inout[1:0] ddr3_dqs_p,
+  output[13:0] ddr3_addr,
+  output[2:0] ddr3_ba,
+  output ddr3_ras_n,
+  output ddr3_cas_n,
+  output ddr3_we_n,
+  output ddr3_reset_n,
+  output[0:0] ddr3_ck_p,
+  output[0:0] ddr3_ck_n,
+  output[0:0] ddr3_cke,
+  output[0:0] ddr3_cs_n,
+  output[1:0] ddr3_dm,
+  output[0:0] ddr3_odt,
+  input sys_clk_i
 );
 
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'he;
+localparam[15:0] FW_VNUM = 16'h10;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 0;
@@ -382,6 +404,23 @@ ADC3424_clk_IO clk_IO_5(.enc_clk(i_adc_clock),
                         .fclk_P(ADC5_FCLK_P), .fclk_N(ADC5_FCLK_M), .fclk_out(i_adc_fclock[5]),
                         .adc_clk_P(ADC5_CLOCK_P), .adc_clk_N(ADC5_CLOCK_M),
                         .sysrf_P(ADC5_SYSRF_P), .sysrf_N(ADC5_SYSRF_M));
+
+// 100 MHz clk forwarding
+ODDR #(
+       .DDR_CLK_EDGE("OPPOSITE_EDGE"),
+       .INIT(1'b0),
+       .SRTYPE("SYNC")
+     )
+ddr3_clk_forward
+(
+  .Q(DDR3_CLK100_OUT),
+  .C(clk_100MHz),
+  .D1(1'b0),
+  .D2(1'b1),
+  .CE(1'b1),
+  .R(1'b0),
+  .S(1'b0)
+);
 
 // ADC / DISCR interface inputs
 localparam DEFAULT_DELAY = 5'b0;
@@ -595,6 +634,9 @@ endgenerate
 
 //     12'hbb0: thresh scaler readback [31:16]
 //     12'hbaf: thresh scaler readback [15:0]
+//
+//     12'hbae: [0] DDR3_VTT_S3
+//              [1] DDR3_VTT_S5
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
@@ -663,12 +705,7 @@ wire[127:0] ddr3_dpram_din;
 wire[127:0] xdom_ddr3_dpram_dout;
 
 // hit buffer controller
-// force hbuf controller to be disabled for now;
-// ATD TODO: add hbuf controller after direct readout is working
-wire hbuf_enable = 0;
-// fake register users can write to until hbuf controller is included
-wire dummy_hbuf_enable;
-
+wire hbuf_enable;
 wire[15:0] hbuf_start_pg;
 wire[15:0] hbuf_stop_pg;
 wire[15:0] hbuf_first_pg;
@@ -861,8 +898,11 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .ddr3_dpram_din(ddr3_dpram_din),
   .ddr3_dpram_dout(xdom_ddr3_dpram_dout),
 
+  .ddr3_vtt_s3(DDR3_VTT_S3),
+  .ddr3_vtt_s5(DDR3_VTT_S5),
+
   // hit buffer controller
-  .hbuf_enable(dummy_hbuf_enable),
+  .hbuf_enable(hbuf_enable),
   .hbuf_start_pg(hbuf_start_pg),
   .hbuf_stop_pg(hbuf_stop_pg),
   .hbuf_first_pg(hbuf_first_pg),
@@ -1034,65 +1074,63 @@ endgenerate
 //
 // hit buffer controller
 //
-// wire hbuf_dpram_busy;
-// wire[127:0] hbuf_dpram_dout;
-// wire[7:0] hbuf_dpram_addr;
-// wire hbuf_pg_req;
-// wire hbuf_pg_ack;
-// wire hbuf_pg_optype;
-// wire[27:0] hbuf_pg_req_addr;
+wire hbuf_dpram_busy;
+wire[127:0] hbuf_dpram_dout;
+wire[7:0] hbuf_dpram_addr;
+wire hbuf_pg_req;
+wire hbuf_pg_ack;
+wire hbuf_pg_optype;
+wire[27:0] hbuf_pg_req_addr;
 
-// hbuf_ctrl HBUF_CTRL_0
-// (
-//  .clk(lclk),
-//  .rst(lclk_rst),
-//  .en(hbuf_enable),
+hbuf_ctrl HBUF_CTRL_0
+(
+ .clk(lclk),
+ .rst(lclk_rst),
+ .en(hbuf_enable),
 
-//  .start_pg(hbuf_start_pg),
-//  .stop_pg(hbuf_stop_pg),
-//  .first_pg(hbuf_first_pg),
-//  .last_pg(hbuf_last_pg),
+ .start_pg(hbuf_start_pg),
+ .stop_pg(hbuf_stop_pg),
+ .first_pg(hbuf_first_pg),
+ .last_pg(hbuf_last_pg),
 
-//  .flush_req(hbuf_flush_req),
-//  .flush_ack(hbuf_flush_ack),
+ .flush_req(hbuf_flush_req),
+ .flush_ack(hbuf_flush_ack),
 
-//  .empty(hbuf_empty),
-//  .full(hbuf_full),
-//  .rd_pg_num(hbuf_rd_pg_num),
-//  .wr_pg_num(hbuf_wr_pg_num),
-//  .n_used_pgs(hbuf_n_used_pgs),
+ .empty(hbuf_empty),
+ .full(hbuf_full),
+ .rd_pg_num(hbuf_rd_pg_num),
+ .wr_pg_num(hbuf_wr_pg_num),
+ .n_used_pgs(hbuf_n_used_pgs),
 
-//  .pg_clr_cnt(hbuf_pg_clr_count),
-//  .pg_clr_req(hbuf_pg_clr_req),
-//  .pg_clr_ack(hbuf_pg_clr_ack),
+ .pg_clr_cnt(hbuf_pg_clr_count),
+ .pg_clr_req(hbuf_pg_clr_req),
+ .pg_clr_ack(hbuf_pg_clr_ack),
 
-//  .buffered_data(hbuf_buffered_data),
+ .buffered_data(hbuf_buffered_data),
 
-//  .dpram_len_in(rdout_dpram_len),
-//  .rdout_dpram_run(rdout_dpram_run && hbuf_enable),
-//  .dpram_busy(hbuf_dpram_busy),
-//  .rdout_dpram_wren(rdout_dpram_wren && hbuf_enable),
+ .dpram_len_in(rdout_dpram_len),
+ .rdout_dpram_run(rdout_dpram_run && hbuf_enable),
+ .dpram_busy(hbuf_dpram_busy),
+ .rdout_dpram_wren(rdout_dpram_wren && hbuf_enable),
 
-//  .rdout_dpram_wr_addr(rdout_dpram_wr_addr),
-//  .rdout_dpram_data(rdout_dpram_data),
+ .rdout_dpram_wr_addr(rdout_dpram_wr_addr),
+ .rdout_dpram_data(rdout_dpram_data),
 
-//  .ddr3_ui_clk(ddr3_ui_clk),
-//  .ddr3_dpram_dout(hbuf_dpram_dout),
-//  .ddr3_dpram_rd_addr(ddr3_dpram_addr),
+ .ddr3_ui_clk(ddr3_ui_clk),
+ .ddr3_dpram_dout(hbuf_dpram_dout),
+ .ddr3_dpram_rd_addr(ddr3_dpram_addr),
 
-//  .pg_ack(hbuf_pg_ack),
-//  .pg_req(hbuf_pg_req),
-//  .pg_optype(hbuf_pg_optype),
-//  .pg_addr(hbuf_pg_req_addr)
-// );
+ .pg_ack(hbuf_pg_ack),
+ .pg_req(hbuf_pg_req),
+ .pg_optype(hbuf_pg_optype),
+ .pg_addr(hbuf_pg_req_addr)
+);
 
 //
 // Waveform buffer reader
 //
 
-// ATF TODO: uncomment this and remove line below when adding hbuf controller
-// wire rdout_dpram_busy = hbuf_enable ? hbuf_dpram_busy : xdom_rdout_dpram_busy;
-wire rdout_dpram_busy = xdom_rdout_dpram_busy;
+wire rdout_dpram_busy = hbuf_enable ? hbuf_dpram_busy : xdom_rdout_dpram_busy;
 
 wvb_reader #(.N_CHANNELS(N_CHANNELS),
              .P_WVB_ADR_WIDTH(P_WVB_ADR_WIDTH),
@@ -1126,81 +1164,82 @@ WVB_READER
 // runs in DDR3 UI clock domain
 //
 
-// wire ddr3_pg_req;
-// wire ddr3_pg_optype;
-// wire ddr3_pg_ack;
-// wire[27:0] ddr3_pg_req_addr;
-// wire[127:0] ddr3_dpram_dout;
-// wire ddr3_dpram_wren;
+wire ddr3_pg_req;
+wire ddr3_pg_optype;
+wire ddr3_pg_ack;
+wire[27:0] ddr3_pg_req_addr;
+wire[127:0] ddr3_dpram_dout;
+wire ddr3_dpram_wren;
 
-// DDR3_pg_transfer_mux DDR3_MUX
-// (
-//  .clk(ddr3_ui_clk),
-//  .rst(ddr3_ui_sync_rst),
+DDR3_pg_transfer_mux DDR3_MUX
+(
+ .clk(ddr3_ui_clk),
+ .rst(ddr3_ui_sync_rst),
 
-//  .hbuf_pg_req(hbuf_pg_req),
-//  .hbuf_pg_optype(hbuf_pg_optype),
-//  .hbuf_pg_ack(hbuf_pg_ack),
-//  .hbuf_pg_req_addr(hbuf_pg_req_addr),
-//  .hbuf_dpram_dout(hbuf_dpram_dout),
+ .hbuf_pg_req(hbuf_pg_req),
+ .hbuf_pg_optype(hbuf_pg_optype),
+ .hbuf_pg_ack(hbuf_pg_ack),
+ .hbuf_pg_req_addr(hbuf_pg_req_addr),
+ .hbuf_dpram_dout(hbuf_dpram_dout),
 
-//  .xdom_pg_req(xdom_pg_req),
-//  .xdom_pg_optype(xdom_pg_optype),
-//  .xdom_pg_ack(xdom_pg_ack),
-//  .xdom_pg_req_addr(xdom_pg_req_addr),
-//  .xdom_dpram_dout(xdom_ddr3_dpram_dout),
-//  .xdom_dpram_wren(xdom_ddr3_dpram_wren),
+ .xdom_pg_req(xdom_pg_req),
+ .xdom_pg_optype(xdom_pg_optype),
+ .xdom_pg_ack(xdom_pg_ack),
+ .xdom_pg_req_addr(xdom_pg_req_addr),
+ .xdom_dpram_dout(xdom_ddr3_dpram_dout),
+ .xdom_dpram_wren(xdom_ddr3_dpram_wren),
 
-//  .ddr3_pg_req(ddr3_pg_req),
-//  .ddr3_pg_optype(ddr3_pg_optype),
-//  .ddr3_pg_ack(ddr3_pg_ack),
-//  .ddr3_pg_req_addr(ddr3_pg_req_addr),
-//  .ddr3_dpram_dout(ddr3_dpram_dout),
-//  .ddr3_dpram_wren(ddr3_dpram_wren)
-// );
+ .ddr3_pg_req(ddr3_pg_req),
+ .ddr3_pg_optype(ddr3_pg_optype),
+ .ddr3_pg_ack(ddr3_pg_ack),
+ .ddr3_pg_req_addr(ddr3_pg_req_addr),
+ .ddr3_dpram_dout(ddr3_dpram_dout),
+ .ddr3_dpram_wren(ddr3_dpram_wren)
+);
 
-// //
-// // DDR3 page transter
-// //
+//
+// DDR3 page transter
+//
 
-// DDR3_DPRAM_transfer DDR3_TRANSFER_0
-// (
-//  .ddr3_dq(ddr3_dq),
-//  .ddr3_dqs_n(ddr3_dqs_n),
-//  .ddr3_dqs_p(ddr3_dqs_p),
-//  .ddr3_addr(ddr3_addr),
-//  .ddr3_ba(ddr3_ba),
-//  .ddr3_ras_n(ddr3_ras_n),
-//  .ddr3_cas_n(ddr3_cas_n),
-//  .ddr3_we_n(ddr3_we_n),
-//  .ddr3_reset_n(ddr3_reset_n),
-//  .ddr3_ck_p(ddr3_ck_p),
-//  .ddr3_ck_n(ddr3_ck_n),
-//  .ddr3_cke(ddr3_cke),
-//  .ddr3_cs_n(ddr3_cs_n),
-//  .ddr3_dm(ddr3_dm),
-//  .ddr3_odt(ddr3_odt),
-//  .sys_clk_i(sys_clk_i),
-//  .clk_ref_i(ref_clk),
+wire ref_clk = clk_200MHz;
+DDR3_DPRAM_transfer DDR3_TRANSFER_0
+(
+ .ddr3_dq(ddr3_dq),
+ .ddr3_dqs_n(ddr3_dqs_n),
+ .ddr3_dqs_p(ddr3_dqs_p),
+ .ddr3_addr(ddr3_addr),
+ .ddr3_ba(ddr3_ba),
+ .ddr3_ras_n(ddr3_ras_n),
+ .ddr3_cas_n(ddr3_cas_n),
+ .ddr3_we_n(ddr3_we_n),
+ .ddr3_reset_n(ddr3_reset_n),
+ .ddr3_ck_p(ddr3_ck_p),
+ .ddr3_ck_n(ddr3_ck_n),
+ .ddr3_cke(ddr3_cke),
+ .ddr3_cs_n(ddr3_cs_n),
+ .ddr3_dm(ddr3_dm),
+ .ddr3_odt(ddr3_odt),
+ .sys_clk_i(sys_clk_i),
+ .clk_ref_i(ref_clk),
 
-//  .ui_clk(ddr3_ui_clk),
+ .ui_clk(ddr3_ui_clk),
 
-//  .sys_rst(ddr3_sys_rst),
+ .sys_rst(ddr3_sys_rst),
 
-//  .pg_req(ddr3_pg_req),
-//  .pg_optype(ddr3_pg_optype),
-//  .pg_req_addr(ddr3_pg_req_addr),
-//  .pg_ack(ddr3_pg_ack),
+ .pg_req(ddr3_pg_req),
+ .pg_optype(ddr3_pg_optype),
+ .pg_req_addr(ddr3_pg_req_addr),
+ .pg_ack(ddr3_pg_ack),
 
-//  .init_calib_complete(ddr3_cal_complete),
-//  .ui_clk_sync_rst(ddr3_ui_sync_rst),
-//  .device_temp(ddr3_device_temp),
+ .init_calib_complete(ddr3_cal_complete),
+ .ui_clk_sync_rst(ddr3_ui_sync_rst),
+ .device_temp(ddr3_device_temp),
 
-//  .dpram_dout(ddr3_dpram_dout),
-//  .dpram_din(ddr3_dpram_din),
-//  .dpram_addr(ddr3_dpram_addr),
-//  .dpram_wren(ddr3_dpram_wren)
-// );
+ .dpram_dout(ddr3_dpram_dout),
+ .dpram_din(ddr3_dpram_din),
+ .dpram_addr(ddr3_dpram_addr),
+ .dpram_wren(ddr3_dpram_wren)
+);
 
 //
 // ADC3424 serial controls

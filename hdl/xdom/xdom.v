@@ -96,6 +96,9 @@ module xdom #(parameter N_CHANNELS = 24)
   input[127:0] ddr3_dpram_din,
   output[127:0] ddr3_dpram_dout,
 
+  output reg ddr3_vtt_s3 = 0,
+  output reg ddr3_vtt_s5 = 0,
+
   // hit buffer controller
   output reg hbuf_enable = 0,
   output reg[15:0] hbuf_start_pg = 0,
@@ -717,6 +720,7 @@ always @(*)
       12'hbb1: begin y_rd_data =        {10'b0, periodic_pulser_enable};                       end
       12'hbb0: begin y_rd_data =        thresh_scaler_mux_out_reg[31:16];                      end
       12'hbaf: begin y_rd_data =        thresh_scaler_mux_out_reg[15:0];                       end
+      12'hbae: begin y_rd_data =        {14'b0, ddr3_vtt_s5, ddr3_vtt_s3};                     end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
@@ -836,6 +840,10 @@ always @(posedge clk)
         12'hbb3: begin afe_pulser_period[31:16] <= y_wr_data;                                  end
         12'hbb2: begin afe_pulser_period[15:0] <= y_wr_data;                                   end
         12'hbb1: begin periodic_pulser_enable <= y_wr_data[5:0];                               end
+        12'hbae: begin
+          ddr3_vtt_s3 <= y_wr_data[0];
+          ddr3_vtt_s5 <= y_wr_data[1];
+        end
         default: begin                                                                         end
       endcase
 end // always @ (posedge clk)
