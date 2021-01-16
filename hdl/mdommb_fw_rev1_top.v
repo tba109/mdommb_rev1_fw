@@ -302,8 +302,9 @@ module top (
   output[0:0] ddr3_cke,
   output[0:0] ddr3_cs_n,
   output[1:0] ddr3_dm,
-  output[0:0] ddr3_odt,
-  input sys_clk_i
+  output[0:0] ddr3_odt
+  // (if using DDR3_CLK100 rather than internal clock)
+  // input sys_clk_i
 );
 
 `include "mDOM_trig_bundle_inc.v"
@@ -312,7 +313,7 @@ module top (
 localparam[15:0] FW_VNUM = 16'h10;
 
 // 1 for icm clock, 0 for Q_OSC
-localparam CLK_SRC = 0;
+localparam CLK_SRC = 1;
 
 // number of ADC channels
 localparam N_CHANNELS = 24;
@@ -405,22 +406,26 @@ ADC3424_clk_IO clk_IO_5(.enc_clk(i_adc_clock),
                         .adc_clk_P(ADC5_CLOCK_P), .adc_clk_N(ADC5_CLOCK_M),
                         .sysrf_P(ADC5_SYSRF_P), .sysrf_N(ADC5_SYSRF_M));
 
-// 100 MHz clk forwarding
-ODDR #(
-       .DDR_CLK_EDGE("OPPOSITE_EDGE"),
-       .INIT(1'b0),
-       .SRTYPE("SYNC")
-     )
-ddr3_clk_forward
-(
-  .Q(DDR3_CLK100_OUT),
-  .C(clk_100MHz),
-  .D1(1'b0),
-  .D2(1'b1),
-  .CE(1'b1),
-  .R(1'b0),
-  .S(1'b0)
-);
+// 100 MHz clk forwarding (if using DDR3_CLK100 signal)
+// ODDR #(
+//        .DDR_CLK_EDGE("OPPOSITE_EDGE"),
+//        .INIT(1'b0),
+//        .SRTYPE("SYNC")
+//      )
+// ddr3_clk_forward
+// (
+//   .Q(DDR3_CLK100_OUT),
+//   .C(clk_100MHz),
+//   .D1(1'b0),
+//   .D2(1'b1),
+//   .CE(1'b1),
+//   .R(1'b0),
+//   .S(1'b0)
+// );
+
+// if not using DDR3_CLK100 signal
+assign DDR3_CLK100_OUT = 0;
+wire sys_clk_i = clk_100MHz;
 
 // ADC / DISCR interface inputs
 localparam DEFAULT_DELAY = 5'b0;

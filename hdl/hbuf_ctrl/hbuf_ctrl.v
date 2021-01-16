@@ -1,6 +1,6 @@
 // Aaron Fienberg
 // Aug 2020
-// 
+//
 // mDOM hit buffer controller
 //
 // Transfers data from rdout DPRAM into DDR3 page DPRAM
@@ -8,7 +8,7 @@
 //
 // Reports rd page num and write pg num,
 // rd pg is updated externally to free pages
-// 
+//
 // Page format replicates that of the D-Egg:
 // 0:      0xA000 - Start of Memory Page Format 0
 // 1:      0x5555 - Synchronization pattern
@@ -26,7 +26,7 @@
 //                  Polynomial = x^16 + x^15 + x^2 + 1
 //                  Initial value = 0xFFFF
 //
-// 2 filler words of 0x0000 may 
+// 2 filler words of 0x0000 may
 // appear between discrete waveform packets
 
 module hbuf_ctrl
@@ -51,9 +51,9 @@ module hbuf_ctrl
   output empty,
   output full,
   output reg[15:0] rd_pg_num = 0,
-  output reg[15:0] wr_pg_num = 0, 
-  output reg[15:0] n_used_pgs = 0,  
-  
+  output reg[15:0] wr_pg_num = 0,
+  output reg[15:0] n_used_pgs = 0,
+
   // interface to update the rd_pg
   input[15:0] pg_clr_cnt,
   input pg_clr_req,
@@ -135,7 +135,7 @@ always @(posedge clk) begin
   else begin
     if (rdout_dpram_run) begin
       dpram_len <= dpram_len_in;
-      dpram_busy <= 1;      
+      dpram_busy <= 1;
     end
 
     else if (dpram_done) begin
@@ -146,8 +146,8 @@ always @(posedge clk) begin
 end
 
 //
-// logic and processes to handle n_pgs_used, start_pg, stop_pg, 
-// and rd_pg update requests 
+// logic and processes to handle n_pgs_used, start_pg, stop_pg,
+// and rd_pg update requests
 //
 
 // calculate n_used_pages
@@ -161,9 +161,9 @@ always @(*) begin
   else if (rd_pg_num == wr_pg_num) begin
     i_n_used_pgs = n_allocated_pgs;
   end
-  
+
   else if (rd_pg_num > wr_pg_num) begin
-    i_n_used_pgs = n_allocated_pgs + wr_pg_num - rd_pg_num; 
+    i_n_used_pgs = n_allocated_pgs + wr_pg_num - rd_pg_num;
   end
 
   else begin
@@ -178,7 +178,7 @@ end
 // clip clear count at n_used_pgs
 wire[15:0] clipped_clr_cnt = pg_clr_cnt > n_used_pgs ? n_used_pgs : pg_clr_cnt;
 
-// register next_rd_pg, pg_clr_req, clipped_clr_cnt 
+// register next_rd_pg, pg_clr_req, clipped_clr_cnt
 reg pg_clr_req_pl = 0;
 reg[15:0] next_rd_pg = 0;
 reg full_clear_req = 0;
@@ -194,7 +194,7 @@ always @(posedge clk) begin
 end
 
 wire pg_clr_req_pe;
-posedge_detector P_CLR_REQ_PE(.clk(clk), .rst_n(1'b1), 
+posedge_detector P_CLR_REQ_PE(.clk(clk), .rst_n(1'b1),
                               .a(pg_clr_req_pl), .y(pg_clr_req_pe));
 
 wire en_pe;
@@ -220,7 +220,7 @@ always @(posedge clk) begin
     pg_clr_ack <= 0;
     n_allocated_pgs <= 0;
   end
-  
+
   else if (en_pe) begin
     rd_pg_num <= start_pg;
     i_start_pg <= start_pg;
@@ -248,7 +248,7 @@ always @(posedge clk) begin
     end
 
     pg_clr_ack <= 1;
-  end 
+  end
 
   else if (pg_clr_ack && !pg_clr_req) begin
     pg_clr_ack <= 0;
@@ -286,12 +286,12 @@ wire[9:0] half_dpram_len = dpram_len >> 1'b1;
 wire odd_dpram_len = half_dpram_len[0] == 1'b1;
 // calculate the required number of 64-bit reads
 wire[8:0] shifted_dpram_len = half_dpram_len >> 1'b1;
-wire[8:0] rd_side_dpram_len = odd_dpram_len ? shifted_dpram_len + 9'b1 : shifted_dpram_len; 
+wire[8:0] rd_side_dpram_len = odd_dpram_len ? shifted_dpram_len + 9'b1 : shifted_dpram_len;
 
 reg[8:0] final_dpram_rd_addr = 0;
 always @(posedge clk) begin
   // this is the quantity used in the state machine logic below
-  final_dpram_rd_addr <= rd_side_dpram_len - 9'b1; 
+  final_dpram_rd_addr <= rd_side_dpram_len - 9'b1;
 end
 
 wire[15:0] next_wr_pg_num = wr_pg_num == i_stop_pg ? i_start_pg : wr_pg_num + 1;
@@ -301,8 +301,8 @@ reg crc_rst = 1;
 reg crc_en = 0;
 wire[15:0] crc_out;
 // reorder the words to simulate a 16-bit CRC
-wire[63:0] crc_in = {pg_dpram_din[15:0], 
-                     pg_dpram_din[31:16], 
+wire[63:0] crc_in = {pg_dpram_din[15:0],
+                     pg_dpram_din[31:16],
                      pg_dpram_din[47:32],
                      pg_dpram_din[63:48]};
 crc16_64b_parallel CRC
@@ -338,8 +338,8 @@ always @(posedge clk) begin
     pg_dpram_din <= 0;
     pg_dpram_wren <= 0;
 
-    buffered_data <= 0;   
-    
+    buffered_data <= 0;
+
     crc_rst <= 1;
     crc_en <= 0;
 
@@ -350,7 +350,7 @@ always @(posedge clk) begin
 
   else begin
     pg_dpram_wren <= 0;
-    dpram_done <= 0;  
+    dpram_done <= 0;
     pg_req <= 0;
     flush_ack <= 0;
 
@@ -360,7 +360,7 @@ always @(posedge clk) begin
     case (fsm)
       S_IDLE: begin
         ret <= S_IDLE;
-        
+
         if (en_pe) begin
           wr_pg_num <= start_pg;
         end
@@ -404,12 +404,11 @@ always @(posedge clk) begin
       S_WR_DATA: begin
         buffered_data <= 1;
 
-
         rdout_dpram_rd_addr <= rdout_dpram_rd_addr + 1;
 
         pg_dpram_wr_addr <= pg_dpram_wr_addr + 1;
         pg_dpram_wren <= 1;
-      
+
         pg_dpram_din <= rdout_dpram_dout;
         crc_en <= 1;
 
@@ -466,7 +465,7 @@ always @(posedge clk) begin
 
         if (pg_ack_s) begin
           pg_req <= 0;
-          fsm <= S_INC_WR_PG;         
+          fsm <= S_INC_WR_PG;
         end
       end
 
@@ -494,7 +493,7 @@ always @(posedge clk) begin
       S_FLUSH: begin
         pg_dpram_wr_addr <= pg_dpram_wr_addr + 1;
         pg_dpram_wren <= 1;
-        
+
         pg_dpram_din <= 64'b0;
         crc_en <= 1;
 
@@ -518,5 +517,5 @@ always @(posedge clk) begin
     endcase
   end
 end
- 
+
 endmodule

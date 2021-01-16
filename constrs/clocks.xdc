@@ -3,6 +3,13 @@
 create_clock -name fpga_clk -period 50.000 [get_ports {FPGA_CLOCK_P}]
 create_clock -name qosc_clk -period 50.000 [get_ports {QOSC_CLK_P1V8}]
 
+# do not time paths crossing between DDR3 clock domain and logic clock domain. They all
+# have manual handshaking / synchronizers
+
+set_false_path -from [get_clocks -of_objects [get_pins LCLK_ADCCLK_WIZ_0/inst/mmcm_adv_inst/CLKOUT0]] -to [get_clocks -of_objects [get_pins DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT]]
+
+set_false_path -from [get_clocks -of_objects [get_pins DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT]] -to [get_clocks -of_objects [get_pins LCLK_ADCCLK_WIZ_0/inst/mmcm_adv_inst/CLKOUT0]]
+
 # DDR input constraints are described in the following Xilinx forum thread
 # https://forums.xilinx.com/t5/Timing-Analysis/How-to-constraint-Same-Edge-capture-edge-aligned-DDR-input/m-p/646009#M8411
 # however, these seem to apply to source synchronous interfaces, which we won't be using in the mDOM
