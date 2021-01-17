@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date             : Thu Jan 14 15:18:40 2021
+| Date             : Sat Jan 16 19:02:34 2021
 | Host             : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.162        |
+| Total On-Chip Power (W)  | 1.809        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.046        |
-| Device Static (W)        | 0.116        |
+| Dynamic (W)              | 1.685        |
+| Device Static (W)        | 0.123        |
 | Effective TJA (C/W)      | 2.4          |
-| Max Ambient (C)          | 82.2         |
-| Junction Temperature (C) | 27.8         |
+| Max Ambient (C)          | 80.6         |
+| Junction Temperature (C) | 29.4         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,20 +52,24 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.198 |       11 |       --- |             --- |
-| Slice Logic              |     0.068 |    64166 |       --- |             --- |
-|   LUT as Logic           |     0.055 |    22728 |     64000 |           35.51 |
-|   CARRY4                 |     0.007 |     4676 |     16000 |           29.23 |
-|   Register               |     0.005 |    28949 |    128000 |           22.62 |
-|   LUT as Distributed RAM |    <0.001 |      384 |     17600 |            2.18 |
-|   F7/F8 Muxes            |    <0.001 |      694 |     64000 |            1.08 |
-|   Others                 |     0.000 |     1432 |       --- |             --- |
-| Signals                  |     0.089 |    49423 |       --- |             --- |
-| Block RAM                |     0.085 |       57 |       120 |           47.50 |
-| MMCM                     |     0.239 |        2 |         8 |           25.00 |
-| I/O                      |     0.365 |      227 |       400 |           56.75 |
-| Static Power             |     0.116 |          |           |                 |
-| Total                    |     1.162 |          |           |                 |
+| Clocks                   |     0.208 |       30 |       --- |             --- |
+| Slice Logic              |     0.083 |    75336 |       --- |             --- |
+|   LUT as Logic           |     0.068 |    27306 |     64000 |           42.67 |
+|   CARRY4                 |     0.008 |     4863 |     16000 |           30.39 |
+|   Register               |     0.006 |    33259 |    128000 |           25.98 |
+|   LUT as Distributed RAM |    <0.001 |      908 |     17600 |            5.16 |
+|   F7/F8 Muxes            |    <0.001 |      580 |     64000 |            0.91 |
+|   LUT as Shift Register  |    <0.001 |       17 |     17600 |            0.10 |
+|   Others                 |     0.000 |     1570 |       --- |             --- |
+| Signals                  |     0.109 |    58588 |       --- |             --- |
+| Block RAM                |     0.103 |       60 |       120 |           50.00 |
+| MMCM                     |     0.326 |        3 |         8 |           37.50 |
+| PLL                      |     0.115 |        1 |         8 |           12.50 |
+| I/O                      |     0.627 |      279 |       400 |           69.75 |
+| PHASER                   |     0.110 |       14 |       --- |             --- |
+| XADC                     |     0.004 |        1 |       --- |             --- |
+| Static Power             |     0.123 |          |           |                 |
+| Total                    |     1.809 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,17 +79,17 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.486 |       0.469 |      0.017 |
-| Vccaux    |       1.800 |     0.238 |       0.216 |      0.022 |
-| Vcco33    |       3.300 |     0.006 |       0.002 |      0.004 |
+| Vccint    |       1.000 |     0.584 |       0.566 |      0.018 |
+| Vccaux    |       1.800 |     0.448 |       0.427 |      0.022 |
+| Vcco33    |       3.300 |     0.007 |       0.003 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.100 |       0.096 |      0.004 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
-| Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
+| Vcco135   |       1.350 |     0.121 |       0.117 |      0.004 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.011 |       0.007 |      0.004 |
-| Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
+| Vccbram   |       1.000 |     0.012 |       0.007 |      0.005 |
+| Vccadc    |       1.800 |     0.022 |       0.002 |      0.020 |
 +-----------+-------------+-----------+-------------+------------+
 
 
@@ -126,18 +130,37 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+-------------------------------+-----------------------------------------------------------+-----------------+
-| Clock                         | Domain                                                    | Constraint (ns) |
-+-------------------------------+-----------------------------------------------------------+-----------------+
-| clk_out1_idelay_discr_clk_wiz | IDELAY_DISCR_CLK_WIZ_0/inst/clk_out1_idelay_discr_clk_wiz |             5.0 |
-| clk_out1_lclk_adcclk_wiz      | LCLK_ADCCLK_WIZ_0/inst/clk_out1_lclk_adcclk_wiz           |             8.0 |
-| clk_out2_idelay_discr_clk_wiz | IDELAY_DISCR_CLK_WIZ_0/inst/clk_out2_idelay_discr_clk_wiz |             2.0 |
-| clk_out2_lclk_adcclk_wiz      | LCLK_ADCCLK_WIZ_0/inst/clk_out2_lclk_adcclk_wiz           |             2.7 |
-| clk_out3_idelay_discr_clk_wiz | IDELAY_DISCR_CLK_WIZ_0/inst/clk_out3_idelay_discr_clk_wiz |             8.0 |
-| clkfbout_idelay_discr_clk_wiz | IDELAY_DISCR_CLK_WIZ_0/inst/clkfbout_idelay_discr_clk_wiz |            50.0 |
-| clkfbout_lclk_adcclk_wiz      | LCLK_ADCCLK_WIZ_0/inst/clkfbout_lclk_adcclk_wiz           |            50.0 |
-| qosc_clk                      | QOSC_CLK_P1V8                                             |            50.0 |
-+-------------------------------+-----------------------------------------------------------+-----------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| Clock                                                                                                                                                     | Domain                                                                                                                                                                                                              | Constraint (ns) |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| clk_out1_idelay_discr_clk_wiz                                                                                                                             | IDELAY_DISCR_CLK_WIZ_0/inst/clk_out1_idelay_discr_clk_wiz                                                                                                                                                           |             5.0 |
+| clk_out1_lclk_adcclk_wiz                                                                                                                                  | LCLK_ADCCLK_WIZ_0/inst/clk_out1_lclk_adcclk_wiz                                                                                                                                                                     |             8.0 |
+| clk_out2_idelay_discr_clk_wiz                                                                                                                             | IDELAY_DISCR_CLK_WIZ_0/inst/clk_out2_idelay_discr_clk_wiz                                                                                                                                                           |             2.0 |
+| clk_out2_lclk_adcclk_wiz                                                                                                                                  | LCLK_ADCCLK_WIZ_0/inst/clk_out2_lclk_adcclk_wiz                                                                                                                                                                     |             2.7 |
+| clk_out3_idelay_discr_clk_wiz                                                                                                                             | IDELAY_DISCR_CLK_WIZ_0/inst/clk_out3_idelay_discr_clk_wiz                                                                                                                                                           |             8.0 |
+| clk_out4_idelay_discr_clk_wiz                                                                                                                             | IDELAY_DISCR_CLK_WIZ_0/inst/clk_out4_idelay_discr_clk_wiz                                                                                                                                                           |            10.0 |
+| clk_pll_i                                                                                                                                                 | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/clk_pll_i                                                                                                                                    |            12.3 |
+| clkfbout_idelay_discr_clk_wiz                                                                                                                             | IDELAY_DISCR_CLK_WIZ_0/inst/clkfbout_idelay_discr_clk_wiz                                                                                                                                                           |            50.0 |
+| clkfbout_lclk_adcclk_wiz                                                                                                                                  | LCLK_ADCCLK_WIZ_0/inst/clkfbout_lclk_adcclk_wiz                                                                                                                                                                     |            50.0 |
+| fpga_clk                                                                                                                                                  | FPGA_CLOCK_P                                                                                                                                                                                                        |            50.0 |
+| freq_refclk                                                                                                                                               | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/freq_refclk                                                                                                                                  |             1.5 |
+| iserdes_clkdiv                                                                                                                                            | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/iserdes_clkdiv       |            12.3 |
+| iserdes_clkdiv_1                                                                                                                                          | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/iserdes_clkdiv       |            12.3 |
+| mem_refclk                                                                                                                                                | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/mem_refclk                                                                                                                                   |             3.1 |
+| oserdes_clk                                                                                                                                               | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/oserdes_clk          |             3.1 |
+| oserdes_clk_1                                                                                                                                             | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/oserdes_clk          |             3.1 |
+| oserdes_clk_2                                                                                                                                             | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/oserdes_clk          |             3.1 |
+| oserdes_clk_3                                                                                                                                             | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/oserdes_clk          |             3.1 |
+| oserdes_clkdiv                                                                                                                                            | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/oserdes_clkdiv       |            12.3 |
+| oserdes_clkdiv_1                                                                                                                                          | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/oserdes_clkdiv       |            12.3 |
+| oserdes_clkdiv_2                                                                                                                                          | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/oserdes_clkdiv       |             6.2 |
+| oserdes_clkdiv_3                                                                                                                                          | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/oserdes_clkdiv       |             6.2 |
+| pll_clk3_out                                                                                                                                              | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/pll_clk3_out                                                                                                                                 |            12.3 |
+| pll_clkfbout                                                                                                                                              | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/pll_clkfbout                                                                                                                                 |            10.0 |
+| sync_pulse                                                                                                                                                | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/sync_pulse                                                                                                                                   |            49.2 |
+| u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/iserdes_clk | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/A_rst_primitives_reg |             3.1 |
+| u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/iserdes_clk | DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/A_rst_primitives_reg |             3.1 |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -149,7 +172,7 @@ Table of Contents
 +------------------------------------------+-----------+
 | Name                                     | Power (W) |
 +------------------------------------------+-----------+
-| top                                      |     1.046 |
+| top                                      |     1.685 |
 |   AD5668_SPI                             |     0.007 |
 |     IILC_MISO_0                          |     0.002 |
 |     IILC_MOSI_0                          |     0.002 |
@@ -162,21 +185,31 @@ Table of Contents
 |     IILC_MISO_0                          |     0.002 |
 |     IILC_MOSI_0                          |     0.003 |
 |     IILC_SCLK_0                          |     0.002 |
-|   IDELAY_DISCR_CLK_WIZ_0                 |     0.108 |
-|     inst                                 |     0.108 |
+|   DDR3_MUX                               |     0.001 |
+|   DDR3_TRANSFER_0                        |     0.619 |
+|     MIG_7_SERIES                         |     0.616 |
+|       u_mig_7series_0_mig                |     0.614 |
+|     PG_TRANS_CTRL                        |     0.003 |
+|   HBUF_CTRL_0                            |     0.018 |
+|     DDR3_PG_DPRAM_0                      |     0.007 |
+|       U0                                 |     0.007 |
+|     READER_DPRAM_0                       |     0.005 |
+|       U0                                 |     0.005 |
+|   IDELAY_DISCR_CLK_WIZ_0                 |     0.109 |
+|     inst                                 |     0.109 |
 |   LCLK_ADCCLK_WIZ_0                      |     0.132 |
 |     inst                                 |     0.132 |
-|   PULSER_0                               |     0.005 |
-|     AFE_OUT                              |     0.004 |
-|       inst                               |     0.004 |
-|   WVB_READER                             |     0.025 |
-|     RD_CTRL                              |     0.003 |
-|   XDOM_0                                 |     0.038 |
-|     CRSM_0                               |     0.009 |
-|     PG_DPRAM                             |     0.010 |
-|       U0                                 |     0.010 |
-|     RDOUT_DPRAM                          |     0.004 |
-|       U0                                 |     0.004 |
+|   PULSER_0                               |     0.006 |
+|     AFE_OUT                              |     0.005 |
+|       inst                               |     0.005 |
+|   WVB_READER                             |     0.027 |
+|     RD_CTRL                              |     0.004 |
+|   XDOM_0                                 |     0.046 |
+|     CRSM_0                               |     0.010 |
+|     PG_DPRAM                             |     0.019 |
+|       U0                                 |     0.019 |
+|     RDOUT_DPRAM                          |     0.003 |
+|       U0                                 |     0.003 |
 |     UART_DEBUG_0                         |     0.003 |
 |       UART_PROC_HS_0                     |     0.002 |
 |     UART_ICM_0                           |     0.003 |
@@ -337,7 +370,7 @@ Table of Contents
 |   scaler_gen[14].DISC_SCALER             |     0.003 |
 |     INH_GEN                              |     0.001 |
 |   scaler_gen[14].THRESH_SCALER           |     0.002 |
-|   scaler_gen[15].DISC_SCALER             |     0.003 |
+|   scaler_gen[15].DISC_SCALER             |     0.002 |
 |     INH_GEN                              |     0.001 |
 |   scaler_gen[15].THRESH_SCALER           |     0.002 |
 |   scaler_gen[16].DISC_SCALER             |     0.003 |
@@ -391,10 +424,10 @@ Table of Contents
 |   scaler_gen[9].DISC_SCALER              |     0.003 |
 |     INH_GEN                              |     0.001 |
 |   scaler_gen[9].THRESH_SCALER            |     0.002 |
-|   waveform_acq_gen[0].WFM_ACQ            |     0.009 |
+|   waveform_acq_gen[0].WFM_ACQ            |     0.008 |
 |     WVB                                  |     0.008 |
 |       PTB                                |     0.001 |
-|       WBS                                |     0.003 |
+|       WBS                                |     0.004 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[10].WFM_ACQ           |     0.008 |
 |     WVB                                  |     0.007 |
@@ -402,31 +435,31 @@ Table of Contents
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[11].WFM_ACQ           |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[12].WFM_ACQ           |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[13].WFM_ACQ           |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[14].WFM_ACQ           |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[15].WFM_ACQ           |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
-|   waveform_acq_gen[16].WFM_ACQ           |     0.009 |
+|   waveform_acq_gen[16].WFM_ACQ           |     0.008 |
 |     WVB                                  |     0.008 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.004 |
@@ -437,7 +470,7 @@ Table of Contents
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[18].WFM_ACQ           |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
@@ -467,12 +500,12 @@ Table of Contents
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[23].WFM_ACQ           |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[2].WFM_ACQ            |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
@@ -482,32 +515,32 @@ Table of Contents
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[4].WFM_ACQ            |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[5].WFM_ACQ            |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[6].WFM_ACQ            |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[7].WFM_ACQ            |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[8].WFM_ACQ            |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
 |   waveform_acq_gen[9].WFM_ACQ            |     0.008 |
-|     WVB                                  |     0.008 |
+|     WVB                                  |     0.007 |
 |       PTB                                |     0.001 |
 |       WBS                                |     0.003 |
 |       WR_CTRL                            |     0.003 |
