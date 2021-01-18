@@ -310,7 +310,7 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h10;
+localparam[15:0] FW_VNUM = 16'h11;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -598,9 +598,9 @@ endgenerate
 //     12'hbcf: [15:0] AFE pulser sw trig mask [15:0]
 //     12'hbce: [i] AFE pulser i single trigger + sw_trig (based on mask)
 //
-//     DDR3 test signals
-//     12'hbcd: page transfer addr[27:16]
-//     12'hbcc: page transger addr[15:0]
+//     DDR3 memory controller signals
+//     12'hbcd: page transfer addr[26:16] (16-bit word address)
+//     12'hbcc: page transger addr[15:0]  (16-bit word address)
 //     12'hbcb: [0] pg transfer optype (0 read, 1 write)
 //     12'hbca: [0] pg transfer task reg
 //     12'hbc9: DDR3 sys rst (active low)

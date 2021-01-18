@@ -83,7 +83,11 @@ module xdom #(parameter N_CHANNELS = 24)
 
   // DDR3 interface
   input ddr3_ui_clk,
-  output reg[27:0] pg_req_addr = 0,
+  // note: the memory controller uses byte addresses,
+  // but the xdom MCU interface will use 16-bit word addresses
+  // to replicate the D-Egg interface
+  // byte addresses are used everywhere else in the mDOM firmware
+  output[27:0] pg_req_addr,
   output reg pg_optype = 0,
   output reg pg_req = 0,
   input pg_ack,
@@ -606,6 +610,11 @@ reg[31:0] afe_pulser_period = 0;
 reg[5:0] pulser_trig_single = 0;
 reg[5:0] periodic_pulser_enable = 0;
 
+// handles converting DDR3 16-bit word address from xdom
+// into the byte address used by the memory controller
+reg[26:0] pg_req_addr_16b = 0;
+assign pg_req_addr = {pg_req_addr_16b, 1'b0};
+
 always @(*)
  begin
     case(y_adr)
@@ -687,8 +696,8 @@ always @(*)
       12'hbd0: begin y_rd_data =       {8'b0, pulser_sw_trig_mask[N_CHANNELS-1:16]};           end
       12'hbcf: begin y_rd_data =       pulser_sw_trig_mask[15:0];                              end
       12'hbce: begin y_rd_data =       {10'b0, pulser_trig_single};                            end
-      12'hbcd: begin y_rd_data =       pg_req_addr[27:16];                                     end
-      12'hbcc: begin y_rd_data =       pg_req_addr[15:0];                                      end
+      12'hbcd: begin y_rd_data =       {5'b0, pg_req_addr_16b[26:16]};                         end
+      12'hbcc: begin y_rd_data =       pg_req_addr_16b[15:0];                                  end
       12'hbcb: begin y_rd_data =       {15'b0, pg_optype};                                     end
       12'hbca: begin y_rd_data =       {15'b0, pg_task_val};                                   end
       12'hbc9: begin y_rd_data =       {15'b0, ddr3_sys_rst};                                  end
@@ -819,8 +828,8 @@ always @(posedge clk)
           pulser_trig_single <= y_wr_data[5:0];
           xdom_trig_run <= pulser_sw_trig_mask;
         end
-        12'hbcd: begin pg_req_addr[27:16] <= y_wr_data[11:0];                                  end
-        12'hbcc: begin pg_req_addr[15:0] <= y_wr_data[15:0];                                   end
+        12'hbcd: begin pg_req_addr_16b[26:16] <= y_wr_data[10:0];                                  end
+        12'hbcc: begin pg_req_addr_16b[15:0] <= y_wr_data[15:0];                                   end
         12'hbcb: begin pg_optype <= y_wr_data[0];                                              end
         12'hbca: begin pg_req_start <= y_wr_data[0];                                           end
         12'hbc9: begin ddr3_sys_rst <= y_wr_data[0];                                           end
