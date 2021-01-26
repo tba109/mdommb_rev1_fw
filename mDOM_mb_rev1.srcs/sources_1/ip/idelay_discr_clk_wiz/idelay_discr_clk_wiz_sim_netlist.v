@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-// Date        : Tue Nov 10 14:17:52 2020
+// Date        : Tue Jan 26 11:26:45 2021
 // Host        : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz_sim_netlist.v
@@ -16,15 +16,11 @@
 module idelay_discr_clk_wiz
    (clk_out1,
     clk_out2,
-    clk_out3,
-    clk_out4,
     reset,
     locked,
     clk_in1);
   output clk_out1;
   output clk_out2;
-  output clk_out3;
-  output clk_out4;
   input reset;
   output locked;
   input clk_in1;
@@ -32,8 +28,6 @@ module idelay_discr_clk_wiz
   wire clk_in1;
   wire clk_out1;
   wire clk_out2;
-  wire clk_out3;
-  wire clk_out4;
   wire locked;
   wire reset;
 
@@ -41,8 +35,6 @@ module idelay_discr_clk_wiz
        (.clk_in1(clk_in1),
         .clk_out1(clk_out1),
         .clk_out2(clk_out2),
-        .clk_out3(clk_out3),
-        .clk_out4(clk_out4),
         .locked(locked),
         .reset(reset));
 endmodule
@@ -51,15 +43,11 @@ endmodule
 module idelay_discr_clk_wiz_idelay_discr_clk_wiz_clk_wiz
    (clk_out1,
     clk_out2,
-    clk_out3,
-    clk_out4,
     reset,
     locked,
     clk_in1);
   output clk_out1;
   output clk_out2;
-  output clk_out3;
-  output clk_out4;
   input reset;
   output locked;
   input clk_in1;
@@ -69,10 +57,6 @@ module idelay_discr_clk_wiz_idelay_discr_clk_wiz_clk_wiz
   wire clk_out1_idelay_discr_clk_wiz;
   wire clk_out2;
   wire clk_out2_idelay_discr_clk_wiz;
-  wire clk_out3;
-  wire clk_out3_idelay_discr_clk_wiz;
-  wire clk_out4;
-  wire clk_out4_idelay_discr_clk_wiz;
   wire clkfbout_buf_idelay_discr_clk_wiz;
   wire clkfbout_idelay_discr_clk_wiz;
   wire locked;
@@ -82,7 +66,9 @@ module idelay_discr_clk_wiz_idelay_discr_clk_wiz_clk_wiz
   wire NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKOUT3_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED;
@@ -104,22 +90,14 @@ module idelay_discr_clk_wiz_idelay_discr_clk_wiz_clk_wiz
        (.I(clk_out2_idelay_discr_clk_wiz),
         .O(clk_out2));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFG clkout3_buf
-       (.I(clk_out3_idelay_discr_clk_wiz),
-        .O(clk_out3));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFG clkout4_buf
-       (.I(clk_out4_idelay_discr_clk_wiz),
-        .O(clk_out4));
-  (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(50.000000),
+    .CLKFBOUT_MULT_F(48.000000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
     .CLKIN1_PERIOD(50.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(5.000000),
+    .CLKOUT0_DIVIDE_F(8.000000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
@@ -127,11 +105,11 @@ module idelay_discr_clk_wiz_idelay_discr_clk_wiz_clk_wiz
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
     .CLKOUT1_USE_FINE_PS("FALSE"),
-    .CLKOUT2_DIVIDE(8),
+    .CLKOUT2_DIVIDE(1),
     .CLKOUT2_DUTY_CYCLE(0.500000),
     .CLKOUT2_PHASE(0.000000),
     .CLKOUT2_USE_FINE_PS("FALSE"),
-    .CLKOUT3_DIVIDE(10),
+    .CLKOUT3_DIVIDE(1),
     .CLKOUT3_DUTY_CYCLE(0.500000),
     .CLKOUT3_PHASE(0.000000),
     .CLKOUT3_USE_FINE_PS("FALSE"),
@@ -174,9 +152,9 @@ module idelay_discr_clk_wiz_idelay_discr_clk_wiz_clk_wiz
         .CLKOUT0B(NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED),
         .CLKOUT1(clk_out2_idelay_discr_clk_wiz),
         .CLKOUT1B(NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED),
-        .CLKOUT2(clk_out3_idelay_discr_clk_wiz),
+        .CLKOUT2(NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED),
         .CLKOUT2B(NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED),
-        .CLKOUT3(clk_out4_idelay_discr_clk_wiz),
+        .CLKOUT3(NLW_mmcm_adv_inst_CLKOUT3_UNCONNECTED),
         .CLKOUT3B(NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED),
         .CLKOUT4(NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED),
         .CLKOUT5(NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED),

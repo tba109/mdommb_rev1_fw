@@ -310,7 +310,7 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h11;
+localparam[15:0] FW_VNUM = 16'h12;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -334,37 +334,44 @@ IBUFGDS IBUFDGS_FPGACLK(.I(FPGA_CLOCK_P), .IB(FPGA_CLOCK_N), .O(icm_fpga_clk));
 
 wire osc_20MHz = CLK_SRC == 0 ? QOSC_CLK_P1V8 : icm_fpga_clk;
 
-// generate 125 MHz, 200 MHz, 375 MHz, 500 MHz clocks
+// generate 100 MHz, 120 MHz, 200 MHz, 360 MHz, 480 MHz clocks
 wire lclk_adcclk_locked;
 wire idelay_discrclk_locked;
 wire clk_100MHz;
-wire clk_125MHz;
+wire clk_120MHz;
 wire clk_200MHz;
-wire clk_375MHz;
-wire clk_500MHz;
-lclk_adcclk_wiz LCLK_ADCCLK_WIZ_0
-  (
-   .clk_in1(osc_20MHz),
-   .clk_out1(clk_125MHz),
-   .clk_out2(clk_375MHz),
-   .locked(lclk_adcclk_locked),
-   .reset(1'b0)
-  );
-wire lclk = clk_125MHz;
+wire clk_360MHz;
+wire clk_480MHz;
+lclk_adcclk_wiz LCLK_ADCCLK_WIZ_0 (
+  .clk_in1(osc_20MHz),
+  .clk_out1(clk_120MHz),
+  .clk_out2(clk_360MHz),
+  .locked(lclk_adcclk_locked),
+  .reset(1'b0)
+);
+wire lclk = clk_120MHz;
 wire lclk_rst = !lclk_adcclk_locked;
-wire i_adc_clock = clk_125MHz;
+wire i_adc_clock = clk_120MHz;
 
-wire discr_fclk_125MHz;
-idelay_discr_clk_wiz IDELAY_DISCR_CLK_WIZ_0
-  (
-   .clk_in1(osc_20MHz),
-   .clk_out1(clk_200MHz),
-   .clk_out2(clk_500MHz),
-   .clk_out3(discr_fclk_125MHz),
-   .clk_out4(clk_100MHz),
-   .locked(idelay_discrclk_locked),
-   .reset(1'b0)
-  );
+// this no longer handles the idelay clock after the
+// switch from 125 MHz to 120 MHz
+wire discr_fclk_120MHz;
+idelay_discr_clk_wiz IDELAY_DISCR_CLK_WIZ_0 (
+  .clk_in1(osc_20MHz),
+  .clk_out1(discr_fclk_120MHz),
+  .clk_out2(clk_480MHz),
+  .locked(idelay_discrclk_locked),
+  .reset(1'b0)
+);
+
+wire ddr3_idelay_locked;
+ddr3_idelay_clk_wiz DDR3_IDELAY_CLK_WIZ_0 (
+  .clk_in1(osc_20MHz),
+  .clk_out1(clk_100MHz),
+  .clk_out2(clk_200MHz),
+  .locked(ddr3_idelay_locked),
+  .reset(1'b0)
+);
 
 // IDELAY control; this should automatically be replicated to all banks where it is needed
 // (see https://forums.xilinx.com/t5/Memory-Interfaces-and-NoC/IDELAYCTRL-in-Kintex-MIG/m-p/524885#M6824)
@@ -485,9 +492,9 @@ generate
       .adc_DN(adc_DN[2*i+1 : 2*i]),
       .discr_out(discr_out[i]),
       .lclk(lclk),
-      .discr_fclk(discr_fclk_125MHz),
-      .adc_dclk(clk_375MHz),
-      .discr_dclk(clk_500MHz),
+      .discr_fclk(discr_fclk_120MHz),
+      .adc_dclk(clk_360MHz),
+      .discr_dclk(clk_480MHz),
       .in_delay_reset({adc_delay_reset_xdom[i], adc_delay_reset_xdom[i]}),
       .in_delay_data_ce(adc_delay_ce_xdom[2*i+1 : 2*i]),
       .in_delay_data_inc(adc_delay_inc_xdom[2*i+1 : 2*i]),
@@ -1391,9 +1398,9 @@ assign slo_adc_miso = slo_adc_chip_sel == 0 ? MON_ADC1_SDO : MON_ADC2_SDO;
 afe_pulser PULSER_0 (
   .lclk(lclk),
   .lclk_rst(lclk_rst),
-  .divclk(discr_fclk_125MHz),
+  .divclk(discr_fclk_120MHz),
   .divclk_rst(!idelay_discrclk_locked),
-  .fastclk(clk_500MHz),
+  .fastclk(clk_480MHz),
   .io_rst(pulser_io_rst[0]),
   .trig(pulser_trig[0]),
   .y0(1'b1),
