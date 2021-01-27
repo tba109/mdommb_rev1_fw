@@ -23,6 +23,12 @@ module top (
   input FPGA_UART_RX,
   output FPGA_UART_TX,
 
+  // ICM sync related
+  input FPGA_SYNC_P,
+  input FPGA_SYNC_N,
+  input FPGA_GPIO_0,
+  input FPGA_GPIO_1,
+
   // MCU/CPLD UART
   input MCU_USART6_TX,
   input MCU_USART6_RX,
@@ -310,7 +316,7 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h13;
+localparam[15:0] FW_VNUM = 16'h14;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -327,6 +333,7 @@ localparam P_WVB_ADR_WIDTH = 11;
 // hdr_bundle 1, 48 bit LTC
 // localparam P_HDR_WIDTH = P_WVB_ADR_WIDTH == 10 ? 71 : 80;
 // hdr_bundle 2, 49 bit LTC
+localparam P_LTC_WIDTH = 49;
 localparam P_HDR_WIDTH = 79;
 
 //
@@ -519,6 +526,11 @@ endgenerate
 // xDOM interface
 // Addressing:
 //     12'hfff: Version/build number
+//     12'hfe3: Local time counter task register
+//         [0]:       Read request/acknowledge
+//     12'hfe2: Local time counter read data bits [47:32]
+//     12'hfe1: Local time counter read data bits [31:16]
+//     12'hfe0: Local time counter read data bits [15:0]
 //     12'heff: [2]: SLO ADC task reg
 //     12'hdff: [0] dpram_done
 //     12'hdfe: [10:0] dpram_len
@@ -531,6 +543,17 @@ endgenerate
 //     12'hdf2: wvb_reader dpram mode
 //     12'hde4: SLO ADC SPI write data [15:0]
 //     12'hde3: SLO ADC SPI read data [15:0]
+//
+//     12'hcc4: Enable for ICM_FPGA_SYNC signal
+//     12'hcb6: ICM sync status
+//         [0]: icm_sync_rdy
+//         [1]: icm_sync_error
+//     12'hcb5: expected sync LTC [47:32]
+//     12'hcb4: expected sync LTC [31:16]
+//     12'hcb3: expected sync LTC [15:0]
+//     12'hcb2: received sync LTC [47:32]
+//     12'hcb1: received sync LTC [31:16]
+//     12'hcb0: received sync LTC [15:0]
 //
 //     12'hbfe: trig settings
 //             [0] et
@@ -744,6 +767,17 @@ wire[N_CHANNELS*32-1:0] disc_scaler_out;
 // thresh scaler
 wire[N_CHANNELS*32-1:0] thresh_scaler_out;
 
+// LTC controls and synchronization
+wire icm_fpga_sync_en;
+wire ltc_rd_req;
+wire ltc_rd_ack;
+wire[P_LTC_WIDTH-1:0] ltc_rd_data;
+wire icm_sync_rdy;
+wire icm_sync_err;
+// expected / received LTCs are always 48 bits
+wire[47:0] expected_sync_ltc;
+wire[47:0] received_sync_ltc;
+
 // FMC, copied directly from D-Egg firmware
 wire [15:0] i_fmc_din;
 wire [15:0] i_fmc_dout;
@@ -940,6 +974,16 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .disc_scaler_out(disc_scaler_out),
   .thresh_scaler_out(thresh_scaler_out),
 
+  // ltc / sync
+  .ltc_rd_data(ltc_rd_data[P_LTC_WIDTH-1:P_LTC_WIDTH-48]),
+  .ltc_rd_req(ltc_rd_req),
+  .ltc_rd_ack(ltc_rd_ack),
+  .icm_fpga_sync_en(icm_fpga_sync_en),
+  .icm_sync_rdy(icm_sync_rdy),
+  .icm_sync_err(icm_sync_err),
+  .expected_sync_ltc(expected_sync_ltc),
+  .received_sync_ltc(received_sync_ltc),
+
   // debug UART
   .debug_txd(FTD_UART_TXD),
   .debug_rxd(FTD_UART_RXD),
@@ -968,18 +1012,41 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
 assign FTD_UART_CTSn = 0;
 
 //
-// placeholder LTC counter
+// local time counter and ICM synchronization logic
 //
-(* max_fanout = 5 *) reg[48:0] ltc = 0;
-always @(posedge lclk) begin
-  if (lclk_rst) begin
-    ltc <= 0;
-  end
+wire[P_LTC_WIDTH-1:0] ltc;
+wire[P_LTC_WIDTH-1:0] ltc_wr_data;
+wire ltc_wr_req;
+wire i_fpga_sync;
+IBUFGDS IBUF_FPGA_SYNC(.I(FPGA_SYNC_P), .IB(FPGA_SYNC_N), .O(i_fpga_sync));
+icm_time_transfer #(.SHIFT_CNT(40), .EXPECTED_LTC_OFFSET(1)) ICM_TIME_TRANSFER (
+  .clk(lclk),
+  .rst(lclk_rst),
+  .ltc(ltc[P_LTC_WIDTH-1:P_LTC_WIDTH-48]),
+  .en(icm_fpga_sync_en),
+  .ser_in(FPGA_GPIO_0),
+  .sync_in(i_fpga_sync),
+  .ltc_wr_data(ltc_wr_data[P_LTC_WIDTH-1:P_LTC_WIDTH-48]),
+  .ltc_wr_req(ltc_wr_req),
+  .rdy(icm_sync_rdy),
+  .err(icm_sync_err),
+  .expected_ltc(expected_sync_ltc),
+  .received_ltc(received_sync_ltc)
+);
+// always set ltc LSB to 0 on ICM sync
+assign ltc_wr_data[P_LTC_WIDTH-49:0] = 0;
 
-  else begin
-    ltc <= ltc + 1;
-  end
-end
+local_time_counter #(.P_LTC_WIDTH(P_LTC_WIDTH)) LTC_0 (
+  .clk(lclk),
+  .rst(lclk_rst),
+  .ltc(ltc),
+  .ltc_wr_data(ltc_wr_data),
+  .ltc_wr_req(ltc_wr_req),
+  .ltc_wr_ack(),
+  .ltc_rd_data(ltc_rd_data),
+  .ltc_rd_req(ltc_rd_req),
+  .ltc_rd_ack(ltc_rd_ack)
+);
 
 //
 // Waveform acquisition modules
@@ -1012,7 +1079,7 @@ generate
   for (i = 0; i < N_CHANNELS; i = i + 1) begin : waveform_acq_gen
     waveform_acquisition #(.P_ADR_WIDTH(P_WVB_ADR_WIDTH),
                            .P_HDR_WIDTH(P_HDR_WIDTH),
-                           .P_LTC_WIDTH(49))
+                           .P_LTC_WIDTH(P_LTC_WIDTH))
     WFM_ACQ
     (
       .clk(lclk),

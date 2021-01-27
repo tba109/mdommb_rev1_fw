@@ -128,6 +128,16 @@ module xdom #(parameter N_CHANNELS = 24)
   // thresh scaler
   input[N_CHANNELS*32-1:0] thresh_scaler_out,
 
+  // icm sync signals and ltc
+  input[47:0] ltc_rd_data,
+  output ltc_rd_req,
+  input ltc_rd_ack,
+  output reg icm_fpga_sync_en = 0,
+  input icm_sync_rdy,
+  input icm_sync_err,
+  input[47:0] expected_sync_ltc,
+  input[47:0] received_sync_ltc,
+
   // Debug FT232R I/O
   input             debug_txd,
   output            debug_rxd,
@@ -491,6 +501,23 @@ one_shot OS_NCONVST (
 //
 // Task regs
 //
+wire [15:0] ltc_task_val;
+wire [15:0] ltc_task_req;
+wire [15:0] ltc_task_ack;
+task_reg #(.P_TASK_ADR(12'hfe3)) LTC_TASK_REG_0
+ (
+  .clk(clk),
+  .rst(rst),
+  .adr(y_adr),
+  .data(y_wr_data),
+  .wr(y_wr),
+  .req(ltc_task_req),
+  .ack(ltc_task_ack),
+  .val(ltc_task_val)
+  );
+assign ltc_rd_req = ltc_task_req[0];
+assign ltc_task_ack[0] = ltc_rd_ack;
+
 wire[15:0] adc_spi_task_val;
 wire[15:0] adc_spi_task_req;
 wire[15:0] adc_spi_task_ack;
@@ -619,6 +646,10 @@ always @(*)
  begin
     case(y_adr)
       12'hfff: begin y_rd_data =       vnum;                                                   end
+      12'hfe3: begin y_rd_data =       ltc_task_val;                                           end
+      12'hfe2: begin y_rd_data =       ltc_rd_data[47:32];                                     end
+      12'hfe1: begin y_rd_data =       ltc_rd_data[31:16];                                     end
+      12'hfe0: begin y_rd_data =       ltc_rd_data[15:0];                                      end
       12'heff: begin y_rd_data =       slo_spi_task_val;                                       end
       12'hdff: begin y_rd_data =       {15'b0, dpram_done};                                    end
       12'hdfe: begin y_rd_data =       dpram_len;                                              end
@@ -631,6 +662,14 @@ always @(*)
       12'hdf2: begin y_rd_data =       {15'b0, wvb_reader_dpram_mode};                         end
       12'hde4: begin y_rd_data =       slo_adc_wr_data[15:0];                                  end
       12'hde3: begin y_rd_data =       slo_adc_rd_data[15:0];                                  end
+      12'hcc4: begin y_rd_data =       {15'b0, icm_fpga_sync_en};                              end
+      12'hcb6: begin y_rd_data =       {14'h0, icm_sync_err, icm_sync_rdy};                    end
+      12'hcb5: begin y_rd_data =       expected_sync_ltc[47:32];                               end
+      12'hcb4: begin y_rd_data =       expected_sync_ltc[31:16];                               end
+      12'hcb3: begin y_rd_data =       expected_sync_ltc[15:0];                                end
+      12'hcb2: begin y_rd_data =       received_sync_ltc[47:32];                               end
+      12'hcb1: begin y_rd_data =       received_sync_ltc[31:16];                               end
+      12'hcb0: begin y_rd_data =       received_sync_ltc[15:0];                                end
       12'hbfe: begin y_rd_data =       {9'b0,
                                         wvb_trig_ext_trig_en,
                                         wvb_trig_thresh_trig_en,
@@ -769,6 +808,7 @@ always @(posedge clk)
         12'hdf4: begin wvb_reader_enable <= y_wr_data[0];                                      end
         12'hdf2: begin wvb_reader_dpram_mode <= y_wr_data[0];                                  end
         12'hde4: begin slo_adc_wr_data[15:0] <= y_wr_data;                                     end
+        12'hcc4: begin icm_fpga_sync_en <= y_wr_data[0];                                       end
         12'hbfe: begin
           wvb_trig_et <= y_wr_data[0];
           wvb_trig_gt <= y_wr_data[1];
