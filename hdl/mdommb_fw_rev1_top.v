@@ -1,4 +1,4 @@
-// Aaron Fienberg
+
 // November 2020
 //
 // Top level module for the rev1 mDOM mainboard
@@ -310,7 +310,7 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h12;
+localparam[15:0] FW_VNUM = 16'h13;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -322,9 +322,12 @@ localparam N_DISCR_BITS = 8;
 
 // determines waveform buffer depths
 // start with depth of 1024 samples; can increase later
-localparam P_WVB_ADR_WIDTH = 10;
+localparam P_WVB_ADR_WIDTH = 11;
 
-localparam P_HDR_WIDTH = P_WVB_ADR_WIDTH == 10 ? 71 : 80;
+// hdr_bundle 1, 48 bit LTC
+// localparam P_HDR_WIDTH = P_WVB_ADR_WIDTH == 10 ? 71 : 80;
+// hdr_bundle 2, 49 bit LTC
+localparam P_HDR_WIDTH = 79;
 
 //
 // clock generation
@@ -967,7 +970,7 @@ assign FTD_UART_CTSn = 0;
 //
 // placeholder LTC counter
 //
-(* max_fanout = 5 *) reg[47:0] ltc = 0;
+(* max_fanout = 5 *) reg[48:0] ltc = 0;
 always @(posedge lclk) begin
   if (lclk_rst) begin
     ltc <= 0;
@@ -1008,7 +1011,8 @@ sync SYNC_TRIG_IN(.clk(lclk),.rst_n(!lclk_rst),.a(TRIG_IN),.y(ext_trig_s));
 generate
   for (i = 0; i < N_CHANNELS; i = i + 1) begin : waveform_acq_gen
     waveform_acquisition #(.P_ADR_WIDTH(P_WVB_ADR_WIDTH),
-                           .P_HDR_WIDTH(P_HDR_WIDTH))
+                           .P_HDR_WIDTH(P_HDR_WIDTH),
+                           .P_LTC_WIDTH(49))
     WFM_ACQ
     (
       .clk(lclk),

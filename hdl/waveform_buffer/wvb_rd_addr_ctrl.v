@@ -22,9 +22,8 @@ module wvb_rd_addr_ctrl #(parameter P_ADR_WIDTH = 12,
 wire[P_ADR_WIDTH-1:0] start_addr;
 wire[P_ADR_WIDTH-1:0] stop_addr;
 generate
-if (P_HDR_WIDTH == 80)	
-  mDOM_wvb_hdr_bundle_0_fan_out HDR_FAN_OUT 
-   (
+if (P_HDR_WIDTH == 80)
+  mDOM_wvb_hdr_bundle_0_fan_out HDR_FAN_OUT (
   	.bundle(hdr_data),
   	.evt_ltc(),
   	.start_addr(start_addr),
@@ -34,19 +33,30 @@ if (P_HDR_WIDTH == 80)
   	.pre_conf()
   );
 
-else
-  mDOM_wvb_hdr_bundle_1_fan_out HDR_FAN_OUT 
-   (
+else if (P_HDR_WIDTH == 71)
+  mDOM_wvb_hdr_bundle_1_fan_out HDR_FAN_OUT (
   	.bundle(hdr_data),
   	.evt_ltc(),
   	.start_addr(start_addr),
   	.stop_addr(stop_addr),
   	.trig_src(),
-  	.cnst_run()  	
+  	.cnst_run()
   );
+
+else if (P_HDR_WIDTH == 79) begin
+  mDOM_wvb_hdr_bundle_2_fan_out HDR_FAN_OUT (
+    .bundle(hdr_data),
+    .evt_ltc(),
+    .start_addr(start_addr),
+    .stop_addr(stop_addr),
+    .trig_src(),
+    .cnst_run(),
+    .pre_conf()
+  );
+end
 endgenerate
 
-// determines delay between hdr_rdreq and 
+// determines delay between hdr_rdreq and
 // start addr updating
 localparam HDR_WAIT_CNT = 2;
 
@@ -65,7 +75,7 @@ always @(posedge clk) begin
 			hdr_rd_cnt <= 0;
 		end
 
-		else if (hdr_rd_cnt > 0 && 
+		else if (hdr_rd_cnt > 0 &&
 			       (hdr_rd_cnt < HDR_WAIT_CNT))  begin
 			hdr_rd_cnt <= hdr_rd_cnt + 1;
 		end

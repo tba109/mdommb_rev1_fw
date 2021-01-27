@@ -23,9 +23,10 @@
 // EVT_LEN      - Number of samples in the waveform
 // HDR_0        - [15:11] - preconf (will be 0 for hdr fmt 1)
 //                   [10] - cnst run mode
-//                  [9:2] - 0
+//                  [9:3] - 0
+//                    [2] - odd LTC bit (to get from 60 MHz to 120 MHz)
 //                  [1:0] - trigger type (sw, thresh, disc, ext)
-// LTC_2        - LTC[47:32]
+// LTC_2        - LTC[47:32] (60 MHz LTC)
 // LTC_1        - LTC[31:16]
 // LTC_0        - LTC[15:0]
 // ADC_WORD     - 16-bit int (sign extended from 12-bit ADC sample)
@@ -71,14 +72,14 @@ module wvb_rd_ctrl_fmt_0 #(parameter P_WVB_ADR_WIDTH = 12,
 wire[P_WVB_ADR_WIDTH-1:0] start_addr;
 wire[P_WVB_ADR_WIDTH-1:0] stop_addr;
 wire[47:0] evt_ltc;
+wire odd_ltc_bit;
 wire[1:0] trig_src;
 wire cnst_run;
 wire[4:0] pre_conf;
 
 generate
 if (P_HDR_WIDTH == 80) begin
-  mDOM_wvb_hdr_bundle_0_fan_out HDR_FAN_OUT
-   (
+  mDOM_wvb_hdr_bundle_0_fan_out HDR_FAN_OUT (
     .bundle(hdr_data),
     .evt_ltc(evt_ltc),
     .start_addr(start_addr),
@@ -87,11 +88,11 @@ if (P_HDR_WIDTH == 80) begin
     .cnst_run(cnst_run),
     .pre_conf(pre_conf)
   );
+  assign odd_ltc_bit = 1'b0;
 end
 
-else begin
-  mDOM_wvb_hdr_bundle_1_fan_out HDR_FAN_OUT
-   (
+else if (P_HDR_WIDTH == 71) begin
+  mDOM_wvb_hdr_bundle_1_fan_out HDR_FAN_OUT (
     .bundle(hdr_data),
     .evt_ltc(evt_ltc),
     .start_addr(start_addr),
@@ -100,6 +101,19 @@ else begin
     .cnst_run(cnst_run)
   );
   assign pre_conf = 5'h1a;
+  assign odd_ltc_bit = 1'b0;
+end
+
+else if (P_HDR_WIDTH == 79) begin
+  mDOM_wvb_hdr_bundle_2_fan_out HDR_FAN_OUT (
+    .bundle(hdr_data),
+    .evt_ltc({evt_ltc, odd_ltc_bit}),
+    .start_addr(start_addr),
+    .stop_addr(stop_addr),
+    .trig_src(trig_src),
+    .cnst_run(cnst_run),
+    .pre_conf(pre_conf)
+  );
 end
 endgenerate
 
@@ -116,7 +130,7 @@ wire wvb_tot = wvb_data[1];
 wire wvb_eoe = wvb_data[0];
 
 // header 0 word
-wire[15:0] hdr_0 = {pre_conf, cnst_run, 8'b0, trig_src};
+wire[15:0] hdr_0 = {pre_conf, cnst_run, 7'b0, odd_ltc_bit, trig_src};
 
 // constants
 localparam L_FMT = 8'h90;

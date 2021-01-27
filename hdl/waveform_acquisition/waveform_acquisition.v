@@ -8,7 +8,7 @@
 module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
                               parameter P_ADR_WIDTH = 12,
                               parameter P_HDR_WIDTH = 80,
-                              parameter P_LTC_WIDTH = 48,
+                              parameter P_LTC_WIDTH = 49,
                               parameter P_N_WVF_IN_BUF_WIDTH = 16,
                               parameter P_WVB_TRIG_BUNDLE_WIDTH = 20,
                               parameter P_WVB_CONFIG_BUNDLE_WIDTH = 40,

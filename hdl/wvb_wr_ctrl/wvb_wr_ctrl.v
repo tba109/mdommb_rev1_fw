@@ -234,7 +234,7 @@ if (P_HDR_WIDTH == 80)
     .cnst_run(i_cnst_run),
     .pre_conf(i_pre_conf)
   );
-else
+else if (P_HDR_WIDTH == 71)
   mDOM_wvb_hdr_bundle_1_fan_in HDR_FAN_IN
   (
     .bundle(hdr_data),
@@ -244,6 +244,18 @@ else
     .trig_src(i_trig_src),
     .cnst_run(i_cnst_run)
   );
+else if (P_HDR_WIDTH == 79) begin
+  mDOM_wvb_hdr_bundle_2_fan_in HDR_FAN_IN
+  (
+    .bundle(hdr_data),
+    .evt_ltc(i_evt_ltc),
+    .start_addr(i_start_addr),
+    .stop_addr(i_stop_addr),
+    .trig_src(i_trig_src),
+    .cnst_run(i_cnst_run),
+    .pre_conf(i_pre_conf)
+  );
+end
 endgenerate
 
 // FSM logic
