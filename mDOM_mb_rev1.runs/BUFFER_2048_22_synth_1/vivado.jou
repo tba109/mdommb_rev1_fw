@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Tue Jan 26 18:21:25 2021
+# Process ID: 6664
+# Current directory: C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/BUFFER_2048_22_synth_1
+# Command line: vivado.exe -log BUFFER_2048_22.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source BUFFER_2048_22.tcl
+# Log file: C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/BUFFER_2048_22_synth_1/BUFFER_2048_22.vds
+# Journal file: C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/BUFFER_2048_22_synth_1\vivado.jou
+#-----------------------------------------------------------
+source BUFFER_2048_22.tcl -notrace

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="idelay_discr_clk_wiz_synth_1" LaunchPart="xc7s100fgga676-2" LaunchTime="1605035831">
+<GenRun Id="idelay_discr_clk_wiz_synth_1" LaunchPart="xc7s100fgga676-2" LaunchTime="1611678365">
   <File Type="PA-TCL" Name="idelay_discr_clk_wiz.tcl"/>
   <File Type="REPORTS-TCL" Name="idelay_discr_clk_wiz_reports.tcl"/>
   <File Type="RDS-RDS" Name="idelay_discr_clk_wiz.vds"/>

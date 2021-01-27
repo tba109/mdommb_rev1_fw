@@ -12,11 +12,11 @@ set_property DONT_TOUCH TRUE [get_cells inst -quiet] -quiet
 # XDC: The top module name and the constraint reference have the same name: 'lclk_adcclk_wiz'. Do not add the DONT_TOUCH constraint.
 #dup# set_property DONT_TOUCH TRUE [get_cells inst -quiet] -quiet
 
-# XDC: c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_ooc.xdc
+# XDC: c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_late.xdc
 # XDC: The top module name and the constraint reference have the same name: 'lclk_adcclk_wiz'. Do not add the DONT_TOUCH constraint.
 #dup# set_property DONT_TOUCH TRUE [get_cells inst -quiet] -quiet
 
-# XDC: c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_late.xdc
+# XDC: c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_ooc.xdc
 # XDC: The top module name and the constraint reference have the same name: 'lclk_adcclk_wiz'. Do not add the DONT_TOUCH constraint.
 #dup# set_property DONT_TOUCH TRUE [get_cells inst -quiet] -quiet
 
@@ -31,10 +31,10 @@ set_property DONT_TOUCH TRUE [get_cells inst -quiet] -quiet
 # XDC: The top module name and the constraint reference have the same name: 'lclk_adcclk_wiz'. Do not add the DONT_TOUCH constraint.
 #dup# set_property DONT_TOUCH TRUE [get_cells inst -quiet] -quiet
 
-# XDC: c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_ooc.xdc
+# XDC: c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_late.xdc
 # XDC: The top module name and the constraint reference have the same name: 'lclk_adcclk_wiz'. Do not add the DONT_TOUCH constraint.
 #dup# set_property DONT_TOUCH TRUE [get_cells inst -quiet] -quiet
 
-# XDC: c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_late.xdc
+# XDC: c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_ooc.xdc
 # XDC: The top module name and the constraint reference have the same name: 'lclk_adcclk_wiz'. Do not add the DONT_TOUCH constraint.
 #dup# set_property DONT_TOUCH TRUE [get_cells inst -quiet] -quiet

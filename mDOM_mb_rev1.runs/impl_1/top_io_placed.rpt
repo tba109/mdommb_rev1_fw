@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date                      : Mon Jan 18 14:38:45 2021
+| Date                      : Wed Jan 27 15:07:00 2021
 | Host                      : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 | Command                   : report_io -file top_io_placed.rpt
 | Design                    : top
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|           307 |
+|           311 |
 +---------------+
 
 
@@ -258,7 +258,7 @@ Table of Contents
 | C13        |                 | High Range | IO_L6P_T0_16                 | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | C14        |                 | High Range | IO_L6N_T0_VREF_16            | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | C15        |                 |            | GND                          | GND         |                |         |            |      |                     |                      |     0.0 |            |           |          |          |                  |              |                   |              |
-| C16        |                 | High Range | IO_L8N_T1_16                 | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
+| C16        | FPGA_GPIO_1     | High Range | IO_L8N_T1_16                 | INPUT       | LVCMOS18       |      16 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | C17        |                 | High Range | IO_L7P_T1_16                 | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | C18        |                 | High Range | IO_L7N_T1_16                 | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | C19        | ADC5_FCLK_M     | High Range | IO_L13N_T2_MRCC_16           | INPUT       | DIFF_SSTL18_II |      16 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
@@ -284,7 +284,7 @@ Table of Contents
 | D13        |                 | Dedicated  | VCCBATT_0                    | Config      |                |       0 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | D14        |                 | High Range | IO_L5P_T0_16                 | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | D15        |                 | High Range | IO_L5N_T0_16                 | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
-| D16        |                 | High Range | IO_L8P_T1_16                 | User IO     |                |      16 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
+| D16        | FPGA_GPIO_0     | High Range | IO_L8P_T1_16                 | INPUT       | LVCMOS18       |      16 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | D17        |                 | High Range | VCCO_16                      | VCCO        |                |      16 |            |      |                     |                      |    1.80 |            |           |          |          |                  |              |                   |              |
 | D18        | ADC5_FCLK_P     | High Range | IO_L13P_T2_MRCC_16           | INPUT       | DIFF_SSTL18_II |      16 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | D19        | ADC5_SYSRF_P    | High Range | IO_L16P_T2_16                | OUTPUT      | DIFF_SSTL18_II |      16 |            | SLOW |                     |  NP_VTT_50_FP_VTT_50 |         | FIXED      |           |          |          | NONE             |              |                   |              |
@@ -374,8 +374,8 @@ Table of Contents
 | G25        | ADC4_DA1P       | High Range | IO_L18P_T2_15                | INPUT       | DIFF_SSTL18_II |      15 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | G26        | ADC4_DA1M       | High Range | IO_L18N_T2_15                | INPUT       | DIFF_SSTL18_II |      15 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | H1         | FMC_A7          | High Range | IO_L9P_T1_DQS_AD7P_35        | INPUT       | LVCMOS18       |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
-| H2         |                 | High Range | IO_L11N_T1_SRCC_35           | User IO     |                |      35 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
-| H3         |                 | High Range | IO_L11P_T1_SRCC_35           | User IO     |                |      35 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
+| H2         | FPGA_SYNC_N     | High Range | IO_L11N_T1_SRCC_35           | INPUT       | DIFF_SSTL18_II |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
+| H3         | FPGA_SYNC_P     | High Range | IO_L11P_T1_SRCC_35           | INPUT       | DIFF_SSTL18_II |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | H4         | FPGA_CLOCK_N    | High Range | IO_L12N_T1_MRCC_35           | INPUT       | DIFF_SSTL18_II |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
 | H5         |                 | High Range | VCCO_35                      | VCCO        |                |      35 |            |      |                     |                      |    1.80 |            |           |          |          |                  |              |                   |              |
 | H6         | FMC_D13         | High Range | IO_L4P_T0_35                 | BIDIR       | LVCMOS18       |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |          | NONE             |              |                   |              |

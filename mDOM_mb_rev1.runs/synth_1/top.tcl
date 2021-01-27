@@ -36,6 +36,7 @@ set_property include_dirs {
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_conf_bundle
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_0
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_1
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_2
 } [current_fileset]
 read_verilog -library xil_defaultlib {
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/DDR3/DDR3_DPRAM_transfer.v
@@ -53,10 +54,13 @@ read_verilog -library xil_defaultlib {
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/ft232r_hs/ft232r_hs.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/ft232r_proc_buffered/ft232r_proc_buffered.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/hbuf_ctrl/hbuf_ctrl.v
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/icm_time_transfer/icm_ltc_des.v
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/icm_time_transfer/icm_time_transfer.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/discr_scaler/inhibit_generator_1b.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/discr_scaler/inhibit_generator_8b.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/iter_integer_linear_cal/iter_integer_linear_calc.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/knight_rider/knight_rider.v
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/local_time_counter/local_time_counter.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_trig_bundle/mDOM_trig_bundle_fan_in.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_trig_bundle/mDOM_trig_bundle_fan_out.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_conf_bundle/mDOM_wvb_conf_bundle_fan_in.v
@@ -65,6 +69,8 @@ read_verilog -library xil_defaultlib {
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_0/mDOM_wvb_hdr_bundle_0_fan_out.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_1/mDOM_wvb_hdr_bundle_1_fan_in.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_1/mDOM_wvb_hdr_bundle_1_fan_out.v
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_2/mDOM_wvb_hdr_bundle_2_fan_in.v
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_2/mDOM_wvb_hdr_bundle_2_fan_out.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/mdom_trigger/mdom_trigger.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/n_channel_mux/n_channel_mux.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/negedge_detector/negedge_detector.v
@@ -145,6 +151,18 @@ set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube
 
 read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_DDR3_PG/HBUF_DDR3_PG.xci
 set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_DDR3_PG/HBUF_DDR3_PG_ooc.xdc]
+
+read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz.xci
+set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz_ooc.xdc]
+
+read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xci
+set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108_ooc.xdc]
+
+read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/BUFFER_2048_22/BUFFER_2048_22.xci
+set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/BUFFER_2048_22/BUFFER_2048_22_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

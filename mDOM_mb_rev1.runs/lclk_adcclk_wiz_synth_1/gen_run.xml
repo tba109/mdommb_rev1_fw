@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="lclk_adcclk_wiz_synth_1" LaunchPart="xc7s100fgga676-2" LaunchTime="1605035781">
+<GenRun Id="lclk_adcclk_wiz_synth_1" LaunchPart="xc7s100fgga676-2" LaunchTime="1611678311">
   <File Type="PA-TCL" Name="lclk_adcclk_wiz.tcl"/>
   <File Type="REPORTS-TCL" Name="lclk_adcclk_wiz_reports.tcl"/>
   <File Type="RDS-RDS" Name="lclk_adcclk_wiz.vds"/>
