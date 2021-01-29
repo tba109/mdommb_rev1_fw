@@ -30,6 +30,7 @@ module xdom #(parameter N_CHANNELS = 24)
   input[N_CHANNELS-1:0] wvb_armed,
   input[N_CHANNELS-1:0] wvb_overflow,
   input[N_CHANNELS-1:0] wvb_hdr_full,
+  input[N_CHANNELS-1:0] wvb_not_empty,
   input[N_CHANNELS*16 - 1:0] wfms_in_buf,
   input[N_CHANNELS*16 - 1:0] buf_wds_used,
 
@@ -769,6 +770,9 @@ always @(*)
       12'hbb0: begin y_rd_data =        thresh_scaler_mux_out_reg[31:16];                      end
       12'hbaf: begin y_rd_data =        thresh_scaler_mux_out_reg[15:0];                       end
       12'hbae: begin y_rd_data =        {14'b0, ddr3_vtt_s5, ddr3_vtt_s3};                     end
+      12'hbad: begin y_rd_data =        {8'b0, wvb_not_empty[N_CHANNELS-1:16]};                end
+      12'hbac: begin y_rd_data =        wvb_not_empty[16:0];                                   end
+      12'hbab: begin y_rd_data =        {15'b0, |wvb_not_empty};                               end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;

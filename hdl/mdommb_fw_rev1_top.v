@@ -316,7 +316,7 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h14;
+localparam[15:0] FW_VNUM = 16'h15;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -675,6 +675,10 @@ endgenerate
 //
 //     12'hbae: [0] DDR3_VTT_S3
 //              [1] DDR3_VTT_S5
+//
+//     12'hbad: wvb_not_empty[23:16]
+//     12'hbac: wvb_not_empty[15:0]
+//     12'hbab: [0] any_wvb_not_empty
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
@@ -689,6 +693,15 @@ wire[N_CHANNELS-1:0] wvb_overflow;
 wire[N_CHANNELS*16-1:0] wfms_in_buf;
 wire[N_CHANNELS*16-1:0] buf_wds_used;
 wire[N_CHANNELS-1:0] wvb_hdr_full;
+wire[N_CHANNELS-1:0] wvb_hdr_empty;
+reg[N_CHANNELS-1:0] wvb_not_empty = 0;
+always @(posedge lclk) begin
+  if (lclk_rst) begin
+    wvb_not_empty <= 0;
+  end else begin
+    wvb_not_empty <= ~wvb_hdr_empty;
+  end
+end
 
 // wvb reader
 wire[15:0] rdout_dpram_len;
@@ -881,6 +894,7 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .wvb_armed(wvb_armed),
   .wvb_overflow(wvb_overflow),
   .wfms_in_buf(wfms_in_buf),
+  .wvb_not_empty(wvb_not_empty),
   .buf_wds_used(buf_wds_used),
   .wvb_hdr_full(wvb_hdr_full),
 
@@ -1054,7 +1068,6 @@ local_time_counter #(.P_LTC_WIDTH(P_LTC_WIDTH)) LTC_0 (
 // configuration currently shared between all channels
 // ATF TODO: add separate configuration for each channel
 
-wire[N_CHANNELS-1:0] wvb_hdr_empty;
 wire[N_CHANNELS-1:0] wvb_hdr_rdreq;
 wire[N_CHANNELS-1:0] wvb_wvb_rdreq;
 wire[N_CHANNELS-1:0] wvb_rddone;

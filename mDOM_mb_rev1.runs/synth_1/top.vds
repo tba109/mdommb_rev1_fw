@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Wed Jan 27 14:55:56 2021
-# Process ID: 4272
+# Start of session at: Fri Jan 29 15:29:05 2021
+# Process ID: 18304
 # Current directory: C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/top.vds
@@ -16,9 +16,9 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7s100'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s100'
 INFO: [Device 21-403] Loading part xc7s100fgga676-2
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 7284 
+INFO: Helper process launched with PID 14988 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 740.992 ; gain = 177.391
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 742.359 ; gain = 177.266
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'top' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/mdommb_fw_rev1_top.v:7]
 	Parameter L_WIDTH_MDOM_TRIG_BUNDLE_TRIG_ET bound to: 1 - type: integer 
@@ -73,7 +73,7 @@ INFO: [Synth 8-6157] synthesizing module 'top' [C:/Users/atfie/IceCube/mDOMDevel
 	Parameter L_STOP_POS_MDOM_WVB_CONF_BUNDLE_CNST_RUN bound to: 39 - type: integer 
 	Parameter L_WIDTH_MDOM_WVB_CONF_BUNDLE_ZERO_PAD bound to: 0 - type: integer 
 	Parameter L_WIDTH_MDOM_WVB_CONF_BUNDLE bound to: 40 - type: integer 
-	Parameter FW_VNUM bound to: 16'b0000000000010100 
+	Parameter FW_VNUM bound to: 16'b0000000000010101 
 	Parameter CLK_SRC bound to: 1 - type: integer 
 	Parameter N_CHANNELS bound to: 24 - type: integer 
 	Parameter N_ADC_BITS bound to: 12 - type: integer 
@@ -83,10 +83,10 @@ INFO: [Synth 8-6157] synthesizing module 'top' [C:/Users/atfie/IceCube/mDOMDevel
 	Parameter P_HDR_WIDTH bound to: 79 - type: integer 
 	Parameter DEFAULT_DELAY bound to: 5'b00000 
 INFO: [Synth 8-6157] synthesizing module 'adc_discr_channel' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/adc_discr_channel/adc_discr_channel.v:7]
-INFO: [Synth 8-6157] synthesizing module 'ADC_SERDES' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/ADC_SERDES_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'ADC_SERDES' (1#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/ADC_SERDES_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'DISCR_SERDES' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/DISCR_SERDES_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'DISCR_SERDES' (2#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/DISCR_SERDES_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'ADC_SERDES' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/ADC_SERDES_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'ADC_SERDES' (1#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/ADC_SERDES_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'DISCR_SERDES' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/DISCR_SERDES_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'DISCR_SERDES' (2#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/DISCR_SERDES_stub.v:5]
 INFO: [Synth 8-6155] done synthesizing module 'adc_discr_channel' (3#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/adc_discr_channel/adc_discr_channel.v:7]
 INFO: [Synth 8-6157] synthesizing module 'waveform_acquisition' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/waveform_acquisition/waveform_acquisition.v:8]
 	Parameter P_DATA_WIDTH bound to: 22 - type: integer 
@@ -185,18 +185,18 @@ INFO: [Synth 8-6157] synthesizing module 'pretrigger_buffer' [C:/Users/atfie/Ice
 	Parameter P_USE_DISTRIBUTED_RAM bound to: 1 - type: integer 
 	Parameter RDY_CNT bound to: 32'b00000000000000000000000000100000 
 	Parameter RD_ADDR_OFFSET bound to: 32'b00000000000000000000000000000010 
-INFO: [Synth 8-6157] synthesizing module 'DIST_BUFFER_32_22' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/DIST_BUFFER_32_22_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'DIST_BUFFER_32_22' (9#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/DIST_BUFFER_32_22_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'DIST_BUFFER_32_22' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/DIST_BUFFER_32_22_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'DIST_BUFFER_32_22' (9#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/DIST_BUFFER_32_22_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'pretrigger_buffer' (10#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/pretrigger_buffer/pretrigger_buffer.v:8]
 INFO: [Synth 8-6157] synthesizing module 'waveform_buffer_storage' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/waveform_buffer_storage/waveform_buffer_storage.v:7]
 	Parameter P_DATA_WIDTH bound to: 22 - type: integer 
 	Parameter P_ADR_WIDTH bound to: 11 - type: integer 
 	Parameter P_HDR_WIDTH bound to: 79 - type: integer 
 	Parameter P_N_WVF_IN_BUF_WIDTH bound to: 16 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'BUFFER_2048_22' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/BUFFER_2048_22_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'BUFFER_2048_22' (11#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/BUFFER_2048_22_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'FIFO_512_108' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/FIFO_512_108_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'FIFO_512_108' (12#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/FIFO_512_108_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'BUFFER_2048_22' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/BUFFER_2048_22_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'BUFFER_2048_22' (11#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/BUFFER_2048_22_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'FIFO_512_108' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/FIFO_512_108_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'FIFO_512_108' (12#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/FIFO_512_108_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'waveform_buffer_storage' (13#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/waveform_buffer_storage/waveform_buffer_storage.v:7]
 INFO: [Synth 8-6157] synthesizing module 'wvb_wr_ctrl' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/wvb_wr_ctrl/wvb_wr_ctrl.v:7]
 	Parameter P_DATA_WIDTH bound to: 22 - type: integer 
@@ -308,12 +308,12 @@ INFO: [Synth 8-6157] synthesizing module 'IBUFGDS' [C:/Xilinx/Vivado/2019.1/scri
 	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
 	Parameter IOSTANDARD bound to: DEFAULT - type: string 
 INFO: [Synth 8-6155] done synthesizing module 'IBUFGDS' (24#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:33335]
-INFO: [Synth 8-6157] synthesizing module 'lclk_adcclk_wiz' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/lclk_adcclk_wiz_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'lclk_adcclk_wiz' (25#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/lclk_adcclk_wiz_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'idelay_discr_clk_wiz' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/idelay_discr_clk_wiz_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'idelay_discr_clk_wiz' (26#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/idelay_discr_clk_wiz_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'ddr3_idelay_clk_wiz' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/ddr3_idelay_clk_wiz_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'ddr3_idelay_clk_wiz' (27#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/ddr3_idelay_clk_wiz_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'lclk_adcclk_wiz' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/lclk_adcclk_wiz_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'lclk_adcclk_wiz' (25#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/lclk_adcclk_wiz_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'idelay_discr_clk_wiz' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/idelay_discr_clk_wiz_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'idelay_discr_clk_wiz' (26#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/idelay_discr_clk_wiz_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'ddr3_idelay_clk_wiz' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/ddr3_idelay_clk_wiz_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'ddr3_idelay_clk_wiz' (27#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/ddr3_idelay_clk_wiz_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'IDELAYCTRL' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:34933]
 	Parameter SIM_DEVICE bound to: 7SERIES - type: string 
 INFO: [Synth 8-6155] done synthesizing module 'IDELAYCTRL' (28#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:34933]
@@ -417,8 +417,8 @@ INFO: [Synth 8-6155] done synthesizing module 'err_mngr' (38#1) [C:/Users/atfie/
 WARNING: [Synth 8-6014] Unused sequential element n_burst_reg was removed.  [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/uart_proc_hs/uart_proc_hs.v:222]
 WARNING: [Synth 8-6014] Unused sequential element err_reg was removed.  [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/uart_proc_hs/uart_proc_hs.v:223]
 INFO: [Synth 8-6155] done synthesizing module 'uart_proc_hs' (39#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/uart_proc_hs/uart_proc_hs.v:16]
-INFO: [Synth 8-6157] synthesizing module 'FIFO_2048_32' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/FIFO_2048_32_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'FIFO_2048_32' (40#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/FIFO_2048_32_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'FIFO_2048_32' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/FIFO_2048_32_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'FIFO_2048_32' (40#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/FIFO_2048_32_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'ft232r_proc_buffered' (41#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/ft232r_proc_buffered/ft232r_proc_buffered.v:9]
 INFO: [Synth 8-6157] synthesizing module 'crs_master' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/crs_master/crs_master.v:16]
 	Parameter S_IDLE bound to: 0 - type: integer 
@@ -519,13 +519,13 @@ INFO: [Synth 8-6157] synthesizing module 'task_reg__parameterized2' [C:/Users/at
 INFO: [Synth 8-6155] done synthesizing module 'task_reg__parameterized2' (47#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/task_reg/task_reg.v:12]
 INFO: [Synth 8-6157] synthesizing module 'periodic_trigger_gen' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/periodic_trigger_gen/periodic_trigger_gen.v:9]
 INFO: [Synth 8-6155] done synthesizing module 'periodic_trigger_gen' (48#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/periodic_trigger_gen/periodic_trigger_gen.v:9]
-INFO: [Synth 8-6157] synthesizing module 'XDOM_DDR3_PG' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/XDOM_DDR3_PG_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'XDOM_DDR3_PG' (49#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/XDOM_DDR3_PG_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'DIRECT_RDOUT_DPRAM' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/DIRECT_RDOUT_DPRAM_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'DIRECT_RDOUT_DPRAM' (50#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/DIRECT_RDOUT_DPRAM_stub.v:6]
-WARNING: [Synth 8-3848] Net debug_err_ack in module/entity xdom does not have driver. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/xdom/xdom.v:177]
-WARNING: [Synth 8-3848] Net icm_err_ack in module/entity xdom does not have driver. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/xdom/xdom.v:209]
-WARNING: [Synth 8-3848] Net mcu_err_ack in module/entity xdom does not have driver. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/xdom/xdom.v:242]
+INFO: [Synth 8-6157] synthesizing module 'XDOM_DDR3_PG' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/XDOM_DDR3_PG_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'XDOM_DDR3_PG' (49#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/XDOM_DDR3_PG_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'DIRECT_RDOUT_DPRAM' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/DIRECT_RDOUT_DPRAM_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'DIRECT_RDOUT_DPRAM' (50#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/DIRECT_RDOUT_DPRAM_stub.v:6]
+WARNING: [Synth 8-3848] Net debug_err_ack in module/entity xdom does not have driver. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/xdom/xdom.v:178]
+WARNING: [Synth 8-3848] Net icm_err_ack in module/entity xdom does not have driver. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/xdom/xdom.v:210]
+WARNING: [Synth 8-3848] Net mcu_err_ack in module/entity xdom does not have driver. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/xdom/xdom.v:243]
 INFO: [Synth 8-6155] done synthesizing module 'xdom' (51#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/xdom/xdom.v:14]
 INFO: [Synth 8-6157] synthesizing module 'icm_time_transfer' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/icm_time_transfer/icm_time_transfer.v:12]
 	Parameter SHIFT_CNT bound to: 40 - type: integer 
@@ -564,10 +564,10 @@ INFO: [Synth 8-6157] synthesizing module 'hbuf_ctrl' [C:/Users/atfie/IceCube/mDO
 	Parameter DPRAM_RD_LATENCY bound to: 2 - type: integer 
 	Parameter LAST_PG_DPRAM_ADDR bound to: 511 - type: integer 
 	Parameter HDR bound to: 64'b0101010101010101101010101010101001010101010101011010000000000000 
-INFO: [Synth 8-6157] synthesizing module 'HBUF_RDOUT_DPRAM' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/HBUF_RDOUT_DPRAM_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'HBUF_RDOUT_DPRAM' (55#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/HBUF_RDOUT_DPRAM_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'HBUF_DDR3_PG' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/HBUF_DDR3_PG_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'HBUF_DDR3_PG' (56#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/HBUF_DDR3_PG_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'HBUF_RDOUT_DPRAM' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/HBUF_RDOUT_DPRAM_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'HBUF_RDOUT_DPRAM' (55#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/HBUF_RDOUT_DPRAM_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'HBUF_DDR3_PG' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/HBUF_DDR3_PG_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'HBUF_DDR3_PG' (56#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/HBUF_DDR3_PG_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'crc16_64b_parallel' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/crc16_64b_parallel/crc16_64b_parallel.v:14]
 INFO: [Synth 8-6155] done synthesizing module 'crc16_64b_parallel' (57#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/crc16_64b_parallel/crc16_64b_parallel.v:14]
 INFO: [Synth 8-6155] done synthesizing module 'hbuf_ctrl' (58#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/hbuf_ctrl/hbuf_ctrl.v:33]
@@ -651,8 +651,8 @@ INFO: [Synth 8-6157] synthesizing module 'DDR3_pg_transfer_ctrl' [C:/Users/atfie
 INFO: [Synth 8-4471] merging register 'app_wdf_end_reg' into 'app_wdf_wren_reg' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/DDR3/DDR3_pg_transfer_ctrl.v:218]
 WARNING: [Synth 8-6014] Unused sequential element app_wdf_end_reg was removed.  [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/DDR3/DDR3_pg_transfer_ctrl.v:218]
 INFO: [Synth 8-6155] done synthesizing module 'DDR3_pg_transfer_ctrl' (62#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/DDR3/DDR3_pg_transfer_ctrl.v:8]
-INFO: [Synth 8-6157] synthesizing module 'mig_7series_0' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/mig_7series_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mig_7series_0' (63#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/mig_7series_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mig_7series_0' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/mig_7series_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mig_7series_0' (63#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/mig_7series_0_stub.v:5]
 INFO: [Synth 8-6155] done synthesizing module 'DDR3_DPRAM_transfer' (64#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/DDR3/DDR3_DPRAM_transfer.v:7]
 INFO: [Synth 8-6157] synthesizing module 'spi_master' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/spi_master/spi_master.v:14]
 	Parameter P_RD_DATA_WIDTH bound to: 24 - type: integer 
@@ -736,8 +736,8 @@ INFO: [Synth 8-6155] done synthesizing module 'spi_master__parameterized1' (69#1
 INFO: [Synth 8-6157] synthesizing module 'afe_pulser' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/afe_pulser/afe_pulser.v:7]
 	Parameter S_IDLE bound to: 0 - type: integer 
 	Parameter S_FIRE bound to: 1 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'AFE_PULSER_OUTPUT' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/AFE_PULSER_OUTPUT_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'AFE_PULSER_OUTPUT' (70#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-4272-LAPTOP-GBOUD091/realtime/AFE_PULSER_OUTPUT_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'AFE_PULSER_OUTPUT' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/AFE_PULSER_OUTPUT_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'AFE_PULSER_OUTPUT' (70#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18304-LAPTOP-GBOUD091/realtime/AFE_PULSER_OUTPUT_stub.v:5]
 INFO: [Synth 8-6155] done synthesizing module 'afe_pulser' (71#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/afe_pulser/afe_pulser.v:7]
 INFO: [Synth 8-6157] synthesizing module 'knight_rider' [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/knight_rider/knight_rider.v:6]
 	Parameter TICKS_PER_STATE bound to: 40000000 - type: integer 
@@ -745,7 +745,7 @@ INFO: [Synth 8-6157] synthesizing module 'knight_rider' [C:/Users/atfie/IceCube/
 	Parameter S_RIGHT bound to: 1'b1 
 INFO: [Synth 8-226] default block is never used [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/knight_rider/knight_rider.v:34]
 INFO: [Synth 8-6155] done synthesizing module 'knight_rider' (72#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/knight_rider/knight_rider.v:6]
-WARNING: [Synth 8-3848] Net rst in module/entity top does not have driver. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/mdommb_fw_rev1_top.v:1433]
+WARNING: [Synth 8-3848] Net rst in module/entity top does not have driver. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/mdommb_fw_rev1_top.v:1446]
 INFO: [Synth 8-6155] done synthesizing module 'top' (73#1) [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/mdommb_fw_rev1_top.v:7]
 WARNING: [Synth 8-3917] design top has port FTD_UART_CTSn driven by constant 0
 WARNING: [Synth 8-3917] design top has port FMC_IRQ3 driven by constant 0
@@ -777,7 +777,7 @@ WARNING: [Synth 8-3331] design top has unconnected port FPGA_GPIO_1
 WARNING: [Synth 8-3331] design top has unconnected port MCU_USART6_TX
 WARNING: [Synth 8-3331] design top has unconnected port MCU_USART6_RX
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 877.391 ; gain = 313.789
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 878.789 ; gain = 313.695
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -790,10 +790,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 877.391 ; gain = 313.789
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 884.605 ; gain = 319.512
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 877.391 ; gain = 313.789
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 884.605 ; gain = 319.512
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 38 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -1124,13 +1124,13 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1144.062 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 1146.020 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 26 instances were transformed.
   IBUFGDS => IBUFDS: 14 instances
   OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS, OBUFDS): 12 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.415 . Memory (MB): peak = 1144.062 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.349 . Memory (MB): peak = 1146.020 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'HBUF_CTRL_0/DDR3_PG_DPRAM_0' at clock pin 'clka' is different from the actual clock period '8.333', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'HBUF_CTRL_0/READER_DPRAM_0' at clock pin 'clka' is different from the actual clock period '8.333', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'PULSER_0/AFE_OUT' at clock pin 'clk_in' is different from the actual clock period '2.083', this can lead to different synthesis results.
@@ -1233,14 +1233,14 @@ WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context s
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'waveform_acq_gen[15].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0' at clock pin 'clk' is different from the actual clock period '8.333', this can lead to different synthesis results.
 INFO: [Common 17-14] Message 'Timing 38-316' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:31 ; elapsed = 00:00:30 . Memory (MB): peak = 1153.598 ; gain = 589.996
+Finished Constraint Validation : Time (s): cpu = 00:00:29 ; elapsed = 00:00:28 . Memory (MB): peak = 1155.902 ; gain = 590.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s100fgga676-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:31 ; elapsed = 00:00:30 . Memory (MB): peak = 1153.598 ; gain = 589.996
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:29 ; elapsed = 00:00:28 . Memory (MB): peak = 1155.902 ; gain = 590.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -1740,7 +1740,7 @@ Applied set_property DONT_TOUCH = true for \waveform_acq_gen[21].WFM_ACQ /WVB/WB
 Applied set_property DONT_TOUCH = true for \waveform_acq_gen[22].WFM_ACQ /WVB/WBS/WAVEFORM_DISCR_BUFF. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for \waveform_acq_gen[23].WFM_ACQ /WVB/WBS/WAVEFORM_DISCR_BUFF. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:33 . Memory (MB): peak = 1153.598 ; gain = 589.996
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:30 . Memory (MB): peak = 1155.902 ; gain = 590.809
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'fsm_reg' in module 'rs232_ser'
 INFO: [Synth 8-802] inferred FSM for state register 'fsm_reg' in module 'rs232_des'
@@ -2061,7 +2061,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'fsm_reg' using encoding 's
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'fsm_reg' using encoding 'sequential' in module 'inhibit_generator_1b'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 1153.598 ; gain = 589.996
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:44 ; elapsed = 00:00:44 . Memory (MB): peak = 1155.902 ; gain = 590.809
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -2069,7 +2069,7 @@ Report RTL Partitions:
 |      |RTL Partition       |Replication |Instances |
 +------+--------------------+------------+----------+
 |1     |ADC3424_clk_IO__GC0 |           1|         2|
-|2     |top__GCB0           |           1|     38296|
+|2     |top__GCB0           |           1|     38384|
 |3     |top__GCB1           |           1|      8226|
 |4     |top__GCB2           |           1|     10968|
 |5     |top__GCB3           |           1|         8|
@@ -2077,7 +2077,7 @@ Report RTL Partitions:
 |7     |top__GCB5           |           1|     13901|
 |8     |top__GCB6           |           1|     27425|
 |9     |top__GCB7           |           1|      8402|
-|10    |top__GCB8           |           1|     25465|
+|10    |top__GCB8           |           1|     25513|
 |11    |top__GCB9           |           1|     20615|
 |12    |top__GCB10          |           1|      7360|
 |13    |top__GCB11          |           1|     21397|
@@ -2142,7 +2142,7 @@ Detailed RTL Component Info :
 	               32 Bit    Registers := 300   
 	               28 Bit    Registers := 3     
 	               27 Bit    Registers := 1     
-	               24 Bit    Registers := 13    
+	               24 Bit    Registers := 14    
 	               22 Bit    Registers := 1     
 	               20 Bit    Registers := 25    
 	               19 Bit    Registers := 3     
@@ -2191,7 +2191,7 @@ Detailed RTL Component Info :
 	   4 Input     16 Bit        Muxes := 1     
 	   6 Input     16 Bit        Muxes := 2     
 	   2 Input     16 Bit        Muxes := 83    
-	 107 Input     16 Bit        Muxes := 1     
+	 110 Input     16 Bit        Muxes := 1     
 	  10 Input     16 Bit        Muxes := 1     
 	  13 Input     16 Bit        Muxes := 1     
 	   2 Input     12 Bit        Muxes := 52    
@@ -2210,7 +2210,7 @@ Detailed RTL Component Info :
 	  24 Input      8 Bit        Muxes := 6     
 	   5 Input      8 Bit        Muxes := 3     
 	  11 Input      8 Bit        Muxes := 1     
-	 107 Input      7 Bit        Muxes := 1     
+	 110 Input      7 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 16    
 	   4 Input      6 Bit        Muxes := 6     
 	   2 Input      5 Bit        Muxes := 86    
@@ -2255,6 +2255,7 @@ Detailed RTL Component Info :
 +---Registers : 
 	               40 Bit    Registers := 1     
 	               32 Bit    Registers := 2     
+	               24 Bit    Registers := 1     
 	               20 Bit    Registers := 1     
 	               16 Bit    Registers := 1     
 	               12 Bit    Registers := 1     
@@ -2917,8 +2918,8 @@ Detailed RTL Component Info :
 	  67 Input     19 Bit        Muxes := 1     
 	   2 Input     16 Bit        Muxes := 3     
 	   6 Input     16 Bit        Muxes := 1     
-	 107 Input     16 Bit        Muxes := 1     
-	 107 Input      7 Bit        Muxes := 1     
+	 110 Input     16 Bit        Muxes := 1     
+	 110 Input      7 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 1     
 	   2 Input      5 Bit        Muxes := 1     
 	  66 Input      2 Bit        Muxes := 2     
@@ -6979,7 +6980,7 @@ INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instan
 INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:25 ; elapsed = 00:02:42 . Memory (MB): peak = 1153.598 ; gain = 589.996
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:19 ; elapsed = 00:02:39 . Memory (MB): peak = 1155.902 ; gain = 590.809
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -6987,7 +6988,7 @@ Report RTL Partitions:
 |      |RTL Partition       |Replication |Instances |
 +------+--------------------+------------+----------+
 |1     |ADC3424_clk_IO__GC0 |           6|         2|
-|2     |top__GCB0           |           1|     21967|
+|2     |top__GCB0           |           1|     22063|
 |3     |top__GCB1           |           1|      5187|
 |4     |top__GCB2           |           1|      6912|
 |5     |top__GCB3           |           1|         8|
@@ -6995,7 +6996,7 @@ Report RTL Partitions:
 |7     |top__GCB5           |           1|      6551|
 |8     |top__GCB6           |           1|     18161|
 |9     |top__GCB7           |           1|      4530|
-|10    |top__GCB8           |           1|     12375|
+|10    |top__GCB8           |           1|     12423|
 |11    |top__GCB9           |           1|     10531|
 |12    |top__GCB10          |           1|      3664|
 |13    |top__GCB11          |           1|      8622|
@@ -7020,13 +7021,13 @@ INFO: [Synth 8-5578] Moved timing constraint from pin 'DDR3_IDELAY_CLK_WIZ_0/clk
 INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'DDR3_IDELAY_CLK_WIZ_0/clk_in1' to 'IBUFDGS_FPGACLK/O'
 INFO: [Synth 8-5819] Moved 10 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:37 ; elapsed = 00:02:54 . Memory (MB): peak = 1153.598 ; gain = 589.996
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:32 ; elapsed = 00:02:52 . Memory (MB): peak = 1155.902 ; gain = 590.809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:03:03 ; elapsed = 00:03:20 . Memory (MB): peak = 1158.684 ; gain = 595.082
+Finished Timing Optimization : Time (s): cpu = 00:02:58 ; elapsed = 00:03:19 . Memory (MB): peak = 1158.816 ; gain = 593.723
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -7040,19 +7041,19 @@ Report RTL Partitions:
 |5     |top__GCB4           |           1|      8915|
 |6     |top__GCB5           |           1|      6550|
 |7     |top__GCB7           |           1|      4530|
-|8     |top__GCB8           |           1|     12374|
+|8     |top__GCB8           |           1|     12422|
 |9     |top__GCB9           |           1|     10531|
 |10    |top__GCB10          |           1|      3664|
 |11    |top__GCB11          |           1|      8622|
 |12    |top__GCB12          |           1|      2977|
 |13    |top__GCB13          |           1|      2582|
-|14    |top_GT0             |           1|     39866|
+|14    |top_GT0             |           1|     39962|
 +------+--------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:03:28 ; elapsed = 00:03:54 . Memory (MB): peak = 1159.645 ; gain = 596.043
+Finished Technology Mapping : Time (s): cpu = 00:03:24 ; elapsed = 00:03:54 . Memory (MB): peak = 1159.238 ; gain = 594.145
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -7066,13 +7067,13 @@ Report RTL Partitions:
 |5     |top__GCB4              |           1|      5010|
 |6     |top__GCB5              |           1|      4281|
 |7     |top__GCB7              |           1|      2623|
-|8     |top__GCB8              |           1|      8640|
+|8     |top__GCB8              |           1|      8687|
 |9     |top__GCB9              |           1|      6911|
 |10    |top__GCB10             |           1|      2498|
 |11    |top__GCB11             |           1|      4826|
 |12    |top__GCB12             |           1|      1480|
 |13    |top__GCB13             |           1|      1341|
-|14    |top_GT0                |           1|     21211|
+|14    |top_GT0                |           1|     21224|
 |15    |ADC3424_clk_IO__GC0__1 |           1|         2|
 |16    |ADC3424_clk_IO__GC0__2 |           1|         2|
 |17    |ADC3424_clk_IO__GC0__3 |           1|         2|
@@ -7251,7 +7252,7 @@ INFO: [Common 17-14] Message 'Synth 8-4618' appears 100 times and further instan
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:03:40 ; elapsed = 00:04:06 . Memory (MB): peak = 1193.844 ; gain = 630.242
+Finished IO Insertion : Time (s): cpu = 00:03:37 ; elapsed = 00:04:07 . Memory (MB): peak = 1197.414 ; gain = 632.320
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -7264,7 +7265,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:03:40 ; elapsed = 00:04:07 . Memory (MB): peak = 1193.844 ; gain = 630.242
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:37 ; elapsed = 00:04:08 . Memory (MB): peak = 1197.414 ; gain = 632.320
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -7276,25 +7277,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:51 ; elapsed = 00:04:17 . Memory (MB): peak = 1193.844 ; gain = 630.242
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:48 ; elapsed = 00:04:18 . Memory (MB): peak = 1197.414 ; gain = 632.320
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:03:51 ; elapsed = 00:04:18 . Memory (MB): peak = 1193.844 ; gain = 630.242
+Finished Renaming Generated Ports : Time (s): cpu = 00:03:48 ; elapsed = 00:04:19 . Memory (MB): peak = 1197.414 ; gain = 632.320
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:03:52 ; elapsed = 00:04:19 . Memory (MB): peak = 1193.844 ; gain = 630.242
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:50 ; elapsed = 00:04:20 . Memory (MB): peak = 1197.414 ; gain = 632.320
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:03:52 ; elapsed = 00:04:19 . Memory (MB): peak = 1193.844 ; gain = 630.242
+Finished Renaming Generated Nets : Time (s): cpu = 00:03:50 ; elapsed = 00:04:20 . Memory (MB): peak = 1197.414 ; gain = 632.320
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -7483,17 +7484,17 @@ Report Cell Usage:
 |156   |mig_7series_0         |     1|
 |157   |CARRY4                |  4724|
 |158   |IDELAYCTRL            |     1|
-|159   |LUT1                  |  4405|
-|160   |LUT2                  |  3494|
-|161   |LUT3                  |  2357|
-|162   |LUT4                  |  9258|
-|163   |LUT5                  |  2711|
-|164   |LUT6                  |  6005|
-|165   |MUXF7                 |   704|
-|166   |MUXF8                 |    15|
+|159   |LUT1                  |  4429|
+|160   |LUT2                  |  3493|
+|161   |LUT3                  |  2365|
+|162   |LUT4                  |  9263|
+|163   |LUT5                  |  2704|
+|164   |LUT6                  |  6018|
+|165   |MUXF7                 |   710|
+|166   |MUXF8                 |     3|
 |167   |ODDR                  |    12|
-|168   |FDRE                  | 27205|
-|169   |FDSE                  |   845|
+|168   |FDRE                  | 27228|
+|169   |FDSE                  |   846|
 |170   |IBUF                  |    23|
 |171   |IBUFGDS               |    14|
 |172   |IOBUF                 |    16|
@@ -7505,7 +7506,7 @@ Report Instance Areas:
 +------+-------------------------------------------+------------------------------------+------+
 |      |Instance                                   |Module                              |Cells |
 +------+-------------------------------------------+------------------------------------+------+
-|1     |top                                        |                                    | 67121|
+|1     |top                                        |                                    | 67181|
 |2     |  AD5668_SPI                               |spi_master__parameterized0          |  1323|
 |3     |    IILC_MISO_0                            |iter_integer_linear_calc_327        |   244|
 |4     |    IILC_MOSI_0                            |iter_integer_linear_calc_328        |   238|
@@ -7554,21 +7555,21 @@ Report Instance Areas:
 |47    |  SYNC_TRIG_IN                             |sync_0                              |     2|
 |48    |  WVB_READER                               |wvb_reader                          |  4178|
 |49    |    RD_CTRL                                |wvb_rd_ctrl_fmt_0                   |   361|
-|50    |  XDOM_0                                   |xdom                                |  5098|
+|50    |  XDOM_0                                   |xdom                                |  5110|
 |51    |    ADC_SPI_TASK_0                         |task_reg__parameterized0            |    42|
 |52    |    BUF_N_WFMS_MUX                         |n_channel_mux                       |   109|
 |53    |    BUF_WDS_USED_MUX                       |n_channel_mux_284                   |   120|
-|54    |    CRSM_0                                 |crs_master                          |  1228|
+|54    |    CRSM_0                                 |crs_master                          |  1242|
 |55    |      NEDGE_0                              |negedge_detector_307                |     7|
 |56    |    DAC_SPI_TASK_0                         |task_reg__parameterized1            |    45|
 |57    |    DISC_SCALER_MUX                        |n_channel_mux__parameterized1       |   320|
 |58    |    LTC_TASK_REG_0                         |task_reg                            |    36|
 |59    |    OS_NCONVST                             |one_shot                            |   113|
 |60    |    PGACKSYNC                              |sync_285                            |     4|
-|61    |    SLO_ADC_SPI_TASK_0                     |task_reg__parameterized2            |    41|
+|61    |    SLO_ADC_SPI_TASK_0                     |task_reg__parameterized2            |    40|
 |62    |    TAP_OUT_MUX                            |n_channel_mux__parameterized0       |   100|
 |63    |    THRESH_SCALER_MUX                      |n_channel_mux__parameterized1_286   |   320|
-|64    |    TRIG_GEN                               |periodic_trigger_gen                |    89|
+|64    |    TRIG_GEN                               |periodic_trigger_gen                |    88|
 |65    |    UART_DEBUG_0                           |ft232r_proc_buffered__xdcDup__1     |   547|
 |66    |      FT232R_HS_0                          |ft232r_hs_296                       |   126|
 |67    |        NEDGE_0                            |negedge_detector_301                |     3|
@@ -7747,283 +7748,283 @@ Report Instance Areas:
 |240   |  \scaler_gen[9].THRESH_SCALER             |discr_scaler__parameterized0_51     |   477|
 |241   |    INH_GEN                                |inhibit_generator_1b                |   197|
 |242   |      PEDGE_TRIG                           |posedge_detector_214                |    13|
-|243   |  \waveform_acq_gen[0].WFM_ACQ             |waveform_acquisition__xdcDup__1     |   927|
+|243   |  \waveform_acq_gen[0].WFM_ACQ             |waveform_acquisition__xdcDup__1     |   928|
 |244   |    MDOM_TRIG                              |mdom_trigger_207                    |    52|
 |245   |      CMP                                  |cmp_211                             |     5|
 |246   |      PEDGE_EXTRUN                         |posedge_detector_212                |     4|
 |247   |      PEDGE_RUN                            |posedge_detector_213                |     1|
-|248   |    WVB                                    |waveform_buffer__xdcDup__1          |   813|
+|248   |    WVB                                    |waveform_buffer__xdcDup__1          |   814|
 |249   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_208               |    28|
 |250   |      PTB                                  |pretrigger_buffer__xdcDup__1        |    54|
 |251   |      RD_ADDR                              |wvb_rd_addr_ctrl_209                |    43|
-|252   |      WBS                                  |waveform_buffer_storage__xdcDup__1  |   151|
+|252   |      WBS                                  |waveform_buffer_storage__xdcDup__1  |   152|
 |253   |      WR_CTRL                              |wvb_wr_ctrl_210                     |   536|
-|254   |  \waveform_acq_gen[10].WFM_ACQ            |waveform_acquisition__xdcDup__11    |   911|
+|254   |  \waveform_acq_gen[10].WFM_ACQ            |waveform_acquisition__xdcDup__11    |   912|
 |255   |    MDOM_TRIG                              |mdom_trigger_200                    |    51|
 |256   |      CMP                                  |cmp_204                             |     5|
 |257   |      PEDGE_EXTRUN                         |posedge_detector_205                |     4|
 |258   |      PEDGE_RUN                            |posedge_detector_206                |     1|
-|259   |    WVB                                    |waveform_buffer__xdcDup__11         |   798|
+|259   |    WVB                                    |waveform_buffer__xdcDup__11         |   799|
 |260   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_201               |    28|
 |261   |      PTB                                  |pretrigger_buffer__xdcDup__11       |    54|
 |262   |      RD_ADDR                              |wvb_rd_addr_ctrl_202                |    38|
-|263   |      WBS                                  |waveform_buffer_storage__xdcDup__11 |   142|
+|263   |      WBS                                  |waveform_buffer_storage__xdcDup__11 |   143|
 |264   |      WR_CTRL                              |wvb_wr_ctrl_203                     |   535|
-|265   |  \waveform_acq_gen[11].WFM_ACQ            |waveform_acquisition__xdcDup__12    |   911|
+|265   |  \waveform_acq_gen[11].WFM_ACQ            |waveform_acquisition__xdcDup__12    |   912|
 |266   |    MDOM_TRIG                              |mdom_trigger_193                    |    51|
 |267   |      CMP                                  |cmp_197                             |     5|
 |268   |      PEDGE_EXTRUN                         |posedge_detector_198                |     4|
 |269   |      PEDGE_RUN                            |posedge_detector_199                |     1|
-|270   |    WVB                                    |waveform_buffer__xdcDup__12         |   798|
+|270   |    WVB                                    |waveform_buffer__xdcDup__12         |   799|
 |271   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_194               |    28|
 |272   |      PTB                                  |pretrigger_buffer__xdcDup__12       |    54|
 |273   |      RD_ADDR                              |wvb_rd_addr_ctrl_195                |    38|
-|274   |      WBS                                  |waveform_buffer_storage__xdcDup__12 |   142|
+|274   |      WBS                                  |waveform_buffer_storage__xdcDup__12 |   143|
 |275   |      WR_CTRL                              |wvb_wr_ctrl_196                     |   535|
-|276   |  \waveform_acq_gen[12].WFM_ACQ            |waveform_acquisition__xdcDup__13    |   926|
+|276   |  \waveform_acq_gen[12].WFM_ACQ            |waveform_acquisition__xdcDup__13    |   927|
 |277   |    MDOM_TRIG                              |mdom_trigger_186                    |    51|
 |278   |      CMP                                  |cmp_190                             |     5|
 |279   |      PEDGE_EXTRUN                         |posedge_detector_191                |     4|
 |280   |      PEDGE_RUN                            |posedge_detector_192                |     1|
-|281   |    WVB                                    |waveform_buffer__xdcDup__13         |   813|
+|281   |    WVB                                    |waveform_buffer__xdcDup__13         |   814|
 |282   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_187               |    28|
 |283   |      PTB                                  |pretrigger_buffer__xdcDup__13       |    54|
 |284   |      RD_ADDR                              |wvb_rd_addr_ctrl_188                |    43|
-|285   |      WBS                                  |waveform_buffer_storage__xdcDup__13 |   151|
+|285   |      WBS                                  |waveform_buffer_storage__xdcDup__13 |   152|
 |286   |      WR_CTRL                              |wvb_wr_ctrl_189                     |   536|
-|287   |  \waveform_acq_gen[13].WFM_ACQ            |waveform_acquisition__xdcDup__14    |   926|
+|287   |  \waveform_acq_gen[13].WFM_ACQ            |waveform_acquisition__xdcDup__14    |   927|
 |288   |    MDOM_TRIG                              |mdom_trigger_179                    |    51|
 |289   |      CMP                                  |cmp_183                             |     5|
 |290   |      PEDGE_EXTRUN                         |posedge_detector_184                |     4|
 |291   |      PEDGE_RUN                            |posedge_detector_185                |     1|
-|292   |    WVB                                    |waveform_buffer__xdcDup__14         |   813|
+|292   |    WVB                                    |waveform_buffer__xdcDup__14         |   814|
 |293   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_180               |    28|
 |294   |      PTB                                  |pretrigger_buffer__xdcDup__14       |    54|
 |295   |      RD_ADDR                              |wvb_rd_addr_ctrl_181                |    43|
-|296   |      WBS                                  |waveform_buffer_storage__xdcDup__14 |   151|
+|296   |      WBS                                  |waveform_buffer_storage__xdcDup__14 |   152|
 |297   |      WR_CTRL                              |wvb_wr_ctrl_182                     |   536|
-|298   |  \waveform_acq_gen[14].WFM_ACQ            |waveform_acquisition__xdcDup__15    |   926|
+|298   |  \waveform_acq_gen[14].WFM_ACQ            |waveform_acquisition__xdcDup__15    |   927|
 |299   |    MDOM_TRIG                              |mdom_trigger_172                    |    51|
 |300   |      CMP                                  |cmp_176                             |     5|
 |301   |      PEDGE_EXTRUN                         |posedge_detector_177                |     4|
 |302   |      PEDGE_RUN                            |posedge_detector_178                |     1|
-|303   |    WVB                                    |waveform_buffer__xdcDup__15         |   813|
+|303   |    WVB                                    |waveform_buffer__xdcDup__15         |   814|
 |304   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_173               |    28|
 |305   |      PTB                                  |pretrigger_buffer__xdcDup__15       |    54|
 |306   |      RD_ADDR                              |wvb_rd_addr_ctrl_174                |    43|
-|307   |      WBS                                  |waveform_buffer_storage__xdcDup__15 |   151|
+|307   |      WBS                                  |waveform_buffer_storage__xdcDup__15 |   152|
 |308   |      WR_CTRL                              |wvb_wr_ctrl_175                     |   536|
-|309   |  \waveform_acq_gen[15].WFM_ACQ            |waveform_acquisition__xdcDup__16    |   926|
+|309   |  \waveform_acq_gen[15].WFM_ACQ            |waveform_acquisition__xdcDup__16    |   927|
 |310   |    MDOM_TRIG                              |mdom_trigger_165                    |    51|
 |311   |      CMP                                  |cmp_169                             |     5|
 |312   |      PEDGE_EXTRUN                         |posedge_detector_170                |     4|
 |313   |      PEDGE_RUN                            |posedge_detector_171                |     1|
-|314   |    WVB                                    |waveform_buffer__xdcDup__16         |   813|
+|314   |    WVB                                    |waveform_buffer__xdcDup__16         |   814|
 |315   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_166               |    28|
 |316   |      PTB                                  |pretrigger_buffer__xdcDup__16       |    54|
 |317   |      RD_ADDR                              |wvb_rd_addr_ctrl_167                |    43|
-|318   |      WBS                                  |waveform_buffer_storage__xdcDup__16 |   151|
+|318   |      WBS                                  |waveform_buffer_storage__xdcDup__16 |   152|
 |319   |      WR_CTRL                              |wvb_wr_ctrl_168                     |   536|
-|320   |  \waveform_acq_gen[16].WFM_ACQ            |waveform_acquisition__xdcDup__17    |   928|
+|320   |  \waveform_acq_gen[16].WFM_ACQ            |waveform_acquisition__xdcDup__17    |   929|
 |321   |    MDOM_TRIG                              |mdom_trigger_158                    |    51|
 |322   |      CMP                                  |cmp_162                             |     5|
 |323   |      PEDGE_EXTRUN                         |posedge_detector_163                |     4|
 |324   |      PEDGE_RUN                            |posedge_detector_164                |     1|
-|325   |    WVB                                    |waveform_buffer__xdcDup__17         |   813|
+|325   |    WVB                                    |waveform_buffer__xdcDup__17         |   814|
 |326   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_159               |    28|
 |327   |      PTB                                  |pretrigger_buffer__xdcDup__17       |    54|
 |328   |      RD_ADDR                              |wvb_rd_addr_ctrl_160                |    43|
-|329   |      WBS                                  |waveform_buffer_storage__xdcDup__17 |   151|
+|329   |      WBS                                  |waveform_buffer_storage__xdcDup__17 |   152|
 |330   |      WR_CTRL                              |wvb_wr_ctrl_161                     |   536|
-|331   |  \waveform_acq_gen[17].WFM_ACQ            |waveform_acquisition__xdcDup__18    |   926|
+|331   |  \waveform_acq_gen[17].WFM_ACQ            |waveform_acquisition__xdcDup__18    |   927|
 |332   |    MDOM_TRIG                              |mdom_trigger_151                    |    51|
 |333   |      CMP                                  |cmp_155                             |     5|
 |334   |      PEDGE_EXTRUN                         |posedge_detector_156                |     4|
 |335   |      PEDGE_RUN                            |posedge_detector_157                |     1|
-|336   |    WVB                                    |waveform_buffer__xdcDup__18         |   813|
+|336   |    WVB                                    |waveform_buffer__xdcDup__18         |   814|
 |337   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_152               |    28|
 |338   |      PTB                                  |pretrigger_buffer__xdcDup__18       |    54|
 |339   |      RD_ADDR                              |wvb_rd_addr_ctrl_153                |    43|
-|340   |      WBS                                  |waveform_buffer_storage__xdcDup__18 |   151|
+|340   |      WBS                                  |waveform_buffer_storage__xdcDup__18 |   152|
 |341   |      WR_CTRL                              |wvb_wr_ctrl_154                     |   536|
-|342   |  \waveform_acq_gen[18].WFM_ACQ            |waveform_acquisition__xdcDup__19    |   926|
+|342   |  \waveform_acq_gen[18].WFM_ACQ            |waveform_acquisition__xdcDup__19    |   927|
 |343   |    MDOM_TRIG                              |mdom_trigger_144                    |    51|
 |344   |      CMP                                  |cmp_148                             |     5|
 |345   |      PEDGE_EXTRUN                         |posedge_detector_149                |     4|
 |346   |      PEDGE_RUN                            |posedge_detector_150                |     1|
-|347   |    WVB                                    |waveform_buffer__xdcDup__19         |   813|
+|347   |    WVB                                    |waveform_buffer__xdcDup__19         |   814|
 |348   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_145               |    28|
 |349   |      PTB                                  |pretrigger_buffer__xdcDup__19       |    54|
 |350   |      RD_ADDR                              |wvb_rd_addr_ctrl_146                |    43|
-|351   |      WBS                                  |waveform_buffer_storage__xdcDup__19 |   151|
+|351   |      WBS                                  |waveform_buffer_storage__xdcDup__19 |   152|
 |352   |      WR_CTRL                              |wvb_wr_ctrl_147                     |   536|
-|353   |  \waveform_acq_gen[19].WFM_ACQ            |waveform_acquisition__xdcDup__20    |   912|
+|353   |  \waveform_acq_gen[19].WFM_ACQ            |waveform_acquisition__xdcDup__20    |   913|
 |354   |    MDOM_TRIG                              |mdom_trigger_137                    |    52|
 |355   |      CMP                                  |cmp_141                             |     5|
 |356   |      PEDGE_EXTRUN                         |posedge_detector_142                |     4|
 |357   |      PEDGE_RUN                            |posedge_detector_143                |     1|
-|358   |    WVB                                    |waveform_buffer__xdcDup__20         |   798|
-|359   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_138               |    28|
+|358   |    WVB                                    |waveform_buffer__xdcDup__20         |   799|
+|359   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_138               |    29|
 |360   |      PTB                                  |pretrigger_buffer__xdcDup__20       |    54|
 |361   |      RD_ADDR                              |wvb_rd_addr_ctrl_139                |    38|
-|362   |      WBS                                  |waveform_buffer_storage__xdcDup__20 |   142|
-|363   |      WR_CTRL                              |wvb_wr_ctrl_140                     |   535|
-|364   |  \waveform_acq_gen[1].WFM_ACQ             |waveform_acquisition__xdcDup__2     |   927|
+|362   |      WBS                                  |waveform_buffer_storage__xdcDup__20 |   143|
+|363   |      WR_CTRL                              |wvb_wr_ctrl_140                     |   534|
+|364   |  \waveform_acq_gen[1].WFM_ACQ             |waveform_acquisition__xdcDup__2     |   928|
 |365   |    MDOM_TRIG                              |mdom_trigger_130                    |    52|
 |366   |      CMP                                  |cmp_134                             |     5|
 |367   |      PEDGE_EXTRUN                         |posedge_detector_135                |     4|
 |368   |      PEDGE_RUN                            |posedge_detector_136                |     1|
-|369   |    WVB                                    |waveform_buffer__xdcDup__2          |   813|
+|369   |    WVB                                    |waveform_buffer__xdcDup__2          |   814|
 |370   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_131               |    28|
 |371   |      PTB                                  |pretrigger_buffer__xdcDup__2        |    54|
 |372   |      RD_ADDR                              |wvb_rd_addr_ctrl_132                |    43|
-|373   |      WBS                                  |waveform_buffer_storage__xdcDup__2  |   151|
+|373   |      WBS                                  |waveform_buffer_storage__xdcDup__2  |   152|
 |374   |      WR_CTRL                              |wvb_wr_ctrl_133                     |   536|
-|375   |  \waveform_acq_gen[20].WFM_ACQ            |waveform_acquisition__xdcDup__21    |   912|
+|375   |  \waveform_acq_gen[20].WFM_ACQ            |waveform_acquisition__xdcDup__21    |   913|
 |376   |    MDOM_TRIG                              |mdom_trigger_123                    |    52|
 |377   |      CMP                                  |cmp_127                             |     5|
 |378   |      PEDGE_EXTRUN                         |posedge_detector_128                |     4|
 |379   |      PEDGE_RUN                            |posedge_detector_129                |     1|
-|380   |    WVB                                    |waveform_buffer__xdcDup__21         |   798|
-|381   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_124               |    28|
+|380   |    WVB                                    |waveform_buffer__xdcDup__21         |   799|
+|381   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_124               |    29|
 |382   |      PTB                                  |pretrigger_buffer__xdcDup__21       |    54|
 |383   |      RD_ADDR                              |wvb_rd_addr_ctrl_125                |    38|
-|384   |      WBS                                  |waveform_buffer_storage__xdcDup__21 |   142|
-|385   |      WR_CTRL                              |wvb_wr_ctrl_126                     |   535|
-|386   |  \waveform_acq_gen[21].WFM_ACQ            |waveform_acquisition__xdcDup__22    |   912|
+|384   |      WBS                                  |waveform_buffer_storage__xdcDup__21 |   143|
+|385   |      WR_CTRL                              |wvb_wr_ctrl_126                     |   534|
+|386   |  \waveform_acq_gen[21].WFM_ACQ            |waveform_acquisition__xdcDup__22    |   913|
 |387   |    MDOM_TRIG                              |mdom_trigger_116                    |    52|
 |388   |      CMP                                  |cmp_120                             |     5|
 |389   |      PEDGE_EXTRUN                         |posedge_detector_121                |     4|
 |390   |      PEDGE_RUN                            |posedge_detector_122                |     1|
-|391   |    WVB                                    |waveform_buffer__xdcDup__22         |   798|
-|392   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_117               |    28|
+|391   |    WVB                                    |waveform_buffer__xdcDup__22         |   799|
+|392   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_117               |    29|
 |393   |      PTB                                  |pretrigger_buffer__xdcDup__22       |    54|
 |394   |      RD_ADDR                              |wvb_rd_addr_ctrl_118                |    38|
-|395   |      WBS                                  |waveform_buffer_storage__xdcDup__22 |   142|
-|396   |      WR_CTRL                              |wvb_wr_ctrl_119                     |   535|
-|397   |  \waveform_acq_gen[22].WFM_ACQ            |waveform_acquisition__xdcDup__23    |   927|
+|395   |      WBS                                  |waveform_buffer_storage__xdcDup__22 |   143|
+|396   |      WR_CTRL                              |wvb_wr_ctrl_119                     |   534|
+|397   |  \waveform_acq_gen[22].WFM_ACQ            |waveform_acquisition__xdcDup__23    |   928|
 |398   |    MDOM_TRIG                              |mdom_trigger_109                    |    52|
 |399   |      CMP                                  |cmp_113                             |     5|
 |400   |      PEDGE_EXTRUN                         |posedge_detector_114                |     4|
 |401   |      PEDGE_RUN                            |posedge_detector_115                |     1|
-|402   |    WVB                                    |waveform_buffer__xdcDup__23         |   813|
+|402   |    WVB                                    |waveform_buffer__xdcDup__23         |   814|
 |403   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_110               |    28|
 |404   |      PTB                                  |pretrigger_buffer__xdcDup__23       |    54|
 |405   |      RD_ADDR                              |wvb_rd_addr_ctrl_111                |    43|
-|406   |      WBS                                  |waveform_buffer_storage__xdcDup__23 |   151|
+|406   |      WBS                                  |waveform_buffer_storage__xdcDup__23 |   152|
 |407   |      WR_CTRL                              |wvb_wr_ctrl_112                     |   536|
-|408   |  \waveform_acq_gen[23].WFM_ACQ            |waveform_acquisition                |   927|
+|408   |  \waveform_acq_gen[23].WFM_ACQ            |waveform_acquisition                |   928|
 |409   |    MDOM_TRIG                              |mdom_trigger_102                    |    52|
 |410   |      CMP                                  |cmp_106                             |     5|
 |411   |      PEDGE_EXTRUN                         |posedge_detector_107                |     4|
 |412   |      PEDGE_RUN                            |posedge_detector_108                |     1|
-|413   |    WVB                                    |waveform_buffer                     |   813|
+|413   |    WVB                                    |waveform_buffer                     |   814|
 |414   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_103               |    28|
 |415   |      PTB                                  |pretrigger_buffer                   |    54|
 |416   |      RD_ADDR                              |wvb_rd_addr_ctrl_104                |    43|
-|417   |      WBS                                  |waveform_buffer_storage             |   151|
+|417   |      WBS                                  |waveform_buffer_storage             |   152|
 |418   |      WR_CTRL                              |wvb_wr_ctrl_105                     |   536|
-|419   |  \waveform_acq_gen[2].WFM_ACQ             |waveform_acquisition__xdcDup__3     |   926|
+|419   |  \waveform_acq_gen[2].WFM_ACQ             |waveform_acquisition__xdcDup__3     |   927|
 |420   |    MDOM_TRIG                              |mdom_trigger_95                     |    51|
 |421   |      CMP                                  |cmp_99                              |     5|
 |422   |      PEDGE_EXTRUN                         |posedge_detector_100                |     4|
 |423   |      PEDGE_RUN                            |posedge_detector_101                |     1|
-|424   |    WVB                                    |waveform_buffer__xdcDup__3          |   813|
+|424   |    WVB                                    |waveform_buffer__xdcDup__3          |   814|
 |425   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_96                |    28|
 |426   |      PTB                                  |pretrigger_buffer__xdcDup__3        |    54|
 |427   |      RD_ADDR                              |wvb_rd_addr_ctrl_97                 |    43|
-|428   |      WBS                                  |waveform_buffer_storage__xdcDup__3  |   151|
+|428   |      WBS                                  |waveform_buffer_storage__xdcDup__3  |   152|
 |429   |      WR_CTRL                              |wvb_wr_ctrl_98                      |   536|
-|430   |  \waveform_acq_gen[3].WFM_ACQ             |waveform_acquisition__xdcDup__4     |   926|
+|430   |  \waveform_acq_gen[3].WFM_ACQ             |waveform_acquisition__xdcDup__4     |   927|
 |431   |    MDOM_TRIG                              |mdom_trigger_88                     |    51|
 |432   |      CMP                                  |cmp_92                              |     5|
 |433   |      PEDGE_EXTRUN                         |posedge_detector_93                 |     4|
 |434   |      PEDGE_RUN                            |posedge_detector_94                 |     1|
-|435   |    WVB                                    |waveform_buffer__xdcDup__4          |   813|
+|435   |    WVB                                    |waveform_buffer__xdcDup__4          |   814|
 |436   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_89                |    28|
 |437   |      PTB                                  |pretrigger_buffer__xdcDup__4        |    54|
 |438   |      RD_ADDR                              |wvb_rd_addr_ctrl_90                 |    43|
-|439   |      WBS                                  |waveform_buffer_storage__xdcDup__4  |   151|
+|439   |      WBS                                  |waveform_buffer_storage__xdcDup__4  |   152|
 |440   |      WR_CTRL                              |wvb_wr_ctrl_91                      |   536|
-|441   |  \waveform_acq_gen[4].WFM_ACQ             |waveform_acquisition__xdcDup__5     |   911|
+|441   |  \waveform_acq_gen[4].WFM_ACQ             |waveform_acquisition__xdcDup__5     |   912|
 |442   |    MDOM_TRIG                              |mdom_trigger_81                     |    51|
 |443   |      CMP                                  |cmp_85                              |     5|
 |444   |      PEDGE_EXTRUN                         |posedge_detector_86                 |     4|
 |445   |      PEDGE_RUN                            |posedge_detector_87                 |     1|
-|446   |    WVB                                    |waveform_buffer__xdcDup__5          |   798|
+|446   |    WVB                                    |waveform_buffer__xdcDup__5          |   799|
 |447   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_82                |    28|
 |448   |      PTB                                  |pretrigger_buffer__xdcDup__5        |    54|
 |449   |      RD_ADDR                              |wvb_rd_addr_ctrl_83                 |    38|
-|450   |      WBS                                  |waveform_buffer_storage__xdcDup__5  |   142|
+|450   |      WBS                                  |waveform_buffer_storage__xdcDup__5  |   143|
 |451   |      WR_CTRL                              |wvb_wr_ctrl_84                      |   535|
-|452   |  \waveform_acq_gen[5].WFM_ACQ             |waveform_acquisition__xdcDup__6     |   911|
+|452   |  \waveform_acq_gen[5].WFM_ACQ             |waveform_acquisition__xdcDup__6     |   912|
 |453   |    MDOM_TRIG                              |mdom_trigger_74                     |    51|
 |454   |      CMP                                  |cmp_78                              |     5|
 |455   |      PEDGE_EXTRUN                         |posedge_detector_79                 |     4|
 |456   |      PEDGE_RUN                            |posedge_detector_80                 |     1|
-|457   |    WVB                                    |waveform_buffer__xdcDup__6          |   798|
+|457   |    WVB                                    |waveform_buffer__xdcDup__6          |   799|
 |458   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_75                |    28|
 |459   |      PTB                                  |pretrigger_buffer__xdcDup__6        |    54|
 |460   |      RD_ADDR                              |wvb_rd_addr_ctrl_76                 |    38|
-|461   |      WBS                                  |waveform_buffer_storage__xdcDup__6  |   142|
+|461   |      WBS                                  |waveform_buffer_storage__xdcDup__6  |   143|
 |462   |      WR_CTRL                              |wvb_wr_ctrl_77                      |   535|
-|463   |  \waveform_acq_gen[6].WFM_ACQ             |waveform_acquisition__xdcDup__7     |   911|
+|463   |  \waveform_acq_gen[6].WFM_ACQ             |waveform_acquisition__xdcDup__7     |   912|
 |464   |    MDOM_TRIG                              |mdom_trigger_67                     |    51|
 |465   |      CMP                                  |cmp_71                              |     5|
 |466   |      PEDGE_EXTRUN                         |posedge_detector_72                 |     4|
 |467   |      PEDGE_RUN                            |posedge_detector_73                 |     1|
-|468   |    WVB                                    |waveform_buffer__xdcDup__7          |   798|
+|468   |    WVB                                    |waveform_buffer__xdcDup__7          |   799|
 |469   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_68                |    28|
 |470   |      PTB                                  |pretrigger_buffer__xdcDup__7        |    54|
 |471   |      RD_ADDR                              |wvb_rd_addr_ctrl_69                 |    38|
-|472   |      WBS                                  |waveform_buffer_storage__xdcDup__7  |   142|
+|472   |      WBS                                  |waveform_buffer_storage__xdcDup__7  |   143|
 |473   |      WR_CTRL                              |wvb_wr_ctrl_70                      |   535|
-|474   |  \waveform_acq_gen[7].WFM_ACQ             |waveform_acquisition__xdcDup__8     |   909|
+|474   |  \waveform_acq_gen[7].WFM_ACQ             |waveform_acquisition__xdcDup__8     |   910|
 |475   |    MDOM_TRIG                              |mdom_trigger_60                     |    51|
 |476   |      CMP                                  |cmp_64                              |     5|
 |477   |      PEDGE_EXTRUN                         |posedge_detector_65                 |     4|
 |478   |      PEDGE_RUN                            |posedge_detector_66                 |     1|
-|479   |    WVB                                    |waveform_buffer__xdcDup__8          |   796|
+|479   |    WVB                                    |waveform_buffer__xdcDup__8          |   797|
 |480   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_61                |    28|
 |481   |      PTB                                  |pretrigger_buffer__xdcDup__8        |    54|
 |482   |      RD_ADDR                              |wvb_rd_addr_ctrl_62                 |    25|
-|483   |      WBS                                  |waveform_buffer_storage__xdcDup__8  |   153|
+|483   |      WBS                                  |waveform_buffer_storage__xdcDup__8  |   154|
 |484   |      WR_CTRL                              |wvb_wr_ctrl_63                      |   535|
-|485   |  \waveform_acq_gen[8].WFM_ACQ             |waveform_acquisition__xdcDup__9     |   911|
+|485   |  \waveform_acq_gen[8].WFM_ACQ             |waveform_acquisition__xdcDup__9     |   912|
 |486   |    MDOM_TRIG                              |mdom_trigger_53                     |    51|
 |487   |      CMP                                  |cmp_57                              |     5|
 |488   |      PEDGE_EXTRUN                         |posedge_detector_58                 |     4|
 |489   |      PEDGE_RUN                            |posedge_detector_59                 |     1|
-|490   |    WVB                                    |waveform_buffer__xdcDup__9          |   798|
+|490   |    WVB                                    |waveform_buffer__xdcDup__9          |   799|
 |491   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl_54                |    28|
 |492   |      PTB                                  |pretrigger_buffer__xdcDup__9        |    54|
 |493   |      RD_ADDR                              |wvb_rd_addr_ctrl_55                 |    38|
-|494   |      WBS                                  |waveform_buffer_storage__xdcDup__9  |   142|
+|494   |      WBS                                  |waveform_buffer_storage__xdcDup__9  |   143|
 |495   |      WR_CTRL                              |wvb_wr_ctrl_56                      |   535|
-|496   |  \waveform_acq_gen[9].WFM_ACQ             |waveform_acquisition__xdcDup__10    |   911|
+|496   |  \waveform_acq_gen[9].WFM_ACQ             |waveform_acquisition__xdcDup__10    |   912|
 |497   |    MDOM_TRIG                              |mdom_trigger                        |    51|
 |498   |      CMP                                  |cmp                                 |     5|
 |499   |      PEDGE_EXTRUN                         |posedge_detector                    |     4|
 |500   |      PEDGE_RUN                            |posedge_detector_52                 |     1|
-|501   |    WVB                                    |waveform_buffer__xdcDup__10         |   798|
+|501   |    WVB                                    |waveform_buffer__xdcDup__10         |   799|
 |502   |      OVERFLOW_CTRL                        |wvb_overflow_ctrl                   |    28|
 |503   |      PTB                                  |pretrigger_buffer__xdcDup__10       |    54|
 |504   |      RD_ADDR                              |wvb_rd_addr_ctrl                    |    38|
-|505   |      WBS                                  |waveform_buffer_storage__xdcDup__10 |   142|
+|505   |      WBS                                  |waveform_buffer_storage__xdcDup__10 |   143|
 |506   |      WR_CTRL                              |wvb_wr_ctrl                         |   535|
 +------+-------------------------------------------+------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:03:52 ; elapsed = 00:04:19 . Memory (MB): peak = 1193.844 ; gain = 630.242
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:50 ; elapsed = 00:04:20 . Memory (MB): peak = 1197.414 ; gain = 632.320
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 59 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:03:27 ; elapsed = 00:04:04 . Memory (MB): peak = 1193.844 ; gain = 354.035
-Synthesis Optimization Complete : Time (s): cpu = 00:03:53 ; elapsed = 00:04:20 . Memory (MB): peak = 1193.844 ; gain = 630.242
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:25 ; elapsed = 00:04:06 . Memory (MB): peak = 1197.414 ; gain = 361.023
+Synthesis Optimization Complete : Time (s): cpu = 00:03:50 ; elapsed = 00:04:21 . Memory (MB): peak = 1197.414 ; gain = 632.320
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 5497 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 5491 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.025 . Memory (MB): peak = 1261.242 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.025 . Memory (MB): peak = 1267.004 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 42 instances were transformed.
   IBUFGDS => IBUFDS: 14 instances
@@ -8033,11 +8034,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 729 Infos, 201 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:04:12 ; elapsed = 00:04:40 . Memory (MB): peak = 1261.242 ; gain = 943.762
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.028 . Memory (MB): peak = 1261.242 ; gain = 0.000
+synth_design: Time (s): cpu = 00:04:11 ; elapsed = 00:04:42 . Memory (MB): peak = 1267.004 ; gain = 949.277
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.028 . Memory (MB): peak = 1267.004 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/top.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:13 ; elapsed = 00:00:11 . Memory (MB): peak = 1261.242 ; gain = 0.000
+write_checkpoint: Time (s): cpu = 00:00:15 ; elapsed = 00:00:13 . Memory (MB): peak = 1267.004 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Jan 27 15:00:56 2021...
+INFO: [Common 17-206] Exiting Vivado at Fri Jan 29 15:34:09 2021...
