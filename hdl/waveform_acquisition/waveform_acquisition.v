@@ -56,7 +56,10 @@ module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
   input[P_WVB_TRIG_BUNDLE_WIDTH-1:0] xdom_wvb_trig_bundle,
   input[P_WVB_CONFIG_BUNDLE_WIDTH-1:0] xdom_wvb_config_bundle,
   output          xdom_wvb_armed,
-  output          xdom_wvb_overflow
+  output          xdom_wvb_overflow,
+
+  // icm time sync ready
+  input icm_sync_rdy
 );
 
 // register synchronous reset & xdom bundles & ext_trig_in
@@ -64,11 +67,13 @@ module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
 (* DONT_TOUCH = "true" *) reg[P_WVB_TRIG_BUNDLE_WIDTH-1:0] i_xdom_wvb_trig_bundle = 0;
 (* DONT_TOUCH = "true" *) reg[P_WVB_CONFIG_BUNDLE_WIDTH-1:0] i_xdom_wvb_config_bundle= 0;
 (* DONT_TOUCH = "true" *) reg i_ext_trig_in = 0;
+(* DONT_TOUCH = "true" *) reg i_icm_sync_rdy = 0;
 always @(posedge clk) begin
   i_rst <= rst;
   i_xdom_wvb_trig_bundle <= xdom_wvb_trig_bundle;
   i_xdom_wvb_config_bundle <= xdom_wvb_config_bundle;
   i_ext_trig_in <= ext_trig_in;
+  i_icm_sync_rdy <= icm_sync_rdy;
 end
 
 // trig fan out
@@ -216,7 +221,9 @@ waveform_buffer
    .test_conf(wvb_test_config),
    .cnst_run(wvb_cnst_run),
    .cnst_conf(wvb_cnst_config),
-   .trig_mode(wvb_trig_mode)
+   .trig_mode(wvb_trig_mode),
+
+   .icm_sync_rdy(i_icm_sync_rdy)
   );
 
 endmodule

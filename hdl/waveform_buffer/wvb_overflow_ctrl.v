@@ -24,18 +24,7 @@ module wvb_overflow_ctrl #(parameter P_ADR_WIDTH = 12,
 wire[P_ADR_WIDTH-1:0] stop_addr;
 
 generate
-if (P_HDR_WIDTH == 80)
-  mDOM_wvb_hdr_bundle_0_fan_out HDR_FAN_OUT (
-  	.bundle(hdr_data),
-  	.evt_ltc(),
-  	.start_addr(),
-  	.stop_addr(stop_addr),
-  	.trig_src(),
-  	.cnst_run(),
-  	.pre_conf()
-  );
-
-else if (P_HDR_WIDTH == 71)
+if (P_HDR_WIDTH == 71)
   mDOM_wvb_hdr_bundle_1_fan_out HDR_FAN_OUT (
   	.bundle(hdr_data),
   	.evt_ltc(),
@@ -44,8 +33,7 @@ else if (P_HDR_WIDTH == 71)
   	.trig_src(),
   	.cnst_run()
   );
-
-else if (P_HDR_WIDTH == 79)
+else if (P_HDR_WIDTH == 80)
   mDOM_wvb_hdr_bundle_2_fan_out HDR_FAN_OUT (
     .bundle(hdr_data),
     .evt_ltc(),
@@ -53,7 +41,8 @@ else if (P_HDR_WIDTH == 79)
     .stop_addr(stop_addr),
     .trig_src(),
     .cnst_run(),
-    .pre_conf()
+    .pre_conf(),
+    .sync_rdy()
   );
 endgenerate
 

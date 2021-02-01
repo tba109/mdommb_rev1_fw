@@ -315,6 +315,7 @@ module top (
 
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
+`include "mDOM_wvb_hdr_bundle_2_inc.v"
 
 localparam[15:0] FW_VNUM = 16'h17;
 
@@ -334,7 +335,7 @@ localparam P_WVB_ADR_WIDTH = 11;
 // localparam P_HDR_WIDTH = P_WVB_ADR_WIDTH == 10 ? 71 : 80;
 // hdr_bundle 2, 49 bit LTC
 localparam P_LTC_WIDTH = 49;
-localparam P_HDR_WIDTH = 79;
+localparam P_HDR_WIDTH = L_WIDTH_MDOM_WVB_HDR_BUNDLE_2;
 
 //
 // clock generation
@@ -1128,7 +1129,9 @@ generate
       .xdom_wvb_trig_bundle(xdom_trig_bundle_reg),
       .xdom_wvb_config_bundle(xdom_wvb_conf_bundle_reg),
       .xdom_wvb_armed(wvb_armed[i]),
-      .xdom_wvb_overflow(wvb_overflow[i])
+      .xdom_wvb_overflow(wvb_overflow[i]),
+
+      .icm_sync_rdy(icm_sync_rdy)
     );
   end
 endgenerate

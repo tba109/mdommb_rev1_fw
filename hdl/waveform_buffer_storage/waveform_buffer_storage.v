@@ -75,7 +75,7 @@ generate
     FIFO_512_108 HDR_FIFO_FMT_0 (
       .clk(clk),
       .srst(rst),
-      .din({29'b0, hdr_data_in}),
+      .din({{108-P_HDR_WIDTH{1'b0}}, hdr_data_in}),
       .wr_en(hdr_wrreq),
       .rd_en(hdr_rdreq),
       .dout(fifo_out),

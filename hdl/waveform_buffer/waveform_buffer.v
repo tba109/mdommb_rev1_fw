@@ -49,7 +49,9 @@ module waveform_buffer
   input[P_TEST_CONF_WIDTH-1:0] test_conf,
   input[P_CONST_CONF_WIDTH-1:0] cnst_conf,
   input cnst_run,
-  input trig_mode
+  input trig_mode,
+
+  input icm_sync_rdy
 );
 
 // register synchronous reset
@@ -151,7 +153,8 @@ wvb_wr_ctrl
    .arm(arm),
    .trig(trig && ptb_rdy),
    .trig_src(trig_src),
-   .overflow_in(overflow_in)
+   .overflow_in(overflow_in),
+   .icm_sync_rdy(icm_sync_rdy)
   );
 
 // read address controller

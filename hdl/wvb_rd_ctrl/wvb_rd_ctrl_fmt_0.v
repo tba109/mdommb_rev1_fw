@@ -23,7 +23,8 @@
 // EVT_LEN      - Number of samples in the waveform
 // HDR_0        - [15:11] - preconf (will be 0 for hdr fmt 1)
 //                   [10] - cnst run mode
-//                  [9:3] - 0
+//                  [9:4] - 0
+//                    [3] - icm_sync_rdy
 //                    [2] - odd LTC bit (to get from 60 MHz to 120 MHz)
 //                  [1:0] - trigger type (sw, thresh, disc, ext)
 // LTC_2        - LTC[47:32] (60 MHz LTC)
@@ -76,22 +77,10 @@ wire odd_ltc_bit;
 wire[1:0] trig_src;
 wire cnst_run;
 wire[4:0] pre_conf;
+wire icm_sync_rdy;
 
 generate
-if (P_HDR_WIDTH == 80) begin
-  mDOM_wvb_hdr_bundle_0_fan_out HDR_FAN_OUT (
-    .bundle(hdr_data),
-    .evt_ltc(evt_ltc),
-    .start_addr(start_addr),
-    .stop_addr(stop_addr),
-    .trig_src(trig_src),
-    .cnst_run(cnst_run),
-    .pre_conf(pre_conf)
-  );
-  assign odd_ltc_bit = 1'b0;
-end
-
-else if (P_HDR_WIDTH == 71) begin
+if (P_HDR_WIDTH == 71) begin
   mDOM_wvb_hdr_bundle_1_fan_out HDR_FAN_OUT (
     .bundle(hdr_data),
     .evt_ltc(evt_ltc),
@@ -102,9 +91,8 @@ else if (P_HDR_WIDTH == 71) begin
   );
   assign pre_conf = 5'h1a;
   assign odd_ltc_bit = 1'b0;
-end
-
-else if (P_HDR_WIDTH == 79) begin
+  assign icm_sync_rdy = 1'b0;
+end else if (P_HDR_WIDTH == 80) begin
   mDOM_wvb_hdr_bundle_2_fan_out HDR_FAN_OUT (
     .bundle(hdr_data),
     .evt_ltc({evt_ltc, odd_ltc_bit}),
@@ -112,7 +100,8 @@ else if (P_HDR_WIDTH == 79) begin
     .stop_addr(stop_addr),
     .trig_src(trig_src),
     .cnst_run(cnst_run),
-    .pre_conf(pre_conf)
+    .pre_conf(pre_conf),
+    .sync_rdy(icm_sync_rdy)
   );
 end
 endgenerate
@@ -130,7 +119,8 @@ wire wvb_tot = wvb_data[1];
 wire wvb_eoe = wvb_data[0];
 
 // header 0 word
-wire[15:0] hdr_0 = {pre_conf, cnst_run, 7'b0, odd_ltc_bit, trig_src};
+wire[15:0] hdr_0 = {pre_conf, cnst_run, 6'b0,
+                    icm_sync_rdy, odd_ltc_bit, trig_src};
 
 // constants
 localparam L_FMT = 8'h90;

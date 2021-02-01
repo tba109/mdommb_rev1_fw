@@ -36,7 +36,8 @@ module wvb_wr_ctrl #(parameter P_DATA_WIDTH = 22,
   input arm,
   input trig,
   input[1:0] trig_src,
-  input overflow_in
+  input overflow_in,
+  input icm_sync_rdy
 );
 `include "trigger_src_inc.v"
 
@@ -61,6 +62,7 @@ reg[P_ADR_WIDTH-1:0] i_start_addr = 0;
 reg[P_ADR_WIDTH-1:0] i_stop_addr = 0;
 reg i_cnst_run = 0;
 reg[1:0] i_trig_src = 0;
+reg i_icm_sync_rdy = 0;
 
 // FSM states
 localparam
@@ -113,6 +115,7 @@ always @(posedge clk) begin
     i_start_addr <= 0;
     i_trig_src <= 0;
     i_cnst_run <= 0;
+    i_icm_sync_rdy <= 0;
   end
 
   else if (fsm == S_IDLE) begin
@@ -120,6 +123,7 @@ always @(posedge clk) begin
     i_trig_src <= trig_src;
     i_start_addr <= wvb_wr_addr;
     i_cnst_run <= cnst_run;
+    i_icm_sync_rdy <= icm_sync_rdy;
   end
 end
 // stop addr will always update along with wvb_wr_addr
@@ -223,18 +227,7 @@ assign wvb_wren = !overflow_out && write_condition && (mode_0_condition || mode_
 
 // header bundle fan_in
 generate
-if (P_HDR_WIDTH == 80)
-  mDOM_wvb_hdr_bundle_0_fan_in HDR_FAN_IN
-  (
-    .bundle(hdr_data),
-    .evt_ltc(i_evt_ltc),
-    .start_addr(i_start_addr),
-    .stop_addr(i_stop_addr),
-    .trig_src(i_trig_src),
-    .cnst_run(i_cnst_run),
-    .pre_conf(i_pre_conf)
-  );
-else if (P_HDR_WIDTH == 71)
+if (P_HDR_WIDTH == 71)
   mDOM_wvb_hdr_bundle_1_fan_in HDR_FAN_IN
   (
     .bundle(hdr_data),
@@ -244,7 +237,7 @@ else if (P_HDR_WIDTH == 71)
     .trig_src(i_trig_src),
     .cnst_run(i_cnst_run)
   );
-else if (P_HDR_WIDTH == 79) begin
+else if (P_HDR_WIDTH == 80)
   mDOM_wvb_hdr_bundle_2_fan_in HDR_FAN_IN
   (
     .bundle(hdr_data),
@@ -253,9 +246,9 @@ else if (P_HDR_WIDTH == 79) begin
     .stop_addr(i_stop_addr),
     .trig_src(i_trig_src),
     .cnst_run(i_cnst_run),
-    .pre_conf(i_pre_conf)
+    .pre_conf(i_pre_conf),
+    .sync_rdy(i_icm_sync_rdy)
   );
-end
 endgenerate
 
 // FSM logic

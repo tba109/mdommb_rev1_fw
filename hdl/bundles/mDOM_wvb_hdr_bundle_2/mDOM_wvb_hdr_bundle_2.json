@@ -37,6 +37,12 @@
 	       "input" : "pre_conf",
 	       "width" : 5,
 	       "description" : "number of pre samples"
+	    },
+
+	    {
+	       "input" : "sync_rdy",
+	       "width" : 1,
+	       "description" : "icm - FPGA sync rdy"
 	    }
 	]
     }
