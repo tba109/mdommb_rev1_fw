@@ -11,7 +11,7 @@
 // and  https://forums.xilinx.com/t5/Other-FPGA-Architecture/Output-differential-clock-kintex-7/td-p/771524
 
 
-module ADC3424_clk_IO
+module ADC3424_clk_IO #(parameter EN_SYSRF = 0)
 (
   input enc_clk,
 
@@ -63,7 +63,14 @@ sysrf_forward
   .R(1'b0),
   .S(1'b0)
 );
-OBUFDS OBUF_ADC_SYSRF(.I(oddr_sysrf_q), .O(sysrf_P), .OB(sysrf_N));
+generate
+if (EN_SYSRF == 1) begin
+  OBUFDS OBUF_ADC_SYSRF(.I(oddr_sysrf_q), .O(sysrf_P), .OB(sysrf_N));
+end else begin
+  assign sysrf_P = 0;
+  assign sysrf_N = 0;
+end
+endgenerate
 
 IBUFGDS IBUFGDS_DCLOCK(.I(dclk_P), .IB(dclk_N), .O(dclk_out));
 IBUFGDS IBUFGDS_FCLOCK(.I(fclk_P), .IB(fclk_N), .O(fclk_out));

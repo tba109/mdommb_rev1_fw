@@ -128,7 +128,7 @@ HBUF_DDR3_PG DDR3_PG_DPRAM_0
 reg[15:0] dpram_len = 0;
 reg dpram_done = 0;
 always @(posedge clk) begin
-  if (rst) begin
+  if (rst || !en) begin
     dpram_busy <= 0;
     dpram_len <= 0;
   end

@@ -3,7 +3,7 @@
 //
 // Provides status signals
 //
-// Adapted from the D-Egg for the mDOM
+// Adapted from the D-Egg for the mDOM (changed parameters)
 //
 // Aaron Fienberg
 // January 2021
@@ -63,15 +63,27 @@ reg[2:0] fsm = S_IDLE;
 wire[47:0] i_expected_ltc = ltc + EXPECTED_LTC_OFFSET;
 wire ltc_match = i_expected_ltc == ltc_des_out;
 
+// always record expected ltc / received_ltc when sync pulse arrives
+always @(posedge clk) begin
+  if (rst || !en) begin
+    expected_ltc <= 48'b0;
+    received_ltc <= 48'b0;
+  end else begin
+    expected_ltc <= expected_ltc;
+    received_ltc <= received_ltc;
+    if (sync_pe) begin
+      expected_ltc <= i_expected_ltc;
+      received_ltc <= ltc_des_out;
+    end
+  end
+end
+
 always @(posedge clk) begin
   if (rst || !en) begin
     ltc_wr_data = 48'b0;
     ltc_wr_req <= 0;
     rdy <= 0;
     err <= 0;
-
-    expected_ltc <= 48'b0;
-    received_ltc <= 48'b0;
 
     fsm <= S_IDLE;
   end else begin
@@ -88,9 +100,6 @@ always @(posedge clk) begin
       S_NO_SYNC: begin
         fsm <= S_NO_SYNC;
 
-        expected_ltc <= 0;
-        received_ltc <= 0;
-
         if (ltc_des_valid_out && sync_pe) begin
           ltc_wr_req <= 1;
           ltc_wr_data <= ltc_des_out;
@@ -103,8 +112,6 @@ always @(posedge clk) begin
 
         fsm <= S_FIRST_SYNC;
         if (ltc_des_valid_out && sync_pe) begin
-          expected_ltc <= i_expected_ltc;
-          received_ltc <= ltc_des_out;
 
           ltc_wr_req <= 1;
           ltc_wr_data <= ltc_des_out;
@@ -130,9 +137,6 @@ always @(posedge clk) begin
 
         fsm <= S_RDY;
         if (ltc_des_valid_out && sync_pe) begin
-          expected_ltc <= i_expected_ltc;
-          received_ltc <= ltc_des_out;
-
           ltc_wr_req <= 1;
           ltc_wr_data <= ltc_des_out;
 

@@ -30,16 +30,18 @@ sync SYNC_ICM_FPGA_SYNC_0(.clk(clk),.rst_n(!rst),
 
 // error if ser_in does not go high after
 // waiting STOP_ERR_CNT clock cycles in the stop bit
+// or start bit
 
 localparam S_IDLE = 0,
            S_RDY = 1,
-           S_START = 2,
-           S_SHIFT = 3,
-           S_STOP = 4;
+           S_START_0 = 2,
+           S_START_1 = 3,
+           S_SHIFT = 4,
+           S_STOP = 5;
 reg[2:0] fsm = S_IDLE;
 reg[31:0] cnt = 0;
 reg[31:0] bit_cnt = 0;
-reg[50:0] shift_reg = 0;
+reg[49:0] shift_reg = 0;
 
 always @(posedge clk) begin
   if (rst || !en) begin
@@ -74,31 +76,48 @@ always @(posedge clk) begin
         cnt <= 0;
         fsm <= S_RDY;
         if (ser_in_s == 1'b0) begin
-          cnt <= 1;
-          fsm <= S_START;
+          cnt <= 0;
+          fsm <= S_START_0;
         end
       end
 
-      S_START: begin
+      S_START_0: begin
+        fsm <= S_START_0;
         cnt <= cnt + 1;
-        fsm <= S_START;
+        if (ser_in_s == 1'b1) begin
+          cnt <= 0;
+          fsm <= S_START_1;
+        end else if (cnt >= STOP_ERR_CNT - 1) begin
+          cnt <= 0;
+          valid_out <= 0;
+          fsm <= S_IDLE;
+        end
+      end
+
+      S_START_1: begin
+        cnt <= cnt + 1;
+        fsm <= S_START_1;
         if (cnt >= SHIFT_CNT >> 1) begin
           shift_reg <= 0;
           cnt <= 0;
           bit_cnt <= 0;
           fsm <= S_SHIFT;
+        end else if (ser_in_s == 1'b0) begin
+          cnt <= 0;
+          valid_out <= 0;
+          fsm <= S_IDLE;
         end
       end
 
       S_SHIFT: begin
         cnt <= cnt + 1;
         fsm <= S_SHIFT;
-        if (cnt == SHIFT_CNT - 1) begin
-          shift_reg <= {shift_reg[49:0], ser_in_s};
+        if (cnt >= SHIFT_CNT - 1) begin
+          shift_reg <= {shift_reg[48:0], ser_in_s};
 
           cnt <= 0;
           bit_cnt <= bit_cnt + 1;
-          if (bit_cnt >= 50) begin
+          if (bit_cnt >= 49) begin
             fsm <= S_STOP;
           end
         end
@@ -107,15 +126,16 @@ always @(posedge clk) begin
       S_STOP: begin
         cnt <= cnt + 1;
 
+        ltc_out <= shift_reg[48:1];
+
         fsm <= S_STOP;
         if ((cnt >= SHIFT_CNT >> 1) && ser_in_s == 1'b1) begin
           cnt <= 0;
 
           fsm <= S_RDY;
           // check start and stop bits
-          if (shift_reg[50:49] == 2'b10 &&
+          if (shift_reg[49] == 1'b0 &&
               shift_reg[0] == 1'b0) begin
-            ltc_out <= shift_reg[48:1];
             valid_out <= 1;
           end else begin
             // error
