@@ -32,35 +32,7 @@ wire[P_DATA_WIDTH-1:0] buff_din = {wvb_data_in[P_DATA_WIDTH-1:1], eoe_in};
 
 wire[8:0] hdr_data_cnt;
 generate
-  // link header fifo size to P_ADR_WIDTH for now
-  if (P_ADR_WIDTH == 12) begin
-    BUFFER_4096_22 WAVEFORM_DISCR_BUFF
-      (
-       .clka(clk),
-       .wea(wvb_wrreq),
-       .addra(wvb_wr_addr),
-       .dina(buff_din),
-       .clkb(clk),
-       .addrb(wvb_rd_addr),
-       .doutb(wvb_data_out)
-      );
-
-    FIFO_256_80 HDR_FIFO_FMT_0
-    (
-     .clk(clk),
-     .srst(rst),
-     .din(hdr_data_in),
-     .wr_en(hdr_wrreq),
-     .rd_en(hdr_rdreq),
-     .dout(hdr_data_out),
-     .full(hdr_full),
-     .empty(hdr_empty),
-     .data_count(hdr_data_cnt)
-    );
-
-  end
-
-  else if (P_ADR_WIDTH == 11) begin
+  if (P_ADR_WIDTH == 11) begin
     BUFFER_2048_22 WAVEFORM_DISCR_BUFF (
       .clka(clk),
       .wea(wvb_wrreq),
@@ -83,7 +55,7 @@ generate
       .empty(hdr_empty),
       .data_count(hdr_data_cnt)
     );
-    assign hdr_data_out = fifo_out[78:0];
+    assign hdr_data_out = fifo_out[P_HDR_WIDTH-1:0];
 
   end
 
@@ -117,8 +89,6 @@ generate
     invalid_p_adr_width invalid_module_conf();
   end
 
-  // ATF TODO: make sure to change this when increasing
-  // buffer size
   wire[9:0] i_n_wvf_in_buf = hdr_full ? 10'd512 : hdr_data_cnt;
   assign n_wvf_in_buf = {{(P_N_WVF_IN_BUF_WIDTH - 10){1'b0}},
                          i_n_wvf_in_buf};
