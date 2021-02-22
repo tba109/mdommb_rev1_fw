@@ -4,7 +4,7 @@
 // Input for one ADC channel and one discriminator
 //
 
-module adc_discr_channel
+module adc_discr_channel #(parameter DISCR_DELAY=10)
   (
    input[1:0] adc_DP,
    input[1:0] adc_DN,
@@ -24,7 +24,7 @@ module adc_discr_channel
    input discr_io_reset,
 
    output reg[11:0] adc_bits = 0,
-   output reg[7:0]  discr_bits = 0,
+   output[7:0] discr_bits,
 
    input[4:0] delay_tap_in_0,
    input[4:0] delay_tap_in_1,
@@ -81,14 +81,24 @@ module adc_discr_channel
 
   reg[11:0] i_adc_bits_1 = 0;
   reg[7:0] i_discr_bits_1 = 0;
+  reg[7:0] i_discr_bits_2;
   always @(posedge lclk) begin
     i_adc_bits_1 <= i_adc_bits_0;
     adc_bits <= i_adc_bits_1;
-    discr_bits <= i_discr_bits_1;
+    i_discr_bits_2 <= i_discr_bits_1;
   end
 
   always @(posedge discr_fclk) begin
     i_discr_bits_1 <= i_discr_bits_0;
   end
+
+  // delay discriminator waveform for better alignment
+  // with ADC waveform
+  delay #(.DELAY(DISCR_DELAY), .BITS(8)) DISC_DEL_0 (
+    .clk(lclk),
+    .reset_n(1'b1),
+    .d_in(i_discr_bits_2),
+    .d_out(discr_bits)
+  );
 
 endmodule
