@@ -14,7 +14,8 @@ module waveform_buffer
    parameter P_CONST_CONF_WIDTH = 12,
    parameter P_TEST_CONF_WIDTH = 12,
    parameter P_PRE_CONF_WIDTH = 5,
-   parameter P_POST_CONF_WIDTH = 8
+   parameter P_POST_CONF_WIDTH = 8,
+   parameter P_BSUM_WIDTH = 19
   )
 (
   input clk,
@@ -51,7 +52,10 @@ module waveform_buffer
   input cnst_run,
   input trig_mode,
 
-  input icm_sync_rdy
+  input icm_sync_rdy,
+
+  input[P_BSUM_WIDTH-1:0] bsum,
+  input bsum_valid
 );
 
 // register synchronous reset
@@ -126,7 +130,8 @@ wvb_wr_ctrl
     .P_CONST_CONF_WIDTH(P_CONST_CONF_WIDTH),
     .P_TEST_CONF_WIDTH(P_TEST_CONF_WIDTH),
     .P_PRE_CONF_WIDTH(P_PRE_CONF_WIDTH),
-    .P_POST_CONF_WIDTH(P_POST_CONF_WIDTH)
+    .P_POST_CONF_WIDTH(P_POST_CONF_WIDTH),
+    .P_BSUM_WIDTH(P_BSUM_WIDTH)
    )
  WR_CTRL
   (
@@ -154,7 +159,10 @@ wvb_wr_ctrl
    .trig(trig && ptb_rdy),
    .trig_src(trig_src),
    .overflow_in(overflow_in),
-   .icm_sync_rdy(icm_sync_rdy)
+   .icm_sync_rdy(icm_sync_rdy),
+
+   .bsum(bsum),
+   .bsum_valid(bsum_valid)
   );
 
 // read address controller

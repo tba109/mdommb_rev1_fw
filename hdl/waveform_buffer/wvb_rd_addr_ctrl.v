@@ -17,6 +17,7 @@ module wvb_rd_addr_ctrl #(parameter P_ADR_WIDTH = 12,
 
 	output reg[P_ADR_WIDTH-1:0] wvb_rd_addr = 0
 );
+`include "mDOM_wvb_hdr_bundle_2_inc.v"
 
 // header fan out
 wire[P_ADR_WIDTH-1:0] start_addr;
@@ -31,7 +32,7 @@ if (P_HDR_WIDTH == 71)
   	.trig_src(),
   	.cnst_run()
   );
-else if (P_HDR_WIDTH == 80) begin
+else if (P_HDR_WIDTH == L_WIDTH_MDOM_WVB_HDR_BUNDLE_2) begin
   mDOM_wvb_hdr_bundle_2_fan_out HDR_FAN_OUT (
     .bundle(hdr_data),
     .evt_ltc(),
@@ -40,7 +41,9 @@ else if (P_HDR_WIDTH == 80) begin
     .trig_src(),
     .cnst_run(),
     .pre_conf(),
-    .sync_rdy()
+    .sync_rdy(),
+    .bsum(),
+    .bsum_valid()
   );
 end
 endgenerate

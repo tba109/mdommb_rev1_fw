@@ -1,0 +1,45 @@
+[
+    {
+	"output"    : "mDOM_bsum_bundle",
+	"min_width" : 0,
+	"element"   : [
+	    {
+		  "input" : "pause",
+		  "width" : 1,
+		  "description" : "pattern sum pause signal"
+	    },
+
+	    {
+		  "input" : "pause_override",
+		  "width" : 1,
+		  "description" : "pattern sum pause override signal"
+	    },
+
+	    {
+		  "input" : "sum_len_sel",
+		  "width" : 3,
+		  "description" : "pattern sum length select"
+	    },
+
+	    {
+		  "input" : "pause_len",
+		  "width" : 16,
+		  "description" : "pattern sum pause length"
+	    },
+
+	    {
+          "input": "dev_low",
+          "width": 12,
+          "description" : "low threshold for deviation detection"
+	    },
+
+	    {
+          "input": "dev_high",
+          "width": 12,
+          "description" : "high threshold for deviation detection"
+	    }
+	]
+    }
+]
+
+

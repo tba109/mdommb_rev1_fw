@@ -11,7 +11,9 @@ module wvb_wr_ctrl #(parameter P_DATA_WIDTH = 22,
                      parameter P_CONST_CONF_WIDTH = 12,
                      parameter P_TEST_CONF_WIDTH = 12,
                      parameter P_PRE_CONF_WIDTH = 5,
-                     parameter P_POST_CONF_WIDTH = 8)
+                     parameter P_POST_CONF_WIDTH = 8,
+                     parameter P_BSUM_WIDTH = 19
+                     )
 (
   input clk,
   input rst,
@@ -37,9 +39,13 @@ module wvb_wr_ctrl #(parameter P_DATA_WIDTH = 22,
   input trig,
   input[1:0] trig_src,
   input overflow_in,
-  input icm_sync_rdy
+  input icm_sync_rdy,
+
+  input[P_BSUM_WIDTH-1:0] bsum,
+  input bsum_valid
 );
 `include "trigger_src_inc.v"
+`include "mDOM_wvb_hdr_bundle_2_inc.v"
 
 // register synchronous rst
 (* DONT_TOUCH = "true" *) reg i_rst = 0;
@@ -63,6 +69,8 @@ reg[P_ADR_WIDTH-1:0] i_stop_addr = 0;
 reg i_cnst_run = 0;
 reg[1:0] i_trig_src = 0;
 reg i_icm_sync_rdy = 0;
+reg[P_BSUM_WIDTH-1:0] i_bsum = 0;
+reg i_bsum_valid = 0;
 
 // FSM states
 localparam
@@ -116,6 +124,8 @@ always @(posedge clk) begin
     i_trig_src <= 0;
     i_cnst_run <= 0;
     i_icm_sync_rdy <= 0;
+    i_bsum <= 0;
+    i_bsum_valid <= 0;
   end
 
   else if (fsm == S_IDLE) begin
@@ -124,6 +134,8 @@ always @(posedge clk) begin
     i_start_addr <= wvb_wr_addr;
     i_cnst_run <= cnst_run;
     i_icm_sync_rdy <= icm_sync_rdy;
+    i_bsum <= bsum;
+    i_bsum_valid <= bsum_valid;
   end
 end
 // stop addr will always update along with wvb_wr_addr
@@ -237,7 +249,7 @@ if (P_HDR_WIDTH == 71)
     .trig_src(i_trig_src),
     .cnst_run(i_cnst_run)
   );
-else if (P_HDR_WIDTH == 80)
+else if (P_HDR_WIDTH == L_WIDTH_MDOM_WVB_HDR_BUNDLE_2)
   mDOM_wvb_hdr_bundle_2_fan_in HDR_FAN_IN
   (
     .bundle(hdr_data),
@@ -247,7 +259,9 @@ else if (P_HDR_WIDTH == 80)
     .trig_src(i_trig_src),
     .cnst_run(i_cnst_run),
     .pre_conf(i_pre_conf),
-    .sync_rdy(i_icm_sync_rdy)
+    .sync_rdy(i_icm_sync_rdy),
+    .bsum(i_bsum),
+    .bsum_valid(i_bsum_valid)
   );
 endgenerate
 

@@ -12,8 +12,8 @@ module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
                               parameter P_N_WVF_IN_BUF_WIDTH = 16,
                               parameter P_WVB_TRIG_BUNDLE_WIDTH = 20,
                               parameter P_WVB_CONFIG_BUNDLE_WIDTH = 40,
-                              parameter P_RATE_SCALER_STS_BUNDLE_WIDTH = 35,
-                              parameter P_RATE_SCALER_CTRL_BUNDLE_WIDTH = 64)
+                              parameter P_MDOM_BSUM_BUNDLE_WIDTH = 45,
+                              parameter P_BSUM_WIDTH = 19)
 (
   input clk,
   input rst,
@@ -44,10 +44,6 @@ module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
   // for TOT scaler
   output thresh_tot_out,
 
-  // Rate scaler
-  // input[P_RATE_SCALER_CTRL_BUNDLE_WIDTH-1:0] rate_scaler_ctrl_bundle,
-  // output[P_RATE_SCALER_STS_BUNDLE_WIDTH-1:0] rate_scaler_sts_bundle,
-
   // XDOM interface
   // temporary send "arm" and "run"
   // separately from the trigger bundle
@@ -59,13 +55,18 @@ module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
   output          xdom_wvb_overflow,
 
   // icm time sync ready
-  input icm_sync_rdy
+  input icm_sync_rdy,
+
+  // bsum bundle
+  input[P_MDOM_BSUM_BUNDLE_WIDTH-1:0] bsum_bundle
 );
+`include "mDOM_bsum_bundle_inc.v"
 
 // register synchronous reset & xdom bundles & ext_trig_in
 (* max_fanout = 20 *) reg i_rst = 0;
 (* DONT_TOUCH = "true" *) reg[P_WVB_TRIG_BUNDLE_WIDTH-1:0] i_xdom_wvb_trig_bundle = 0;
 (* DONT_TOUCH = "true" *) reg[P_WVB_CONFIG_BUNDLE_WIDTH-1:0] i_xdom_wvb_config_bundle= 0;
+(* DONT_TOUCH = "true" *) reg[P_MDOM_BSUM_BUNDLE_WIDTH-1:0] i_bsum_bundle= 0;
 (* DONT_TOUCH = "true" *) reg i_ext_trig_in = 0;
 (* DONT_TOUCH = "true" *) reg i_icm_sync_rdy = 0;
 always @(posedge clk) begin
@@ -74,6 +75,7 @@ always @(posedge clk) begin
   i_xdom_wvb_config_bundle <= xdom_wvb_config_bundle;
   i_ext_trig_in <= ext_trig_in;
   i_icm_sync_rdy <= icm_sync_rdy;
+  i_bsum_bundle <= bsum_bundle;
 end
 
 // trig fan out
@@ -130,6 +132,29 @@ mDOM_wvb_conf_bundle_fan_out CONF_FAN_OUT
    .cnst_run(wvb_cnst_run)
   );
 
+// bsum fan out
+wire bsum_pause;
+wire bsum_pause_override;
+wire[2:0] bsum_sum_len_sel;
+wire[15:0] bsum_pause_len;
+wire[11:0] bsum_dev_low;
+wire[11:0] bsum_dev_high;
+mDOM_bsum_bundle_fan_out BSUM_FAN_OUT (
+  .bundle(i_bsum_bundle),
+  .pause(bsum_pause),
+  .pause_override(bsum_pause_override),
+  .sum_len_sel(bsum_sum_len_sel),
+  .pause_len(bsum_pause_len),
+  .dev_low(bsum_dev_low),
+  .dev_high(bsum_dev_high)
+);
+reg[7:0] bsum_sum_len = 0;
+reg[L_WIDTH_MDOM_BSUM_BUNDLE_SUM_LEN_SEL-1:0] prev_sum_len_sel = 0;
+always @(posedge clk) begin
+  bsum_sum_len <= 1 << bsum_sum_len_sel;
+  prev_sum_len_sel <= bsum_sum_len_sel;
+end
+
 //
 // raw data streams
 //
@@ -180,12 +205,41 @@ mdom_trigger MDOM_TRIG
 assign wvb_trig_out = wvb_trig;
 assign thresh_tot_out = thresh_tot;
 
+// baseline sum
+wire deviation_trig;
+wire bsum_valid;
+wire[P_BSUM_WIDTH-1:0] bsum;
+deviation_detector BSUM_DEV_DET (
+  .clk(clk),
+  .rst_n(!i_rst),
+  .d_in(adc_data_stream_0),
+  .sum_in(bsum),
+  .sum_len_sel(prev_sum_len_sel),
+  .sum_valid(bsum_valid),
+  .low_thresh(bsum_dev_low),
+  .high_thresh(bsum_dev_high),
+  .trig(deviation_trig)
+);
+rollingsum_lutram ROLLING_BSUM (
+  .clk(clk),
+  .rst_n(!i_rst),
+  .d_in(adc_data_stream_0),
+  .trig(deviation_trig),
+  .pause(bsum_pause),
+  .pause_ovr(bsum_pause_override),
+  .sum_len(bsum_sum_len),
+  .pause_len(bsum_pause_len),
+  .sum_out(bsum),
+  .valid(bsum_valid)
+);
+
 waveform_buffer
   #(.P_DATA_WIDTH(P_DATA_WIDTH),
     .P_ADR_WIDTH(P_ADR_WIDTH),
     .P_HDR_WIDTH(P_HDR_WIDTH),
     .P_LTC_WIDTH(P_LTC_WIDTH),
-    .P_N_WVF_IN_BUF_WIDTH(P_N_WVF_IN_BUF_WIDTH)
+    .P_N_WVF_IN_BUF_WIDTH(P_N_WVF_IN_BUF_WIDTH),
+    .P_BSUM_WIDTH(P_BSUM_WIDTH)
    )
  WVB
   (
@@ -223,7 +277,10 @@ waveform_buffer
    .cnst_conf(wvb_cnst_config),
    .trig_mode(wvb_trig_mode),
 
-   .icm_sync_rdy(i_icm_sync_rdy)
+   .icm_sync_rdy(i_icm_sync_rdy),
+
+   .bsum(bsum),
+   .bsum_valid(bsum_valid)
   );
 
 endmodule

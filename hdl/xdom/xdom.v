@@ -11,6 +11,7 @@
 //    3.) MCU UART (unused on the mDOM)
 //    4.) Command, response, status
 /////////////////////////////////////////////////////////////////////////////////
+`include "mDOM_bsum_bundle_inc.v"
 module xdom #(parameter N_CHANNELS = 24)
 (
   input             clk,
@@ -138,6 +139,8 @@ module xdom #(parameter N_CHANNELS = 24)
   input icm_sync_err,
   input[47:0] expected_sync_ltc,
   input[47:0] received_sync_ltc,
+
+  output[L_WIDTH_MDOM_BSUM_BUNDLE-1:0] bsum_bundle,
 
   // Debug FT232R I/O
   input             debug_txd,
@@ -370,6 +373,23 @@ mDOM_wvb_conf_bundle_fan_in WVB_CONF_FAN_IN
    .trig_mode(wvb_trig_mode),
    .cnst_run(wvb_cnst_run)
   );
+
+// bsum bundle
+reg bsum_pause = 0;
+reg bsum_pause_override = 0;
+reg[2:0] bsum_len_sel = 0;
+reg[15:0] bsum_pause_len = 0;
+reg[11:0] bsum_dev_low = 0;
+reg[11:0] bsum_dev_high = 0;
+mDOM_bsum_bundle_fan_in BSUM_FAN_IN (
+  .bundle(bsum_bundle),
+  .pause(bsum_pause),
+  .pause_override(bsum_pause_override),
+  .sum_len_sel(bsum_len_sel),
+  .pause_len(bsum_pause_len),
+  .dev_low(bsum_dev_low),
+  .dev_high(bsum_dev_high)
+);
 
 // buffer status mux
 reg[4:0] buf_status_sel;
@@ -773,6 +793,11 @@ always @(*)
       12'hbad: begin y_rd_data =        {8'b0, wvb_not_empty[N_CHANNELS-1:16]};                end
       12'hbac: begin y_rd_data =        wvb_not_empty[16:0];                                   end
       12'hbab: begin y_rd_data =        {15'b0, |wvb_not_empty};                               end
+      12'hbaa: begin y_rd_data =        {14'b0, bsum_pause_override, bsum_pause};              end
+      12'hba9: begin y_rd_data =        {13'b0, bsum_len_sel};                                 end
+      12'hba8: begin y_rd_data =        bsum_pause_len;                                        end
+      12'hba7: begin y_rd_data =        {4'b0, bsum_dev_low};                                  end
+      12'hba6: begin y_rd_data =        {4'b0, bsum_dev_high};                                 end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
@@ -897,6 +922,14 @@ always @(posedge clk)
           ddr3_vtt_s3 <= y_wr_data[0];
           ddr3_vtt_s5 <= y_wr_data[1];
         end
+        12'hbaa: begin
+          bsum_pause <= y_wr_data[0];
+          bsum_pause_override <= y_wr_data[1];
+        end
+        12'hba9: begin bsum_len_sel <= y_wr_data[2:0];                                         end
+        12'hba8: begin bsum_pause_len <= y_wr_data;                                            end
+        12'hba7: begin bsum_dev_low <= y_wr_data[11:0];                                        end
+        12'hba6: begin bsum_dev_high <= y_wr_data[11:0];                                       end
         default: begin                                                                         end
       endcase
 end // always @ (posedge clk)

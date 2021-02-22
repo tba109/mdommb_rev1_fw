@@ -43,6 +43,18 @@
 	       "input" : "sync_rdy",
 	       "width" : 1,
 	       "description" : "icm - FPGA sync rdy"
+	    },
+
+	    {
+	       "input" : "bsum",
+	       "width" : 19,
+	       "description" : "baseline sum"
+	    },
+
+	    {
+	       "input" : "bsum_valid",
+	       "width" : 1,
+	       "description" : "whether the baseline sum is valid"
 	    }
 	]
     }

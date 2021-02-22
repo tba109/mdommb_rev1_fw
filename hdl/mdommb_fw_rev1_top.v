@@ -316,8 +316,9 @@ module top (
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
+`include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h18;
+localparam[15:0] FW_VNUM = 16'h99;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -336,6 +337,7 @@ localparam P_WVB_ADR_WIDTH = 11;
 // hdr_bundle 2, 49 bit LTC
 localparam P_LTC_WIDTH = 49;
 localparam P_HDR_WIDTH = L_WIDTH_MDOM_WVB_HDR_BUNDLE_2;
+localparam P_FMT = 1;
 
 //
 // clock generation
@@ -680,6 +682,15 @@ endgenerate
 //     12'hbad: wvb_not_empty[23:16]
 //     12'hbac: wvb_not_empty[15:0]
 //     12'hbab: [0] any_wvb_not_empty
+//
+//     baseline sum controls
+//     12'hbaa:
+//          [0] bsum_pause
+//          [1] bsum_pause_override
+//     12'hba9: [2:0] bsum len sel
+//     12'hba8: [15:0] bsum pause len
+//     12'hba7: [11:0] bsum dev low
+//     12'hba6: [11:0] bsum dev high
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
@@ -791,6 +802,9 @@ wire icm_sync_err;
 // expected / received LTCs are always 48 bits
 wire[47:0] expected_sync_ltc;
 wire[47:0] received_sync_ltc;
+
+// bsum bundle
+wire[L_WIDTH_MDOM_BSUM_BUNDLE-1:0] xdom_bsum_bundle;
 
 // FMC, copied directly from D-Egg firmware
 wire [15:0] i_fmc_din;
@@ -999,6 +1013,8 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .expected_sync_ltc(expected_sync_ltc),
   .received_sync_ltc(received_sync_ltc),
 
+  .bsum_bundle(xdom_bsum_bundle),
+
   // debug UART
   .debug_txd(FTD_UART_TXD),
   .debug_rxd(FTD_UART_RXD),
@@ -1080,9 +1096,11 @@ wire[N_CHANNELS-1:0] thresh_tot_out;
 // register the xdom trigger/wvb configuration
 (* max_fanout = 5 *) reg[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle_reg;
 (* max_fanout = 5 *) reg[L_WIDTH_MDOM_WVB_CONF_BUNDLE-1:0] xdom_wvb_conf_bundle_reg;
+(* max_fanout = 5 *) reg[L_WIDTH_MDOM_BSUM_BUNDLE-1:0] xdom_bsum_bundle_reg;
 always @(posedge lclk) begin
   xdom_trig_bundle_reg <= xdom_trig_bundle;
   xdom_wvb_conf_bundle_reg <= xdom_wvb_conf_bundle;
+  xdom_bsum_bundle_reg <= xdom_bsum_bundle;
 end
 
 // external trigger
@@ -1131,7 +1149,9 @@ generate
       .xdom_wvb_armed(wvb_armed[i]),
       .xdom_wvb_overflow(wvb_overflow[i]),
 
-      .icm_sync_rdy(icm_sync_rdy)
+      .icm_sync_rdy(icm_sync_rdy),
+
+      .bsum_bundle(xdom_bsum_bundle_reg)
     );
   end
 endgenerate
@@ -1233,7 +1253,8 @@ wire rdout_dpram_busy = hbuf_enable ? hbuf_dpram_busy : xdom_rdout_dpram_busy;
 
 wvb_reader #(.N_CHANNELS(N_CHANNELS),
              .P_WVB_ADR_WIDTH(P_WVB_ADR_WIDTH),
-             .P_HDR_WIDTH(P_HDR_WIDTH))
+             .P_HDR_WIDTH(P_HDR_WIDTH),
+             .P_FMT(P_FMT))
 WVB_READER
 (
   .clk(lclk),
