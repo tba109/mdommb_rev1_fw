@@ -15,7 +15,8 @@ module waveform_buffer
    parameter P_TEST_CONF_WIDTH = 12,
    parameter P_PRE_CONF_WIDTH = 5,
    parameter P_POST_CONF_WIDTH = 8,
-   parameter P_BSUM_WIDTH = 19
+   parameter P_BSUM_WIDTH = 19,
+   parameter P_BSUM_LEN_SEL_WIDTH = 3
   )
 (
   input clk,
@@ -55,6 +56,7 @@ module waveform_buffer
   input icm_sync_rdy,
 
   input[P_BSUM_WIDTH-1:0] bsum,
+  input[P_BSUM_LEN_SEL_WIDTH-1:0] bsum_len_sel,
   input bsum_valid
 );
 
@@ -162,6 +164,7 @@ wvb_wr_ctrl
    .icm_sync_rdy(icm_sync_rdy),
 
    .bsum(bsum),
+   .bsum_len_sel(bsum_len_sel),
    .bsum_valid(bsum_valid)
   );
 

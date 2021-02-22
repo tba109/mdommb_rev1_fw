@@ -239,7 +239,8 @@ waveform_buffer
     .P_HDR_WIDTH(P_HDR_WIDTH),
     .P_LTC_WIDTH(P_LTC_WIDTH),
     .P_N_WVF_IN_BUF_WIDTH(P_N_WVF_IN_BUF_WIDTH),
-    .P_BSUM_WIDTH(P_BSUM_WIDTH)
+    .P_BSUM_WIDTH(P_BSUM_WIDTH),
+    .P_BSUM_LEN_SEL_WIDTH(L_WIDTH_MDOM_BSUM_BUNDLE_SUM_LEN_SEL)
    )
  WVB
   (
@@ -280,6 +281,7 @@ waveform_buffer
    .icm_sync_rdy(i_icm_sync_rdy),
 
    .bsum(bsum),
+   .bsum_len_sel(prev_sum_len_sel),
    .bsum_valid(bsum_valid)
   );
 

@@ -9,12 +9,13 @@ module mDOM_wvb_hdr_bundle_2_fan_out
    pre_conf,
    sync_rdy,
    bsum,
+   bsum_len_sel,
    bsum_valid
   );
 
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 
-   input [99:0] bundle;
+   input [102:0] bundle;
    output [48:0] evt_ltc;
    output [10:0] start_addr;
    output [10:0] stop_addr;
@@ -23,6 +24,7 @@ module mDOM_wvb_hdr_bundle_2_fan_out
    output [4:0] pre_conf;
    output [0:0] sync_rdy;
    output [18:0] bsum;
+   output [2:0] bsum_len_sel;
    output [0:0] bsum_valid;
 
 assign evt_ltc = bundle[48:0];
@@ -33,6 +35,7 @@ assign cnst_run = bundle[73:73];
 assign pre_conf = bundle[78:74];
 assign sync_rdy = bundle[79:79];
 assign bsum = bundle[98:80];
-assign bsum_valid = bundle[99:99];
+assign bsum_len_sel = bundle[101:99];
+assign bsum_valid = bundle[102:102];
 
 endmodule

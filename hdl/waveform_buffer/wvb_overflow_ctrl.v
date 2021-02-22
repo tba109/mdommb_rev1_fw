@@ -45,6 +45,7 @@ else if (P_HDR_WIDTH == L_WIDTH_MDOM_WVB_HDR_BUNDLE_2)
     .pre_conf(),
     .sync_rdy(),
     .bsum(),
+    .bsum_len_sel(),
     .bsum_valid()
   );
 endgenerate

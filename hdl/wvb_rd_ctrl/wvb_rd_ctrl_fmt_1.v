@@ -32,7 +32,8 @@
 // LTC_1        - LTC[31:16]
 // LTC_0        - LTC[15:0]
 // PAT_1        - [15] bsum_valid
-//              - [14:3] 0
+//              - [14:12] bsum_len_sel
+//              - [11:3] 0
 //              - [2:0] bsum[18:16]
 // PAT_0        - [15:0] bsum[15:0]
 // ADC_WORD     - 16-bit int (sign extended from 12-bit ADC sample)
@@ -48,7 +49,7 @@
 
 module wvb_rd_ctrl_fmt_1 #(parameter P_WVB_ADR_WIDTH = 12,
                            parameter P_DATA_WIDTH = 22,
-                           parameter P_HDR_WIDTH = 100)
+                           parameter P_HDR_WIDTH = 103)
 (
   input clk,
   input rst,
@@ -84,6 +85,7 @@ wire cnst_run;
 wire[4:0] pre_conf;
 wire icm_sync_rdy;
 wire[18:0] bsum;
+wire[2:0] bsum_len_sel;
 wire bsum_valid;
 
 mDOM_wvb_hdr_bundle_2_fan_out HDR_FAN_OUT (
@@ -96,6 +98,7 @@ mDOM_wvb_hdr_bundle_2_fan_out HDR_FAN_OUT (
   .pre_conf(pre_conf),
   .sync_rdy(icm_sync_rdy),
   .bsum(bsum),
+  .bsum_len_sel(bsum_len_sel),
   .bsum_valid(bsum_valid)
 );
 
@@ -212,7 +215,8 @@ always @(posedge clk) begin
       end
 
       S_PAT_1_PAT_0: begin
-        dpram_data <= {bsum[15:0], bsum_valid, 12'b0, bsum[18:16]};
+        dpram_data <= {bsum[15:0],
+                       bsum_valid, bsum_len_sel, 9'b0, bsum[18:16]};
         wvb_rdreq <= 1;
         dpram_wren <= 1;
         dpram_a <= dpram_a + 1;

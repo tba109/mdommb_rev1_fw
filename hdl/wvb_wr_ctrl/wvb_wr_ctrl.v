@@ -12,7 +12,8 @@ module wvb_wr_ctrl #(parameter P_DATA_WIDTH = 22,
                      parameter P_TEST_CONF_WIDTH = 12,
                      parameter P_PRE_CONF_WIDTH = 5,
                      parameter P_POST_CONF_WIDTH = 8,
-                     parameter P_BSUM_WIDTH = 19
+                     parameter P_BSUM_WIDTH = 19,
+                     parameter P_BSUM_LEN_SEL_WIDTH = 3
                      )
 (
   input clk,
@@ -42,6 +43,7 @@ module wvb_wr_ctrl #(parameter P_DATA_WIDTH = 22,
   input icm_sync_rdy,
 
   input[P_BSUM_WIDTH-1:0] bsum,
+  input[P_BSUM_LEN_SEL_WIDTH-1:0] bsum_len_sel,
   input bsum_valid
 );
 `include "trigger_src_inc.v"
@@ -70,6 +72,7 @@ reg i_cnst_run = 0;
 reg[1:0] i_trig_src = 0;
 reg i_icm_sync_rdy = 0;
 reg[P_BSUM_WIDTH-1:0] i_bsum = 0;
+reg[P_BSUM_LEN_SEL_WIDTH-1:0] i_bsum_len_sel = 0;
 reg i_bsum_valid = 0;
 
 // FSM states
@@ -125,6 +128,7 @@ always @(posedge clk) begin
     i_cnst_run <= 0;
     i_icm_sync_rdy <= 0;
     i_bsum <= 0;
+    i_bsum_len_sel <= 0;
     i_bsum_valid <= 0;
   end
 
@@ -135,6 +139,7 @@ always @(posedge clk) begin
     i_cnst_run <= cnst_run;
     i_icm_sync_rdy <= icm_sync_rdy;
     i_bsum <= bsum;
+    i_bsum_len_sel <= bsum_len_sel;
     i_bsum_valid <= bsum_valid;
   end
 end
@@ -261,6 +266,7 @@ else if (P_HDR_WIDTH == L_WIDTH_MDOM_WVB_HDR_BUNDLE_2)
     .pre_conf(i_pre_conf),
     .sync_rdy(i_icm_sync_rdy),
     .bsum(i_bsum),
+    .bsum_len_sel(i_bsum_len_sel),
     .bsum_valid(i_bsum_valid)
   );
 endgenerate

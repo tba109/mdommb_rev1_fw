@@ -52,11 +52,18 @@
 	    },
 
 	    {
+	       "input" : "bsum_len_sel",
+	       "width" : 3,
+	       "description" : "baseline sum length configuration"
+	    },
+
+	    {
 	       "input" : "bsum_valid",
 	       "width" : 1,
 	       "description" : "whether the baseline sum is valid"
 	    }
 	]
+
     }
 ]
 
