@@ -142,6 +142,11 @@ module xdom #(parameter N_CHANNELS = 24)
 
   output[L_WIDTH_MDOM_BSUM_BUNDLE-1:0] bsum_bundle,
 
+  // FPGA_CAL_TRIG interface
+  output reg [15:0] fpga_cal_trig_width = 0,
+  output reg fpga_cal_trig_io_rst = 1'b1,
+  output fpga_cal_trig_trig,
+
   // Debug FT232R I/O
   input             debug_txd,
   output            debug_rxd,
@@ -658,6 +663,10 @@ reg[31:0] afe_pulser_period = 0;
 reg[5:0] pulser_trig_single = 0;
 reg[5:0] periodic_pulser_enable = 0;
 
+reg[31:0] fpga_cal_trig_period = 0;
+reg fpga_cal_trig_single = 0;
+reg fpga_cal_trig_periodic_en = 0;
+
 // handles converting DDR3 16-bit word address from xdom
 // into the byte address used by the memory controller
 reg[26:0] pg_req_addr_16b = 0;
@@ -798,6 +807,12 @@ always @(*)
       12'hba8: begin y_rd_data =        bsum_pause_len;                                        end
       12'hba7: begin y_rd_data =        {4'b0, bsum_dev_low};                                  end
       12'hba6: begin y_rd_data =        {4'b0, bsum_dev_high};                                 end
+      12'hba5: begin y_rd_data =        fpga_cal_trig_width;                                   end
+      12'hba4: begin y_rd_data =        {15'b0, fpga_cal_trig_io_rst};                         end
+      12'hba3: begin y_rd_data =        {15'b0, fpga_cal_trig_single};                         end
+      12'hba2: begin y_rd_data =        fpga_cal_trig_period[31:16];                           end
+      12'hba1: begin y_rd_data =        fpga_cal_trig_period[15:0];                            end
+      12'hba0: begin y_rd_data =        {15'b0, fpga_cal_trig_periodic_en};                    end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
@@ -824,6 +839,7 @@ always @(posedge clk)
     i_discr_bitslip <= 0;
 
     pulser_trig_single <= 0;
+    fpga_cal_trig_single <= 0;
 
     slo_nconvst_os <= 0;
 
@@ -930,16 +946,29 @@ always @(posedge clk)
         12'hba8: begin bsum_pause_len <= y_wr_data;                                            end
         12'hba7: begin bsum_dev_low <= y_wr_data[11:0];                                        end
         12'hba6: begin bsum_dev_high <= y_wr_data[11:0];                                       end
+        12'hba5: begin fpga_cal_trig_width <= y_wr_data;                                       end
+        12'hba4: begin fpga_cal_trig_io_rst <= y_wr_data[0];                                   end
+        12'hba3: begin fpga_cal_trig_single <= y_wr_data[0];                                   end
+        12'hba2: begin fpga_cal_trig_period[31:16] <= y_wr_data;                               end
+        12'hba1: begin fpga_cal_trig_period[15:0] <= y_wr_data;                                end
+        12'hba0: begin fpga_cal_trig_periodic_en <= y_wr_data[0];                              end
         default: begin                                                                         end
       endcase
 end // always @ (posedge clk)
 
 // AFE pulser trigger outputs
-wire periodic_pulser_trig;
-periodic_trigger_gen TRIG_GEN(.clk(clk), .rst(rst),
-                              .period(afe_pulser_period),
-                              .trig(periodic_pulser_trig));
-assign pulser_trig_out = pulser_trig_single | ({6{periodic_pulser_trig}} & periodic_pulser_enable);
+wire periodic_afe_trig;
+periodic_trigger_gen AFE_TRIG_GEN(.clk(clk), .rst(rst),
+                                  .period(afe_pulser_period),
+                                  .trig(periodic_afe_trig));
+assign pulser_trig_out = pulser_trig_single | ({6{periodic_afe_trig}} & periodic_pulser_enable);
+
+// FPGA cal trigger output
+wire periodic_cal_trig;
+periodic_trigger_gen CAL_TRIG_GEN(.clk(clk), .rst(rst),
+                                  .period(fpga_cal_trig_period),
+                                  .trig(periodic_cal_trig));
+assign fpga_cal_trig_trig = fpga_cal_trig_single || (periodic_cal_trig && fpga_cal_trig_periodic_en);
 
 // wire [15:0] dpram_wr_data_a = 16'b0;
 // wire        dpram_wr_a = 1'b0;

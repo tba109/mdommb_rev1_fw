@@ -4,7 +4,7 @@
 // AFE pulser output control for the mDOM
 //
 
-module afe_pulser (
+module afe_pulser #(parameter DIFFERENTIAL=0) (
   input lclk,
   input lclk_rst,
   input divclk,
@@ -17,19 +17,34 @@ module afe_pulser (
   input y0, // idle level
   input[15:0] width,
 
-  output out
+  output out,
+  output out_n // unused for single-ended version
 );
 
 reg[7:0] out_bits = 8'b0;
 // invert out_bits if y0 idle level is high
 wire[7:0] oserdes_word = y0 == 0 ? out_bits : ~out_bits;
-AFE_PULSER_OUTPUT AFE_OUT (
-  .data_out_from_device(oserdes_word),
-  .data_out_to_pins(out),
-  .clk_in(fastclk),
-  .clk_div_in(divclk),
-  .io_reset(io_rst)
-);
+generate
+if (DIFFERENTIAL == 0) begin
+  AFE_PULSER_OUTPUT PULSER_OUT (
+     .data_out_from_device(oserdes_word),
+     .data_out_to_pins(out),
+     .clk_in(fastclk),
+     .clk_div_in(divclk),
+     .io_reset(io_rst)
+  );
+  assign out_n = 0;
+end else begin
+  PULSER_OUT_DIFF PULSER_OUT_DIFF (
+    .data_out_from_device(oserdes_word),
+    .data_out_to_pins_p(out),
+    .data_out_to_pins_n(out_n),
+    .clk_in(fastclk),
+    .clk_div_in(divclk),
+    .io_reset(io_rst)
+  );
+end
+endgenerate
 
 // synchronize trigger signal coming from lclk domain
 wire trig_os_out;

@@ -277,6 +277,10 @@ module top (
   input TRIG_IN,
   output TRIG_OUT,
 
+  // CAL interface
+  output FPGA_CAL_TRIG_P,
+  output FPGA_CAL_TRIG_N,
+
   // ADS8332 monitoring ADCs
   output MON_ADC1_CONVn,
   output MON_ADC1_CSn,
@@ -628,7 +632,7 @@ endgenerate
 //     12'hbd3: dac spi wr data [15:0]
 //
 //     AFE pulser controls
-//     12'hbd2: [15:0] AFE pulser width, units of 1 ns
+//     12'hbd2: [15:0] AFE pulser width, units of 1/960 MHz
 //     12'hbd1: [i] AFE pulser i IO reset
 //     12'hbd0: [7:0] AFE pulser sw trig mask [23:16]
 //     12'hbcf: [15:0] AFE pulser sw trig mask [15:0]
@@ -691,6 +695,14 @@ endgenerate
 //     12'hba8: [15:0] bsum pause len
 //     12'hba7: [11:0] bsum dev low
 //     12'hba6: [11:0] bsum dev high
+//
+//     FPGA_CAL_TRIG interface
+//     12'hba5: [15:0] FPGA_CAL_TRIG width, units of 1/960 MHz
+//     12'hba4: [0] FPGA_CAL_TRIG IO reset
+//     12'hba3: [0] FPGA_CAL_TRIG single trigger
+//     12'hba2: FPGA_CAL_TRIG period [31:16]
+//     12'hba1: FPGA_CAL_TRIG period [15:0]
+//     12'hba0: [0] Periodic pulse mode enable for FPGA_CAL_TRIG
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
@@ -805,6 +817,11 @@ wire[47:0] received_sync_ltc;
 
 // bsum bundle
 wire[L_WIDTH_MDOM_BSUM_BUNDLE-1:0] xdom_bsum_bundle;
+
+// cal interface
+wire cal_io_rst;
+wire cal_trig;
+wire[15:0] cal_trig_width;
 
 // FMC, copied directly from D-Egg firmware
 wire [15:0] i_fmc_din;
@@ -1014,6 +1031,11 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .received_sync_ltc(received_sync_ltc),
 
   .bsum_bundle(xdom_bsum_bundle),
+
+  // FPGA_CAL_TRIG interface
+  .fpga_cal_trig_width(cal_trig_width),
+  .fpga_cal_trig_io_rst(cal_io_rst),
+  .fpga_cal_trig_trig(cal_trig),
 
   // debug UART
   .debug_txd(FTD_UART_TXD),
@@ -1513,7 +1535,23 @@ afe_pulser PULSER_0 (
   .trig(pulser_trig[0]),
   .y0(1'b1),
   .width(pulser_width),
-  .out(TRIG_OUT)
+  .out(TRIG_OUT),
+  .out_n()
+);
+
+// FPGA_CAL trigger; treat it as an independent AFE pulser channel
+afe_pulser #(.DIFFERENTIAL(1)) CAL_PULSER_0 (
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .divclk(discr_fclk_120MHz),
+  .divclk_rst(!idelay_discrclk_locked),
+  .fastclk(clk_480MHz),
+  .io_rst(cal_io_rst),
+  .trig(cal_trig),
+  .y0(1'b1),
+  .width(cal_trig_width),
+  .out(FPGA_CAL_TRIG_P),
+  .out_n(FPGA_CAL_TRIG_N)
 );
 
 //
