@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="PULSER_OUT_DIFF_synth_1" LaunchPart="xc7s100fgga676-2" LaunchTime="1614176695">
+  <File Type="PA-TCL" Name="PULSER_OUT_DIFF.tcl"/>
+  <File Type="REPORTS-TCL" Name="PULSER_OUT_DIFF_reports.tcl"/>
+  <File Type="RDS-RDS" Name="PULSER_OUT_DIFF.vds"/>
+  <File Type="RDS-UTIL" Name="PULSER_OUT_DIFF_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="PULSER_OUT_DIFF_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="PULSER_OUT_DIFF.dcp"/>
+  <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/PULSER_OUT_DIFF">
+    <File Path="$PSRCDIR/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="PULSER_OUT_DIFF"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/PULSER_OUT_DIFF">
+    <File Path="$PSRCDIR/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="PULSER_OUT_DIFF"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>
