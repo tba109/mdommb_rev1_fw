@@ -92,7 +92,7 @@ if (P_HDR_WIDTH == 71) begin
   assign pre_conf = 5'h1a;
   assign odd_ltc_bit = 1'b0;
   assign icm_sync_rdy = 1'b0;
-end else if (P_HDR_WIDTH == 80) begin
+end else begin
   mDOM_wvb_hdr_bundle_2_fan_out HDR_FAN_OUT (
     .bundle(hdr_data),
     .evt_ltc({evt_ltc, odd_ltc_bit}),
@@ -101,7 +101,10 @@ end else if (P_HDR_WIDTH == 80) begin
     .trig_src(trig_src),
     .cnst_run(cnst_run),
     .pre_conf(pre_conf),
-    .sync_rdy(icm_sync_rdy)
+    .sync_rdy(icm_sync_rdy),
+    .bsum(),
+    .bsum_len_sel(),
+    .bsum_valid()
   );
 end
 endgenerate

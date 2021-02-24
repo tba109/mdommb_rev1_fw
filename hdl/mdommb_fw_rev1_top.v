@@ -343,7 +343,7 @@ localparam P_WVB_ADR_WIDTH = 11;
 // hdr_bundle 2, 49 bit LTC
 localparam P_LTC_WIDTH = 49;
 localparam P_HDR_WIDTH = L_WIDTH_MDOM_WVB_HDR_BUNDLE_2;
-localparam P_FMT = 1;
+localparam P_FMT = 0;
 
 //
 // clock generation
