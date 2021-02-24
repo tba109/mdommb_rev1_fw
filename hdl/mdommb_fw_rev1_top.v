@@ -324,7 +324,7 @@ module top (
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h19;
+localparam[15:0] FW_VNUM = 16'h1a;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -343,7 +343,7 @@ localparam P_WVB_ADR_WIDTH = 11;
 // hdr_bundle 2, 49 bit LTC
 localparam P_LTC_WIDTH = 49;
 localparam P_HDR_WIDTH = L_WIDTH_MDOM_WVB_HDR_BUNDLE_2;
-localparam P_FMT = 0;
+localparam P_FMT = 1;
 
 //
 // clock generation
