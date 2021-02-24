@@ -293,6 +293,8 @@ module top (
   output MON_ADC2_SDI,
   input MON_ADC2_SDO,
 
+  output DCDC_SYNC,
+
   // DDR3 related
   output DDR3_CLK100_OUT,
   output DDR3_VTT_S3,
@@ -699,10 +701,13 @@ endgenerate
 //     FPGA_CAL_TRIG interface
 //     12'hba5: [15:0] FPGA_CAL_TRIG width, units of 1/960 MHz
 //     12'hba4: [0] FPGA_CAL_TRIG IO reset
+//              [1] FPGA_CAL_TRIG polarity (0 idles low, 1 idles high)
 //     12'hba3: [0] FPGA_CAL_TRIG single trigger
 //     12'hba2: FPGA_CAL_TRIG period [31:16]
 //     12'hba1: FPGA_CAL_TRIG period [15:0]
 //     12'hba0: [0] Periodic pulse mode enable for FPGA_CAL_TRIG
+//
+//     12'hb9f: [0] DCDC_SYNC
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
@@ -822,6 +827,7 @@ wire[L_WIDTH_MDOM_BSUM_BUNDLE-1:0] xdom_bsum_bundle;
 wire cal_io_rst;
 wire cal_trig;
 wire[15:0] cal_trig_width;
+wire cal_trig_pol;
 
 // FMC, copied directly from D-Egg firmware
 wire [15:0] i_fmc_din;
@@ -1036,6 +1042,9 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .fpga_cal_trig_width(cal_trig_width),
   .fpga_cal_trig_io_rst(cal_io_rst),
   .fpga_cal_trig_trig(cal_trig),
+  .fpga_cal_trig_pol(cal_trig_pol),
+
+  .dcdc_sync(DCDC_SYNC),
 
   // debug UART
   .debug_txd(FTD_UART_TXD),
@@ -1548,7 +1557,7 @@ afe_pulser #(.DIFFERENTIAL(1)) CAL_PULSER_0 (
   .fastclk(clk_480MHz),
   .io_rst(cal_io_rst),
   .trig(cal_trig),
-  .y0(1'b1),
+  .y0(cal_trig_pol),
   .width(cal_trig_width),
   .out(FPGA_CAL_TRIG_P),
   .out_n(FPGA_CAL_TRIG_N)

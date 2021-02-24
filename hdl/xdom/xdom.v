@@ -146,6 +146,9 @@ module xdom #(parameter N_CHANNELS = 24)
   output reg [15:0] fpga_cal_trig_width = 0,
   output reg fpga_cal_trig_io_rst = 1'b1,
   output fpga_cal_trig_trig,
+  output reg fpga_cal_trig_pol = 1,
+
+  output reg dcdc_sync = 0,
 
   // Debug FT232R I/O
   input             debug_txd,
@@ -808,11 +811,12 @@ always @(*)
       12'hba7: begin y_rd_data =        {4'b0, bsum_dev_low};                                  end
       12'hba6: begin y_rd_data =        {4'b0, bsum_dev_high};                                 end
       12'hba5: begin y_rd_data =        fpga_cal_trig_width;                                   end
-      12'hba4: begin y_rd_data =        {15'b0, fpga_cal_trig_io_rst};                         end
+      12'hba4: begin y_rd_data =        {14'b0, fpga_cal_trig_pol, fpga_cal_trig_io_rst};      end
       12'hba3: begin y_rd_data =        {15'b0, fpga_cal_trig_single};                         end
       12'hba2: begin y_rd_data =        fpga_cal_trig_period[31:16];                           end
       12'hba1: begin y_rd_data =        fpga_cal_trig_period[15:0];                            end
       12'hba0: begin y_rd_data =        {15'b0, fpga_cal_trig_periodic_en};                    end
+      12'hb9f: begin y_rd_data =        {15'b0, dcdc_sync};                                    end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
@@ -947,11 +951,15 @@ always @(posedge clk)
         12'hba7: begin bsum_dev_low <= y_wr_data[11:0];                                        end
         12'hba6: begin bsum_dev_high <= y_wr_data[11:0];                                       end
         12'hba5: begin fpga_cal_trig_width <= y_wr_data;                                       end
-        12'hba4: begin fpga_cal_trig_io_rst <= y_wr_data[0];                                   end
+        12'hba4: begin
+          fpga_cal_trig_io_rst <= y_wr_data[0];
+          fpga_cal_trig_pol <= y_wr_data[1];
+        end
         12'hba3: begin fpga_cal_trig_single <= y_wr_data[0];                                   end
         12'hba2: begin fpga_cal_trig_period[31:16] <= y_wr_data;                               end
         12'hba1: begin fpga_cal_trig_period[15:0] <= y_wr_data;                                end
         12'hba0: begin fpga_cal_trig_periodic_en <= y_wr_data[0];                              end
+        12'hb9f: begin dcdc_sync <= y_wr_data[0];                                              end
         default: begin                                                                         end
       endcase
 end // always @ (posedge clk)
