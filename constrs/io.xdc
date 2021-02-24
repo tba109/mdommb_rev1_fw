@@ -478,3 +478,10 @@ set_property PACKAGE_PIN D16 [get_ports FPGA_GPIO_0]
 set_property IOSTANDARD LVCMOS18 [get_ports FPGA_GPIO_0]
 set_property PACKAGE_PIN C16 [get_ports FPGA_GPIO_1]
 set_property IOSTANDARD LVCMOS18 [get_ports FPGA_GPIO_1]
+
+set_property PACKAGE_PIN F17 [get_ports FPGA_CAL_TRIG_P]
+set_property IOSTANDARD DIFF_SSTL18_I [get_ports FPGA_CAL_TRIG_P]
+set_property PACKAGE_PIN F18 [get_ports FPGA_CAL_TRIG_N]
+
+set_property PACKAGE_PIN F2 [get_ports DCDC_SYNC]
+set_property IOSTANDARD LVCMOS18 [get_ports DCDC_SYNC]
