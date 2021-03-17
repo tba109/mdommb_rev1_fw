@@ -57,7 +57,7 @@
   PULSER_OUT_DIFF 
   instance_name
  (
-   .data_out_from_device(data_out_from_device), // input [3:0] data_out_from_device
+   .data_out_from_device(data_out_from_device), // input [7:0] data_out_from_device
    .data_out_to_pins_p(data_out_to_pins_p), // output [0:0] data_out_to_pins_p
    .data_out_to_pins_n(data_out_to_pins_n), // output [0:0] data_out_to_pins_n
    .clk_in(clk_in), // input clk_in                            

@@ -57,7 +57,7 @@ module PULSER_OUT_DIFF_selectio_wiz
    // width of the data for the system
  #(parameter SYS_W = 1,
    // width of the data for the device
-   parameter DEV_W = 4)
+   parameter DEV_W = 8)
  (
   // From the device out to the system
   input  [DEV_W-1:0] data_out_from_device,
@@ -105,9 +105,9 @@ module PULSER_OUT_DIFF_selectio_wiz
      OSERDESE2
        # (
          .DATA_RATE_OQ   ("DDR"),
-         .DATA_RATE_TQ   ("DDR"),
-         .DATA_WIDTH     (4),
-         .TRISTATE_WIDTH (4),
+         .DATA_RATE_TQ   ("SDR"),
+         .DATA_WIDTH     (8),
+         .TRISTATE_WIDTH (1),
          .SERDES_MODE    ("MASTER"))
        oserdese2_master (
          .D1             (oserdes_d[13][pin_count]),

@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
--- Date        : Wed Feb 24 09:25:44 2021
+-- Date        : Wed Mar 17 18:42:54 2021
 -- Host        : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF_sim_netlist.vhdl
@@ -16,7 +16,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz is
   port (
-    data_out_from_device : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    data_out_from_device : in STD_LOGIC_VECTOR ( 7 downto 0 );
     data_out_to_pins_p : out STD_LOGIC_VECTOR ( 0 to 0 );
     data_out_to_pins_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     clk_in : in STD_LOGIC;
@@ -24,13 +24,13 @@ entity PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz is
     io_reset : in STD_LOGIC
   );
   attribute DEV_W : integer;
-  attribute DEV_W of PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz : entity is 4;
+  attribute DEV_W of PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz : entity is 8;
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz : entity is "PULSER_OUT_DIFF_selectio_wiz";
   attribute SYS_W : integer;
   attribute SYS_W of PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz : entity is 1;
   attribute num_serial_bits : integer;
-  attribute num_serial_bits of PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz : entity is 4;
+  attribute num_serial_bits of PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz : entity is 8;
 end PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz;
 
 architecture STRUCTURE of PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz is
@@ -58,8 +58,8 @@ begin
 \pins[0].oserdese2_master\: unisim.vcomponents.OSERDESE2
     generic map(
       DATA_RATE_OQ => "DDR",
-      DATA_RATE_TQ => "DDR",
-      DATA_WIDTH => 4,
+      DATA_RATE_TQ => "SDR",
+      DATA_WIDTH => 8,
       INIT_OQ => '0',
       INIT_TQ => '0',
       IS_CLKDIV_INVERTED => '0',
@@ -81,7 +81,7 @@ begin
       SRVAL_TQ => '0',
       TBYTE_CTL => "FALSE",
       TBYTE_SRC => "FALSE",
-      TRISTATE_WIDTH => 4
+      TRISTATE_WIDTH => 1
     )
         port map (
       CLK => clk_in,
@@ -90,10 +90,10 @@ begin
       D2 => data_out_from_device(1),
       D3 => data_out_from_device(2),
       D4 => data_out_from_device(3),
-      D5 => '0',
-      D6 => '0',
-      D7 => '0',
-      D8 => '0',
+      D5 => data_out_from_device(4),
+      D6 => data_out_from_device(5),
+      D7 => data_out_from_device(6),
+      D8 => data_out_from_device(7),
       OCE => '1',
       OFB => \NLW_pins[0].oserdese2_master_OFB_UNCONNECTED\,
       OQ => data_out_to_pins_int,
@@ -119,7 +119,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity PULSER_OUT_DIFF is
   port (
-    data_out_from_device : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    data_out_from_device : in STD_LOGIC_VECTOR ( 7 downto 0 );
     data_out_to_pins_p : out STD_LOGIC_VECTOR ( 0 to 0 );
     data_out_to_pins_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     clk_in : in STD_LOGIC;
@@ -129,22 +129,22 @@ entity PULSER_OUT_DIFF is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of PULSER_OUT_DIFF : entity is true;
   attribute DEV_W : integer;
-  attribute DEV_W of PULSER_OUT_DIFF : entity is 4;
+  attribute DEV_W of PULSER_OUT_DIFF : entity is 8;
   attribute SYS_W : integer;
   attribute SYS_W of PULSER_OUT_DIFF : entity is 1;
 end PULSER_OUT_DIFF;
 
 architecture STRUCTURE of PULSER_OUT_DIFF is
-  attribute DEV_W of inst : label is 4;
+  attribute DEV_W of inst : label is 8;
   attribute SYS_W of inst : label is 1;
   attribute num_serial_bits : integer;
-  attribute num_serial_bits of inst : label is 4;
+  attribute num_serial_bits of inst : label is 8;
 begin
 inst: entity work.PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz
      port map (
       clk_div_in => clk_div_in,
       clk_in => clk_in,
-      data_out_from_device(3 downto 0) => data_out_from_device(3 downto 0),
+      data_out_from_device(7 downto 0) => data_out_from_device(7 downto 0),
       data_out_to_pins_n(0) => data_out_to_pins_n(0),
       data_out_to_pins_p(0) => data_out_to_pins_p(0),
       io_reset => io_reset

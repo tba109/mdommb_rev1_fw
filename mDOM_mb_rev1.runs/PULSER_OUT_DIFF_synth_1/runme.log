@@ -15,17 +15,17 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7s100'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s100'
 INFO: [Device 21-403] Loading part xc7s100fgga676-2
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 12404 
+INFO: Helper process launched with PID 13820 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 716.297 ; gain = 178.375
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 715.379 ; gain = 177.832
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'PULSER_OUT_DIFF' [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.v:58]
 	Parameter SYS_W bound to: 1 - type: integer 
-	Parameter DEV_W bound to: 4 - type: integer 
+	Parameter DEV_W bound to: 8 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'PULSER_OUT_DIFF_selectio_wiz' [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF_selectio_wiz.v:56]
 	Parameter SYS_W bound to: 1 - type: integer 
-	Parameter DEV_W bound to: 4 - type: integer 
-	Parameter num_serial_bits bound to: 4 - type: integer 
+	Parameter DEV_W bound to: 8 - type: integer 
+	Parameter num_serial_bits bound to: 8 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'OBUFDS' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:46012]
 	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
 	Parameter IOSTANDARD bound to: DIFF_SSTL18_I - type: string 
@@ -33,8 +33,8 @@ INFO: [Synth 8-6157] synthesizing module 'OBUFDS' [C:/Xilinx/Vivado/2019.1/scrip
 INFO: [Synth 8-6155] done synthesizing module 'OBUFDS' (1#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:46012]
 INFO: [Synth 8-6157] synthesizing module 'OSERDESE2' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:50071]
 	Parameter DATA_RATE_OQ bound to: DDR - type: string 
-	Parameter DATA_RATE_TQ bound to: DDR - type: string 
-	Parameter DATA_WIDTH bound to: 4 - type: integer 
+	Parameter DATA_RATE_TQ bound to: SDR - type: string 
+	Parameter DATA_WIDTH bound to: 8 - type: integer 
 	Parameter INIT_OQ bound to: 1'b0 
 	Parameter INIT_TQ bound to: 1'b0 
 	Parameter IS_CLKDIV_INVERTED bound to: 1'b0 
@@ -56,16 +56,12 @@ INFO: [Synth 8-6157] synthesizing module 'OSERDESE2' [C:/Xilinx/Vivado/2019.1/sc
 	Parameter SRVAL_TQ bound to: 1'b0 
 	Parameter TBYTE_CTL bound to: FALSE - type: string 
 	Parameter TBYTE_SRC bound to: FALSE - type: string 
-	Parameter TRISTATE_WIDTH bound to: 4 - type: integer 
+	Parameter TRISTATE_WIDTH bound to: 1 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'OSERDESE2' (2#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:50071]
-WARNING: [Synth 8-3848] Net oserdes_d[9] in module/entity PULSER_OUT_DIFF_selectio_wiz does not have driver. [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF_selectio_wiz.v:79]
-WARNING: [Synth 8-3848] Net oserdes_d[8] in module/entity PULSER_OUT_DIFF_selectio_wiz does not have driver. [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF_selectio_wiz.v:79]
-WARNING: [Synth 8-3848] Net oserdes_d[7] in module/entity PULSER_OUT_DIFF_selectio_wiz does not have driver. [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF_selectio_wiz.v:79]
-WARNING: [Synth 8-3848] Net oserdes_d[6] in module/entity PULSER_OUT_DIFF_selectio_wiz does not have driver. [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF_selectio_wiz.v:79]
 INFO: [Synth 8-6155] done synthesizing module 'PULSER_OUT_DIFF_selectio_wiz' (3#1) [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF_selectio_wiz.v:56]
 INFO: [Synth 8-6155] done synthesizing module 'PULSER_OUT_DIFF' (4#1) [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.v:58]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 781.477 ; gain = 243.555
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 782.359 ; gain = 244.812
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -78,10 +74,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 781.477 ; gain = 243.555
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 782.359 ; gain = 244.812
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 781.477 ; gain = 243.555
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 782.359 ; gain = 244.812
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -99,31 +95,31 @@ Parsing XDC File [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_
 Finished Parsing XDC File [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/PULSER_OUT_DIFF_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 811.273 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 809.863 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS, OBUFDS): 1 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.038 . Memory (MB): peak = 822.652 ; gain = 11.379
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 820.637 ; gain = 10.773
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 822.652 ; gain = 284.730
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 820.637 ; gain = 283.090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s100fgga676-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 822.652 ; gain = 284.730
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 820.637 ; gain = 283.090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property DONT_TOUCH = true for inst. (constraint file  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/PULSER_OUT_DIFF_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 822.652 ; gain = 284.730
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 820.637 ; gain = 283.090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 822.652 ; gain = 284.730
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 820.637 ; gain = 283.090
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -159,7 +155,7 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 822.652 ; gain = 284.730
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 820.637 ; gain = 283.090
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -171,13 +167,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 852.430 ; gain = 314.508
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 845.898 ; gain = 308.352
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 852.430 ; gain = 314.508
+Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 845.898 ; gain = 308.352
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -189,7 +185,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 862.012 ; gain = 324.090
+Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 855.484 ; gain = 317.938
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -213,7 +209,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 876.812 ; gain = 338.891
+Finished IO Insertion : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 871.262 ; gain = 333.715
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -226,7 +222,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 876.812 ; gain = 338.891
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 871.262 ; gain = 333.715
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -238,25 +234,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 876.812 ; gain = 338.891
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 871.262 ; gain = 333.715
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 876.812 ; gain = 338.891
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 871.262 ; gain = 333.715
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 876.812 ; gain = 338.891
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 871.262 ; gain = 333.715
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 876.812 ; gain = 338.891
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 871.262 ; gain = 333.715
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -284,34 +280,34 @@ Report Instance Areas:
 |2     |  inst   |PULSER_OUT_DIFF_selectio_wiz |     2|
 +------+---------+-----------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 876.812 ; gain = 338.891
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 871.262 ; gain = 333.715
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:25 . Memory (MB): peak = 876.812 ; gain = 297.715
-Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 876.812 ; gain = 338.891
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:23 . Memory (MB): peak = 871.262 ; gain = 295.438
+Synthesis Optimization Complete : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 871.262 ; gain = 333.715
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 896.293 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 890.812 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS, OBUFDS): 1 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-22 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+22 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 896.293 ; gain = 601.578
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 896.293 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 890.812 ; gain = 594.441
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 890.812 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/PULSER_OUT_DIFF_synth_1/PULSER_OUT_DIFF.dcp' has been generated.
 WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP PULSER_OUT_DIFF, cache-ID = e7e69b03d8bf4679
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 896.293 ; gain = 0.000
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP PULSER_OUT_DIFF, cache-ID = defd6dd70e84440c
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 890.812 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/PULSER_OUT_DIFF_synth_1/PULSER_OUT_DIFF.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file PULSER_OUT_DIFF_utilization_synth.rpt -pb PULSER_OUT_DIFF_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Feb 24 09:25:44 2021...
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 17 18:42:54 2021...

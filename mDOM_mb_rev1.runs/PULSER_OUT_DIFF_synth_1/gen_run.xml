@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="PULSER_OUT_DIFF_synth_1" LaunchPart="xc7s100fgga676-2" LaunchTime="1614176695">
+<GenRun Id="PULSER_OUT_DIFF_synth_1" LaunchPart="xc7s100fgga676-2" LaunchTime="1616020931">
   <File Type="PA-TCL" Name="PULSER_OUT_DIFF.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="PULSER_OUT_DIFF_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="PULSER_OUT_DIFF_reports.tcl"/>
   <File Type="RDS-RDS" Name="PULSER_OUT_DIFF.vds"/>
   <File Type="RDS-UTIL" Name="PULSER_OUT_DIFF_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="PULSER_OUT_DIFF_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="PULSER_OUT_DIFF.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="PULSER_OUT_DIFF_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="PULSER_OUT_DIFF_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/PULSER_OUT_DIFF">
     <File Path="$PSRCDIR/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.xci">
       <FileInfo>

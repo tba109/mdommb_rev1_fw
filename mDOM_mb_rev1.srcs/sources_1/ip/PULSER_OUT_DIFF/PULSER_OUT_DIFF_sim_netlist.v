@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-// Date        : Wed Feb 24 09:25:44 2021
+// Date        : Wed Mar 17 18:42:54 2021
 // Host        : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF_sim_netlist.v
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* DEV_W = "4" *) (* SYS_W = "1" *) 
+(* DEV_W = "8" *) (* SYS_W = "1" *) 
 (* NotValidForBitStream *)
 module PULSER_OUT_DIFF
    (data_out_from_device,
@@ -21,7 +21,7 @@ module PULSER_OUT_DIFF
     clk_in,
     clk_div_in,
     io_reset);
-  input [3:0]data_out_from_device;
+  input [7:0]data_out_from_device;
   output [0:0]data_out_to_pins_p;
   output [0:0]data_out_to_pins_n;
   input clk_in;
@@ -30,14 +30,14 @@ module PULSER_OUT_DIFF
 
   wire clk_div_in;
   wire clk_in;
-  wire [3:0]data_out_from_device;
+  wire [7:0]data_out_from_device;
   (* IOSTANDARD = "DIFF_SSTL18_I" *) (* SLEW = "SLOW" *) wire [0:0]data_out_to_pins_n;
   (* IOSTANDARD = "DIFF_SSTL18_I" *) (* SLEW = "SLOW" *) wire [0:0]data_out_to_pins_p;
   wire io_reset;
 
-  (* DEV_W = "4" *) 
+  (* DEV_W = "8" *) 
   (* SYS_W = "1" *) 
-  (* num_serial_bits = "4" *) 
+  (* num_serial_bits = "8" *) 
   PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz inst
        (.clk_div_in(clk_div_in),
         .clk_in(clk_in),
@@ -47,8 +47,8 @@ module PULSER_OUT_DIFF
         .io_reset(io_reset));
 endmodule
 
-(* DEV_W = "4" *) (* ORIG_REF_NAME = "PULSER_OUT_DIFF_selectio_wiz" *) (* SYS_W = "1" *) 
-(* num_serial_bits = "4" *) 
+(* DEV_W = "8" *) (* ORIG_REF_NAME = "PULSER_OUT_DIFF_selectio_wiz" *) (* SYS_W = "1" *) 
+(* num_serial_bits = "8" *) 
 module PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz
    (data_out_from_device,
     data_out_to_pins_p,
@@ -56,7 +56,7 @@ module PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz
     clk_in,
     clk_div_in,
     io_reset);
-  input [3:0]data_out_from_device;
+  input [7:0]data_out_from_device;
   output [0:0]data_out_to_pins_p;
   output [0:0]data_out_to_pins_n;
   input clk_in;
@@ -65,7 +65,7 @@ module PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz
 
   wire clk_div_in;
   wire clk_in;
-  wire [3:0]data_out_from_device;
+  wire [7:0]data_out_from_device;
   wire data_out_to_pins_int;
   wire [0:0]data_out_to_pins_n;
   wire [0:0]data_out_to_pins_p;
@@ -87,8 +87,8 @@ module PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz
   (* BOX_TYPE = "PRIMITIVE" *) 
   OSERDESE2 #(
     .DATA_RATE_OQ("DDR"),
-    .DATA_RATE_TQ("DDR"),
-    .DATA_WIDTH(4),
+    .DATA_RATE_TQ("SDR"),
+    .DATA_WIDTH(8),
     .INIT_OQ(1'b0),
     .INIT_TQ(1'b0),
     .IS_CLKDIV_INVERTED(1'b0),
@@ -110,7 +110,7 @@ module PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz
     .SRVAL_TQ(1'b0),
     .TBYTE_CTL("FALSE"),
     .TBYTE_SRC("FALSE"),
-    .TRISTATE_WIDTH(4)) 
+    .TRISTATE_WIDTH(1)) 
     \pins[0].oserdese2_master 
        (.CLK(clk_in),
         .CLKDIV(clk_div_in),
@@ -118,10 +118,10 @@ module PULSER_OUT_DIFF_PULSER_OUT_DIFF_selectio_wiz
         .D2(data_out_from_device[1]),
         .D3(data_out_from_device[2]),
         .D4(data_out_from_device[3]),
-        .D5(1'b0),
-        .D6(1'b0),
-        .D7(1'b0),
-        .D8(1'b0),
+        .D5(data_out_from_device[4]),
+        .D6(data_out_from_device[5]),
+        .D7(data_out_from_device[6]),
+        .D8(data_out_from_device[7]),
         .OCE(1'b1),
         .OFB(\NLW_pins[0].oserdese2_master_OFB_UNCONNECTED ),
         .OQ(data_out_to_pins_int),
