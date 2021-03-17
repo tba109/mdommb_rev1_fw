@@ -666,6 +666,7 @@ reg[31:0] afe_pulser_period = 0;
 reg[5:0] pulser_trig_single = 0;
 reg[5:0] periodic_pulser_enable = 0;
 
+reg[N_CHANNELS-1:0] cal_trig_sw_trig_mask = 0;
 reg[31:0] fpga_cal_trig_period = 0;
 reg fpga_cal_trig_single = 0;
 reg fpga_cal_trig_periodic_en = 0;
@@ -817,6 +818,8 @@ always @(*)
       12'hba1: begin y_rd_data =        fpga_cal_trig_period[15:0];                            end
       12'hba0: begin y_rd_data =        {15'b0, fpga_cal_trig_periodic_en};                    end
       12'hb9f: begin y_rd_data =        {15'b0, dcdc_sync};                                    end
+      12'hb9e: begin y_rd_data =        {8'b0, cal_trig_sw_trig_mask[N_CHANNELS-1:16]};        end
+      12'hb9d: begin y_rd_data =        cal_trig_sw_trig_mask[15:0];                           end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
@@ -955,11 +958,16 @@ always @(posedge clk)
           fpga_cal_trig_io_rst <= y_wr_data[0];
           fpga_cal_trig_pol <= y_wr_data[1];
         end
-        12'hba3: begin fpga_cal_trig_single <= y_wr_data[0];                                   end
+        12'hba3: begin
+          fpga_cal_trig_single <= y_wr_data[0];
+          xdom_trig_run <= cal_trig_sw_trig_mask;
+        end
         12'hba2: begin fpga_cal_trig_period[31:16] <= y_wr_data;                               end
         12'hba1: begin fpga_cal_trig_period[15:0] <= y_wr_data;                                end
         12'hba0: begin fpga_cal_trig_periodic_en <= y_wr_data[0];                              end
         12'hb9f: begin dcdc_sync <= y_wr_data[0];                                              end
+        12'hb9e: begin cal_trig_sw_trig_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];               end
+        12'hb9d: begin cal_trig_sw_trig_mask[15:0] <= y_wr_data;                               end
         default: begin                                                                         end
       endcase
 end // always @ (posedge clk)

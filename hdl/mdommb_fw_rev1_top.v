@@ -1,4 +1,4 @@
-
+//
 // November 2020
 //
 // Top level module for the rev1 mDOM mainboard
@@ -324,7 +324,7 @@ module top (
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h1a;
+localparam[15:0] FW_VNUM = 16'h1b;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -708,6 +708,10 @@ endgenerate
 //     12'hba0: [0] Periodic pulse mode enable for FPGA_CAL_TRIG
 //
 //     12'hb9f: [0] DCDC_SYNC
+//
+//     12'hb9e: [7:0] CAL trigger sw trig mask [23:16]
+//     12'hb9d: [15:0] CAL trigger sw trig mask [15:0]
+//
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
@@ -1279,6 +1283,14 @@ hbuf_ctrl HBUF_CTRL_0
 //
 // Waveform buffer reader
 //
+reg i_wvb_reader_en = 0;
+always @(posedge lclk) begin
+  if (lclk_rst) begin
+    i_wvb_reader_en <= 0;
+  end else begin
+    i_wvb_reader_en <= wvb_reader_enable;
+  end
+end
 
 wire rdout_dpram_busy = hbuf_enable ? hbuf_dpram_busy : xdom_rdout_dpram_busy;
 
@@ -1290,7 +1302,7 @@ WVB_READER
 (
   .clk(lclk),
   .rst(lclk_rst),
-  .en(wvb_reader_enable),
+  .en(i_wvb_reader_en),
 
   // dpram interface
   .dpram_data(rdout_dpram_data),

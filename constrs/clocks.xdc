@@ -10,6 +10,12 @@ set_false_path -from [get_clocks -of_objects [get_pins LCLK_ADCCLK_WIZ_0/inst/mm
 
 set_false_path -from [get_clocks -of_objects [get_pins DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT]] -to [get_clocks -of_objects [get_pins LCLK_ADCCLK_WIZ_0/inst/mmcm_adv_inst/CLKOUT0]]
 
+# from FMC to i_y_rd_addr in xdom
+# these are paths where the FMC sets the address and the data is
+# read through a UART. This is not something that we need to worry about
+set_false_path -from [get_pins {i_fmc_a_1_reg[*]/C}] -to [get_pins {XDOM_0/CRSM_0/i_rd_data_reg[*]/D}]
+set_false_path -from [get_pins i_fmc_cen_1_reg/C] -to [get_pins {XDOM_0/CRSM_0/i_rd_data_reg[*]/D}]
+
 # DDR input constraints are described in the following Xilinx forum thread
 # https://forums.xilinx.com/t5/Timing-Analysis/How-to-constraint-Same-Edge-capture-edge-aligned-DDR-input/m-p/646009#M8411
 # however, these seem to apply to source synchronous interfaces, which we won't be using in the mDOM
