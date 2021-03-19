@@ -1510,7 +1510,7 @@ spi_master #(.P_RD_DATA_WIDTH(19), .P_WR_DATA_WIDTH(19)) ADS8332_SPI (
   .sclk    (slo_adc_sclk),
   // Inputs
   .clk     (lclk),
-  .rst     (rst),
+  .rst     (lclk_rst),
   // MOSI
   .nb_mosi (8'd19),
   .y0_mosi (1'b0),
