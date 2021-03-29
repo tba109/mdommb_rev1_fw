@@ -46,10 +46,16 @@ module DDR3_DPRAM_transfer
   output dpram_wren
 );
 
+// ui_clk_sync_rst with no asynchronous reset
+reg ui_clk_sync_rst_1 = 1'b1;
+always @(posedge ui_clk) begin
+  ui_clk_sync_rst_1 <= ui_clk_sync_rst;
+end
+
 // page transfer controller
 // synchronize req into ui_clk domain
 wire pg_req_s;
-sync REQSYNC(.clk(ui_clk), .rst_n(!ui_clk_sync_rst), .a(pg_req), .y(pg_req_s));
+sync REQSYNC(.clk(ui_clk), .rst_n(!ui_clk_sync_rst_1), .a(pg_req), .y(pg_req_s));
 
 wire app_rdy;
 wire app_wdf_rdy;
@@ -64,7 +70,7 @@ wire[2:0] app_cmd;
 DDR3_pg_transfer_ctrl PG_TRANS_CTRL
 (
   .clk(ui_clk),
-  .rst(ui_clk_sync_rst),
+  .rst(ui_clk_sync_rst_1),
 
   .pg_req(pg_req_s),
   .pg_optype(pg_optype),
