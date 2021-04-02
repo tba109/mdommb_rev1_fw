@@ -15,14 +15,14 @@ module DDR3_pg_transfer_mux
   // hbuf connections
   input hbuf_pg_req,
   input hbuf_pg_optype,
-  output hbuf_pg_ack,
+  output reg hbuf_pg_ack = 0,
   input[27:0] hbuf_pg_req_addr,
   input[127:0] hbuf_dpram_dout,
   
   // xdom connections
   input xdom_pg_req,
   input xdom_pg_optype,
-  output xdom_pg_ack,
+  output reg xdom_pg_ack = 0,
   input[27:0] xdom_pg_req_addr,
   input[127:0] xdom_dpram_dout,
   output xdom_dpram_wren,
@@ -63,8 +63,15 @@ always @(*) begin
   endcase
 end
 
-assign hbuf_pg_ack = ddr3_pg_ack && (idx == 0);
-assign xdom_pg_ack = ddr3_pg_ack && (idx == 1);
+always @(posedge clk) begin
+  if (rst) begin
+    hbuf_pg_ack <= 0;
+    xdom_pg_ack <= 0;
+  end else begin
+    hbuf_pg_ack <= ddr3_pg_ack && (idx == 0);
+    xdom_pg_ack <= ddr3_pg_ack && (idx == 1);
+  end
+end
 
 assign xdom_dpram_wren = ddr3_dpram_wren && (idx == 1);
 

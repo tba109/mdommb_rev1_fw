@@ -139,6 +139,7 @@ module xdom #(parameter N_CHANNELS = 24)
   input icm_sync_err,
   input[47:0] expected_sync_ltc,
   input[47:0] received_sync_ltc,
+  input[15:0] icm_sync_err_cnt,
 
   output[L_WIDTH_MDOM_BSUM_BUNDLE-1:0] bsum_bundle,
 
@@ -704,6 +705,7 @@ always @(*)
       12'hcb2: begin y_rd_data =       received_sync_ltc[47:32];                               end
       12'hcb1: begin y_rd_data =       received_sync_ltc[31:16];                               end
       12'hcb0: begin y_rd_data =       received_sync_ltc[15:0];                                end
+      12'hcaf: begin y_rd_data =       icm_sync_err_cnt;                                       end
       12'hbfe: begin y_rd_data =       {9'b0,
                                         wvb_trig_ext_trig_en,
                                         wvb_trig_thresh_trig_en,

@@ -3,12 +3,12 @@
 create_clock -name fpga_clk -period 50.000 [get_ports {FPGA_CLOCK_P}]
 create_clock -name qosc_clk -period 50.000 [get_ports {QOSC_CLK_P1V8}]
 
-# do not time paths crossing between DDR3 clock domain and logic clock domain. They all
-# have manual handshaking / synchronizers
-
-set_false_path -from [get_clocks -of_objects [get_pins LCLK_ADCCLK_WIZ_0/inst/mmcm_adv_inst/CLKOUT0]] -to [get_clocks -of_objects [get_pins DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT]]
-
+# do not time paths from DDR3 ui clock to main logic clock. The associated signals manual synchronization and handshaking
 set_false_path -from [get_clocks -of_objects [get_pins DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT]] -to [get_clocks -of_objects [get_pins LCLK_ADCCLK_WIZ_0/inst/mmcm_adv_inst/CLKOUT0]]
+
+# set max delay from logic clock to DDR3 ui clock. DDR3 addrs, optypes must arrive before the synchronized pg_req. 
+# Use 12.308 ns delay, which is the period of the ddr3_ui_clk. This should ensure that all signals arrive in time
+set_max_delay -from [get_clocks -of_objects [get_pins LCLK_ADCCLK_WIZ_0/inst/mmcm_adv_inst/CLKOUT0]] -to [get_clocks -of_objects [get_pins DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT]] 12.308 -datapath_only
 
 # from FMC to i_y_rd_addr in xdom
 # these are paths where the FMC sets the address and the data is

@@ -324,7 +324,7 @@ module top (
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h1b;
+localparam[15:0] FW_VNUM = 16'h1c;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -563,6 +563,7 @@ endgenerate
 //     12'hcb2: received sync LTC [47:32]
 //     12'hcb1: received sync LTC [31:16]
 //     12'hcb0: received sync LTC [15:0]
+//     12'hcaf: [15:0] sync error count
 //
 //     12'hbfe: trig settings
 //             [0] et
@@ -823,6 +824,7 @@ wire icm_sync_err;
 // expected / received LTCs are always 48 bits
 wire[47:0] expected_sync_ltc;
 wire[47:0] received_sync_ltc;
+wire[15:0] icm_sync_err_cnt;
 
 // bsum bundle
 wire[L_WIDTH_MDOM_BSUM_BUNDLE-1:0] xdom_bsum_bundle;
@@ -1039,6 +1041,7 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .icm_sync_err(icm_sync_err),
   .expected_sync_ltc(expected_sync_ltc),
   .received_sync_ltc(received_sync_ltc),
+  .icm_sync_err_cnt(icm_sync_err_cnt),
 
   .bsum_bundle(xdom_bsum_bundle),
 
@@ -1101,6 +1104,13 @@ icm_time_transfer #(.SHIFT_CNT(40), .EXPECTED_LTC_OFFSET(1)) ICM_TIME_TRANSFER (
 );
 // always set ltc LSB to 0 on ICM sync
 assign ltc_wr_data[P_LTC_WIDTH-49:0] = 0;
+posedge_counter ERR_COUNTER (
+  .clk(lclk),
+  .rst(lclk_rst),
+  .en(icm_fpga_sync_en),
+  .in(icm_sync_err),
+  .cnt(icm_sync_err_cnt)
+);
 
 local_time_counter #(.P_LTC_WIDTH(P_LTC_WIDTH)) LTC_0 (
   .clk(lclk),
