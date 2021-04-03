@@ -394,8 +394,12 @@ ddr3_idelay_clk_wiz DDR3_IDELAY_CLK_WIZ_0 (
 
 // IDELAY control; this should automatically be replicated to all banks where it is needed
 // (see https://forums.xilinx.com/t5/Memory-Interfaces-and-NoC/IDELAYCTRL-in-Kintex-MIG/m-p/524885#M6824)
+reg delayctrl_rst = 1'b1;
+always @(posedge clk_200MHz) begin
+  delayctrl_rst <= !idelay_discrclk_locked;
+end
 wire   idelayctrl_rdy;
-IDELAYCTRL delayctrl(.RDY(idelayctrl_rdy),.REFCLK(clk_200MHz),.RST(!idelay_discrclk_locked));
+IDELAYCTRL delayctrl(.RDY(idelayctrl_rdy),.REFCLK(clk_200MHz),.RST(delayctrl_rst));
 
 // Input clocks and clock forwarding
 wire[5:0] i_adc_dclock;
