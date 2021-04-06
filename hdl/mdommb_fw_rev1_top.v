@@ -1305,12 +1305,15 @@ hbuf_ctrl HBUF_CTRL_0
 //
 // Waveform buffer reader
 //
-reg i_wvb_reader_en = 0;
+reg i_wvb_reader_en_1 = 0;
+reg i_wvb_reader_en_2 = 0;
 always @(posedge lclk) begin
   if (lclk_rst) begin
-    i_wvb_reader_en <= 0;
+    i_wvb_reader_en_1 <= 0;
+    i_wvb_reader_en_2 <= 0;
   end else begin
-    i_wvb_reader_en <= wvb_reader_enable;
+    i_wvb_reader_en_1 <= wvb_reader_enable;
+    i_wvb_reader_en_2 <= i_wvb_reader_en_1;
   end
 end
 
@@ -1324,7 +1327,7 @@ WVB_READER
 (
   .clk(lclk),
   .rst(lclk_rst),
-  .en(i_wvb_reader_en),
+  .en(i_wvb_reader_en_2),
 
   // dpram interface
   .dpram_data(rdout_dpram_data),
