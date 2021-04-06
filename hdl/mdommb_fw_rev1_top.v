@@ -839,11 +839,12 @@ wire cal_trig;
 wire[15:0] cal_trig_width;
 wire cal_trig_pol;
 
-// FMC, copied directly from D-Egg firmware
+// FMC
 wire [15:0] i_fmc_din;
-wire [15:0] i_fmc_dout;
+reg  [15:0] i_fmc_dout = 16'b0;
 wire [11:0] i_fmc_a;
 wire        i_fmc_oen;
+wire        i_fmc_oen_ne;
 wire        i_fmc_wen;
 wire        i_fmc_wen_ne;
 wire        i_fmc_cen;
@@ -902,17 +903,23 @@ assign FMC_IRQ1 = 0;
 assign FMC_IRQ0 = 0;
 
 wire        i_fmc_wen_s;
-// synchronize FMC WEn
+wire i_fmc_oen_s;
+// synchronize FMC WEn, OEn
 // and register FMC CEn, adr, data for write operations
 sync SYNC_FMC_WEN_0(.clk(lclk),.rst_n(!lclk_rst),.a(i_fmc_wen),.y(i_fmc_wen_s));
-negedge_detector NE_0(.clk(lclk),.rst_n(!lclk_rst),.a(i_fmc_wen_s),.y(i_fmc_wen_ne));
+negedge_detector FMC_WE_NE_0(.clk(lclk),.rst_n(!lclk_rst),.a(i_fmc_wen_s),.y(i_fmc_wen_ne));
+sync SYNC_FMC_OEN_0(.clk(lclk),.rst_n(!lclk_rst),.a(i_fmc_oen),.y(i_fmc_oen_s));
+negedge_detector FMC_OEN_NE_0(.clk(lclk),.rst_n(!lclk_rst),.a(i_fmc_oen_s),.y(i_fmc_oen_ne));
 (* max_fanout = 20 *) reg[11:0] i_fmc_a_1 = 12'b0;
 (* max_fanout = 20 *) reg[15:0] i_fmc_din_1 = 16'b0;
 reg i_fmc_cen_1 = 0;
 always @(posedge lclk) begin
- i_fmc_a_1 <= i_fmc_a;
- i_fmc_din_1 <= i_fmc_din;
- i_fmc_cen_1 <= i_fmc_cen;
+  i_fmc_a_1 <= i_fmc_a;
+  i_fmc_din_1 <= i_fmc_din;
+  i_fmc_cen_1 <= i_fmc_cen;
+  if (i_fmc_oen_ne) begin
+    i_fmc_dout <= po_dout;
+  end
 end
 
 // fmc write enable will be high for one lclk cycle
@@ -924,6 +931,7 @@ wire lclk_fmc_wren = i_fmc_wen_ne && !i_fmc_cen_1;
 // a read operation is in progress
 wire[11:0] fmc_addr_mux = i_fmc_oen == 0 ? i_fmc_a : i_fmc_a_1;
 wire fmc_cen_mux = i_fmc_oen == 0 ? i_fmc_cen : i_fmc_cen_1;
+wire[15:0] po_dout;
 
 xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
 (
@@ -1080,7 +1088,7 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .po_en(!fmc_cen_mux),
   .po_a(fmc_addr_mux),
   .po_din(i_fmc_din_1),
-  .po_dout(i_fmc_dout)
+  .po_dout(po_dout)
 );
 assign FTD_UART_CTSn = 0;
 
