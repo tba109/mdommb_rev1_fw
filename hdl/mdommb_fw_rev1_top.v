@@ -902,7 +902,7 @@ assign FMC_IRQ2 = 0;
 assign FMC_IRQ1 = 0;
 assign FMC_IRQ0 = 0;
 
-wire        i_fmc_wen_s;
+wire i_fmc_wen_s;
 wire i_fmc_oen_s;
 // synchronize FMC WEn, OEn
 // and register FMC CEn, adr, data for write operations
@@ -913,6 +913,7 @@ negedge_detector FMC_OEN_NE_0(.clk(lclk),.rst_n(!lclk_rst),.a(i_fmc_oen_s),.y(i_
 (* max_fanout = 20 *) reg[11:0] i_fmc_a_1 = 12'b0;
 (* max_fanout = 20 *) reg[15:0] i_fmc_din_1 = 16'b0;
 reg i_fmc_cen_1 = 0;
+wire[15:0] po_dout;
 always @(posedge lclk) begin
   i_fmc_a_1 <= i_fmc_a;
   i_fmc_din_1 <= i_fmc_din;
@@ -931,7 +932,6 @@ wire lclk_fmc_wren = i_fmc_wen_ne && !i_fmc_cen_1;
 // a read operation is in progress
 wire[11:0] fmc_addr_mux = i_fmc_oen == 0 ? i_fmc_a : i_fmc_a_1;
 wire fmc_cen_mux = i_fmc_oen == 0 ? i_fmc_cen : i_fmc_cen_1;
-wire[15:0] po_dout;
 
 xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
 (

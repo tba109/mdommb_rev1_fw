@@ -646,6 +646,10 @@ always @(posedge clk) begin
 end
 wire pg_clr_req_val = hbuf_pg_clr_req || hbuf_pg_clr_ack;
 
+// synchronize ddr3_cal_complete
+wire ddr3_cal_complete_s;
+sync CALSYNC(.clk(clk), .rst_n(!rst), .a(ddr3_cal_complete), .y(ddr3_cal_complete_s));
+
 //////////////////////////////////////////////////////////////////////////////
 // Read registers
 reg[15:0] dpram_len;
@@ -776,7 +780,7 @@ always @(*)
       12'hbcb: begin y_rd_data =       {15'b0, pg_optype};                                     end
       12'hbca: begin y_rd_data =       {15'b0, pg_task_val};                                   end
       12'hbc9: begin y_rd_data =       {15'b0, ddr3_sys_rst};                                  end
-      12'hbc8: begin y_rd_data =       {15'b0, ddr3_cal_complete};                             end
+      12'hbc8: begin y_rd_data =       {15'b0, ddr3_cal_complete_s};                           end
       12'hbc7: begin y_rd_data =       {5'b0, ddr3_device_temp};                               end
       12'hbc6: begin y_rd_data =       {15'b0, ddr3_ui_sync_rst};                              end
       12'hbc5: begin y_rd_data =       {15'b0, hbuf_enable};                                   end
