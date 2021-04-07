@@ -324,7 +324,7 @@ module top (
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h1c;
+localparam[15:0] FW_VNUM = 16'h1d;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -841,7 +841,7 @@ wire cal_trig_pol;
 
 // FMC
 wire [15:0] i_fmc_din;
-reg  [15:0] i_fmc_dout = 16'b0;
+wire [15:0] i_fmc_dout;
 wire [11:0] i_fmc_a;
 wire        i_fmc_oen;
 wire        i_fmc_oen_ne;
@@ -914,14 +914,21 @@ negedge_detector FMC_OEN_NE_0(.clk(lclk),.rst_n(!lclk_rst),.a(i_fmc_oen_s),.y(i_
 (* max_fanout = 20 *) reg[15:0] i_fmc_din_1 = 16'b0;
 reg i_fmc_cen_1 = 0;
 wire[15:0] po_dout;
+// register po_dout for control register reads
+// otherwise the output could change during a read operation
+reg[15:0] po_dout_1 = 16'b0;
 always @(posedge lclk) begin
   i_fmc_a_1 <= i_fmc_a;
   i_fmc_din_1 <= i_fmc_din;
   i_fmc_cen_1 <= i_fmc_cen;
   if (i_fmc_oen_ne) begin
-    i_fmc_dout <= po_dout;
+    po_dout_1 <= po_dout;
   end
 end
+wire fmc_ctrl_reg_read = i_fmc_a[11] == 1'b1;
+// DPRAM reads can be conducted combinationally
+// DPRAM values should not change during FMC reads
+assign i_fmc_dout = fmc_ctrl_reg_read ? po_dout_1 : po_dout;
 
 // fmc write enable will be high for one lclk cycle
 // following an fmc_wen negative edge

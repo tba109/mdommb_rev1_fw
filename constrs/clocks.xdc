@@ -17,22 +17,39 @@ set_input_delay -clock fmc_clk -1.0 -min [get_ports FMC_*En]
 set_output_delay -clock fmc_clk -max 1.0 [get_ports FMC_D*]
 set_output_delay -clock fmc_clk -min -1.0 [get_ports FMC_D*]
 
+# ICM input constraints
+# see https://www.xilinx.com/support/documentation/data_sheets/ds189-spartan-7-data-sheet.pdf
+# for info about Spartan 7 IO specs
+# ICM clock is 60 MHz
+create_clock -name icm_clk -period 16.667
+set_input_delay -clock icm_clk -max 0.59 [get_ports FPGA_SYNC_*]
+set_input_delay -clock icm_clk -min 0.39 [get_ports FPGA_SYNC_*]
+
 # delays from FMC input to lclk registers should be < 1 clock cycle
 set_max_delay -from [get_clocks fmc_clk] -to [get_clocks -of_objects [get_pins LCLK_ADCCLK_WIZ_0/inst/mmcm_adv_inst/CLKOUT0]] 8.333 -datapath_only
-# except for path to i_fmc_dout, which can take 2 cycles
-set_max_delay -from [get_clocks fmc_clk] -to [get_pins {i_fmc_dout_reg[*]/D}] 16.667 -datapath_only
+# except for path to po_dout_1, which can take 2 cycles
+set_max_delay -from [get_clocks fmc_clk] -to [get_pins {po_dout_1_reg[*]/D}] 16.667 -datapath_only
 
-# delays from lclk registers to FMC output should be < 1 clock cycle
-set_max_delay -from [get_clocks -of_objects [get_pins LCLK_ADCCLK_WIZ_0/inst/mmcm_adv_inst/CLKOUT0]] -to [get_clocks fmc_clk] 8.333 -datapath_only
+# do not time most paths from lclk registers to FMC outputs
+# exception is po_dout_1_reg, which is the one that really matters
+set_false_path -from [get_cells -hier -filter {NAME =~ * && IS_SEQUENTIAL && NAME !~ po_dout_1_reg*}] -to [get_clocks fmc_clk]
+# constrain delay from po_dout_1 to fmc outputs
+set_max_delay -from [get_pins {po_dout_1_reg[*]/C}] -to [get_clocks fmc_clk] 16.667 -datapath_only
 
 # from FMC to i_y_rd_addr in xdom
 # these are paths where the FMC sets the address and the data is
 # read through a UART. This is not something that we need to worry about
 set_false_path -from [get_pins {i_fmc_a_1_reg[*]/C}] -to [get_pins {XDOM_0/CRSM_0/i_rd_data_reg[*]/D}]
-set_false_path -from [get_pins i_fmc_cen_1_reg/C] -to [get_pins {XDOM_0/CRSM_0/i_rd_data_reg[*]/D}]
-# similarly, we can ignore path from i_y_addr in CRSM to i_fmc_dout_reg. This would be
+set_false_path -from [get_pins {i_fmc_cen_1_reg/C}] -to [get_pins {XDOM_0/CRSM_0/i_rd_data_reg[*]/D}]
+# similarly, we can ignore path from i_y_addr in CRSM to po_dout_1_reg. This would be
 # setting the addr through a uart and then reading that data via the FMC
-set_false_path -from [get_pins {XDOM_0/CRSM_0/i_y_adr_reg[*]/C}] -to [get_pins {i_fmc_dout_reg[*]/D}]
+set_false_path -from [get_pins {XDOM_0/CRSM_0/i_y_adr_reg[*]/C}] -to [get_pins {po_dout_1_reg[*]/D}]
+# and from a_1/cen_1 to po_dout_1_reg or FMC outputs. The registered FMC addr & cen only matter
+# for write operations
+set_false_path -from [get_pins {i_fmc_a_1_reg[*]/C}] -to [get_pins {po_dout_1_reg[*]/D}]
+set_false_path -from [get_pins {i_fmc_cen_1_reg/C}] -to [get_pins {po_dout_1_reg[*]/D}]
+set_false_path -from [get_pins {i_fmc_a_1_reg[*]/C}] -to [get_clocks fmc_clk]
+set_false_path -from [get_pins {i_fmc_cen_1_reg/C}] -to [get_clocks fmc_clk]
 
 # ignore paths that go directly from FMC clock to xdom registers.
 # Write commands will always occur when oen == 1 and therefore use the registered 
@@ -41,8 +58,9 @@ set_false_path -from [get_pins {XDOM_0/CRSM_0/i_y_adr_reg[*]/C}] -to [get_pins {
 # IS_SEQUENTIAL selects the valid endpoints in xDOM
 set_false_path -from [get_clocks fmc_clk] -to [get_cells -hier -filter {NAME =~ XDOM_0/* && IS_SEQUENTIAL}]
 
-# do not time paths from DDR3 ui clock to main logic clock. The associated signals use manual synchronization and handshaking
+# do not time paths from DDR3 ui clock to main logic clock or fmc clock. The associated signals use manual synchronization and handshaking
 set_false_path -from [get_clocks -of_objects [get_pins DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT]] -to [get_clocks -of_objects [get_pins LCLK_ADCCLK_WIZ_0/inst/mmcm_adv_inst/CLKOUT0]]
+set_false_path -from [get_clocks -of_objects [get_pins DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT]] -to [get_clocks fmc_clk]
 
 # set max delay from logic clock to DDR3 ui clock. DDR3 addrs, optypes must arrive before the synchronized pg_req. 
 # Use 12.308 ns delay, which is the period of the ddr3_ui_clk. This should ensure that all signals arrive in time
