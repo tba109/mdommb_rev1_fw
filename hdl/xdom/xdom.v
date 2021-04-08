@@ -810,7 +810,7 @@ always @(*)
       12'hbaf: begin y_rd_data =        thresh_scaler_mux_out_reg[15:0];                       end
       12'hbae: begin y_rd_data =        {14'b0, ddr3_vtt_s5, ddr3_vtt_s3};                     end
       12'hbad: begin y_rd_data =        {8'b0, wvb_not_empty[N_CHANNELS-1:16]};                end
-      12'hbac: begin y_rd_data =        wvb_not_empty[16:0];                                   end
+      12'hbac: begin y_rd_data =        wvb_not_empty[15:0];                                   end
       12'hbab: begin y_rd_data =        {15'b0, |wvb_not_empty};                               end
       12'hbaa: begin y_rd_data =        {14'b0, bsum_pause_override, bsum_pause};              end
       12'hba9: begin y_rd_data =        {13'b0, bsum_len_sel};                                 end

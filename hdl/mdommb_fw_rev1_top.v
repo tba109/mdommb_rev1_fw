@@ -734,11 +734,7 @@ wire[N_CHANNELS-1:0] wvb_hdr_full;
 wire[N_CHANNELS-1:0] wvb_hdr_empty;
 reg[N_CHANNELS-1:0] wvb_not_empty = 0;
 always @(posedge lclk) begin
-  if (lclk_rst) begin
-    wvb_not_empty <= 0;
-  end else begin
-    wvb_not_empty <= ~wvb_hdr_empty;
-  end
+  wvb_not_empty <= ~wvb_hdr_empty;
 end
 
 // wvb reader
@@ -1315,13 +1311,8 @@ hbuf_ctrl HBUF_CTRL_0
 reg i_wvb_reader_en_1 = 0;
 reg i_wvb_reader_en_2 = 0;
 always @(posedge lclk) begin
-  if (lclk_rst) begin
-    i_wvb_reader_en_1 <= 0;
-    i_wvb_reader_en_2 <= 0;
-  end else begin
-    i_wvb_reader_en_1 <= wvb_reader_enable;
-    i_wvb_reader_en_2 <= i_wvb_reader_en_1;
-  end
+  i_wvb_reader_en_1 <= wvb_reader_enable;
+  i_wvb_reader_en_2 <= i_wvb_reader_en_1;
 end
 
 wire rdout_dpram_busy = hbuf_enable ? hbuf_dpram_busy : xdom_rdout_dpram_busy;

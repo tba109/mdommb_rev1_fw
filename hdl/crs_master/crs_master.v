@@ -108,7 +108,7 @@ module crs_master
      S_RD_WAIT       = 5;
    reg [2:0] 	     fsm = S_IDLE;
    reg [3:0] 	     rd_wait_cnt = 0;
-   localparam        L_RD_WAIT_CNT_MAX = 0;
+   localparam        L_RD_WAIT_CNT_MAX = 2;
 
 `ifdef MODEL_TECH
    reg [127:0] 	     state_str;
@@ -129,6 +129,14 @@ module crs_master
    assign y_wr       = po_en       ? po_wr      : i_y_wr;
    assign po_rd_data = i_y_rd_data;
    assign i_y_rd_data = y_rd_data;
+
+   // ATF: pipeline rd data
+   reg[15:0] i_y_rd_data_1 = 16'b0;
+   reg[15:0] i_y_rd_data_2 = 16'b0;
+   always @(posedge clk) begin
+       i_y_rd_data_1 <= i_y_rd_data;
+       i_y_rd_data_2 <= i_y_rd_data_1;
+   end
 
    ///////////////////////////////////////////////////////////////////////////////////////////////
    // Helper logic
@@ -352,7 +360,7 @@ module crs_master
 	      begin
 		 i_ack <= 1;
 		 y_ack <= 1;
-		 i_rd_data <= i_y_rd_data;
+		 i_rd_data <= i_y_rd_data_2;
 		 if(!y_req && !i_wr_req && !i_bwr_req && !i_rd_req)
 		   begin
 		      y_ack <= 0;

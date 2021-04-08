@@ -39,8 +39,8 @@ set_max_delay -from [get_pins {po_dout_1_reg[*]/C}] -to [get_clocks fmc_clk] 16.
 # from FMC to i_y_rd_addr in xdom
 # these are paths where the FMC sets the address and the data is
 # read through a UART. This is not something that we need to worry about
-set_false_path -from [get_pins {i_fmc_a_1_reg[*]/C}] -to [get_pins {XDOM_0/CRSM_0/i_rd_data_reg[*]/D}]
-set_false_path -from [get_pins {i_fmc_cen_1_reg/C}] -to [get_pins {XDOM_0/CRSM_0/i_rd_data_reg[*]/D}]
+set_false_path -from [get_pins {i_fmc_a_1_reg[*]/C}] -to [get_pins {XDOM_0/CRSM_0/i_y_rd_data_1_reg[*]/D}]
+set_false_path -from [get_pins {i_fmc_cen_1_reg/C}] -to [get_pins {XDOM_0/CRSM_0/i_y_rd_data_1_reg[*]/D}]
 # similarly, we can ignore path from i_y_addr in CRSM to po_dout_1_reg. This would be
 # setting the addr through a uart and then reading that data via the FMC
 set_false_path -from [get_pins {XDOM_0/CRSM_0/i_y_adr_reg[*]/C}] -to [get_pins {po_dout_1_reg[*]/D}]
