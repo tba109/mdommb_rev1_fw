@@ -141,6 +141,7 @@ always @(posedge clk) begin
           ltc_wr_data <= ltc_des_out;
 
           if (!ltc_match) begin
+            rdy <= 0;
             err <= 1;
             fsm <= S_FIRST_SYNC;
           end
