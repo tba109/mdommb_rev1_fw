@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Fri Mar 19 15:26:13 2021
+| Date         : Fri Apr  9 16:54:58 2021
 | Host         : LAPTOP-GBOUD091 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
 | Design       : top
@@ -30,16 +30,16 @@ Table of Contents
 +----------------------------+-------+-------+-----------+-------+
 |          Site Type         |  Used | Fixed | Available | Util% |
 +----------------------------+-------+-------+-----------+-------+
-| Slice LUTs*                | 29254 |     0 |     64000 | 45.71 |
-|   LUT as Logic             | 28774 |     0 |     64000 | 44.96 |
+| Slice LUTs*                | 29347 |     0 |     64000 | 45.85 |
+|   LUT as Logic             | 28867 |     0 |     64000 | 45.10 |
 |   LUT as Memory            |   480 |     0 |     17600 |  2.73 |
 |     LUT as Distributed RAM |     0 |     0 |           |       |
 |     LUT as Shift Register  |   480 |     0 |           |       |
-| Slice Registers            | 33649 |     0 |    128000 | 26.29 |
-|   Register as Flip Flop    | 33649 |     0 |    128000 | 26.29 |
+| Slice Registers            | 33725 |     0 |    128000 | 26.35 |
+|   Register as Flip Flop    | 33725 |     0 |    128000 | 26.35 |
 |   Register as Latch        |     0 |     0 |    128000 |  0.00 |
-| F7 Muxes                   |   854 |     0 |     32000 |  2.67 |
-| F8 Muxes                   |    49 |     0 |     16000 |  0.31 |
+| F7 Muxes                   |   902 |     0 |     32000 |  2.82 |
+| F8 Muxes                   |    16 |     0 |     16000 |  0.10 |
 +----------------------------+-------+-------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
 
@@ -59,7 +59,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 847   |          Yes |         Set |            - |
-| 32802 |          Yes |       Reset |            - |
+| 32878 |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -148,21 +148,21 @@ Table of Contents
 +------------+-------+---------------------+
 |  Ref Name  |  Used | Functional Category |
 +------------+-------+---------------------+
-| FDRE       | 32802 |        Flop & Latch |
-| LUT4       |  9976 |                 LUT |
-| LUT6       |  7543 |                 LUT |
-| CARRY4     |  5600 |          CarryLogic |
-| LUT3       |  5045 |                 LUT |
-| LUT1       |  4901 |                 LUT |
-| LUT2       |  3988 |                 LUT |
-| LUT5       |  3823 |                 LUT |
-| MUXF7      |   854 |               MuxFx |
+| FDRE       | 32878 |        Flop & Latch |
+| LUT4       | 10266 |                 LUT |
+| LUT6       |  7611 |                 LUT |
+| CARRY4     |  5604 |          CarryLogic |
+| LUT3       |  4917 |                 LUT |
+| LUT1       |  4900 |                 LUT |
+| LUT2       |  4054 |                 LUT |
+| LUT5       |  3664 |                 LUT |
+| MUXF7      |   902 |               MuxFx |
 | FDSE       |   847 |        Flop & Latch |
 | SRL16E     |   480 |  Distributed Memory |
 | OBUF       |    59 |                  IO |
-| MUXF8      |    49 |               MuxFx |
 | IBUF       |    39 |                  IO |
 | OBUFT      |    16 |                  IO |
+| MUXF8      |    16 |               MuxFx |
 | IBUFDS     |    14 |                  IO |
 | ODDR       |    12 |                  IO |
 | OBUFDS     |    12 |                  IO |
