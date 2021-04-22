@@ -29,9 +29,14 @@ module top (
   input FPGA_GPIO_0,
   input FPGA_GPIO_1,
 
-  // MCU/CPLD UART
+  // MCU/CPLD UART (shared with MCU; will not be used)
   input MCU_USART6_TX,
   input MCU_USART6_RX,
+  input MCU_CAL_A0,
+  input MCU_AFE_SEL,
+  input MCU_CAL_SS,
+  input MCU_CAL_MOSI,
+  input MCU_CAL_MISO,
 
   // ADC interface
   output ADC0_CLOCK_P,
@@ -295,6 +300,10 @@ module top (
 
   output DCDC_SYNC,
 
+  // FPGA I2C
+  input FPGA_I2C_SDA,
+  input FPGA_I2C_SCL,
+
   // DDR3 related
   output DDR3_CLK100_OUT,
   output DDR3_VTT_S3,
@@ -324,7 +333,7 @@ module top (
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h1d;
+localparam[15:0] FW_VNUM = 16'h1e;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
