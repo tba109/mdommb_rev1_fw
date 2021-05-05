@@ -792,7 +792,7 @@ wire xdom_pg_ack;
 wire ddr3_sys_rst;
 wire ddr3_cal_complete;
 wire ddr3_ui_sync_rst;
-wire[11:0] ddr3_device_temp;
+wire[11:0] ddr3_device_temp_xdom;
 wire[7:0] ddr3_dpram_addr;
 wire xdom_ddr3_dpram_wren;
 wire[127:0] ddr3_dpram_din;
@@ -1023,7 +1023,7 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .ddr3_sys_rst(ddr3_sys_rst),
   .ddr3_cal_complete(ddr3_cal_complete),
   .ddr3_ui_sync_rst(ddr3_ui_sync_rst),
-  .ddr3_device_temp(ddr3_device_temp),
+  .ddr3_device_temp(ddr3_device_temp_xdom),
   .ddr3_dpram_addr(ddr3_dpram_addr),
   .ddr3_dpram_wren(xdom_ddr3_dpram_wren),
   .ddr3_dpram_din(ddr3_dpram_din),
@@ -1395,7 +1395,7 @@ DDR3_pg_transfer_mux DDR3_MUX
 //
 // DDR3 page transter
 //
-
+wire[11:0] ddr3_device_temp;
 wire ref_clk = clk_200MHz;
 DDR3_DPRAM_transfer DDR3_TRANSFER_0
 (
@@ -1434,6 +1434,15 @@ DDR3_DPRAM_transfer DDR3_TRANSFER_0
  .dpram_din(ddr3_dpram_din),
  .dpram_addr(ddr3_dpram_addr),
  .dpram_wren(ddr3_dpram_wren)
+);
+
+fpga_temp_sync TEMP_SYNC ( 
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .ddr3_clk(ddr3_ui_clk),
+  .ddr3_clk_rst(ddr3_ui_sync_rst),
+  .device_temp_in(ddr3_device_temp),
+  .device_temp_out(ddr3_device_temp_xdom)
 );
 
 //
