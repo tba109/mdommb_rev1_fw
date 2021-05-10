@@ -301,8 +301,8 @@ module top (
   output DCDC_SYNC,
 
   // FPGA I2C
-  input FPGA_I2C_SDA,
-  input FPGA_I2C_SCL,
+  inout FPGA_I2C_SDA,
+  output FPGA_I2C_SCL,
 
   // DDR3 related
   output DDR3_CLK100_OUT,
@@ -726,6 +726,24 @@ endgenerate
 //     12'hb9e: [7:0] CAL trigger sw trig mask [23:16]
 //     12'hb9d: [15:0] CAL trigger sw trig mask [15:0]
 //
+//     I2C interface
+//     12'hb9c: The I2C Master 0 task regsiters
+//         [0]: Write a word to the TX FIFO
+//         [1]: Read a word from the RX FIFO
+//         [2]: Execute an I2C transaction
+//     12'hb9b: Write word for the I2C TX FIFO
+//        [15]: Transmit the I2C start condition at the beginning of the byte
+//        [14]: Transmit the I2C acknowledge condition at the end of the byte
+//        [13]: Transmit the I2C stop condition at the end of the byte
+//        [12]: 0: TX FIFO [7:0] is write to slave, 1: RX FIFO [7:0] is read from slave
+//      [11:8]: 4'h0
+//       [7:0]: TX data for write to slave transactions
+//     12'hb9a: Read word for the I2C RX FIFO
+//        [15]: RX FIFO full
+//        [14]: RX FIFO empty
+//      [13:9]: 5'h0
+//         [8]: Slave acknowledged the RX transaction
+//       [7:0]: RX slave byte
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
@@ -843,6 +861,23 @@ wire cal_io_rst;
 wire cal_trig;
 wire[15:0] cal_trig_width;
 wire cal_trig_pol;
+
+// I2C signals
+wire i2cm_0_tx_fifo_wr_req;
+wire i2cm_0_rx_fifo_rd_req;
+wire i2cm_0_ex_req;
+wire i2cm_0_ack;
+wire[7:0] i2cm_0_rx_data;
+wire[7:0] i2cm_0_tx_data;
+wire i2cm_0_rx_fifo_full;
+wire i2cm_0_rx_fifo_empty;
+wire i2cm_0_tx_fifo_full;
+wire i2cm_0_tx_fifo_empty;
+wire i2cm_0_i2c_acked;
+wire i2cm_0_i2c_ack;
+wire i2cm_0_i2c_start;
+wire i2cm_0_i2c_stop;
+wire i2cm_0_i2c_r_wn;
 
 // FMC
 wire [15:0] i_fmc_din;
@@ -1076,6 +1111,23 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .fpga_cal_trig_pol(cal_trig_pol),
 
   .dcdc_sync(DCDC_SYNC),
+
+  // I2C
+  .i2cm_0_ack(i2cm_0_ack),
+  .i2cm_0_rx_data(i2cm_0_rx_data),
+  .i2cm_0_i2c_acked(i2cm_0_i2c_acked),
+  .i2cm_0_rx_fifo_full(i2cm_0_rx_fifo_full),
+  .i2cm_0_rx_fifo_empty(i2cm_0_rx_fifo_empty),
+  .i2cm_0_tx_fifo_full(i2cm_0_tx_fifo_full),
+  .i2cm_0_tx_fifo_empty(i2cm_0_tx_fifo_empty),
+  .i2cm_0_tx_fifo_wr_req(i2cm_0_tx_fifo_wr_req),
+  .i2cm_0_rx_fifo_rd_req(i2cm_0_rx_fifo_rd_req),
+  .i2cm_0_ex_req(i2cm_0_ex_req),
+  .i2cm_0_i2c_ack(i2cm_0_i2c_ack),
+  .i2cm_0_i2c_start(i2cm_0_i2c_start),
+  .i2cm_0_i2c_stop(i2cm_0_i2c_stop),
+  .i2cm_0_i2c_r_wn(i2cm_0_i2c_r_wn),
+  .i2cm_0_tx_data(i2cm_0_tx_data),
 
   // debug UART
   .debug_txd(FTD_UART_TXD),
@@ -1615,6 +1667,53 @@ afe_pulser #(.DIFFERENTIAL(1)) CAL_PULSER_0 (
   .out(FPGA_CAL_TRIG_P),
   .out_n(FPGA_CAL_TRIG_N)
 );
+
+// FPGA I2C
+PULLUP PU_SDA(.O(FPGA_I2C_SDA));
+PULLUP PU_SCL(.O(FPGA_I2C_SCL));
+
+wire   i2cm_0_scl;
+wire   i2cm_0_sda;
+i2c_master I2CM_0 (
+  // Outputs
+  .ack(i2cm_0_ack),
+  .rx_data(i2cm_0_rx_data[7:0]),
+  .i2c_acked(i2cm_0_i2c_acked),
+  .i2c_rx_fifo_full(i2cm_0_rx_fifo_full),
+  .i2c_rx_fifo_empty(i2cm_0_rx_fifo_empty),
+  .i2c_tx_fifo_full(i2cm_0_tx_fifo_full),
+  .i2c_tx_fifo_empty(i2cm_0_tx_fifo_empty),
+  .scl_o(i2cm_0_scl),
+  .sda_o(i2cm_0_sda),
+  // Inputs
+  .clk(lclk),
+  .rst(lclk_rst),
+  .scl_i(FPGA_I2C_SCL),
+  .sda_i(FPGA_I2C_SDA),
+  .tx_req(i2cm_0_tx_fifo_wr_req),
+  .rx_req(i2cm_0_rx_fifo_rd_req),
+  .ex_req(i2cm_0_ex_req),
+  .i2c_ack(i2cm_0_i2c_ack),
+  .i2c_start(i2cm_0_i2c_start),
+  .i2c_stop(i2cm_0_i2c_stop),
+  .i2c_r_wn(i2cm_0_i2c_r_wn),
+  .tx_data(i2cm_0_tx_data[7:0]),
+  .i2c_n0(32'd1000),
+  .i2c_start_n0(32'd500),
+  .i2c_start_n1(32'd500),
+  .i2c_data_n0(32'd333),
+  .i2c_data_n1(32'd333),
+  .i2c_data_n2(32'd334),
+  .i2c_ack_n0(32'd333),
+  .i2c_ack_n1(32'd333),
+  .i2c_ack_n2(32'd334),
+  .i2c_complete_n0(32'd1000),
+  .i2c_stop_n0(32'd333),
+  .i2c_stop_n1(32'd533),
+  .i2c_stop_n2(32'd134)
+);
+assign FPGA_I2C_SCL = i2cm_0_scl ? 1'bz : 1'b0;
+assign FPGA_I2C_SDA = i2cm_0_sda ? 1'bz : 1'b0;
 
 //
 // LED test pattern

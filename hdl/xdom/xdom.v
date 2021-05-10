@@ -151,6 +151,23 @@ module xdom #(parameter N_CHANNELS = 24)
 
   output reg dcdc_sync = 0,
 
+  // I2C
+  input i2cm_0_ack,
+  input[7:0] i2cm_0_rx_data,
+  input i2cm_0_i2c_acked,
+  input i2cm_0_rx_fifo_full,
+  input i2cm_0_rx_fifo_empty,
+  input i2cm_0_tx_fifo_full,
+  input i2cm_0_tx_fifo_empty, 
+  output i2cm_0_tx_fifo_wr_req,
+  output i2cm_0_rx_fifo_rd_req,
+  output i2cm_0_ex_req,
+  output reg i2cm_0_i2c_ack=0,
+  output reg i2cm_0_i2c_start=0,
+  output reg i2cm_0_i2c_stop=0,
+  output reg i2cm_0_i2c_r_wn=0, 
+  output reg[7:0] i2cm_0_tx_data=0,
+
   // Debug FT232R I/O
   input             debug_txd,
   output            debug_rxd,
@@ -596,6 +613,27 @@ task_reg #(.P_TASK_ADR(12'heff)) SLO_ADC_SPI_TASK_0 (
 assign slo_adc_req = slo_spi_task_req[2];
 assign slo_spi_task_ack[2] = slo_adc_ack;
 
+// I2C Master 0 tasks
+wire [15:0] i2cm_0_task_val;
+wire [15:0] i2cm_0_task_req;
+wire [15:0] i2cm_0_task_ack; 
+task_reg #(.P_TASK_ADR(12'hb9c)) I2CM_0_TASK_REG_0 (
+  .clk(clk),
+  .rst(rst),
+  .adr(y_adr),
+  .data(y_wr_data),
+  .wr(y_wr),
+  .req(i2cm_0_task_req),
+  .ack(i2cm_0_task_ack),
+  .val(i2cm_0_task_val)
+);
+assign i2cm_0_tx_fifo_wr_req = i2cm_0_task_req[0];
+assign i2cm_0_rx_fifo_rd_req = i2cm_0_task_req[1];
+assign i2cm_0_ex_req         = i2cm_0_task_req[2];
+assign i2cm_0_task_ack[0] = i2cm_0_ack;
+assign i2cm_0_task_ack[1] = i2cm_0_ack;
+assign i2cm_0_task_ack[2] = i2cm_0_ack; 
+
 // pg op task reg
 reg pg_req_start = 0;
 // synchronize ack
@@ -826,6 +864,18 @@ always @(*)
       12'hb9f: begin y_rd_data =        {15'b0, dcdc_sync};                                    end
       12'hb9e: begin y_rd_data =        {8'b0, cal_trig_sw_trig_mask[N_CHANNELS-1:16]};        end
       12'hb9d: begin y_rd_data =        cal_trig_sw_trig_mask[15:0];                           end
+      12'hb9c: begin y_rd_data =        i2cm_0_task_val;                                       end
+      12'hb9b: begin y_rd_data =       {i2cm_0_i2c_start,
+                                        i2cm_0_i2c_ack,
+                                        i2cm_0_i2c_stop,
+                                        i2cm_0_i2c_r_wn,
+                                        4'h0,
+                                        i2cm_0_tx_data};                                       end
+      12'hb9a: begin y_rd_data =       {i2cm_0_rx_fifo_full,
+                                        i2cm_0_rx_fifo_empty,
+                                        5'h0,
+                                        i2cm_0_i2c_acked, 
+                                        i2cm_0_rx_data};                                       end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
@@ -974,6 +1024,13 @@ always @(posedge clk)
         12'hb9f: begin dcdc_sync <= y_wr_data[0];                                              end
         12'hb9e: begin cal_trig_sw_trig_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];               end
         12'hb9d: begin cal_trig_sw_trig_mask[15:0] <= y_wr_data;                               end
+        12'hb9b: begin 
+          i2cm_0_i2c_start <= y_wr_data[15];
+          i2cm_0_i2c_ack   <= y_wr_data[14];
+          i2cm_0_i2c_stop  <= y_wr_data[13];
+          i2cm_0_i2c_r_wn  <= y_wr_data[12];
+          i2cm_0_tx_data   <= y_wr_data[7:0]; 
+        end
         default: begin                                                                         end
       endcase
 end // always @ (posedge clk)
