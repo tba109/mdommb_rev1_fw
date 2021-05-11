@@ -94,6 +94,7 @@ set rc [catch {
   read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/BUFFER_2048_22/BUFFER_2048_22.xci
   read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIST_BUFFER_128_12/DIST_BUFFER_128_12.xci
   read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.xci
+  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xci
   read_xdc C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc
   read_xdc C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/io.xdc
   link_design -top top -part xc7s100fgga676-2

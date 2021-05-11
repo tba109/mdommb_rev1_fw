@@ -56,9 +56,12 @@ read_verilog -library xil_defaultlib {
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/rollingsum/deviation_detector.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/discr_scaler/discr_scaler.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/err_mngr/err_mngr.v
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/fpga_temp_sync/fpga_temp_sync.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/ft232r_hs/ft232r_hs.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/ft232r_proc_buffered/ft232r_proc_buffered.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/hbuf_ctrl/hbuf_ctrl.v
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/i2c_byte/i2c_byte.v
+  C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/i2c_master/i2c_master.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/icm_time_transfer/icm_ltc_des.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/icm_time_transfer/icm_time_transfer.v
   C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/hdl/discr_scaler/inhibit_generator_1b.v
@@ -179,6 +182,10 @@ set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube
 read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.xci
 set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF_ooc.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.xdc]
+
+read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xci
+set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
