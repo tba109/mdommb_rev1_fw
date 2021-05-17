@@ -148,9 +148,7 @@ always @(posedge clk) begin
             app_en <= 0;
             app_fsm <= S_DPRAM_FSM_CHECK;
           end
-
         end
-
       end
 
       S_RD_PG_BEGIN: begin
