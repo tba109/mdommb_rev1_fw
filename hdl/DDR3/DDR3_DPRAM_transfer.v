@@ -6,8 +6,8 @@
 
 module DDR3_DPRAM_transfer
 (
-	// signals for the memory interface
-	inout [15:0]ddr3_dq,
+  // signals for the memory interface
+  inout [15:0]ddr3_dq,
   inout [1:0]ddr3_dqs_n,
   inout [1:0]ddr3_dqs_p,
   output [13:0]ddr3_addr,
@@ -108,8 +108,8 @@ wire app_zq_ack;
 
 mig_7series_0 MIG_7_SERIES
 (
- 	// active low sys rst
- 	.sys_rst(sys_rst),
+  // active low sys rst
+  .sys_rst(sys_rst),
 
   // DDR3 chip interface
   .ddr3_addr(ddr3_addr),
@@ -128,7 +128,7 @@ mig_7series_0 MIG_7_SERIES
   .ddr3_dm(ddr3_dm),
   .ddr3_odt(ddr3_odt),
  
- 	// status signals
+  // status signals
   .init_calib_complete(init_calib_complete),
   .device_temp(device_temp), 
 
