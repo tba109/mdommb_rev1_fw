@@ -33,6 +33,10 @@ module top (
   input MCU_USART6_TX,
   input MCU_USART6_RX,
   input MCU_CAL_A0,
+  input MCU_CAL_A1,
+  input MCU_CAL_A2,
+  input MCU_CAL_A3,
+  input MCU_CAL_A4,
   input MCU_AFE_SEL,
   input MCU_CAL_SS,
   input MCU_CAL_MOSI,
@@ -63,8 +67,6 @@ module top (
   input ADC0_FCLK_M,
   input ADC0_SDOUT,
   output ADC0_SEN,
-  output ADC0_SYSRF_P,
-  output ADC0_SYSRF_M,
   output ADC1_CLOCK_P,
   output ADC1_CLOCK_M,
   input ADC1_DA0P,
@@ -88,8 +90,6 @@ module top (
   input ADC1_FCLK_P,
   input ADC1_FCLK_M,
   output ADC1_SEN,
-  output ADC1_SYSRF_P,
-  output ADC1_SYSRF_M,
   output ADC2_CLOCK_P,
   output ADC2_CLOCK_M,
   input ADC2_DA0P,
@@ -113,8 +113,6 @@ module top (
   input ADC2_FCLK_P,
   input ADC2_FCLK_M,
   output ADC2_SEN,
-  output ADC2_SYSRF_P,
-  output ADC2_SYSRF_M,
   output ADC3_CLOCK_P,
   output ADC3_CLOCK_M,
   input ADC3_DA0P,
@@ -138,8 +136,6 @@ module top (
   input ADC3_FCLK_P,
   input ADC3_FCLK_M,
   output ADC3_SEN,
-  output ADC3_SYSRF_P,
-  output ADC3_SYSRF_M,
   output ADC4_CLOCK_P,
   output ADC4_CLOCK_M,
   input ADC4_DA0P,
@@ -163,8 +159,6 @@ module top (
   input ADC4_FCLK_P,
   input ADC4_FCLK_M,
   output ADC4_SEN,
-  output ADC4_SYSRF_P,
-  output ADC4_SYSRF_M,
   output ADC5_CLOCK_P,
   output ADC5_CLOCK_M,
   input ADC5_DA0P,
@@ -188,8 +182,6 @@ module top (
   input ADC5_FCLK_P,
   input ADC5_FCLK_M,
   output ADC5_SEN,
-  output ADC5_SYSRF_P,
-  output ADC5_SYSRF_M,
   output ADC_RESET,
   output ADC_SCLK,
   output ADC_SDATA,
@@ -282,6 +274,13 @@ module top (
   input TRIG_IN,
   output TRIG_OUT,
 
+  output AFE0_TPR,
+  output AFE1_TPR,
+  output AFE2_TPR,
+  output AFE3_TPR,
+  output AFE4_TPR,
+  output AFE5_TPR,
+
   // CAL interface
   output FPGA_CAL_TRIG_P,
   output FPGA_CAL_TRIG_N,
@@ -333,7 +332,7 @@ module top (
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h1e;
+localparam[15:0] FW_VNUM = 16'h1f;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -418,32 +417,32 @@ ADC3424_clk_IO clk_IO_0(.enc_clk(i_adc_clock),
                         .dclk_P(ADC0_DCLK_P), .dclk_N(ADC0_DCLK_M), .dclk_out(i_adc_dclock[0]),
                         .fclk_P(ADC0_FCLK_P), .fclk_N(ADC0_FCLK_M), .fclk_out(i_adc_fclock[0]),
                         .adc_clk_P(ADC0_CLOCK_P), .adc_clk_N(ADC0_CLOCK_M),
-                        .sysrf_P(ADC0_SYSRF_P), .sysrf_N(ADC0_SYSRF_M));
+                        .sysrf_P(), .sysrf_N());
 ADC3424_clk_IO clk_IO_1(.enc_clk(i_adc_clock),
                         .dclk_P(ADC1_DCLK_P), .dclk_N(ADC1_DCLK_M), .dclk_out(i_adc_dclock[1]),
                         .fclk_P(ADC1_FCLK_P), .fclk_N(ADC1_FCLK_M), .fclk_out(i_adc_fclock[1]),
                         .adc_clk_P(ADC1_CLOCK_P), .adc_clk_N(ADC1_CLOCK_M),
-                        .sysrf_P(ADC1_SYSRF_P), .sysrf_N(ADC1_SYSRF_M));
+                        .sysrf_P(), .sysrf_N());
 ADC3424_clk_IO clk_IO_2(.enc_clk(i_adc_clock),
                         .dclk_P(ADC2_DCLK_P), .dclk_N(ADC2_DCLK_M), .dclk_out(i_adc_dclock[2]),
                         .fclk_P(ADC2_FCLK_P), .fclk_N(ADC2_FCLK_M), .fclk_out(i_adc_fclock[2]),
                         .adc_clk_P(ADC2_CLOCK_P), .adc_clk_N(ADC2_CLOCK_M),
-                        .sysrf_P(ADC2_SYSRF_P), .sysrf_N(ADC2_SYSRF_M));
+                        .sysrf_P(), .sysrf_N());
 ADC3424_clk_IO clk_IO_3(.enc_clk(i_adc_clock),
                         .dclk_P(ADC3_DCLK_P), .dclk_N(ADC3_DCLK_M), .dclk_out(i_adc_dclock[3]),
                         .fclk_P(ADC3_FCLK_P), .fclk_N(ADC3_FCLK_M), .fclk_out(i_adc_fclock[3]),
                         .adc_clk_P(ADC3_CLOCK_P), .adc_clk_N(ADC3_CLOCK_M),
-                        .sysrf_P(ADC3_SYSRF_P), .sysrf_N(ADC3_SYSRF_M));
+                        .sysrf_P(), .sysrf_N());
 ADC3424_clk_IO clk_IO_4(.enc_clk(i_adc_clock),
                         .dclk_P(ADC4_DCLK_P), .dclk_N(ADC4_DCLK_M), .dclk_out(i_adc_dclock[4]),
                         .fclk_P(ADC4_FCLK_P), .fclk_N(ADC4_FCLK_M), .fclk_out(i_adc_fclock[4]),
                         .adc_clk_P(ADC4_CLOCK_P), .adc_clk_N(ADC4_CLOCK_M),
-                        .sysrf_P(ADC4_SYSRF_P), .sysrf_N(ADC4_SYSRF_M));
+                        .sysrf_P(), .sysrf_N());
 ADC3424_clk_IO clk_IO_5(.enc_clk(i_adc_clock),
                         .dclk_P(ADC5_DCLK_P), .dclk_N(ADC5_DCLK_M), .dclk_out(i_adc_dclock[5]),
                         .fclk_P(ADC5_FCLK_P), .fclk_N(ADC5_FCLK_M), .fclk_out(i_adc_fclock[5]),
                         .adc_clk_P(ADC5_CLOCK_P), .adc_clk_N(ADC5_CLOCK_M),
-                        .sysrf_P(ADC5_SYSRF_P), .sysrf_N(ADC5_SYSRF_M));
+                        .sysrf_P(), .sysrf_N());
 
 // 100 MHz clk forwarding (if using DDR3_CLK100 signal)
 // ODDR #(
@@ -1638,7 +1637,10 @@ assign slo_adc_miso = slo_adc_chip_sel == 0 ? MON_ADC1_SDO : MON_ADC2_SDO;
 //
 // AFE pulser
 //
-// For the v1 test setup, TRIG_OUT is connected to AFE0_TP
+
+// TRIG_OUT not currently supported
+assign TRIG_OUT = 1'b0;
+
 afe_pulser PULSER_0 (
   .lclk(lclk),
   .lclk_rst(lclk_rst),
@@ -1649,7 +1651,72 @@ afe_pulser PULSER_0 (
   .trig(pulser_trig[0]),
   .y0(1'b1),
   .width(pulser_width),
-  .out(TRIG_OUT),
+  .out(AFE0_TPR),
+  .out_n()
+);
+afe_pulser PULSER_1 (
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .divclk(discr_fclk_120MHz),
+  .divclk_rst(!idelay_discrclk_locked),
+  .fastclk(clk_480MHz),
+  .io_rst(pulser_io_rst[1]),
+  .trig(pulser_trig[1]),
+  .y0(1'b1),
+  .width(pulser_width),
+  .out(AFE1_TPR),
+  .out_n()
+);
+afe_pulser PULSER_2 (
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .divclk(discr_fclk_120MHz),
+  .divclk_rst(!idelay_discrclk_locked),
+  .fastclk(clk_480MHz),
+  .io_rst(pulser_io_rst[2]),
+  .trig(pulser_trig[2]),
+  .y0(1'b1),
+  .width(pulser_width),
+  .out(AFE2_TPR),
+  .out_n()
+);
+afe_pulser PULSER_3 (
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .divclk(discr_fclk_120MHz),
+  .divclk_rst(!idelay_discrclk_locked),
+  .fastclk(clk_480MHz),
+  .io_rst(pulser_io_rst[3]),
+  .trig(pulser_trig[3]),
+  .y0(1'b1),
+  .width(pulser_width),
+  .out(AFE3_TPR),
+  .out_n()
+);
+afe_pulser PULSER_4 (
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .divclk(discr_fclk_120MHz),
+  .divclk_rst(!idelay_discrclk_locked),
+  .fastclk(clk_480MHz),
+  .io_rst(pulser_io_rst[4]),
+  .trig(pulser_trig[4]),
+  .y0(1'b1),
+  .width(pulser_width),
+  .out(AFE4_TPR),
+  .out_n()
+);
+afe_pulser PULSER_5 (
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .divclk(discr_fclk_120MHz),
+  .divclk_rst(!idelay_discrclk_locked),
+  .fastclk(clk_480MHz),
+  .io_rst(pulser_io_rst[5]),
+  .trig(pulser_trig[5]),
+  .y0(1'b1),
+  .width(pulser_width),
+  .out(AFE5_TPR),
   .out_n()
 );
 
