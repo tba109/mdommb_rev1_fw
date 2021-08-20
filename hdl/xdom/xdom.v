@@ -168,6 +168,12 @@ module xdom #(parameter N_CHANNELS = 24)
   output reg i2cm_0_i2c_r_wn=0, 
   output reg[7:0] i2cm_0_tx_data=0,
 
+  // global discriminator trigger
+  output reg global_trig_en = 0,
+  output reg global_trig_pol = 0,
+  output reg[N_CHANNELS-1:0] global_trig_src_mask,
+  output reg[N_CHANNELS-1:0] global_trig_rcv_mask,
+
   // Debug FT232R I/O
   input             debug_txd,
   output            debug_rxd,
@@ -876,6 +882,11 @@ always @(*)
                                         5'h0,
                                         i2cm_0_i2c_acked, 
                                         i2cm_0_rx_data};                                       end
+      12'hb99: begin y_rd_data =        {14'b0, global_trig_pol, global_trig_en};              end
+      12'hb98: begin y_rd_data =        {8'b0, global_trig_src_mask[N_CHANNELS-1:16]};         end
+      12'hb97: begin y_rd_data =        global_trig_src_mask[15:0];                            end
+      12'hb96: begin y_rd_data =        {8'b0, global_trig_rcv_mask[N_CHANNELS-1:16]};         end
+      12'hb95: begin y_rd_data =        global_trig_rcv_mask[15:0];                            end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
@@ -1031,6 +1042,14 @@ always @(posedge clk)
           i2cm_0_i2c_r_wn  <= y_wr_data[12];
           i2cm_0_tx_data   <= y_wr_data[7:0]; 
         end
+        12'hb99: begin
+          global_trig_en <= y_wr_data[0];
+          global_trig_pol <= y_wr_data[1];
+        end
+        12'hb98: begin global_trig_src_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];                end
+        12'hb97: begin global_trig_src_mask[15:0] <= y_wr_data;                                end
+        12'hb96: begin global_trig_rcv_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];                end
+        12'hb95: begin global_trig_rcv_mask[15:0] <= y_wr_data;                                end
         default: begin                                                                         end
       endcase
 end // always @ (posedge clk)
