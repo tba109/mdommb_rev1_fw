@@ -586,6 +586,8 @@ endgenerate
 //             [4] dicr_trig_en
 //             [5] thresh_trig_en
 //             [6] ext_trig_en
+//             [7] global_trig_pol
+//             [8] global_trig_en
 //     12'hbfd: trig threshold [11:0] (currently common to all channels)
 //     12'hbfc: [7:0] sw_trig_mask [23:16]
 //     12'hbfb: sw_trig_mask [15:0]
@@ -746,13 +748,10 @@ endgenerate
 //       [7:0]: RX slave byte
 //
 //     global discriminator trigger configuration
-//     12'hb99:
-//          [0] global trigger enable
-//          [1] global trigger polarity (0: negative edge, 1: positive edge)
-//     12'hb98: [7:0] global trig src mask [23:16]
-//     12'hb97: [15:0] global trig src mask [15:0]
-//     12'hb96: [7:0] global trig receiver mask [23:16]
-//     12'hb95: [15:0] global trig receiver mask [15:0]
+//     12'hb99: [7:0] global trig src mask [23:16]
+//     12'hb98: [15:0] global trig src mask [15:0]
+//     12'hb97: [7:0] global trig receiver mask [23:16]
+//     12'hb96: [15:0] global trig receiver mask [15:0]
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
