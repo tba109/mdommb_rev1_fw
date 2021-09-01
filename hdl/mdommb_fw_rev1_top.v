@@ -43,144 +43,144 @@ module top (
   input MCU_CAL_MISO,
 
   // ADC interface
-  output ADC0_CLOCK_P,
-  output ADC0_CLOCK_M,
-  input ADC0_DA0P,
-  input ADC0_DA0M,
-  input ADC0_DA1P,
-  input ADC0_DA1M,
-  input ADC0_DB0P,
-  input ADC0_DB0M,
-  input ADC0_DB1P,
-  input ADC0_DB1M,
-  input ADC0_DC0P,
-  input ADC0_DC0M,
-  input ADC0_DC1P,
-  input ADC0_DC1M,
-  input ADC0_DCLK_P,
-  input ADC0_DCLK_M,
-  input ADC0_DD0P,
-  input ADC0_DD0M,
-  input ADC0_DD1P,
-  input ADC0_DD1M,
-  input ADC0_FCLK_P,
-  input ADC0_FCLK_M,
+  // output ADC0_CLOCK_P,
+  // output ADC0_CLOCK_M,
+  output ADC0_DA0P,
+  output ADC0_DA0M,
+  output ADC0_DA1P,
+  output ADC0_DA1M,
+  output ADC0_DB0P,
+  output ADC0_DB0M,
+  output ADC0_DB1P,
+  output ADC0_DB1M,
+  output ADC0_DC0P,
+  output ADC0_DC0M,
+  output ADC0_DC1P,
+  output ADC0_DC1M,
+  output ADC0_DCLK_P,
+  output ADC0_DCLK_M,
+  output ADC0_DD0P,
+  output ADC0_DD0M,
+  output ADC0_DD1P,
+  output ADC0_DD1M,
+  output ADC0_FCLK_P,
+  output ADC0_FCLK_M,
   input ADC0_SDOUT,
   output ADC0_SEN,
-  output ADC1_CLOCK_P,
-  output ADC1_CLOCK_M,
-  input ADC1_DA0P,
-  input ADC1_DA0M,
-  input ADC1_DA1P,
-  input ADC1_DA1M,
-  input ADC1_DB0P,
-  input ADC1_DB0M,
-  input ADC1_DB1P,
-  input ADC1_DB1M,
-  input ADC1_DC0P,
-  input ADC1_DC0M,
-  input ADC1_DC1P,
-  input ADC1_DC1M,
-  input ADC1_DCLK_P,
-  input ADC1_DCLK_M,
-  input ADC1_DD0P,
-  input ADC1_DD0M,
-  input ADC1_DD1P,
-  input ADC1_DD1M,
-  input ADC1_FCLK_P,
-  input ADC1_FCLK_M,
+  // output ADC1_CLOCK_P,
+  // output ADC1_CLOCK_M,
+  output ADC1_DA0P,
+  output ADC1_DA0M,
+  output ADC1_DA1P,
+  output ADC1_DA1M,
+  output ADC1_DB0P,
+  output ADC1_DB0M,
+  output ADC1_DB1P,
+  output ADC1_DB1M,
+  output ADC1_DC0P,
+  output ADC1_DC0M,
+  output ADC1_DC1P,
+  output ADC1_DC1M,
+  output ADC1_DCLK_P,
+  output ADC1_DCLK_M,
+  output ADC1_DD0P,
+  output ADC1_DD0M,
+  output ADC1_DD1P,
+  output ADC1_DD1M,
+  output ADC1_FCLK_P,
+  output ADC1_FCLK_M,
   output ADC1_SEN,
-  output ADC2_CLOCK_P,
-  output ADC2_CLOCK_M,
-  input ADC2_DA0P,
-  input ADC2_DA0M,
-  input ADC2_DA1P,
-  input ADC2_DA1M,
-  input ADC2_DB0P,
-  input ADC2_DB0M,
-  input ADC2_DB1P,
-  input ADC2_DB1M,
-  input ADC2_DC0P,
-  input ADC2_DC0M,
-  input ADC2_DC1P,
-  input ADC2_DC1M,
-  input ADC2_DCLK_P,
-  input ADC2_DCLK_M,
-  input ADC2_DD0P,
-  input ADC2_DD0M,
-  input ADC2_DD1P,
-  input ADC2_DD1M,
-  input ADC2_FCLK_P,
-  input ADC2_FCLK_M,
+  // output ADC2_CLOCK_P,
+  // output ADC2_CLOCK_M,
+  output ADC2_DA0P,
+  output ADC2_DA0M,
+  output ADC2_DA1P,
+  output ADC2_DA1M,
+  output ADC2_DB0P,
+  output ADC2_DB0M,
+  output ADC2_DB1P,
+  output ADC2_DB1M,
+  output ADC2_DC0P,
+  output ADC2_DC0M,
+  output ADC2_DC1P,
+  output ADC2_DC1M,
+  output ADC2_DCLK_P,
+  output ADC2_DCLK_M,
+  output ADC2_DD0P,
+  output ADC2_DD0M,
+  output ADC2_DD1P,
+  output ADC2_DD1M,
+  output ADC2_FCLK_P,
+  output ADC2_FCLK_M,
   output ADC2_SEN,
-  output ADC3_CLOCK_P,
-  output ADC3_CLOCK_M,
-  input ADC3_DA0P,
-  input ADC3_DA0M,
-  input ADC3_DA1P,
-  input ADC3_DA1M,
-  input ADC3_DB0P,
-  input ADC3_DB0M,
-  input ADC3_DB1P,
-  input ADC3_DB1M,
-  input ADC3_DC0P,
-  input ADC3_DC0M,
-  input ADC3_DC1P,
-  input ADC3_DC1M,
-  input ADC3_DCLK_P,
-  input ADC3_DCLK_M,
-  input ADC3_DD0P,
-  input ADC3_DD0M,
-  input ADC3_DD1P,
-  input ADC3_DD1M,
-  input ADC3_FCLK_P,
-  input ADC3_FCLK_M,
+  // output ADC3_CLOCK_P,
+  // output ADC3_CLOCK_M,
+  output ADC3_DA0P,
+  output ADC3_DA0M,
+  output ADC3_DA1P,
+  output ADC3_DA1M,
+  output ADC3_DB0P,
+  output ADC3_DB0M,
+  output ADC3_DB1P,
+  output ADC3_DB1M,
+  output ADC3_DC0P,
+  output ADC3_DC0M,
+  output ADC3_DC1P,
+  output ADC3_DC1M,
+  output ADC3_DCLK_P,
+  output ADC3_DCLK_M,
+  output ADC3_DD0P,
+  output ADC3_DD0M,
+  output ADC3_DD1P,
+  output ADC3_DD1M,
+  output ADC3_FCLK_P,
+  output ADC3_FCLK_M,
   output ADC3_SEN,
-  output ADC4_CLOCK_P,
-  output ADC4_CLOCK_M,
-  input ADC4_DA0P,
-  input ADC4_DA0M,
-  input ADC4_DA1P,
-  input ADC4_DA1M,
-  input ADC4_DB0P,
-  input ADC4_DB0M,
-  input ADC4_DB1P,
-  input ADC4_DB1M,
-  input ADC4_DC0P,
-  input ADC4_DC0M,
-  input ADC4_DC1P,
-  input ADC4_DC1M,
-  input ADC4_DCLK_P,
-  input ADC4_DCLK_M,
-  input ADC4_DD0P,
-  input ADC4_DD0M,
-  input ADC4_DD1P,
-  input ADC4_DD1M,
-  input ADC4_FCLK_P,
-  input ADC4_FCLK_M,
+  // output ADC4_CLOCK_P,
+  // output ADC4_CLOCK_M,
+  output ADC4_DA0P,
+  output ADC4_DA0M,
+  output ADC4_DA1P,
+  output ADC4_DA1M,
+  output ADC4_DB0P,
+  output ADC4_DB0M,
+  output ADC4_DB1P,
+  output ADC4_DB1M,
+  output ADC4_DC0P,
+  output ADC4_DC0M,
+  output ADC4_DC1P,
+  output ADC4_DC1M,
+  output ADC4_DCLK_P,
+  output ADC4_DCLK_M,
+  output ADC4_DD0P,
+  output ADC4_DD0M,
+  output ADC4_DD1P,
+  output ADC4_DD1M,
+  output ADC4_FCLK_P,
+  output ADC4_FCLK_M,
   output ADC4_SEN,
-  output ADC5_CLOCK_P,
-  output ADC5_CLOCK_M,
-  input ADC5_DA0P,
-  input ADC5_DA0M,
-  input ADC5_DA1P,
-  input ADC5_DA1M,
-  input ADC5_DB0P,
-  input ADC5_DB0M,
-  input ADC5_DB1P,
-  input ADC5_DB1M,
-  input ADC5_DC0P,
-  input ADC5_DC0M,
-  input ADC5_DC1P,
-  input ADC5_DC1M,
-  input ADC5_DCLK_P,
-  input ADC5_DCLK_M,
-  input ADC5_DD0P,
-  input ADC5_DD0M,
-  input ADC5_DD1P,
-  input ADC5_DD1M,
-  input ADC5_FCLK_P,
-  input ADC5_FCLK_M,
+  // output ADC5_CLOCK_P,
+  // output ADC5_CLOCK_M,
+  output ADC5_DA0P,
+  output ADC5_DA0M,
+  output ADC5_DA1P,
+  output ADC5_DA1M,
+  output ADC5_DB0P,
+  output ADC5_DB0M,
+  output ADC5_DB1P,
+  output ADC5_DB1M,
+  output ADC5_DC0P,
+  output ADC5_DC0M,
+  output ADC5_DC1P,
+  output ADC5_DC1M,
+  output ADC5_DCLK_P,
+  output ADC5_DCLK_M,
+  output ADC5_DD0P,
+  output ADC5_DD0M,
+  output ADC5_DD1P,
+  output ADC5_DD1M,
+  output ADC5_FCLK_P,
+  output ADC5_FCLK_M,
   output ADC5_SEN,
   output ADC_RESET,
   output ADC_SCLK,
@@ -282,8 +282,8 @@ module top (
   output AFE5_TPR,
 
   // CAL interface
-  output FPGA_CAL_TRIG_P,
-  output FPGA_CAL_TRIG_N,
+  // output FPGA_CAL_TRIG_P,
+  // output FPGA_CAL_TRIG_N,
 
   // ADS8332 monitoring ADCs
   output MON_ADC1_CONVn,
@@ -306,24 +306,24 @@ module top (
   // DDR3 related
   output DDR3_CLK100_OUT,
   output DDR3_VTT_S3,
-  output DDR3_VTT_S5,
+  output DDR3_VTT_S5
 
-  inout[15:0] ddr3_dq,
-  inout[1:0] ddr3_dqs_n,
-  inout[1:0] ddr3_dqs_p,
-  output[13:0] ddr3_addr,
-  output[2:0] ddr3_ba,
-  output ddr3_ras_n,
-  output ddr3_cas_n,
-  output ddr3_we_n,
-  output ddr3_reset_n,
-  output[0:0] ddr3_ck_p,
-  output[0:0] ddr3_ck_n,
-  output[0:0] ddr3_cke,
-  output[0:0] ddr3_cs_n,
-  output[1:0] ddr3_dm,
-  output[0:0] ddr3_odt
-  // (if using DDR3_CLK100 rather than internal clock)
+  // inout[15:0] ddr3_dq,
+  // inout[1:0] ddr3_dqs_n,
+  // inout[1:0] ddr3_dqs_p,
+  // output[13:0] ddr3_addr,
+  // output[2:0] ddr3_ba,
+  // output ddr3_ras_n,
+  // output ddr3_cas_n,
+  // output ddr3_we_n,
+  // output ddr3_reset_n,
+  // output[0:0] ddr3_ck_p,
+  // output[0:0] ddr3_ck_n,
+  // output[0:0] ddr3_cke,
+  // output[0:0] ddr3_cs_n,
+  // output[1:0] ddr3_dm,
+  // output[0:0] ddr3_odt
+  // // (if using DDR3_CLK100 rather than internal clock)
   // input sys_clk_i
 );
 
@@ -332,7 +332,7 @@ module top (
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h1f;
+localparam[15:0] FW_VNUM = 16'hfafa;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -413,36 +413,36 @@ IDELAYCTRL delayctrl(.RDY(idelayctrl_rdy),.REFCLK(clk_200MHz),.RST(delayctrl_rst
 wire[5:0] i_adc_dclock;
 wire[5:0] i_adc_fclock;
 
-ADC3424_clk_IO clk_IO_0(.enc_clk(i_adc_clock),
-                        .dclk_P(ADC0_DCLK_P), .dclk_N(ADC0_DCLK_M), .dclk_out(i_adc_dclock[0]),
-                        .fclk_P(ADC0_FCLK_P), .fclk_N(ADC0_FCLK_M), .fclk_out(i_adc_fclock[0]),
-                        .adc_clk_P(ADC0_CLOCK_P), .adc_clk_N(ADC0_CLOCK_M),
-                        .sysrf_P(), .sysrf_N());
-ADC3424_clk_IO clk_IO_1(.enc_clk(i_adc_clock),
-                        .dclk_P(ADC1_DCLK_P), .dclk_N(ADC1_DCLK_M), .dclk_out(i_adc_dclock[1]),
-                        .fclk_P(ADC1_FCLK_P), .fclk_N(ADC1_FCLK_M), .fclk_out(i_adc_fclock[1]),
-                        .adc_clk_P(ADC1_CLOCK_P), .adc_clk_N(ADC1_CLOCK_M),
-                        .sysrf_P(), .sysrf_N());
-ADC3424_clk_IO clk_IO_2(.enc_clk(i_adc_clock),
-                        .dclk_P(ADC2_DCLK_P), .dclk_N(ADC2_DCLK_M), .dclk_out(i_adc_dclock[2]),
-                        .fclk_P(ADC2_FCLK_P), .fclk_N(ADC2_FCLK_M), .fclk_out(i_adc_fclock[2]),
-                        .adc_clk_P(ADC2_CLOCK_P), .adc_clk_N(ADC2_CLOCK_M),
-                        .sysrf_P(), .sysrf_N());
-ADC3424_clk_IO clk_IO_3(.enc_clk(i_adc_clock),
-                        .dclk_P(ADC3_DCLK_P), .dclk_N(ADC3_DCLK_M), .dclk_out(i_adc_dclock[3]),
-                        .fclk_P(ADC3_FCLK_P), .fclk_N(ADC3_FCLK_M), .fclk_out(i_adc_fclock[3]),
-                        .adc_clk_P(ADC3_CLOCK_P), .adc_clk_N(ADC3_CLOCK_M),
-                        .sysrf_P(), .sysrf_N());
-ADC3424_clk_IO clk_IO_4(.enc_clk(i_adc_clock),
-                        .dclk_P(ADC4_DCLK_P), .dclk_N(ADC4_DCLK_M), .dclk_out(i_adc_dclock[4]),
-                        .fclk_P(ADC4_FCLK_P), .fclk_N(ADC4_FCLK_M), .fclk_out(i_adc_fclock[4]),
-                        .adc_clk_P(ADC4_CLOCK_P), .adc_clk_N(ADC4_CLOCK_M),
-                        .sysrf_P(), .sysrf_N());
-ADC3424_clk_IO clk_IO_5(.enc_clk(i_adc_clock),
-                        .dclk_P(ADC5_DCLK_P), .dclk_N(ADC5_DCLK_M), .dclk_out(i_adc_dclock[5]),
-                        .fclk_P(ADC5_FCLK_P), .fclk_N(ADC5_FCLK_M), .fclk_out(i_adc_fclock[5]),
-                        .adc_clk_P(ADC5_CLOCK_P), .adc_clk_N(ADC5_CLOCK_M),
-                        .sysrf_P(), .sysrf_N());
+// ADC3424_clk_IO clk_IO_0(.enc_clk(i_adc_clock),
+//                         .dclk_P(ADC0_DCLK_P), .dclk_N(ADC0_DCLK_M), .dclk_out(i_adc_dclock[0]),
+//                         .fclk_P(ADC0_FCLK_P), .fclk_N(ADC0_FCLK_M), .fclk_out(i_adc_fclock[0]),
+//                         .adc_clk_P(ADC0_CLOCK_P), .adc_clk_N(ADC0_CLOCK_M),
+//                         .sysrf_P(), .sysrf_N());
+// ADC3424_clk_IO clk_IO_1(.enc_clk(i_adc_clock),
+//                         .dclk_P(ADC1_DCLK_P), .dclk_N(ADC1_DCLK_M), .dclk_out(i_adc_dclock[1]),
+//                         .fclk_P(ADC1_FCLK_P), .fclk_N(ADC1_FCLK_M), .fclk_out(i_adc_fclock[1]),
+//                         .adc_clk_P(ADC1_CLOCK_P), .adc_clk_N(ADC1_CLOCK_M),
+//                         .sysrf_P(), .sysrf_N());
+// ADC3424_clk_IO clk_IO_2(.enc_clk(i_adc_clock),
+//                         .dclk_P(ADC2_DCLK_P), .dclk_N(ADC2_DCLK_M), .dclk_out(i_adc_dclock[2]),
+//                         .fclk_P(ADC2_FCLK_P), .fclk_N(ADC2_FCLK_M), .fclk_out(i_adc_fclock[2]),
+//                         .adc_clk_P(ADC2_CLOCK_P), .adc_clk_N(ADC2_CLOCK_M),
+//                         .sysrf_P(), .sysrf_N());
+// ADC3424_clk_IO clk_IO_3(.enc_clk(i_adc_clock),
+//                         .dclk_P(ADC3_DCLK_P), .dclk_N(ADC3_DCLK_M), .dclk_out(i_adc_dclock[3]),
+//                         .fclk_P(ADC3_FCLK_P), .fclk_N(ADC3_FCLK_M), .fclk_out(i_adc_fclock[3]),
+//                         .adc_clk_P(ADC3_CLOCK_P), .adc_clk_N(ADC3_CLOCK_M),
+//                         .sysrf_P(), .sysrf_N());
+// ADC3424_clk_IO clk_IO_4(.enc_clk(i_adc_clock),
+//                         .dclk_P(ADC4_DCLK_P), .dclk_N(ADC4_DCLK_M), .dclk_out(i_adc_dclock[4]),
+//                         .fclk_P(ADC4_FCLK_P), .fclk_N(ADC4_FCLK_M), .fclk_out(i_adc_fclock[4]),
+//                         .adc_clk_P(ADC4_CLOCK_P), .adc_clk_N(ADC4_CLOCK_M),
+//                         .sysrf_P(), .sysrf_N());
+// ADC3424_clk_IO clk_IO_5(.enc_clk(i_adc_clock),
+//                         .dclk_P(ADC5_DCLK_P), .dclk_N(ADC5_DCLK_M), .dclk_out(i_adc_dclock[5]),
+//                         .fclk_P(ADC5_FCLK_P), .fclk_N(ADC5_FCLK_M), .fclk_out(i_adc_fclock[5]),
+//                         .adc_clk_P(ADC5_CLOCK_P), .adc_clk_N(ADC5_CLOCK_M),
+//                         .sysrf_P(), .sysrf_N());
 
 // 100 MHz clk forwarding (if using DDR3_CLK100 signal)
 // ODDR #(
@@ -514,34 +514,34 @@ wire[N_CHANNELS-1:0] discr_bitslip_xdom;
 wire[N_CHANNELS*N_ADC_BITS-1:0] adc_data;
 wire[N_CHANNELS*N_DISCR_BITS-1:0] discr_data;
 
-generate
-  genvar i;
-  for (i = 0; i < N_CHANNELS; i = i + 1) begin : adc_discr_iface_gen
-    adc_discr_channel ADC_DISCR_CHAN
-    (
-      .adc_DP(adc_DP[2*i+1 : 2*i]),
-      .adc_DN(adc_DN[2*i+1 : 2*i]),
-      .discr_out(discr_out[i]),
-      .lclk(lclk),
-      .discr_fclk(discr_fclk_120MHz),
-      .adc_dclk(clk_360MHz),
-      .discr_dclk(clk_480MHz),
-      .in_delay_reset({adc_delay_reset_xdom[i], adc_delay_reset_xdom[i]}),
-      .in_delay_data_ce(adc_delay_ce_xdom[2*i+1 : 2*i]),
-      .in_delay_data_inc(adc_delay_inc_xdom[2*i+1 : 2*i]),
-      .adc_bitslip(adc_bitslip_xdom[2*i+1 : 2*i]),
-      .adc_io_reset({adc_io_reset_xdom[i], adc_io_reset_xdom[i]}),
-      .discr_bitslip(discr_bitslip_xdom[i]),
-      .discr_io_reset(discr_io_reset_xdom[i]),
-      .adc_bits(adc_data[N_ADC_BITS*(i+1)-1 : N_ADC_BITS*i]),
-      .discr_bits(discr_data[N_DISCR_BITS*(i+1)-1 : N_DISCR_BITS*i]),
-      .delay_tap_in_0(DEFAULT_DELAY),
-      .delay_tap_in_1(DEFAULT_DELAY),
-      .delay_tap_out_0(adc_delay_tap_out_xdom[10*i+4 : 10*i]),
-      .delay_tap_out_1(adc_delay_tap_out_xdom[10*i+9 : 10*i+5])
-    );
-  end
-endgenerate
+// generate
+//   genvar i;
+//   for (i = 0; i < N_CHANNELS; i = i + 1) begin : adc_discr_iface_gen
+//     adc_discr_channel ADC_DISCR_CHAN
+//     (
+//       .adc_DP(adc_DP[2*i+1 : 2*i]),
+//       .adc_DN(adc_DN[2*i+1 : 2*i]),
+//       .discr_out(discr_out[i]),
+//       .lclk(lclk),
+//       .discr_fclk(discr_fclk_120MHz),
+//       .adc_dclk(clk_360MHz),
+//       .discr_dclk(clk_480MHz),
+//       .in_delay_reset({adc_delay_reset_xdom[i], adc_delay_reset_xdom[i]}),
+//       .in_delay_data_ce(adc_delay_ce_xdom[2*i+1 : 2*i]),
+//       .in_delay_data_inc(adc_delay_inc_xdom[2*i+1 : 2*i]),
+//       .adc_bitslip(adc_bitslip_xdom[2*i+1 : 2*i]),
+//       .adc_io_reset({adc_io_reset_xdom[i], adc_io_reset_xdom[i]}),
+//       .discr_bitslip(discr_bitslip_xdom[i]),
+//       .discr_io_reset(discr_io_reset_xdom[i]),
+//       .adc_bits(adc_data[N_ADC_BITS*(i+1)-1 : N_ADC_BITS*i]),
+//       .discr_bits(discr_data[N_DISCR_BITS*(i+1)-1 : N_DISCR_BITS*i]),
+//       .delay_tap_in_0(DEFAULT_DELAY),
+//       .delay_tap_in_1(DEFAULT_DELAY),
+//       .delay_tap_out_0(adc_delay_tap_out_xdom[10*i+4 : 10*i]),
+//       .delay_tap_out_1(adc_delay_tap_out_xdom[10*i+9 : 10*i+5])
+//     );
+//   end
+// endgenerate
 
 /////////////////////////////////////////////////////////////////////////
 // xDOM interface
@@ -743,6 +743,9 @@ endgenerate
 //      [13:9]: 5'h0
 //         [8]: Slave acknowledged the RX transaction
 //       [7:0]: RX slave byte
+// 
+//     ADC IO test controller 
+//     12'h900: [3:0] ADC IO test controller state
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
@@ -877,6 +880,9 @@ wire i2cm_0_i2c_ack;
 wire i2cm_0_i2c_start;
 wire i2cm_0_i2c_stop;
 wire i2cm_0_i2c_r_wn;
+
+// ADC test control state
+wire[3:0] adc_io_test_state;
 
 // FMC
 wire [15:0] i_fmc_din;
@@ -1021,11 +1027,11 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .discr_bitslip(discr_bitslip_xdom),
 
   // ADC serial controls
-  .adc_reset(ADC_RESET),
-  .adc_spi_sel(adc_spi_sel),
-  .adc_spi_req(adc_spi_req),
+  .adc_reset(),
+  .adc_spi_sel(),
+  .adc_spi_req(),
   .adc_spi_ack(adc_spi_ack),
-  .adc_spi_wr_data(adc_spi_wr_data),
+  .adc_spi_wr_data(),
   .adc_spi_rd_data(adc_spi_rd_data),
 
   // AD5668 DAC serial controls
@@ -1128,6 +1134,8 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .i2cm_0_i2c_r_wn(i2cm_0_i2c_r_wn),
   .i2cm_0_tx_data(i2cm_0_tx_data),
 
+  .adc_test_ctrl_state(adc_io_test_state),
+
   // debug UART
   .debug_txd(FTD_UART_TXD),
   .debug_rxd(FTD_UART_RXD),
@@ -1224,277 +1232,362 @@ always @(posedge lclk) begin
 end
 
 // external trigger
-wire ext_trig_s;
-sync SYNC_TRIG_IN(.clk(lclk),.rst_n(!lclk_rst),.a(TRIG_IN),.y(ext_trig_s));
+// wire ext_trig_s;
+// sync SYNC_TRIG_IN(.clk(lclk),.rst_n(!lclk_rst),.a(TRIG_IN),.y(ext_trig_s));
 
-generate
-  for (i = 0; i < N_CHANNELS; i = i + 1) begin : waveform_acq_gen
-    waveform_acquisition #(.P_ADR_WIDTH(P_WVB_ADR_WIDTH),
-                           .P_HDR_WIDTH(P_HDR_WIDTH),
-                           .P_LTC_WIDTH(P_LTC_WIDTH))
-    WFM_ACQ
-    (
-      .clk(lclk),
-      .rst(lclk_rst || xdom_wvb_rst[i]),
+// generate
+//   for (i = 0; i < N_CHANNELS; i = i + 1) begin : waveform_acq_gen
+//     waveform_acquisition #(.P_ADR_WIDTH(P_WVB_ADR_WIDTH),
+//                            .P_HDR_WIDTH(P_HDR_WIDTH),
+//                            .P_LTC_WIDTH(P_LTC_WIDTH))
+//     WFM_ACQ
+//     (
+//       .clk(lclk),
+//       .rst(lclk_rst || xdom_wvb_rst[i]),
 
-      .adc_data(adc_data[N_ADC_BITS*(i+1)-1 : N_ADC_BITS*i]),
-      .discr_data(discr_data[N_DISCR_BITS*(i+1)-1 : N_DISCR_BITS*i]),
+//       .adc_data(adc_data[N_ADC_BITS*(i+1)-1 : N_ADC_BITS*i]),
+//       .discr_data(discr_data[N_DISCR_BITS*(i+1)-1 : N_DISCR_BITS*i]),
 
-      // WVB reader interface
-      .wvb_data_out(wvb_data_out[22*(i+1)-1 : 22*i]),
-      .wvb_hdr_data_out(wvb_hdr_data[P_HDR_WIDTH*(i+1)-1 : P_HDR_WIDTH*i]),
-      .wvb_hdr_full(wvb_hdr_full[i]),
-      .wvb_hdr_empty(wvb_hdr_empty[i]),
-      .wvb_n_wvf_in_buf(wfms_in_buf[16*(i+1)-1 : 16*i]),
-      .wvb_wused(buf_wds_used[16*(i+1)-1 : 16*i]),
-      .wvb_hdr_rdreq(wvb_hdr_rdreq[i]),
-      .wvb_wvb_rdreq(wvb_wvb_rdreq[i]),
-      .wvb_wvb_rddone(wvb_rddone[i]),
+//       // WVB reader interface
+//       .wvb_data_out(wvb_data_out[22*(i+1)-1 : 22*i]),
+//       .wvb_hdr_data_out(wvb_hdr_data[P_HDR_WIDTH*(i+1)-1 : P_HDR_WIDTH*i]),
+//       .wvb_hdr_full(wvb_hdr_full[i]),
+//       .wvb_hdr_empty(wvb_hdr_empty[i]),
+//       .wvb_n_wvf_in_buf(wfms_in_buf[16*(i+1)-1 : 16*i]),
+//       .wvb_wused(buf_wds_used[16*(i+1)-1 : 16*i]),
+//       .wvb_hdr_rdreq(wvb_hdr_rdreq[i]),
+//       .wvb_wvb_rdreq(wvb_wvb_rdreq[i]),
+//       .wvb_wvb_rddone(wvb_rddone[i]),
 
-      // Local time counter
-      .ltc_in(ltc),
+//       // Local time counter
+//       .ltc_in(ltc),
 
-      // External
-      .ext_trig_in(ext_trig_s),
-      .wvb_trig_out(),
-      .wvb_trig_test_out(),
+//       // External
+//       .ext_trig_in(ext_trig_s),
+//       .wvb_trig_out(),
+//       .wvb_trig_test_out(),
 
-      .thresh_tot_out(thresh_tot_out[i]),
+//       .thresh_tot_out(thresh_tot_out[i]),
 
-      // XDOM interface
-      .xdom_arm(xdom_arm[i]),
-      .xdom_trig_run(xdom_trig_run[i]),
-      .xdom_wvb_trig_bundle(xdom_trig_bundle_reg),
-      .xdom_wvb_config_bundle(xdom_wvb_conf_bundle_reg),
-      .xdom_wvb_armed(wvb_armed[i]),
-      .xdom_wvb_overflow(wvb_overflow[i]),
+//       // XDOM interface
+//       .xdom_arm(xdom_arm[i]),
+//       .xdom_trig_run(xdom_trig_run[i]),
+//       .xdom_wvb_trig_bundle(xdom_trig_bundle_reg),
+//       .xdom_wvb_config_bundle(xdom_wvb_conf_bundle_reg),
+//       .xdom_wvb_armed(wvb_armed[i]),
+//       .xdom_wvb_overflow(wvb_overflow[i]),
 
-      .icm_sync_rdy(icm_sync_rdy),
+//       .icm_sync_rdy(icm_sync_rdy),
 
-      .bsum_bundle(xdom_bsum_bundle_reg)
-    );
-  end
-endgenerate
+//       .bsum_bundle(xdom_bsum_bundle_reg)
+//     );
+//   end
+// endgenerate
 
 // scalers
-(* max_fanout = 5 *) reg[31:0] scaler_period = 0;
-(* max_fanout = 5 *) reg[31:0] scaler_inhibit_len = 0;
-always @(posedge lclk) begin
-  scaler_period <= scaler_period_xdom;
-  scaler_inhibit_len <= scaler_inhibit_len_xdom;
-end
+// (* max_fanout = 5 *) reg[31:0] scaler_period = 0;
+// (* max_fanout = 5 *) reg[31:0] scaler_inhibit_len = 0;
+// always @(posedge lclk) begin
+//   scaler_period <= scaler_period_xdom;
+//   scaler_inhibit_len <= scaler_inhibit_len_xdom;
+// end
 
-generate
-  for (i = 0; i < N_CHANNELS; i = i + 1) begin : scaler_gen
-    discr_scaler DISC_SCALER (
-      .clk(lclk),
-      .rst(lclk_rst || xdom_wvb_rst[i]),
-      .discr_in(discr_data[N_DISCR_BITS*(i+1)-1 : N_DISCR_BITS*i]),
-      .period(scaler_period),
-      .inhibit_len(scaler_inhibit_len),
-      .n_pedge_out(disc_scaler_out[32*(i+1)-1 : 32*i]),
-      .valid(),
-      .update_out()
-    );
+// generate
+//   for (i = 0; i < N_CHANNELS; i = i + 1) begin : scaler_gen
+//     discr_scaler DISC_SCALER (
+//       .clk(lclk),
+//       .rst(lclk_rst || xdom_wvb_rst[i]),
+//       .discr_in(discr_data[N_DISCR_BITS*(i+1)-1 : N_DISCR_BITS*i]),
+//       .period(scaler_period),
+//       .inhibit_len(scaler_inhibit_len),
+//       .n_pedge_out(disc_scaler_out[32*(i+1)-1 : 32*i]),
+//       .valid(),
+//       .update_out()
+//     );
 
-    discr_scaler #(.P_INPUT_WIDTH(1)) THRESH_SCALER (
-      .clk(lclk),
-      .rst(lclk_rst || xdom_wvb_rst[i]),
-      .discr_in(thresh_tot_out[i]),
-      .period(scaler_period),
-      .inhibit_len(scaler_inhibit_len),
-      .n_pedge_out(thresh_scaler_out[32*(i+1)-1 : 32*i]),
-      .valid(),
-      .update_out()
-    );
-  end
-endgenerate
+//     discr_scaler #(.P_INPUT_WIDTH(1)) THRESH_SCALER (
+//       .clk(lclk),
+//       .rst(lclk_rst || xdom_wvb_rst[i]),
+//       .discr_in(thresh_tot_out[i]),
+//       .period(scaler_period),
+//       .inhibit_len(scaler_inhibit_len),
+//       .n_pedge_out(thresh_scaler_out[32*(i+1)-1 : 32*i]),
+//       .valid(),
+//       .update_out()
+//     );
+//   end
+// endgenerate
 
 //
 // hit buffer controller
 //
-wire hbuf_dpram_busy;
-wire[127:0] hbuf_dpram_dout;
-wire[7:0] hbuf_dpram_addr;
-wire hbuf_pg_req;
-wire hbuf_pg_ack;
-wire hbuf_pg_optype;
-wire[27:0] hbuf_pg_req_addr;
+// wire hbuf_dpram_busy;
+// wire[127:0] hbuf_dpram_dout;
+// wire[7:0] hbuf_dpram_addr;
+// wire hbuf_pg_req;
+// wire hbuf_pg_ack;
+// wire hbuf_pg_optype;
+// wire[27:0] hbuf_pg_req_addr;
 
-hbuf_ctrl HBUF_CTRL_0
-(
- .clk(lclk),
- .rst(lclk_rst),
- .en(hbuf_enable),
+// hbuf_ctrl HBUF_CTRL_0
+// (
+//  .clk(lclk),
+//  .rst(lclk_rst),
+//  .en(hbuf_enable),
 
- .start_pg(hbuf_start_pg),
- .stop_pg(hbuf_stop_pg),
- .first_pg(hbuf_first_pg),
- .last_pg(hbuf_last_pg),
+//  .start_pg(hbuf_start_pg),
+//  .stop_pg(hbuf_stop_pg),
+//  .first_pg(hbuf_first_pg),
+//  .last_pg(hbuf_last_pg),
 
- .flush_req(hbuf_flush_req),
- .flush_ack(hbuf_flush_ack),
+//  .flush_req(hbuf_flush_req),
+//  .flush_ack(hbuf_flush_ack),
 
- .empty(hbuf_empty),
- .full(hbuf_full),
- .rd_pg_num(hbuf_rd_pg_num),
- .wr_pg_num(hbuf_wr_pg_num),
- .n_used_pgs(hbuf_n_used_pgs),
+//  .empty(hbuf_empty),
+//  .full(hbuf_full),
+//  .rd_pg_num(hbuf_rd_pg_num),
+//  .wr_pg_num(hbuf_wr_pg_num),
+//  .n_used_pgs(hbuf_n_used_pgs),
 
- .pg_clr_cnt(hbuf_pg_clr_count),
- .pg_clr_req(hbuf_pg_clr_req),
- .pg_clr_ack(hbuf_pg_clr_ack),
+//  .pg_clr_cnt(hbuf_pg_clr_count),
+//  .pg_clr_req(hbuf_pg_clr_req),
+//  .pg_clr_ack(hbuf_pg_clr_ack),
 
- .buffered_data(hbuf_buffered_data),
+//  .buffered_data(hbuf_buffered_data),
 
- .dpram_len_in(rdout_dpram_len),
- .rdout_dpram_run(rdout_dpram_run && hbuf_enable),
- .dpram_busy(hbuf_dpram_busy),
- .rdout_dpram_wren(rdout_dpram_wren && hbuf_enable),
+//  .dpram_len_in(rdout_dpram_len),
+//  .rdout_dpram_run(rdout_dpram_run && hbuf_enable),
+//  .dpram_busy(hbuf_dpram_busy),
+//  .rdout_dpram_wren(rdout_dpram_wren && hbuf_enable),
 
- .rdout_dpram_wr_addr(rdout_dpram_wr_addr),
- .rdout_dpram_data(rdout_dpram_data),
+//  .rdout_dpram_wr_addr(rdout_dpram_wr_addr),
+//  .rdout_dpram_data(rdout_dpram_data),
 
- .ddr3_ui_clk(ddr3_ui_clk),
- .ddr3_dpram_dout(hbuf_dpram_dout),
- .ddr3_dpram_rd_addr(ddr3_dpram_addr),
+//  .ddr3_ui_clk(ddr3_ui_clk),
+//  .ddr3_dpram_dout(hbuf_dpram_dout),
+//  .ddr3_dpram_rd_addr(ddr3_dpram_addr),
 
- .pg_ack(hbuf_pg_ack),
- .pg_req(hbuf_pg_req),
- .pg_optype(hbuf_pg_optype),
- .pg_addr(hbuf_pg_req_addr)
-);
+//  .pg_ack(hbuf_pg_ack),
+//  .pg_req(hbuf_pg_req),
+//  .pg_optype(hbuf_pg_optype),
+//  .pg_addr(hbuf_pg_req_addr)
+// );
 
 //
 // Waveform buffer reader
 //
-reg i_wvb_reader_en_1 = 0;
-reg i_wvb_reader_en_2 = 0;
-always @(posedge lclk) begin
-  i_wvb_reader_en_1 <= wvb_reader_enable;
-  i_wvb_reader_en_2 <= i_wvb_reader_en_1;
-end
+// reg i_wvb_reader_en_1 = 0;
+// reg i_wvb_reader_en_2 = 0;
+// always @(posedge lclk) begin
+//   i_wvb_reader_en_1 <= wvb_reader_enable;
+//   i_wvb_reader_en_2 <= i_wvb_reader_en_1;
+// end
 
-wire rdout_dpram_busy = hbuf_enable ? hbuf_dpram_busy : xdom_rdout_dpram_busy;
+// wire rdout_dpram_busy = hbuf_enable ? hbuf_dpram_busy : xdom_rdout_dpram_busy;
 
-wvb_reader #(.N_CHANNELS(N_CHANNELS),
-             .P_WVB_ADR_WIDTH(P_WVB_ADR_WIDTH),
-             .P_HDR_WIDTH(P_HDR_WIDTH),
-             .P_FMT(P_FMT))
-WVB_READER
-(
-  .clk(lclk),
-  .rst(lclk_rst),
-  .en(i_wvb_reader_en_2),
+// wvb_reader #(.N_CHANNELS(N_CHANNELS),
+//              .P_WVB_ADR_WIDTH(P_WVB_ADR_WIDTH),
+//              .P_HDR_WIDTH(P_HDR_WIDTH),
+//              .P_FMT(P_FMT))
+// WVB_READER
+// (
+//   .clk(lclk),
+//   .rst(lclk_rst),
+//   .en(i_wvb_reader_en_2),
 
-  // dpram interface
-  .dpram_data(rdout_dpram_data),
-  .dpram_addr(rdout_dpram_wr_addr),
-  .dpram_wren(rdout_dpram_wren),
-  .dpram_len(rdout_dpram_len),
-  .dpram_run(rdout_dpram_run),
-  .dpram_busy(rdout_dpram_busy),
-  .dpram_mode(wvb_reader_dpram_mode),
+//   // dpram interface
+//   .dpram_data(rdout_dpram_data),
+//   .dpram_addr(rdout_dpram_wr_addr),
+//   .dpram_wren(rdout_dpram_wren),
+//   .dpram_len(rdout_dpram_len),
+//   .dpram_run(rdout_dpram_run),
+//   .dpram_busy(rdout_dpram_busy),
+//   .dpram_mode(wvb_reader_dpram_mode),
 
-  // wvb interface
-  .hdr_rdreq(wvb_hdr_rdreq),
-  .wvb_rdreq(wvb_wvb_rdreq),
-  .wvb_rddone(wvb_rddone),
-  .wvb_data(wvb_data_out),
-  .hdr_data(wvb_hdr_data),
-  .hdr_empty(wvb_hdr_empty)
-);
+//   // wvb interface
+//   .hdr_rdreq(wvb_hdr_rdreq),
+//   .wvb_rdreq(wvb_wvb_rdreq),
+//   .wvb_rddone(wvb_rddone),
+//   .wvb_data(wvb_data_out),
+//   .hdr_data(wvb_hdr_data),
+//   .hdr_empty(wvb_hdr_empty)
+// );
 
 //
 // DDR3 pg transfer mux
 // runs in DDR3 UI clock domain
 //
 
-wire ddr3_pg_req;
-wire ddr3_pg_optype;
-wire ddr3_pg_ack;
-wire[27:0] ddr3_pg_req_addr;
-wire[127:0] ddr3_dpram_dout;
-wire ddr3_dpram_wren;
+// wire ddr3_pg_req;
+// wire ddr3_pg_optype;
+// wire ddr3_pg_ack;
+// wire[27:0] ddr3_pg_req_addr;
+// wire[127:0] ddr3_dpram_dout;
+// wire ddr3_dpram_wren;
 
-DDR3_pg_transfer_mux DDR3_MUX
-(
- .clk(ddr3_ui_clk),
- .rst(ddr3_ui_sync_rst),
+// DDR3_pg_transfer_mux DDR3_MUX
+// (
+//  .clk(ddr3_ui_clk),
+//  .rst(ddr3_ui_sync_rst),
 
- .hbuf_pg_req(hbuf_pg_req),
- .hbuf_pg_optype(hbuf_pg_optype),
- .hbuf_pg_ack(hbuf_pg_ack),
- .hbuf_pg_req_addr(hbuf_pg_req_addr),
- .hbuf_dpram_dout(hbuf_dpram_dout),
+//  .hbuf_pg_req(hbuf_pg_req),
+//  .hbuf_pg_optype(hbuf_pg_optype),
+//  .hbuf_pg_ack(hbuf_pg_ack),
+//  .hbuf_pg_req_addr(hbuf_pg_req_addr),
+//  .hbuf_dpram_dout(hbuf_dpram_dout),
 
- .xdom_pg_req(xdom_pg_req),
- .xdom_pg_optype(xdom_pg_optype),
- .xdom_pg_ack(xdom_pg_ack),
- .xdom_pg_req_addr(xdom_pg_req_addr),
- .xdom_dpram_dout(xdom_ddr3_dpram_dout),
- .xdom_dpram_wren(xdom_ddr3_dpram_wren),
+//  .xdom_pg_req(xdom_pg_req),
+//  .xdom_pg_optype(xdom_pg_optype),
+//  .xdom_pg_ack(xdom_pg_ack),
+//  .xdom_pg_req_addr(xdom_pg_req_addr),
+//  .xdom_dpram_dout(xdom_ddr3_dpram_dout),
+//  .xdom_dpram_wren(xdom_ddr3_dpram_wren),
 
- .ddr3_pg_req(ddr3_pg_req),
- .ddr3_pg_optype(ddr3_pg_optype),
- .ddr3_pg_ack(ddr3_pg_ack),
- .ddr3_pg_req_addr(ddr3_pg_req_addr),
- .ddr3_dpram_dout(ddr3_dpram_dout),
- .ddr3_dpram_wren(ddr3_dpram_wren)
-);
+//  .ddr3_pg_req(ddr3_pg_req),
+//  .ddr3_pg_optype(ddr3_pg_optype),
+//  .ddr3_pg_ack(ddr3_pg_ack),
+//  .ddr3_pg_req_addr(ddr3_pg_req_addr),
+//  .ddr3_dpram_dout(ddr3_dpram_dout),
+//  .ddr3_dpram_wren(ddr3_dpram_wren)
+// );
 
 //
 // DDR3 page transter
 //
-wire[11:0] ddr3_device_temp;
-wire ref_clk = clk_200MHz;
-DDR3_DPRAM_transfer DDR3_TRANSFER_0
-(
- .ddr3_dq(ddr3_dq),
- .ddr3_dqs_n(ddr3_dqs_n),
- .ddr3_dqs_p(ddr3_dqs_p),
- .ddr3_addr(ddr3_addr),
- .ddr3_ba(ddr3_ba),
- .ddr3_ras_n(ddr3_ras_n),
- .ddr3_cas_n(ddr3_cas_n),
- .ddr3_we_n(ddr3_we_n),
- .ddr3_reset_n(ddr3_reset_n),
- .ddr3_ck_p(ddr3_ck_p),
- .ddr3_ck_n(ddr3_ck_n),
- .ddr3_cke(ddr3_cke),
- .ddr3_cs_n(ddr3_cs_n),
- .ddr3_dm(ddr3_dm),
- .ddr3_odt(ddr3_odt),
- .sys_clk_i(sys_clk_i),
- .clk_ref_i(ref_clk),
+// wire[11:0] ddr3_device_temp;
+// wire ref_clk = clk_200MHz;
+// DDR3_DPRAM_transfer DDR3_TRANSFER_0
+// (
+//  .ddr3_dq(ddr3_dq),
+//  .ddr3_dqs_n(ddr3_dqs_n),
+//  .ddr3_dqs_p(ddr3_dqs_p),
+//  .ddr3_addr(ddr3_addr),
+//  .ddr3_ba(ddr3_ba),
+//  .ddr3_ras_n(ddr3_ras_n),
+//  .ddr3_cas_n(ddr3_cas_n),
+//  .ddr3_we_n(ddr3_we_n),
+//  .ddr3_reset_n(ddr3_reset_n),
+//  .ddr3_ck_p(ddr3_ck_p),
+//  .ddr3_ck_n(ddr3_ck_n),
+//  .ddr3_cke(ddr3_cke),
+//  .ddr3_cs_n(ddr3_cs_n),
+//  .ddr3_dm(ddr3_dm),
+//  .ddr3_odt(ddr3_odt),
+//  .sys_clk_i(sys_clk_i),
+//  .clk_ref_i(ref_clk),
 
- .ui_clk(ddr3_ui_clk),
+//  .ui_clk(ddr3_ui_clk),
 
- .sys_rst(ddr3_sys_rst),
+//  .sys_rst(ddr3_sys_rst),
 
- .pg_req(ddr3_pg_req),
- .pg_optype(ddr3_pg_optype),
- .pg_req_addr(ddr3_pg_req_addr),
- .pg_ack(ddr3_pg_ack),
+//  .pg_req(ddr3_pg_req),
+//  .pg_optype(ddr3_pg_optype),
+//  .pg_req_addr(ddr3_pg_req_addr),
+//  .pg_ack(ddr3_pg_ack),
 
- .init_calib_complete(ddr3_cal_complete),
- .ui_clk_sync_rst(ddr3_ui_sync_rst),
- .device_temp(ddr3_device_temp),
+//  .init_calib_complete(ddr3_cal_complete),
+//  .ui_clk_sync_rst(ddr3_ui_sync_rst),
+//  .device_temp(ddr3_device_temp),
 
- .dpram_dout(ddr3_dpram_dout),
- .dpram_din(ddr3_dpram_din),
- .dpram_addr(ddr3_dpram_addr),
- .dpram_wren(ddr3_dpram_wren)
+//  .dpram_dout(ddr3_dpram_dout),
+//  .dpram_din(ddr3_dpram_din),
+//  .dpram_addr(ddr3_dpram_addr),
+//  .dpram_wren(ddr3_dpram_wren)
+// );
+
+// fpga_temp_sync TEMP_SYNC ( 
+//   .lclk(lclk),
+//   .lclk_rst(lclk_rst),
+//   .ddr3_clk(ddr3_ui_clk),
+//   .ddr3_clk_rst(ddr3_ui_sync_rst),
+//   .device_temp_in(ddr3_device_temp),
+//   .device_temp_out(ddr3_device_temp_xdom)
+// );
+
+// 
+// Controller for ADC IO test
+// 
+
+assign adc_spi_sel = 6'h3f;
+wire adc_test_toggle;
+adc_io_test_ctrl ADC_TEST_CTRL (
+  .clk(lclk),
+  .rst(lclk_rst),
+  .spi_req(adc_spi_req),
+  .adc_spi_wr_data(adc_spi_wr_data),
+  .spi_ack(adc_spi_ack),
+  .adc_spi_rd_data(adc_spi_rd_data),
+  .adc_reset(ADC_RESET),
+  .state(adc_io_test_state),
+  .toggle(adc_test_toggle)
 );
 
-fpga_temp_sync TEMP_SYNC ( 
-  .lclk(lclk),
-  .lclk_rst(lclk_rst),
-  .ddr3_clk(ddr3_ui_clk),
-  .ddr3_clk_rst(ddr3_ui_sync_rst),
-  .device_temp_in(ddr3_device_temp),
-  .device_temp_out(ddr3_device_temp_xdom)
-);
+// toggle what are supposed to be the differential inputs
+OBUFDS ADC0A0_TOGGLE(.I(adc_test_toggle), .O(ADC0_DA0P), .OB(ADC0_DA0M));
+OBUFDS ADC0A1_TOGGLE(.I(adc_test_toggle), .O(ADC0_DA1P), .OB(ADC0_DA1M));
+OBUFDS ADC0B0_TOGGLE(.I(adc_test_toggle), .O(ADC0_DB0P), .OB(ADC0_DB0M));
+OBUFDS ADC0B1_TOGGLE(.I(adc_test_toggle), .O(ADC0_DB1P), .OB(ADC0_DB1M));
+OBUFDS ADC0C0_TOGGLE(.I(adc_test_toggle), .O(ADC0_DC0P), .OB(ADC0_DC0M));
+OBUFDS ADC0C1_TOGGLE(.I(adc_test_toggle), .O(ADC0_DC1P), .OB(ADC0_DC1M));
+OBUFDS ADC0D0_TOGGLE(.I(adc_test_toggle), .O(ADC0_DD0P), .OB(ADC0_DD0M));
+OBUFDS ADC0D1_TOGGLE(.I(adc_test_toggle), .O(ADC0_DD1P), .OB(ADC0_DD1M));
+OBUFDS ADC0DCLK_TOGGLE(.I(adc_test_toggle), .O(ADC0_DCLK_P), .OB(ADC0_DCLK_M));
+OBUFDS ADC0FCLK_TOGGLE(.I(adc_test_toggle), .O(ADC0_FCLK_P), .OB(ADC0_FCLK_M));
+
+OBUFDS ADC1A0_TOGGLE(.I(adc_test_toggle), .O(ADC1_DA0P), .OB(ADC1_DA0M));
+OBUFDS ADC1A1_TOGGLE(.I(adc_test_toggle), .O(ADC1_DA1P), .OB(ADC1_DA1M));
+OBUFDS ADC1B0_TOGGLE(.I(adc_test_toggle), .O(ADC1_DB0P), .OB(ADC1_DB0M));
+OBUFDS ADC1B1_TOGGLE(.I(adc_test_toggle), .O(ADC1_DB1P), .OB(ADC1_DB1M));
+OBUFDS ADC1C0_TOGGLE(.I(adc_test_toggle), .O(ADC1_DC0P), .OB(ADC1_DC0M));
+OBUFDS ADC1C1_TOGGLE(.I(adc_test_toggle), .O(ADC1_DC1P), .OB(ADC1_DC1M));
+OBUFDS ADC1D0_TOGGLE(.I(adc_test_toggle), .O(ADC1_DD0P), .OB(ADC1_DD0M));
+OBUFDS ADC1D1_TOGGLE(.I(adc_test_toggle), .O(ADC1_DD1P), .OB(ADC1_DD1M));
+OBUFDS ADC1DCLK_TOGGLE(.I(adc_test_toggle), .O(ADC1_DCLK_P), .OB(ADC1_DCLK_M));
+OBUFDS ADC1FCLK_TOGGLE(.I(adc_test_toggle), .O(ADC1_FCLK_P), .OB(ADC1_FCLK_M));
+
+OBUFDS ADC2A0_TOGGLE(.I(adc_test_toggle), .O(ADC2_DA0P), .OB(ADC2_DA0M));
+OBUFDS ADC2A1_TOGGLE(.I(adc_test_toggle), .O(ADC2_DA1P), .OB(ADC2_DA1M));
+OBUFDS ADC2B0_TOGGLE(.I(adc_test_toggle), .O(ADC2_DB0P), .OB(ADC2_DB0M));
+OBUFDS ADC2B1_TOGGLE(.I(adc_test_toggle), .O(ADC2_DB1P), .OB(ADC2_DB1M));
+OBUFDS ADC2C0_TOGGLE(.I(adc_test_toggle), .O(ADC2_DC0P), .OB(ADC2_DC0M));
+OBUFDS ADC2C1_TOGGLE(.I(adc_test_toggle), .O(ADC2_DC1P), .OB(ADC2_DC1M));
+OBUFDS ADC2D0_TOGGLE(.I(adc_test_toggle), .O(ADC2_DD0P), .OB(ADC2_DD0M));
+OBUFDS ADC2D1_TOGGLE(.I(adc_test_toggle), .O(ADC2_DD1P), .OB(ADC2_DD1M));
+OBUFDS ADC2DCLK_TOGGLE(.I(adc_test_toggle), .O(ADC2_DCLK_P), .OB(ADC2_DCLK_M));
+OBUFDS ADC2FCLK_TOGGLE(.I(adc_test_toggle), .O(ADC2_FCLK_P), .OB(ADC2_FCLK_M));
+
+OBUFDS ADC3A0_TOGGLE(.I(adc_test_toggle), .O(ADC3_DA0P), .OB(ADC3_DA0M));
+OBUFDS ADC3A1_TOGGLE(.I(adc_test_toggle), .O(ADC3_DA1P), .OB(ADC3_DA1M));
+OBUFDS ADC3B0_TOGGLE(.I(adc_test_toggle), .O(ADC3_DB0P), .OB(ADC3_DB0M));
+OBUFDS ADC3B1_TOGGLE(.I(adc_test_toggle), .O(ADC3_DB1P), .OB(ADC3_DB1M));
+OBUFDS ADC3C0_TOGGLE(.I(adc_test_toggle), .O(ADC3_DC0P), .OB(ADC3_DC0M));
+OBUFDS ADC3C1_TOGGLE(.I(adc_test_toggle), .O(ADC3_DC1P), .OB(ADC3_DC1M));
+OBUFDS ADC3D0_TOGGLE(.I(adc_test_toggle), .O(ADC3_DD0P), .OB(ADC3_DD0M));
+OBUFDS ADC3D1_TOGGLE(.I(adc_test_toggle), .O(ADC3_DD1P), .OB(ADC3_DD1M));
+OBUFDS ADC3DCLK_TOGGLE(.I(adc_test_toggle), .O(ADC3_DCLK_P), .OB(ADC3_DCLK_M));
+OBUFDS ADC3FCLK_TOGGLE(.I(adc_test_toggle), .O(ADC3_FCLK_P), .OB(ADC3_FCLK_M));
+
+OBUFDS ADC4A0_TOGGLE(.I(adc_test_toggle), .O(ADC4_DA0P), .OB(ADC4_DA0M));
+OBUFDS ADC4A1_TOGGLE(.I(adc_test_toggle), .O(ADC4_DA1P), .OB(ADC4_DA1M));
+OBUFDS ADC4B0_TOGGLE(.I(adc_test_toggle), .O(ADC4_DB0P), .OB(ADC4_DB0M));
+OBUFDS ADC4B1_TOGGLE(.I(adc_test_toggle), .O(ADC4_DB1P), .OB(ADC4_DB1M));
+OBUFDS ADC4C0_TOGGLE(.I(adc_test_toggle), .O(ADC4_DC0P), .OB(ADC4_DC0M));
+OBUFDS ADC4C1_TOGGLE(.I(adc_test_toggle), .O(ADC4_DC1P), .OB(ADC4_DC1M));
+OBUFDS ADC4D0_TOGGLE(.I(adc_test_toggle), .O(ADC4_DD0P), .OB(ADC4_DD0M));
+OBUFDS ADC4D1_TOGGLE(.I(adc_test_toggle), .O(ADC4_DD1P), .OB(ADC4_DD1M));
+OBUFDS ADC4DCLK_TOGGLE(.I(adc_test_toggle), .O(ADC4_DCLK_P), .OB(ADC4_DCLK_M));
+OBUFDS ADC4FCLK_TOGGLE(.I(adc_test_toggle), .O(ADC4_FCLK_P), .OB(ADC4_FCLK_M));
+
+OBUFDS ADC5A0_TOGGLE(.I(adc_test_toggle), .O(ADC5_DA0P), .OB(ADC5_DA0M));
+OBUFDS ADC5A1_TOGGLE(.I(adc_test_toggle), .O(ADC5_DA1P), .OB(ADC5_DA1M));
+OBUFDS ADC5B0_TOGGLE(.I(adc_test_toggle), .O(ADC5_DB0P), .OB(ADC5_DB0M));
+OBUFDS ADC5B1_TOGGLE(.I(adc_test_toggle), .O(ADC5_DB1P), .OB(ADC5_DB1M));
+OBUFDS ADC5C0_TOGGLE(.I(adc_test_toggle), .O(ADC5_DC0P), .OB(ADC5_DC0M));
+OBUFDS ADC5C1_TOGGLE(.I(adc_test_toggle), .O(ADC5_DC1P), .OB(ADC5_DC1M));
+OBUFDS ADC5D0_TOGGLE(.I(adc_test_toggle), .O(ADC5_DD0P), .OB(ADC5_DD0M));
+OBUFDS ADC5D1_TOGGLE(.I(adc_test_toggle), .O(ADC5_DD1P), .OB(ADC5_DD1M));
+OBUFDS ADC5DCLK_TOGGLE(.I(adc_test_toggle), .O(ADC5_DCLK_P), .OB(ADC5_DCLK_M));
+OBUFDS ADC5FCLK_TOGGLE(.I(adc_test_toggle), .O(ADC5_FCLK_P), .OB(ADC5_FCLK_M));
 
 //
 // ADC3424 serial controls
@@ -1641,99 +1734,99 @@ assign slo_adc_miso = slo_adc_chip_sel == 0 ? MON_ADC1_SDO : MON_ADC2_SDO;
 // TRIG_OUT not currently supported
 assign TRIG_OUT = 1'b0;
 
-afe_pulser PULSER_0 (
-  .lclk(lclk),
-  .lclk_rst(lclk_rst),
-  .divclk(discr_fclk_120MHz),
-  .divclk_rst(!idelay_discrclk_locked),
-  .fastclk(clk_480MHz),
-  .io_rst(pulser_io_rst[0]),
-  .trig(pulser_trig[0]),
-  .y0(1'b1),
-  .width(pulser_width),
-  .out(AFE0_TPR),
-  .out_n()
-);
-afe_pulser PULSER_1 (
-  .lclk(lclk),
-  .lclk_rst(lclk_rst),
-  .divclk(discr_fclk_120MHz),
-  .divclk_rst(!idelay_discrclk_locked),
-  .fastclk(clk_480MHz),
-  .io_rst(pulser_io_rst[1]),
-  .trig(pulser_trig[1]),
-  .y0(1'b1),
-  .width(pulser_width),
-  .out(AFE1_TPR),
-  .out_n()
-);
-afe_pulser PULSER_2 (
-  .lclk(lclk),
-  .lclk_rst(lclk_rst),
-  .divclk(discr_fclk_120MHz),
-  .divclk_rst(!idelay_discrclk_locked),
-  .fastclk(clk_480MHz),
-  .io_rst(pulser_io_rst[2]),
-  .trig(pulser_trig[2]),
-  .y0(1'b1),
-  .width(pulser_width),
-  .out(AFE2_TPR),
-  .out_n()
-);
-afe_pulser PULSER_3 (
-  .lclk(lclk),
-  .lclk_rst(lclk_rst),
-  .divclk(discr_fclk_120MHz),
-  .divclk_rst(!idelay_discrclk_locked),
-  .fastclk(clk_480MHz),
-  .io_rst(pulser_io_rst[3]),
-  .trig(pulser_trig[3]),
-  .y0(1'b1),
-  .width(pulser_width),
-  .out(AFE3_TPR),
-  .out_n()
-);
-afe_pulser PULSER_4 (
-  .lclk(lclk),
-  .lclk_rst(lclk_rst),
-  .divclk(discr_fclk_120MHz),
-  .divclk_rst(!idelay_discrclk_locked),
-  .fastclk(clk_480MHz),
-  .io_rst(pulser_io_rst[4]),
-  .trig(pulser_trig[4]),
-  .y0(1'b1),
-  .width(pulser_width),
-  .out(AFE4_TPR),
-  .out_n()
-);
-afe_pulser PULSER_5 (
-  .lclk(lclk),
-  .lclk_rst(lclk_rst),
-  .divclk(discr_fclk_120MHz),
-  .divclk_rst(!idelay_discrclk_locked),
-  .fastclk(clk_480MHz),
-  .io_rst(pulser_io_rst[5]),
-  .trig(pulser_trig[5]),
-  .y0(1'b1),
-  .width(pulser_width),
-  .out(AFE5_TPR),
-  .out_n()
-);
+// afe_pulser PULSER_0 (
+//   .lclk(lclk),
+//   .lclk_rst(lclk_rst),
+//   .divclk(discr_fclk_120MHz),
+//   .divclk_rst(!idelay_discrclk_locked),
+//   .fastclk(clk_480MHz),
+//   .io_rst(pulser_io_rst[0]),
+//   .trig(pulser_trig[0]),
+//   .y0(1'b1),
+//   .width(pulser_width),
+//   .out(AFE0_TPR),
+//   .out_n()
+// );
+// afe_pulser PULSER_1 (
+//   .lclk(lclk),
+//   .lclk_rst(lclk_rst),
+//   .divclk(discr_fclk_120MHz),
+//   .divclk_rst(!idelay_discrclk_locked),
+//   .fastclk(clk_480MHz),
+//   .io_rst(pulser_io_rst[1]),
+//   .trig(pulser_trig[1]),
+//   .y0(1'b1),
+//   .width(pulser_width),
+//   .out(AFE1_TPR),
+//   .out_n()
+// );
+// afe_pulser PULSER_2 (
+//   .lclk(lclk),
+//   .lclk_rst(lclk_rst),
+//   .divclk(discr_fclk_120MHz),
+//   .divclk_rst(!idelay_discrclk_locked),
+//   .fastclk(clk_480MHz),
+//   .io_rst(pulser_io_rst[2]),
+//   .trig(pulser_trig[2]),
+//   .y0(1'b1),
+//   .width(pulser_width),
+//   .out(AFE2_TPR),
+//   .out_n()
+// );
+// afe_pulser PULSER_3 (
+//   .lclk(lclk),
+//   .lclk_rst(lclk_rst),
+//   .divclk(discr_fclk_120MHz),
+//   .divclk_rst(!idelay_discrclk_locked),
+//   .fastclk(clk_480MHz),
+//   .io_rst(pulser_io_rst[3]),
+//   .trig(pulser_trig[3]),
+//   .y0(1'b1),
+//   .width(pulser_width),
+//   .out(AFE3_TPR),
+//   .out_n()
+// );
+// afe_pulser PULSER_4 (
+//   .lclk(lclk),
+//   .lclk_rst(lclk_rst),
+//   .divclk(discr_fclk_120MHz),
+//   .divclk_rst(!idelay_discrclk_locked),
+//   .fastclk(clk_480MHz),
+//   .io_rst(pulser_io_rst[4]),
+//   .trig(pulser_trig[4]),
+//   .y0(1'b1),
+//   .width(pulser_width),
+//   .out(AFE4_TPR),
+//   .out_n()
+// );
+// afe_pulser PULSER_5 (
+//   .lclk(lclk),
+//   .lclk_rst(lclk_rst),
+//   .divclk(discr_fclk_120MHz),
+//   .divclk_rst(!idelay_discrclk_locked),
+//   .fastclk(clk_480MHz),
+//   .io_rst(pulser_io_rst[5]),
+//   .trig(pulser_trig[5]),
+//   .y0(1'b1),
+//   .width(pulser_width),
+//   .out(AFE5_TPR),
+//   .out_n()
+// );
 
 // FPGA_CAL trigger; treat it as an independent AFE pulser channel
-afe_pulser #(.DIFFERENTIAL(1)) CAL_PULSER_0 (
-  .lclk(lclk),
-  .lclk_rst(lclk_rst),
-  .divclk(discr_fclk_120MHz),
-  .divclk_rst(!idelay_discrclk_locked),
-  .fastclk(clk_480MHz),
-  .io_rst(cal_io_rst),
-  .trig(cal_trig),
-  .y0(cal_trig_pol),
-  .width(cal_trig_width),
-  .out(FPGA_CAL_TRIG_P),
-  .out_n(FPGA_CAL_TRIG_N)
-);
+// afe_pulser #(.DIFFERENTIAL(1)) CAL_PULSER_0 (
+//   .lclk(lclk),
+//   .lclk_rst(lclk_rst),
+//   .divclk(discr_fclk_120MHz),
+//   .divclk_rst(!idelay_discrclk_locked),
+//   .fastclk(clk_480MHz),
+//   .io_rst(cal_io_rst),
+//   .trig(cal_trig),
+//   .y0(cal_trig_pol),
+//   .width(cal_trig_width),
+//   .out(FPGA_CAL_TRIG_P),
+//   .out_n(FPGA_CAL_TRIG_N)
+// );
 
 // FPGA I2C
 PULLUP PU_SDA(.O(FPGA_I2C_SDA));

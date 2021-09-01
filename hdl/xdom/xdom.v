@@ -168,6 +168,9 @@ module xdom #(parameter N_CHANNELS = 24)
   output reg i2cm_0_i2c_r_wn=0, 
   output reg[7:0] i2cm_0_tx_data=0,
 
+  // ADC IO test controller 
+  input[3:0] adc_test_ctrl_state,
+
   // Debug FT232R I/O
   input             debug_txd,
   output            debug_rxd,
@@ -876,6 +879,7 @@ always @(*)
                                         5'h0,
                                         i2cm_0_i2c_acked, 
                                         i2cm_0_rx_data};                                       end
+      12'h900: begin y_rd_data =       {12'b0, adc_test_ctrl_state};                           end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
