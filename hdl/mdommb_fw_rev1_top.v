@@ -332,7 +332,7 @@ module top (
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h1f;
+localparam[15:0] FW_VNUM = 16'h21;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -585,6 +585,8 @@ endgenerate
 //             [4] dicr_trig_en
 //             [5] thresh_trig_en
 //             [6] ext_trig_en
+//             [7] global_trig_pol
+//             [8] global_trig_en
 //     12'hbfd: trig threshold [11:0] (currently common to all channels)
 //     12'hbfc: [7:0] sw_trig_mask [23:16]
 //     12'hbfb: sw_trig_mask [15:0]
@@ -743,6 +745,12 @@ endgenerate
 //      [13:9]: 5'h0
 //         [8]: Slave acknowledged the RX transaction
 //       [7:0]: RX slave byte
+//
+//     global discriminator trigger configuration
+//     12'hb99: [7:0] global trig src mask [23:16]
+//     12'hb98: [15:0] global trig src mask [15:0]
+//     12'hb97: [7:0] global trig receiver mask [23:16]
+//     12'hb96: [15:0] global trig receiver mask [15:0]
 
 // trigger/wvb conf
 wire[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle;
@@ -877,6 +885,12 @@ wire i2cm_0_i2c_ack;
 wire i2cm_0_i2c_start;
 wire i2cm_0_i2c_stop;
 wire i2cm_0_i2c_r_wn;
+
+// global dscriminator trigger
+wire global_trig_en;
+wire global_trig_pol;
+wire[N_CHANNELS-1:0] global_trig_src_mask;
+wire[N_CHANNELS-1:0] global_trig_rcv_mask;
 
 // FMC
 wire [15:0] i_fmc_din;
@@ -1128,6 +1142,12 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .i2cm_0_i2c_r_wn(i2cm_0_i2c_r_wn),
   .i2cm_0_tx_data(i2cm_0_tx_data),
 
+  // global trigger
+  .global_trig_en(global_trig_en),
+  .global_trig_pol(global_trig_pol),
+  .global_trig_src_mask(global_trig_src_mask),
+  .global_trig_rcv_mask(global_trig_rcv_mask),
+
   // debug UART
   .debug_txd(FTD_UART_TXD),
   .debug_rxd(FTD_UART_RXD),
@@ -1199,6 +1219,18 @@ local_time_counter #(.P_LTC_WIDTH(P_LTC_WIDTH)) LTC_0 (
   .ltc_rd_ack(ltc_rd_ack)
 );
 
+// global trigger
+wire[N_CHANNELS-1:0] global_trig_out;
+global_trigger #(.N_CHANNELS(N_CHANNELS), .N_DISCR_BITS(N_DISCR_BITS)) GLOBAL_TRIG (
+  .clk(lclk),
+  .discr_stream(discr_data),
+  .trig_out(global_trig_out),
+  .enable(global_trig_en),
+  .trig_pol(global_trig_pol),
+  .src_mask(global_trig_src_mask),
+  .receiver_mask(global_trig_rcv_mask)
+);
+
 //
 // Waveform acquisition modules
 //
@@ -1268,6 +1300,8 @@ generate
       .xdom_wvb_config_bundle(xdom_wvb_conf_bundle_reg),
       .xdom_wvb_armed(wvb_armed[i]),
       .xdom_wvb_overflow(wvb_overflow[i]),
+
+      .global_trigger(global_trig_out[i]),
 
       .icm_sync_rdy(icm_sync_rdy),
 

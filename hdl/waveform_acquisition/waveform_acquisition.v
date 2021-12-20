@@ -54,8 +54,12 @@ module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
   output          xdom_wvb_armed,
   output          xdom_wvb_overflow,
 
+  // global trigger in
+  input global_trigger,
+
   // icm time sync ready
   input icm_sync_rdy,
+
 
   // bsum bundle
   input[P_MDOM_BSUM_BUNDLE_WIDTH-1:0] bsum_bundle
@@ -85,7 +89,7 @@ wire wvb_trig_lt;
 
 // temporarily unused
 wire wvb_bundle_trig_run;
-// used xdom trig_run instead
+// use xdom trig_run instead
 wire wvb_trig_run = xdom_trig_run;
 
 wire wvb_trig_discr_trig_pol;
@@ -185,8 +189,8 @@ mdom_trigger MDOM_TRIG
    .thr(wvb_trig_thr),
    .thresh_trig_en(wvb_trig_thresh_trig_en),
 
-   // sw trig
-   .run(wvb_trig_run),
+   // sw or global trigger
+   .run(wvb_trig_run || global_trigger),
 
    // ext trig
    .ext_trig_en(wvb_trig_ext_trig_en),
