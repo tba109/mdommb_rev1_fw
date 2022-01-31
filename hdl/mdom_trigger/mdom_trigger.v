@@ -32,6 +32,10 @@ module mdom_trigger
   input discr_trig_en,
   input discr_trig_pol,
   
+  // cal_trig trig
+  input cal_trig_trig_en,
+  input cal_trig_trig_run,
+
   // trigger outputs
   output reg[1:0] trig_src = 0,
   output reg trig = 0,
@@ -46,11 +50,13 @@ always @(posedge clk) begin
   i_rst <= rst;
 end
 
-// posedge detector on ext_run and run
+// posedge detector on ext_run, run, and cal_trig_trig_run
 wire ext_run_p;
 posedge_detector PEDGE_EXTRUN(.clk(clk), .rst_n(!i_rst), .a(ext_run), .y(ext_run_p));
 wire run_p;
 posedge_detector PEDGE_RUN(.clk(clk), .rst_n(!i_rst), .a(run), .y(run_p));
+wire cal_trig_trig_run_p;
+posedge_detector PEDGE_CALTRIGRUN(.clk(clk), .rst_n(!i_rst), .a(cal_trig_trig_run), .y(cal_trig_trig_run_p));
 
 // comparator for threshold triggering
 wire i_thresh_tot;
@@ -84,6 +90,11 @@ always @(posedge clk) begin
       trig <= 1;
     end
 
+    else if (cal_trig_trig_en && cal_trig_trig_run_p) begin
+      trig_src <= TRIG_SRC_EXT;
+      trig <= 1;
+    end
+         
     else if (discr_trig_en && i_discr_tot) begin
       trig_src <= TRIG_SRC_DISCR;
       trig <= 1;

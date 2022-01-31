@@ -174,6 +174,10 @@ module xdom #(parameter N_CHANNELS = 24)
   output reg[N_CHANNELS-1:0] global_trig_src_mask,
   output reg[N_CHANNELS-1:0] global_trig_rcv_mask,
 
+  // FGPA_CAL_TRIG trigger
+  output reg cal_trig_trig_en = 0,
+  output reg cal_trig_trig_pol = 0,
+
   // Debug FT232R I/O
   input             debug_txd,
   output            debug_rxd,
@@ -754,7 +758,9 @@ always @(*)
       12'hcb1: begin y_rd_data =       received_sync_ltc[31:16];                               end
       12'hcb0: begin y_rd_data =       received_sync_ltc[15:0];                                end
       12'hcaf: begin y_rd_data =       icm_sync_err_cnt;                                       end
-      12'hbfe: begin y_rd_data =       {7'b0,
+      12'hbfe: begin y_rd_data =       {5'b0,
+                                        cal_trig_trig_en,
+                                        cal_trig_trig_pol,
                                         global_trig_en,
                                         global_trig_pol,
                                         wvb_trig_ext_trig_en,
@@ -939,6 +945,8 @@ always @(posedge clk)
           wvb_trig_ext_trig_en <= y_wr_data[6];
           global_trig_pol <= y_wr_data[7];
           global_trig_en <= y_wr_data[8];
+          cal_trig_trig_pol <= y_wr_data[9];
+          cal_trig_trig_en <= y_wr_data[10];
         end
         12'hbfd: begin wvb_trig_thr <= y_wr_data[11:0];                                        end
         12'hbfc: begin sw_trig_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];                        end

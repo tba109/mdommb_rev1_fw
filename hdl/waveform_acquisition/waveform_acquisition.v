@@ -38,6 +38,11 @@ module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
 
   // External
   input ext_trig_in,
+
+  // FPGA_CAL_TRIG
+  input cal_trig_trig_en,
+  input cal_trig_trig_run,
+
   output wvb_trig_out,
   output wvb_trig_test_out,
 
@@ -199,6 +204,10 @@ mdom_trigger MDOM_TRIG
    // discr trig
    .discr_trig_en(wvb_trig_discr_trig_en),
    .discr_trig_pol(wvb_trig_discr_trig_pol),
+
+   // cal trig
+   .cal_trig_trig_en(cal_trig_trig_en),
+   .cal_trig_trig_run(cal_trig_trig_run),
 
    // trigger outputs
    .trig_src(trig_src),

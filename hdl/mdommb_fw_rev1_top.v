@@ -1,7 +1,5 @@
 //
-// November 2020
-//
-// Top level module for the rev1 mDOM mainboard
+// Top level module for the rev1 and rev2 mDOM mainboard
 //
 
 module top (
@@ -282,8 +280,8 @@ module top (
   output AFE5_TPR,
 
   // CAL interface
-  output FPGA_CAL_TRIG_P,
-  output FPGA_CAL_TRIG_N,
+  input FPGA_CAL_TRIG_P,
+  input FPGA_CAL_TRIG_N,
 
   // ADS8332 monitoring ADCs
   output MON_ADC1_CONVn,
@@ -332,7 +330,7 @@ module top (
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h21;
+localparam[15:0] FW_VNUM = 16'h22;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -587,6 +585,8 @@ endgenerate
 //             [6] ext_trig_en
 //             [7] global_trig_pol
 //             [8] global_trig_en
+//             [9] cal_trig_trig_pol
+//             [10] cal_trig_trig_en
 //     12'hbfd: trig threshold [11:0] (currently common to all channels)
 //     12'hbfc: [7:0] sw_trig_mask [23:16]
 //     12'hbfb: sw_trig_mask [15:0]
@@ -713,7 +713,7 @@ endgenerate
 //     12'hba7: [11:0] bsum dev low
 //     12'hba6: [11:0] bsum dev high
 //
-//     FPGA_CAL_TRIG interface
+//     FPGA_CAL_TRIG interface (disabled as of rev 0x22)
 //     12'hba5: [15:0] FPGA_CAL_TRIG width, units of 1/960 MHz
 //     12'hba4: [0] FPGA_CAL_TRIG IO reset
 //              [1] FPGA_CAL_TRIG polarity (0 idles low, 1 idles high)
@@ -891,6 +891,10 @@ wire global_trig_en;
 wire global_trig_pol;
 wire[N_CHANNELS-1:0] global_trig_src_mask;
 wire[N_CHANNELS-1:0] global_trig_rcv_mask;
+
+// FGPA_CAL_TRIG trigger
+wire cal_trig_trig_en;
+wire cal_trig_trig_pol;
 
 // FMC
 wire [15:0] i_fmc_din;
@@ -1148,6 +1152,10 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .global_trig_src_mask(global_trig_src_mask),
   .global_trig_rcv_mask(global_trig_rcv_mask),
 
+  // FPGA_CAL_TRIG trigger
+  .cal_trig_trig_en(cal_trig_trig_en),
+  .cal_trig_trig_pol(cal_trig_trig_pol),
+
   // debug UART
   .debug_txd(FTD_UART_TXD),
   .debug_rxd(FTD_UART_RXD),
@@ -1255,9 +1263,15 @@ always @(posedge lclk) begin
   xdom_bsum_bundle_reg <= xdom_bsum_bundle;
 end
 
-// external trigger
+// external trigger & FPGA_CAL_TRIG trigger
+wire i_fpga_cal_trig;
+IBUFDS FPGA_CAL_TRIG_IBUFDS(.I(FPGA_CAL_TRIG_P), .IB(FPGA_CAL_TRIG_N), .O(i_fpga_cal_trig));
+
 wire ext_trig_s;
 sync SYNC_TRIG_IN(.clk(lclk),.rst_n(!lclk_rst),.a(TRIG_IN),.y(ext_trig_s));
+wire cal_trig_s;
+sync SYNC_CAL_TRIG(.clk(lclk), .rst_n(!lclk_rst), .a(i_fpga_cal_trig), .y(cal_trig_s));
+wire cal_trig_trig_run = cal_trig_trig_pol == 1 ? cal_trig_s : ~cal_trig_s;
 
 generate
   for (i = 0; i < N_CHANNELS; i = i + 1) begin : waveform_acq_gen
@@ -1304,6 +1318,9 @@ generate
       .global_trigger(global_trig_out[i]),
 
       .icm_sync_rdy(icm_sync_rdy),
+
+      .cal_trig_trig_en(cal_trig_trig_en),
+      .cal_trig_trig_run(cal_trig_trig_run),
 
       .bsum_bundle(xdom_bsum_bundle_reg)
     );
@@ -1755,19 +1772,20 @@ afe_pulser PULSER_5 (
 );
 
 // FPGA_CAL trigger; treat it as an independent AFE pulser channel
-afe_pulser #(.DIFFERENTIAL(1)) CAL_PULSER_0 (
-  .lclk(lclk),
-  .lclk_rst(lclk_rst),
-  .divclk(discr_fclk_120MHz),
-  .divclk_rst(!idelay_discrclk_locked),
-  .fastclk(clk_480MHz),
-  .io_rst(cal_io_rst),
-  .trig(cal_trig),
-  .y0(cal_trig_pol),
-  .width(cal_trig_width),
-  .out(FPGA_CAL_TRIG_P),
-  .out_n(FPGA_CAL_TRIG_N)
-);
+// disabled for version 0x22
+// afe_pulser #(.DIFFERENTIAL(1)) CAL_PULSER_0 (
+//   .lclk(lclk),
+//   .lclk_rst(lclk_rst),
+//   .divclk(discr_fclk_120MHz),
+//   .divclk_rst(!idelay_discrclk_locked),
+//   .fastclk(clk_480MHz),
+//   .io_rst(cal_io_rst),
+//   .trig(cal_trig),
+//   .y0(cal_trig_pol),
+//   .width(cal_trig_width),
+//   .out(FPGA_CAL_TRIG_P),
+//   .out_n(FPGA_CAL_TRIG_N)
+// );
 
 // FPGA I2C
 PULLUP PU_SDA(.O(FPGA_I2C_SDA));
