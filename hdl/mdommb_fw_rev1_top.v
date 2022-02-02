@@ -1190,7 +1190,7 @@ wire[P_LTC_WIDTH-1:0] ltc;
 wire[P_LTC_WIDTH-1:0] ltc_wr_data;
 wire ltc_wr_req;
 wire i_fpga_sync;
-IBUFGDS IBUF_FPGA_SYNC(.I(FPGA_SYNC_P), .IB(FPGA_SYNC_N), .O(i_fpga_sync));
+IBUFDS IBUF_FPGA_SYNC(.I(FPGA_SYNC_P), .IB(FPGA_SYNC_N), .O(i_fpga_sync));
 icm_time_transfer #(.SHIFT_CNT(40), .EXPECTED_LTC_OFFSET(1)) ICM_TIME_TRANSFER (
   .clk(lclk),
   .rst(lclk_rst),
