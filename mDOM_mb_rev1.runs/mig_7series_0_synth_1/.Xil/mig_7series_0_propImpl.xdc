@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/constraints/mig_7series_0.xdc rfile:../../../mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/constraints/mig_7series_0.xdc id:1 order:EARLY} [current_design]
+set_property SRC_FILE_INFO {cfile:d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/constraints/mig_7series_0.xdc rfile:../../../mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/constraints/mig_7series_0.xdc id:1 order:EARLY} [current_design]
 set_property src_info {type:XDC file:1 line:41 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN A8 [get_ports {ddr3_dq[0]}]
 set_property src_info {type:XDC file:1 line:47 export:INPUT save:INPUT read:READ} [current_design]

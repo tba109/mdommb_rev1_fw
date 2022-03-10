@@ -65,38 +65,38 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param chipscope.maxJobs 2
+  set_param chipscope.maxJobs 4
   create_project -in_memory -part xc7s100fgga676-2
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.cache/wt [current_project]
-  set_property parent.project_path C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.xpr [current_project]
-  set_property ip_output_repo C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.cache/ip [current_project]
+  set_property webtalk.parent_dir D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.cache/wt [current_project]
+  set_property parent.project_path D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.xpr [current_project]
+  set_property ip_output_repo D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
-  add_files -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/top.dcp
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/BUFFER_1024_22/BUFFER_1024_22.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIRECT_RDOUT_DPRAM/DIRECT_RDOUT_DPRAM.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIST_BUFFER_32_22/DIST_BUFFER_32_22.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_256_72/FIFO_256_72.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/XDOM_DDR3_PG/XDOM_DDR3_PG.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_RDOUT_DPRAM/HBUF_RDOUT_DPRAM.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_DDR3_PG/HBUF_DDR3_PG.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/BUFFER_2048_22/BUFFER_2048_22.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIST_BUFFER_128_12/DIST_BUFFER_128_12.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.xci
-  read_ip -quiet C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xci
-  read_xdc C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc
-  read_xdc C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/io.xdc
+  add_files -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/top.dcp
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/BUFFER_1024_22/BUFFER_1024_22.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIRECT_RDOUT_DPRAM/DIRECT_RDOUT_DPRAM.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIST_BUFFER_32_22/DIST_BUFFER_32_22.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_256_72/FIFO_256_72.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/XDOM_DDR3_PG/XDOM_DDR3_PG.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_RDOUT_DPRAM/HBUF_RDOUT_DPRAM.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_DDR3_PG/HBUF_DDR3_PG.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/BUFFER_2048_22/BUFFER_2048_22.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIST_BUFFER_128_12/DIST_BUFFER_128_12.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.xci
+  read_ip -quiet D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xci
+  read_xdc D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc
+  read_xdc D:/icecube/mdommb_rev1_fw/constrs/io.xdc
   link_design -top top -part xc7s100fgga676-2
   close_msg_db -file init_design.pb
 } RESULT]

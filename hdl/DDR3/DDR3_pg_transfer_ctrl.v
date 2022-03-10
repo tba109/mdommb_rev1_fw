@@ -123,7 +123,8 @@ always @(posedge clk) begin
           app_en <= 1;
           app_addr <= next_app_addr;
           // memory interface bursts 8 16-bit words at a time
-          next_app_addr <= next_app_addr + 16;
+          // next_app_addr <= next_app_addr + 16;
+	   next_app_addr <= next_app_addr + 8;
 
           app_fsm <= S_APP_REQ_WR;
         end
@@ -141,7 +142,8 @@ always @(posedge clk) begin
         if (app_rdy && app_en) begin
           // current command will be accepted
           app_addr <= next_app_addr;
-          next_app_addr <= next_app_addr + 16;
+          // next_app_addr <= next_app_addr + 16;
+	   next_app_addr <= next_app_addr + 8;
 
           n_app_reqs <= n_app_reqs + 1;
           if (n_app_reqs == N_APP_REQS_MAX) begin
@@ -158,7 +160,8 @@ always @(posedge clk) begin
         app_cmd = APP_CMD_RD;
         app_en <= 1;
         app_addr <= next_app_addr;
-        next_app_addr <= next_app_addr + 16;
+        // next_app_addr <= next_app_addr + 16;
+	 next_app_addr <= next_app_addr + 8;
 
         app_fsm <= S_APP_REQ_RD;
       end
@@ -171,7 +174,8 @@ always @(posedge clk) begin
         if (app_rdy && app_en) begin
           // current command will be accepted
           app_addr <= next_app_addr;
-          next_app_addr <= next_app_addr + 16;
+          // next_app_addr <= next_app_addr + 16;
+	  next_app_addr <= next_app_addr + 8;
 
           n_app_reqs <= n_app_reqs + 1;
           if (n_app_reqs == N_APP_REQS_MAX) begin
