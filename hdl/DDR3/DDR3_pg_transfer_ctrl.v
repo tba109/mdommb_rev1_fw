@@ -119,7 +119,7 @@ always @(posedge clk) begin
         n_app_reqs <= 0;
 
         if (n_writes >= 3) begin
-          app_cmd = APP_CMD_WRITE;
+          app_cmd <= APP_CMD_WRITE;
           app_en <= 1;
           app_addr <= next_app_addr;
           // memory interface bursts 8 16-bit words at a time
@@ -131,7 +131,7 @@ always @(posedge clk) begin
       end
 
       S_APP_REQ_WR: begin
-        app_cmd = APP_CMD_WRITE;
+        app_cmd <= APP_CMD_WRITE;
 
         // don't send app_en reqs if the DPRAM fsm has stalled
         if ((n_app_reqs + 1 < n_writes) ||
@@ -157,7 +157,7 @@ always @(posedge clk) begin
         dpram_start <= 1;
         n_app_reqs <= 0;
 
-        app_cmd = APP_CMD_RD;
+        app_cmd <= APP_CMD_RD;
         app_en <= 1;
         app_addr <= next_app_addr;
         // next_app_addr <= next_app_addr + 16;
@@ -167,7 +167,7 @@ always @(posedge clk) begin
       end
 
       S_APP_REQ_RD: begin
-        app_cmd = APP_CMD_RD;
+        app_cmd <= APP_CMD_RD;
 
         app_en <= 1;
 
