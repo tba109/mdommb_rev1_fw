@@ -720,10 +720,12 @@ reg[31:0] fpga_cal_trig_period = 0;
 reg fpga_cal_trig_single = 0;
 reg fpga_cal_trig_periodic_en = 0;
 
-// handles converting DDR3 16-bit word address from xdom
-// into the byte address used by the memory controller
+// Masking off three LSBs because the MIG bursts 8 words
+// at a time. (1Word = 16b)
 reg[26:0] pg_req_addr_16b = 0;
-assign pg_req_addr = {pg_req_addr_16b, 1'b0};
+// assign pg_req_addr = {pg_req_addr_16b, 1'b0};
+// assign pg_req_addr = {pg_req_addr_16b};
+   assign pg_req_addr = {pg_req_addr_16b[26:3],3'b000};
 
 always @(*)
  begin
