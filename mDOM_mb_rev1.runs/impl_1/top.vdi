@@ -2,284 +2,284 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Wed Feb  2 12:35:11 2022
-# Process ID: 12320
-# Current directory: C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1
+# Start of session at: Mon Mar 14 12:16:58 2022
+# Process ID: 14332
+# Current directory: D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1
 # Command line: vivado.exe -log top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top.tcl -notrace
-# Log file: C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top.vdi
-# Journal file: C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1\vivado.jou
+# Log file: D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top.vdi
+# Journal file: D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1\vivado.jou
 #-----------------------------------------------------------
 source top.tcl -notrace
 Command: link_design -top top -part xc7s100fgga676-2
 Design is defaulting to srcset: sources_1
 Design is defaulting to constrset: constrs_1
 INFO: [Device 21-403] Loading part xc7s100fgga676-2
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz.dcp' for cell 'DDR3_IDELAY_CLK_WIZ_0'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz.dcp' for cell 'IDELAY_DISCR_CLK_WIZ_0'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz.dcp' for cell 'LCLK_ADCCLK_WIZ_0'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0.dcp' for cell 'DDR3_TRANSFER_0/MIG_7_SERIES'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_DDR3_PG/HBUF_DDR3_PG.dcp' for cell 'HBUF_CTRL_0/DDR3_PG_DPRAM_0'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_RDOUT_DPRAM/HBUF_RDOUT_DPRAM.dcp' for cell 'HBUF_CTRL_0/READER_DPRAM_0'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.dcp' for cell 'I2CM_0/RX_FIFO_0'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.dcp' for cell 'PULSER_0/PULSER_OUT'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/XDOM_DDR3_PG/XDOM_DDR3_PG.dcp' for cell 'XDOM_0/PG_DPRAM'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIRECT_RDOUT_DPRAM/DIRECT_RDOUT_DPRAM.dcp' for cell 'XDOM_0/RDOUT_DPRAM'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.dcp' for cell 'XDOM_0/UART_DEBUG_0/FIFO_2048_32_0'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.dcp' for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/ADC_SERDES_0'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.dcp' for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/DISCR_SERDES'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIST_BUFFER_128_12/DIST_BUFFER_128_12.dcp' for cell 'waveform_acq_gen[0].WFM_ACQ/ROLLING_BSUM/sample_buffer'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIST_BUFFER_32_22/DIST_BUFFER_32_22.dcp' for cell 'waveform_acq_gen[0].WFM_ACQ/WVB/PTB/DIST_PTB'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.dcp' for cell 'waveform_acq_gen[0].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0'
-INFO: [Project 1-454] Reading design checkpoint 'c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/BUFFER_2048_22/BUFFER_2048_22.dcp' for cell 'waveform_acq_gen[0].WFM_ACQ/WVB/WBS/WAVEFORM_DISCR_BUFF'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz.dcp' for cell 'DDR3_IDELAY_CLK_WIZ_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz.dcp' for cell 'IDELAY_DISCR_CLK_WIZ_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz.dcp' for cell 'LCLK_ADCCLK_WIZ_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0.dcp' for cell 'DDR3_TRANSFER_0/MIG_7_SERIES'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_DDR3_PG/HBUF_DDR3_PG.dcp' for cell 'HBUF_CTRL_0/DDR3_PG_DPRAM_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_RDOUT_DPRAM/HBUF_RDOUT_DPRAM.dcp' for cell 'HBUF_CTRL_0/READER_DPRAM_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.dcp' for cell 'I2CM_0/RX_FIFO_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.dcp' for cell 'PULSER_0/PULSER_OUT'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/XDOM_DDR3_PG/XDOM_DDR3_PG.dcp' for cell 'XDOM_0/PG_DPRAM'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIRECT_RDOUT_DPRAM/DIRECT_RDOUT_DPRAM.dcp' for cell 'XDOM_0/RDOUT_DPRAM'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.dcp' for cell 'XDOM_0/UART_DEBUG_0/FIFO_2048_32_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.dcp' for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/ADC_SERDES_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.dcp' for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/DISCR_SERDES'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIST_BUFFER_128_12/DIST_BUFFER_128_12.dcp' for cell 'waveform_acq_gen[0].WFM_ACQ/ROLLING_BSUM/sample_buffer'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIST_BUFFER_32_22/DIST_BUFFER_32_22.dcp' for cell 'waveform_acq_gen[0].WFM_ACQ/WVB/PTB/DIST_PTB'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.dcp' for cell 'waveform_acq_gen[0].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/BUFFER_2048_22/BUFFER_2048_22.dcp' for cell 'waveform_acq_gen[0].WFM_ACQ/WVB/WBS/WAVEFORM_DISCR_BUFF'
 INFO: [Netlist 29-17] Analyzing 7725 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-479] Netlist was created with Vivado 2019.1
 INFO: [Project 1-570] Preparing netlist for logic optimization
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xdc] for cell 'XDOM_0/UART_DEBUG_0/FIFO_2048_32_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xdc] for cell 'XDOM_0/UART_DEBUG_0/FIFO_2048_32_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xdc] for cell 'XDOM_0/UART_ICM_0/FIFO_2048_32_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xdc] for cell 'XDOM_0/UART_ICM_0/FIFO_2048_32_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xdc] for cell 'XDOM_0/UART_MCU_0/FIFO_2048_32_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xdc] for cell 'XDOM_0/UART_MCU_0/FIFO_2048_32_0/U0'
-CRITICAL WARNING: [Designutils 20-1280] Could not find module 'FIFO_256_72'. The XDC file c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_256_72/FIFO_256_72.xdc will not be read for any cell of this module.
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_board.xdc] for cell 'LCLK_ADCCLK_WIZ_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_board.xdc] for cell 'LCLK_ADCCLK_WIZ_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz.xdc] for cell 'LCLK_ADCCLK_WIZ_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz.xdc] for cell 'LCLK_ADCCLK_WIZ_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz_board.xdc] for cell 'IDELAY_DISCR_CLK_WIZ_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz_board.xdc] for cell 'IDELAY_DISCR_CLK_WIZ_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz.xdc] for cell 'IDELAY_DISCR_CLK_WIZ_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz.xdc] for cell 'IDELAY_DISCR_CLK_WIZ_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[10].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[10].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[10].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[10].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[11].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[11].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[11].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[11].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[12].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[12].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[12].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[12].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[13].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[13].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[13].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[13].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[14].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[14].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[14].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[14].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[15].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[15].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[15].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[15].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[16].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[16].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[16].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[16].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[17].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[17].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[17].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[17].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[18].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[18].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[18].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[18].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[19].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[19].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[19].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[19].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[1].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[1].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[1].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[1].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[20].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[20].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[20].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[20].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[21].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[21].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[21].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[21].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[22].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[22].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[22].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[22].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[23].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[23].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[23].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[23].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[2].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[2].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[2].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[2].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[3].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[3].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[3].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[3].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[4].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[4].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[4].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[4].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[5].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[5].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[5].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[5].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[6].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[6].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[6].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[6].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[7].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[7].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[7].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[7].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[8].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[8].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[8].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[8].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[9].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[9].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[9].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[9].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[10].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[10].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[11].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[11].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[12].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[12].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[13].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[13].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[14].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[14].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[15].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[15].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[16].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[16].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[17].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[17].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[18].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[18].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[19].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[19].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[1].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[1].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[20].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[20].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[21].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[21].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[22].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[22].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[23].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[23].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[2].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[2].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[3].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[3].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[4].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[4].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[5].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[5].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[6].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[6].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[7].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[7].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[8].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[8].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[9].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[9].ADC_DISCR_CHAN/DISCR_SERDES/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_0/PULSER_OUT/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_0/PULSER_OUT/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_1/PULSER_OUT/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_1/PULSER_OUT/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_2/PULSER_OUT/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_2/PULSER_OUT/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_3/PULSER_OUT/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_3/PULSER_OUT/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_4/PULSER_OUT/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_4/PULSER_OUT/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_5/PULSER_OUT/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_5/PULSER_OUT/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/constraints/mig_7series_0.xdc] for cell 'DDR3_TRANSFER_0/MIG_7_SERIES'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/constraints/mig_7series_0.xdc] for cell 'DDR3_TRANSFER_0/MIG_7_SERIES'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz_board.xdc] for cell 'DDR3_IDELAY_CLK_WIZ_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz_board.xdc] for cell 'DDR3_IDELAY_CLK_WIZ_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz.xdc] for cell 'DDR3_IDELAY_CLK_WIZ_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz.xdc] for cell 'DDR3_IDELAY_CLK_WIZ_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[0].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[0].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[10].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[10].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[11].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[11].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[12].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[12].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[13].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[13].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[14].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[14].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[15].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[15].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[16].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[16].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[17].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[17].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[18].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[18].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[19].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[19].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[1].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[1].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[20].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[20].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[21].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[21].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[22].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[22].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[23].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[23].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[2].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[2].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[3].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[3].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[4].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[4].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[5].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[5].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[6].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[6].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[7].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[7].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[8].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[8].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[9].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[9].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
-CRITICAL WARNING: [Designutils 20-1280] Could not find module 'PULSER_OUT_DIFF'. The XDC file c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.xdc will not be read for any cell of this module.
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xdc] for cell 'I2CM_0/RX_FIFO_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xdc] for cell 'I2CM_0/RX_FIFO_0/U0'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xdc] for cell 'I2CM_0/TX_FIFO_0/U0'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xdc] for cell 'I2CM_0/TX_FIFO_0/U0'
-Parsing XDC File [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc]
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:8]
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:24]
-INFO: [Timing 38-35] Done setting XDC timing constraints. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:29]
-INFO: [Timing 38-2] Deriving generated clocks [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:29]
-get_clocks: Time (s): cpu = 00:00:32 ; elapsed = 00:00:27 . Memory (MB): peak = 1572.031 ; gain = 554.516
-Finished Parsing XDC File [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc]
-Parsing XDC File [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/io.xdc]
-Finished Parsing XDC File [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/io.xdc]
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_late.xdc] for cell 'LCLK_ADCCLK_WIZ_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_late.xdc] for cell 'LCLK_ADCCLK_WIZ_0/inst'
-Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz_late.xdc] for cell 'IDELAY_DISCR_CLK_WIZ_0/inst'
-Finished Parsing XDC File [c:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz_late.xdc] for cell 'IDELAY_DISCR_CLK_WIZ_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xdc] for cell 'XDOM_0/UART_DEBUG_0/FIFO_2048_32_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xdc] for cell 'XDOM_0/UART_DEBUG_0/FIFO_2048_32_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xdc] for cell 'XDOM_0/UART_ICM_0/FIFO_2048_32_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xdc] for cell 'XDOM_0/UART_ICM_0/FIFO_2048_32_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xdc] for cell 'XDOM_0/UART_MCU_0/FIFO_2048_32_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/FIFO_2048_32.xdc] for cell 'XDOM_0/UART_MCU_0/FIFO_2048_32_0/U0'
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'FIFO_256_72'. The XDC file d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_256_72/FIFO_256_72.xdc will not be read for any cell of this module.
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_board.xdc] for cell 'LCLK_ADCCLK_WIZ_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_board.xdc] for cell 'LCLK_ADCCLK_WIZ_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz.xdc] for cell 'LCLK_ADCCLK_WIZ_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz.xdc] for cell 'LCLK_ADCCLK_WIZ_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz_board.xdc] for cell 'IDELAY_DISCR_CLK_WIZ_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz_board.xdc] for cell 'IDELAY_DISCR_CLK_WIZ_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz.xdc] for cell 'IDELAY_DISCR_CLK_WIZ_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz.xdc] for cell 'IDELAY_DISCR_CLK_WIZ_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[10].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[10].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[10].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[10].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[11].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[11].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[11].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[11].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[12].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[12].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[12].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[12].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[13].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[13].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[13].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[13].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[14].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[14].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[14].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[14].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[15].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[15].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[15].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[15].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[16].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[16].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[16].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[16].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[17].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[17].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[17].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[17].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[18].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[18].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[18].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[18].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[19].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[19].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[19].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[19].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[1].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[1].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[1].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[1].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[20].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[20].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[20].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[20].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[21].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[21].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[21].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[21].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[22].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[22].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[22].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[22].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[23].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[23].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[23].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[23].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[2].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[2].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[2].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[2].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[3].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[3].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[3].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[3].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[4].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[4].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[4].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[4].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[5].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[5].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[5].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[5].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[6].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[6].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[6].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[6].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[7].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[7].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[7].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[7].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[8].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[8].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[8].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[8].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[9].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[9].ADC_DISCR_CHAN/ADC_SERDES_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[9].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.xdc] for cell 'adc_discr_iface_gen[9].ADC_DISCR_CHAN/ADC_SERDES_1/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[0].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[10].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[10].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[11].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[11].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[12].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[12].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[13].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[13].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[14].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[14].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[15].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[15].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[16].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[16].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[17].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[17].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[18].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[18].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[19].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[19].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[1].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[1].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[20].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[20].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[21].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[21].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[22].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[22].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[23].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[23].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[2].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[2].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[3].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[3].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[4].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[4].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[5].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[5].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[6].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[6].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[7].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[7].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[8].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[8].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[9].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.xdc] for cell 'adc_discr_iface_gen[9].ADC_DISCR_CHAN/DISCR_SERDES/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_0/PULSER_OUT/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_0/PULSER_OUT/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_1/PULSER_OUT/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_1/PULSER_OUT/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_2/PULSER_OUT/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_2/PULSER_OUT/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_3/PULSER_OUT/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_3/PULSER_OUT/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_4/PULSER_OUT/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_4/PULSER_OUT/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_5/PULSER_OUT/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.xdc] for cell 'PULSER_5/PULSER_OUT/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/constraints/mig_7series_0.xdc] for cell 'DDR3_TRANSFER_0/MIG_7_SERIES'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/constraints/mig_7series_0.xdc] for cell 'DDR3_TRANSFER_0/MIG_7_SERIES'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz_board.xdc] for cell 'DDR3_IDELAY_CLK_WIZ_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz_board.xdc] for cell 'DDR3_IDELAY_CLK_WIZ_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz.xdc] for cell 'DDR3_IDELAY_CLK_WIZ_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz.xdc] for cell 'DDR3_IDELAY_CLK_WIZ_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[0].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[0].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[10].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[10].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[11].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[11].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[12].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[12].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[13].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[13].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[14].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[14].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[15].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[15].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[16].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[16].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[17].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[17].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[18].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[18].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[19].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[19].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[1].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[1].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[20].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[20].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[21].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[21].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[22].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[22].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[23].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[23].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[2].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[2].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[3].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[3].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[4].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[4].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[5].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[5].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[6].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[6].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[7].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[7].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[8].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[8].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[9].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/FIFO_512_108.xdc] for cell 'waveform_acq_gen[9].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0'
+CRITICAL WARNING: [Designutils 20-1280] Could not find module 'PULSER_OUT_DIFF'. The XDC file d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.xdc will not be read for any cell of this module.
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xdc] for cell 'I2CM_0/RX_FIFO_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xdc] for cell 'I2CM_0/RX_FIFO_0/U0'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xdc] for cell 'I2CM_0/TX_FIFO_0/U0'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/FIFO_1024_16.xdc] for cell 'I2CM_0/TX_FIFO_0/U0'
+Parsing XDC File [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:8]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:24]
+INFO: [Timing 38-35] Done setting XDC timing constraints. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:29]
+INFO: [Timing 38-2] Deriving generated clocks [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:29]
+get_clocks: Time (s): cpu = 00:00:13 ; elapsed = 00:00:11 . Memory (MB): peak = 1572.547 ; gain = 554.430
+Finished Parsing XDC File [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc]
+Parsing XDC File [D:/icecube/mdommb_rev1_fw/constrs/io.xdc]
+Finished Parsing XDC File [D:/icecube/mdommb_rev1_fw/constrs/io.xdc]
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_late.xdc] for cell 'LCLK_ADCCLK_WIZ_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_late.xdc] for cell 'LCLK_ADCCLK_WIZ_0/inst'
+Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz_late.xdc] for cell 'IDELAY_DISCR_CLK_WIZ_0/inst'
+Finished Parsing XDC File [d:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz_late.xdc] for cell 'IDELAY_DISCR_CLK_WIZ_0/inst'
 INFO: [Opt 31-138] Pushed 6 inverter(s) to 6 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.073 . Memory (MB): peak = 1578.754 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 1578.262 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 461 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 17 instances
@@ -291,7 +291,7 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 
 28 Infos, 0 Warnings, 2 Critical Warnings and 0 Errors encountered.
 link_design completed successfully
-link_design: Time (s): cpu = 00:01:25 ; elapsed = 00:01:21 . Memory (MB): peak = 1578.754 ; gain = 1260.504
+link_design: Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 1578.262 ; gain = 1259.223
 Command: opt_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7s100'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7s100'
@@ -302,33 +302,33 @@ INFO: [DRC 23-27] Running DRC with 2 threads
 INFO: [Project 1-461] DRC finished with 0 Errors
 INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
 
-Time (s): cpu = 00:00:06 ; elapsed = 00:00:03 . Memory (MB): peak = 1578.754 ; gain = 0.000
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1578.262 ; gain = 0.000
 
 Starting Cache Timing Information Task
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:8]
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:24]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:8]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:24]
 INFO: [Timing 38-35] Done setting XDC timing constraints.
-Ending Cache Timing Information Task | Checksum: 1c969a6f5
+Ending Cache Timing Information Task | Checksum: 1eac8abca
 
-Time (s): cpu = 00:00:20 ; elapsed = 00:00:12 . Memory (MB): peak = 1607.359 ; gain = 28.605
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:04 . Memory (MB): peak = 1614.508 ; gain = 36.246
 
 Starting Logic Optimization Task
 
 Phase 1 Retarget
 INFO: [Opt 31-138] Pushed 1 inverter(s) to 1 load pin(s).
 INFO: [Opt 31-49] Retargeted 0 cell(s).
-Phase 1 Retarget | Checksum: 21e43183b
+Phase 1 Retarget | Checksum: 1c67f1358
 
-Time (s): cpu = 00:00:18 ; elapsed = 00:00:13 . Memory (MB): peak = 1764.000 ; gain = 0.312
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 1766.188 ; gain = 0.480
 INFO: [Opt 31-389] Phase Retarget created 25 cells and removed 70 cells
 INFO: [Opt 31-1021] In phase Retarget, 167 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 2 Constant propagation
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Phase 2 Constant propagation | Checksum: 1d93cc2c9
+Phase 2 Constant propagation | Checksum: 203ef0769
 
-Time (s): cpu = 00:00:20 ; elapsed = 00:00:15 . Memory (MB): peak = 1764.000 ; gain = 0.312
-INFO: [Opt 31-389] Phase Constant propagation created 11 cells and removed 78 cells
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:05 . Memory (MB): peak = 1766.188 ; gain = 0.480
+INFO: [Opt 31-389] Phase Constant propagation created 12 cells and removed 87 cells
 INFO: [Opt 31-1021] In phase Constant propagation, 110 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 3 Sweep
@@ -336,30 +336,30 @@ INFO: [Opt 31-120] Instance I2CM_0/TX_FIFO_0/U0/inst_fifo_gen/gconvfifo.rf/grf.r
 Resolution: If this is not expected, please check for DONT_TOUCH properties or timing constraint set on the empty box cell or on nets connected to the cell. If found, remove the relevant DONT_TOUCH property or timing constraint and re-run opt_design.
 INFO: [Opt 31-120] Instance I2CM_0/RX_FIFO_0/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/grss.rsts/gae.c3 (FIFO_1024_16_compare_4) has been optimized to an empty box cell during sweep but it has constraints that prevent its removal. Empty box cells do not impact the implementation flow but they have no functional relevance.
 Resolution: If this is not expected, please check for DONT_TOUCH properties or timing constraint set on the empty box cell or on nets connected to the cell. If found, remove the relevant DONT_TOUCH property or timing constraint and re-run opt_design.
-Phase 3 Sweep | Checksum: 19733981b
+Phase 3 Sweep | Checksum: 18305bc43
 
-Time (s): cpu = 00:00:28 ; elapsed = 00:00:23 . Memory (MB): peak = 1764.000 ; gain = 0.312
-INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 636 cells
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 1766.188 ; gain = 0.480
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 632 cells
 INFO: [Opt 31-1021] In phase Sweep, 11720 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 4 BUFG optimization
 INFO: [Opt 31-193] Inserted 1 BUFG(s) on clock nets
-Phase 4 BUFG optimization | Checksum: 191dd714e
+Phase 4 BUFG optimization | Checksum: 10db920d5
 
-Time (s): cpu = 00:00:33 ; elapsed = 00:00:28 . Memory (MB): peak = 1764.000 ; gain = 0.312
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 1766.188 ; gain = 0.480
 INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
 
 Phase 5 Shift Register Optimization
 INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
-Phase 5 Shift Register Optimization | Checksum: 191dd714e
+Phase 5 Shift Register Optimization | Checksum: 10db920d5
 
-Time (s): cpu = 00:00:36 ; elapsed = 00:00:31 . Memory (MB): peak = 1764.000 ; gain = 0.312
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:11 . Memory (MB): peak = 1766.188 ; gain = 0.480
 INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
 
 Phase 6 Post Processing Netlist
-Phase 6 Post Processing Netlist | Checksum: fa884b77
+Phase 6 Post Processing Netlist | Checksum: 1acdf0840
 
-Time (s): cpu = 00:00:37 ; elapsed = 00:00:32 . Memory (MB): peak = 1764.000 ; gain = 0.312
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:12 . Memory (MB): peak = 1766.188 ; gain = 0.480
 INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 1 cells
 INFO: [Opt 31-1021] In phase Post Processing Netlist, 112 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 Opt_design Change Summary
@@ -370,8 +370,8 @@ Opt_design Change Summary
 |  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
 -------------------------------------------------------------------------------------------------------------------------
 |  Retarget                     |              25  |              70  |                                            167  |
-|  Constant propagation         |              11  |              78  |                                            110  |
-|  Sweep                        |               0  |             636  |                                          11720  |
+|  Constant propagation         |              12  |              87  |                                            110  |
+|  Sweep                        |               0  |             632  |                                          11720  |
 |  BUFG optimization            |               0  |               0  |                                              0  |
 |  Shift Register Optimization  |               0  |               0  |                                              0  |
 |  Post Processing Netlist      |               0  |               1  |                                            112  |
@@ -381,15 +381,15 @@ Opt_design Change Summary
 
 Starting Connectivity Check Task
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.466 . Memory (MB): peak = 1764.000 ; gain = 0.000
-Ending Logic Optimization Task | Checksum: 12bbd7074
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.173 . Memory (MB): peak = 1766.188 ; gain = 0.000
+Ending Logic Optimization Task | Checksum: 194688f92
 
-Time (s): cpu = 00:00:44 ; elapsed = 00:00:39 . Memory (MB): peak = 1764.000 ; gain = 0.312
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:15 . Memory (MB): peak = 1766.188 ; gain = 0.480
 
 Starting Power Optimization Task
 INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:8]
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:24]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:8]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:24]
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [Pwropt 34-9] Applying IDT optimizations ...
 INFO: [Pwropt 34-10] Applying ODC optimizations ...
@@ -407,52 +407,52 @@ INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
 Number of BRAM Ports augmented: 148 newly gated: 1 Total Ports: 220
 Number of Flops added for Enable Generation: 3
 
-Ending PowerOpt Patch Enables Task | Checksum: 14a4cdedd
+Ending PowerOpt Patch Enables Task | Checksum: 1af1f70c2
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Ending Power Optimization Task | Checksum: 14a4cdedd
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.836 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Ending Power Optimization Task | Checksum: 1af1f70c2
 
-Time (s): cpu = 00:02:14 ; elapsed = 00:01:11 . Memory (MB): peak = 2737.062 ; gain = 973.062
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:26 . Memory (MB): peak = 2742.070 ; gain = 975.883
 
 Starting Final Cleanup Task
 
 Starting Logic Optimization Task
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:8]
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:24]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:8]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:24]
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [Opt 31-193] Inserted 1 BUFG(s) on clock nets
-Ending Logic Optimization Task | Checksum: 196cba2f1
+Ending Logic Optimization Task | Checksum: 1810c89fa
 
-Time (s): cpu = 00:00:31 ; elapsed = 00:00:24 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Ending Final Cleanup Task | Checksum: 196cba2f1
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:09 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Ending Final Cleanup Task | Checksum: 1810c89fa
 
-Time (s): cpu = 00:00:38 ; elapsed = 00:00:30 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:11 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Starting Netlist Obfuscation Task
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.074 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Ending Netlist Obfuscation Task | Checksum: 196cba2f1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Ending Netlist Obfuscation Task | Checksum: 1810c89fa
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.075 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 2742.070 ; gain = 0.000
 INFO: [Common 17-83] Releasing license: Implementation
 68 Infos, 0 Warnings, 2 Critical Warnings and 0 Errors encountered.
 opt_design completed successfully
-opt_design: Time (s): cpu = 00:04:09 ; elapsed = 00:02:42 . Memory (MB): peak = 2737.062 ; gain = 1158.309
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.075 . Memory (MB): peak = 2737.062 ; gain = 0.000
+opt_design: Time (s): cpu = 00:01:30 ; elapsed = 00:01:00 . Memory (MB): peak = 2742.070 ; gain = 1163.809
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 2742.070 ; gain = 0.000
 INFO: [Timing 38-480] Writing timing data to binary archive.
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.181 . Memory (MB): peak = 2737.062 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top_opt.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:42 ; elapsed = 00:00:30 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.059 . Memory (MB): peak = 2742.070 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top_opt.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:17 ; elapsed = 00:00:12 . Memory (MB): peak = 2742.070 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_drc -file top_drc_opted.rpt -pb top_drc_opted.pb -rpx top_drc_opted.rpx
 Command: report_drc -file top_drc_opted.rpt -pb top_drc_opted.pb -rpx top_drc_opted.rpx
 INFO: [IP_Flow 19-1839] IP Catalog is up to date.
 INFO: [DRC 23-27] Running DRC with 2 threads
-INFO: [Coretcl 2-168] The results of DRC are in file C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top_drc_opted.rpt.
+INFO: [Coretcl 2-168] The results of DRC are in file D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top_drc_opted.rpt.
 report_drc completed successfully
-report_drc: Time (s): cpu = 00:00:37 ; elapsed = 00:00:19 . Memory (MB): peak = 2737.062 ; gain = 0.000
+report_drc: Time (s): cpu = 00:00:13 ; elapsed = 00:00:07 . Memory (MB): peak = 2742.070 ; gain = 0.000
 Command: place_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7s100'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7s100'
@@ -470,39 +470,39 @@ INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 
 Phase 1 Placer Initialization
 
 Phase 1.1 Placer Initialization Netlist Sorting
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.084 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 11cca1a7c
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.033 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: c5630510
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.133 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.101 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.052 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:8]
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:24]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:8]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:24]
 INFO: [Timing 38-35] Done setting XDC timing constraints.
-Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 11bc4f837
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 16f04facc
 
-Time (s): cpu = 00:00:35 ; elapsed = 00:00:27 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:11 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 1.3 Build Placer Netlist Model
-Phase 1.3 Build Placer Netlist Model | Checksum: 1c193ba07
+Phase 1.3 Build Placer Netlist Model | Checksum: 1c76b890a
 
-Time (s): cpu = 00:01:27 ; elapsed = 00:01:05 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:00:36 ; elapsed = 00:00:26 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 1.4 Constrain Clocks/Macros
-Phase 1.4 Constrain Clocks/Macros | Checksum: 1c193ba07
+Phase 1.4 Constrain Clocks/Macros | Checksum: 1c76b890a
 
-Time (s): cpu = 00:01:27 ; elapsed = 00:01:05 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Phase 1 Placer Initialization | Checksum: 1c193ba07
+Time (s): cpu = 00:00:36 ; elapsed = 00:00:26 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Phase 1 Placer Initialization | Checksum: 1c76b890a
 
-Time (s): cpu = 00:01:28 ; elapsed = 00:01:05 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:00:36 ; elapsed = 00:00:27 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 2 Global Placement
 
 Phase 2.1 Floorplanning
-Phase 2.1 Floorplanning | Checksum: 11fb92e52
+Phase 2.1 Floorplanning | Checksum: 1d6b91046
 
-Time (s): cpu = 00:01:43 ; elapsed = 00:01:14 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:30 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 2.2 Global Placement Core
 
@@ -510,18 +510,13 @@ Phase 2.2.1 Physical Synthesis In Placer
 INFO: [Physopt 32-65] No nets found for high-fanout optimization.
 INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
 INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
-INFO: [Physopt 32-64] No nets found for fanout-optimization.
-INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
-INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
-INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
-INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
-INFO: [Physopt 32-677] No candidate cells for Shift Register optimization found in the design
-INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
-INFO: [Physopt 32-526] No candidate cells for BRAM register optimization found in the design
-INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-670] No setup violation found.  Fanout Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  DSP Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  BRAM Register Optimization was not performed.
 INFO: [Physopt 32-949] No candidate nets found for HD net replication
 INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.159 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.061 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Summary of Physical Synthesis Optimizations
 ============================================
@@ -530,136 +525,136 @@ Summary of Physical Synthesis Optimizations
 ----------------------------------------------------------------------------------------------------------------------------------------
 |  Optimization                  |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
 ----------------------------------------------------------------------------------------------------------------------------------------
-|  Very High Fanout              |            0  |              0  |                     0  |           0  |           1  |  00:00:01  |
-|  Fanout                        |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
-|  DSP Register                  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
-|  Shift Register                |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
-|  BRAM Register                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Very High Fanout              |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Fanout                        |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  DSP Register                  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register                |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  BRAM Register                 |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
 |  HD Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
-|  Total                         |            0  |              0  |                     0  |           0  |           6  |  00:00:01  |
+|  Total                         |            0  |              0  |                     0  |           0  |           2  |  00:00:00  |
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 
-Phase 2.2.1 Physical Synthesis In Placer | Checksum: ad4da624
+Phase 2.2.1 Physical Synthesis In Placer | Checksum: 17fdc443b
 
-Time (s): cpu = 00:03:58 ; elapsed = 00:02:40 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Phase 2.2 Global Placement Core | Checksum: 1776ec46e
+Time (s): cpu = 00:01:51 ; elapsed = 00:01:11 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Phase 2.2 Global Placement Core | Checksum: 115d64187
 
-Time (s): cpu = 00:04:03 ; elapsed = 00:02:44 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Phase 2 Global Placement | Checksum: 1776ec46e
+Time (s): cpu = 00:01:53 ; elapsed = 00:01:13 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Phase 2 Global Placement | Checksum: 115d64187
 
-Time (s): cpu = 00:04:03 ; elapsed = 00:02:44 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:01:54 ; elapsed = 00:01:13 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 3 Detail Placement
 
 Phase 3.1 Commit Multi Column Macros
-Phase 3.1 Commit Multi Column Macros | Checksum: 11faa9ee0
+Phase 3.1 Commit Multi Column Macros | Checksum: 1216cccaa
 
-Time (s): cpu = 00:04:18 ; elapsed = 00:02:54 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:01 ; elapsed = 00:01:18 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 3.2 Commit Most Macros & LUTRAMs
-Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 192d64447
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 13971d78c
 
-Time (s): cpu = 00:04:52 ; elapsed = 00:03:18 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:16 ; elapsed = 00:01:29 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 3.3 Area Swap Optimization
-Phase 3.3 Area Swap Optimization | Checksum: 142370f28
+Phase 3.3 Area Swap Optimization | Checksum: 10f8c1148
 
-Time (s): cpu = 00:04:54 ; elapsed = 00:03:19 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:17 ; elapsed = 00:01:29 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 3.4 Pipeline Register Optimization
-Phase 3.4 Pipeline Register Optimization | Checksum: 145b521b1
+Phase 3.4 Pipeline Register Optimization | Checksum: 7fdaac53
 
-Time (s): cpu = 00:04:54 ; elapsed = 00:03:20 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:17 ; elapsed = 00:01:30 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 3.5 Fast Optimization
-Phase 3.5 Fast Optimization | Checksum: 17ec85faa
+Phase 3.5 Fast Optimization | Checksum: b22016d8
 
-Time (s): cpu = 00:05:18 ; elapsed = 00:03:35 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:28 ; elapsed = 00:01:36 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 3.6 Small Shape Detail Placement
-Phase 3.6 Small Shape Detail Placement | Checksum: 1674e2bce
+Phase 3.6 Small Shape Detail Placement | Checksum: 1a8dcf5c2
 
-Time (s): cpu = 00:05:49 ; elapsed = 00:04:07 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:45 ; elapsed = 00:01:53 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 3.7 Re-assign LUT pins
-Phase 3.7 Re-assign LUT pins | Checksum: d3ba0988
+Phase 3.7 Re-assign LUT pins | Checksum: 14f0a6da9
 
-Time (s): cpu = 00:05:55 ; elapsed = 00:04:14 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:49 ; elapsed = 00:01:57 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 3.8 Pipeline Register Optimization
-Phase 3.8 Pipeline Register Optimization | Checksum: 1364c7de5
+Phase 3.8 Pipeline Register Optimization | Checksum: cda64d7f
 
-Time (s): cpu = 00:05:56 ; elapsed = 00:04:14 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Phase 3 Detail Placement | Checksum: 1364c7de5
+Time (s): cpu = 00:02:49 ; elapsed = 00:01:58 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Phase 3 Detail Placement | Checksum: cda64d7f
 
-Time (s): cpu = 00:05:57 ; elapsed = 00:04:15 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:50 ; elapsed = 00:01:58 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 4 Post Placement Optimization and Clean-Up
 
 Phase 4.1 Post Commit Optimization
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:8]
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:24]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:8]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:24]
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 
 Phase 4.1.1 Post Placement Optimization
-Post Placement Optimization Initialization | Checksum: a6c00c22
+Post Placement Optimization Initialization | Checksum: efc923f3
 
 Phase 4.1.1.1 BUFG Insertion
 INFO: [Place 46-33] Processed net WVB_READER/RD_CTRL/i_wvb_reader_en_2_reg, BUFG insertion was skipped due to placement/routing conflicts.
 INFO: [Place 46-33] Processed net scaler_gen[23].THRESH_SCALER/SS[0], BUFG insertion was skipped due to placement/routing conflicts.
 INFO: [Place 46-33] Processed net LTC_0/PEDGE_0/SR[0], BUFG insertion was skipped due to placement/routing conflicts.
 INFO: [Place 46-56] BUFG insertion identified 3 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 3, Skipped due to Timing Degradation: 0, Skipped due to Illegal Netlist: 0.
-Phase 4.1.1.1 BUFG Insertion | Checksum: a6c00c22
+Phase 4.1.1.1 BUFG Insertion | Checksum: efc923f3
 
-Time (s): cpu = 00:06:39 ; elapsed = 00:04:43 . Memory (MB): peak = 2737.062 ; gain = 0.000
-INFO: [Place 30-746] Post Placement Timing Summary WNS=0.547. For the most accurate timing information please run report_timing.
-Phase 4.1.1 Post Placement Optimization | Checksum: 184d5fe54
+Time (s): cpu = 00:03:09 ; elapsed = 00:02:11 . Memory (MB): peak = 2742.070 ; gain = 0.000
+INFO: [Place 30-746] Post Placement Timing Summary WNS=0.560. For the most accurate timing information please run report_timing.
+Phase 4.1.1 Post Placement Optimization | Checksum: af0220aa
 
-Time (s): cpu = 00:06:43 ; elapsed = 00:04:47 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Phase 4.1 Post Commit Optimization | Checksum: 184d5fe54
+Time (s): cpu = 00:03:11 ; elapsed = 00:02:13 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Phase 4.1 Post Commit Optimization | Checksum: af0220aa
 
-Time (s): cpu = 00:06:44 ; elapsed = 00:04:48 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:03:12 ; elapsed = 00:02:13 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 4.2 Post Placement Cleanup
-Phase 4.2 Post Placement Cleanup | Checksum: 184d5fe54
+Phase 4.2 Post Placement Cleanup | Checksum: af0220aa
 
-Time (s): cpu = 00:06:45 ; elapsed = 00:04:49 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:03:12 ; elapsed = 00:02:14 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 4.3 Placer Reporting
-Phase 4.3 Placer Reporting | Checksum: 184d5fe54
+Phase 4.3 Placer Reporting | Checksum: af0220aa
 
-Time (s): cpu = 00:06:46 ; elapsed = 00:04:49 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:03:13 ; elapsed = 00:02:14 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 4.4 Final Placement Cleanup
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.071 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Phase 4.4 Final Placement Cleanup | Checksum: 1aa58b96f
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.032 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Phase 4.4 Final Placement Cleanup | Checksum: 15c2f9cf2
 
-Time (s): cpu = 00:06:47 ; elapsed = 00:04:50 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Phase 4 Post Placement Optimization and Clean-Up | Checksum: 1aa58b96f
+Time (s): cpu = 00:03:13 ; elapsed = 00:02:15 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 15c2f9cf2
 
-Time (s): cpu = 00:06:48 ; elapsed = 00:04:51 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Ending Placer Task | Checksum: 1212ee289
+Time (s): cpu = 00:03:14 ; elapsed = 00:02:15 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Ending Placer Task | Checksum: 114953626
 
-Time (s): cpu = 00:06:48 ; elapsed = 00:04:51 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:03:14 ; elapsed = 00:02:15 . Memory (MB): peak = 2742.070 ; gain = 0.000
 INFO: [Common 17-83] Releasing license: Implementation
-108 Infos, 0 Warnings, 2 Critical Warnings and 0 Errors encountered.
+103 Infos, 0 Warnings, 2 Critical Warnings and 0 Errors encountered.
 place_design completed successfully
-place_design: Time (s): cpu = 00:07:01 ; elapsed = 00:04:59 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.068 . Memory (MB): peak = 2737.062 ; gain = 0.000
+place_design: Time (s): cpu = 00:03:18 ; elapsed = 00:02:19 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 2742.070 ; gain = 0.000
 INFO: [Timing 38-480] Writing timing data to binary archive.
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:29 ; elapsed = 00:00:10 . Memory (MB): peak = 2737.062 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top_placed.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:48 ; elapsed = 00:00:30 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Write XDEF Complete: Time (s): cpu = 00:00:13 ; elapsed = 00:00:05 . Memory (MB): peak = 2742.070 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top_placed.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:22 ; elapsed = 00:00:14 . Memory (MB): peak = 2742.070 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_io -file top_io_placed.rpt
-report_io: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.353 . Memory (MB): peak = 2737.062 ; gain = 0.000
+report_io: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.133 . Memory (MB): peak = 2742.070 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_placed.rpt -pb top_utilization_placed.pb
 INFO: [runtcl-4] Executing : report_control_sets -verbose -file top_control_sets_placed.rpt
-report_control_sets: Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2737.062 ; gain = 0.000
+report_control_sets: Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2742.070 ; gain = 0.000
 Command: route_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7s100'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7s100'
@@ -671,41 +666,41 @@ INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more in
 
 Starting Routing Task
 INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 2 CPUs
-Checksum: PlaceDB: dd01f691 ConstDB: 0 ShapeSum: 442cebf8 RouteDB: 0
+Checksum: PlaceDB: 34fac374 ConstDB: 0 ShapeSum: df9a72b2 RouteDB: 0
 
 Phase 1 Build RT Design
-Phase 1 Build RT Design | Checksum: 62947341
+Phase 1 Build RT Design | Checksum: 10fcd0f51
 
-Time (s): cpu = 00:01:31 ; elapsed = 00:00:52 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Post Restoration Checksum: NetGraph: 8b8f9a8 NumContArr: 59db7999 Constraints: 0 Timing: 0
+Time (s): cpu = 00:00:36 ; elapsed = 00:00:22 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Post Restoration Checksum: NetGraph: 832f5f5a NumContArr: 8c9daff7 Constraints: 0 Timing: 0
 
 Phase 2 Router Initialization
 
 Phase 2.1 Create Timer
-Phase 2.1 Create Timer | Checksum: 62947341
+Phase 2.1 Create Timer | Checksum: 10fcd0f51
 
-Time (s): cpu = 00:01:32 ; elapsed = 00:00:53 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:00:36 ; elapsed = 00:00:23 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 2.2 Fix Topology Constraints
-Phase 2.2 Fix Topology Constraints | Checksum: 62947341
+Phase 2.2 Fix Topology Constraints | Checksum: 10fcd0f51
 
-Time (s): cpu = 00:01:33 ; elapsed = 00:00:54 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:23 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 2.3 Pre Route Cleanup
-Phase 2.3 Pre Route Cleanup | Checksum: 62947341
+Phase 2.3 Pre Route Cleanup | Checksum: 10fcd0f51
 
-Time (s): cpu = 00:01:33 ; elapsed = 00:00:54 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:23 . Memory (MB): peak = 2742.070 ; gain = 0.000
  Number of Nodes with overlaps = 0
 
 Phase 2.4 Update Timing
-Phase 2.4 Update Timing | Checksum: 156662038
+Phase 2.4 Update Timing | Checksum: 20e78fb97
 
-Time (s): cpu = 00:02:13 ; elapsed = 00:01:21 . Memory (MB): peak = 2737.062 ; gain = 0.000
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.741  | TNS=0.000  | WHS=-1.429 | THS=-2722.197|
+Time (s): cpu = 00:01:03 ; elapsed = 00:00:40 . Memory (MB): peak = 2742.070 ; gain = 0.000
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.718  | TNS=0.000  | WHS=-1.431 | THS=-2658.148|
 
-Phase 2 Router Initialization | Checksum: e9059033
+Phase 2 Router Initialization | Checksum: 212312b5d
 
-Time (s): cpu = 00:02:36 ; elapsed = 00:01:35 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:01:18 ; elapsed = 00:00:48 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Router Utilization Summary
   Global Vertical Routing Utilization    = 0 %
@@ -713,82 +708,82 @@ Router Utilization Summary
   Routable Net Status*
   *Does not include unroutable nets such as driverless and loadless.
   Run report_route_status for detailed report.
-  Number of Failed Nets               = 73410
+  Number of Failed Nets               = 73429
     (Failed Nets is the sum of unrouted and partially routed nets)
-  Number of Unrouted Nets             = 73410
+  Number of Unrouted Nets             = 73429
   Number of Partially Routed Nets     = 0
   Number of Node Overlaps             = 0
 
 
 Phase 3 Initial Routing
-Phase 3 Initial Routing | Checksum: 223895070
+Phase 3 Initial Routing | Checksum: 22fcd5cd9
 
-Time (s): cpu = 00:03:10 ; elapsed = 00:01:54 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:01:40 ; elapsed = 00:01:01 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 4 Rip-up And Reroute
 
 Phase 4.1 Global Iteration 0
- Number of Nodes with overlaps = 7106
- Number of Nodes with overlaps = 1063
- Number of Nodes with overlaps = 310
- Number of Nodes with overlaps = 120
- Number of Nodes with overlaps = 18
- Number of Nodes with overlaps = 5
- Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 7158
+ Number of Nodes with overlaps = 959
+ Number of Nodes with overlaps = 253
+ Number of Nodes with overlaps = 75
+ Number of Nodes with overlaps = 35
+ Number of Nodes with overlaps = 7
+ Number of Nodes with overlaps = 1
  Number of Nodes with overlaps = 0
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.253  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.131  | TNS=0.000  | WHS=N/A    | THS=N/A    |
 
-Phase 4.1 Global Iteration 0 | Checksum: 19f3620a1
+Phase 4.1 Global Iteration 0 | Checksum: 2234040d5
 
-Time (s): cpu = 00:04:44 ; elapsed = 00:02:55 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Phase 4 Rip-up And Reroute | Checksum: 19f3620a1
+Time (s): cpu = 00:02:39 ; elapsed = 00:01:38 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Phase 4 Rip-up And Reroute | Checksum: 2234040d5
 
-Time (s): cpu = 00:04:44 ; elapsed = 00:02:55 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:40 ; elapsed = 00:01:38 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 5 Delay and Skew Optimization
 
 Phase 5.1 Delay CleanUp
 
 Phase 5.1.1 Update Timing
-Phase 5.1.1 Update Timing | Checksum: 21ba72936
+Phase 5.1.1 Update Timing | Checksum: 208d3fabe
 
-Time (s): cpu = 00:04:51 ; elapsed = 00:03:00 . Memory (MB): peak = 2737.062 ; gain = 0.000
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.253  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+Time (s): cpu = 00:02:44 ; elapsed = 00:01:41 . Memory (MB): peak = 2742.070 ; gain = 0.000
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.196  | TNS=0.000  | WHS=N/A    | THS=N/A    |
 
-Phase 5.1 Delay CleanUp | Checksum: 21ba72936
+Phase 5.1 Delay CleanUp | Checksum: 208d3fabe
 
-Time (s): cpu = 00:04:51 ; elapsed = 00:03:00 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:44 ; elapsed = 00:01:41 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 5.2 Clock Skew Optimization
-Phase 5.2 Clock Skew Optimization | Checksum: 21ba72936
+Phase 5.2 Clock Skew Optimization | Checksum: 208d3fabe
 
-Time (s): cpu = 00:04:52 ; elapsed = 00:03:00 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Phase 5 Delay and Skew Optimization | Checksum: 21ba72936
+Time (s): cpu = 00:02:45 ; elapsed = 00:01:41 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Phase 5 Delay and Skew Optimization | Checksum: 208d3fabe
 
-Time (s): cpu = 00:04:52 ; elapsed = 00:03:00 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:45 ; elapsed = 00:01:42 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 6 Post Hold Fix
 
 Phase 6.1 Hold Fix Iter
 
 Phase 6.1.1 Update Timing
-Phase 6.1.1 Update Timing | Checksum: 20324c4d9
+Phase 6.1.1 Update Timing | Checksum: 2432245c8
 
-Time (s): cpu = 00:05:01 ; elapsed = 00:03:06 . Memory (MB): peak = 2737.062 ; gain = 0.000
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.253  | TNS=0.000  | WHS=-0.502 | THS=-22.901|
+Time (s): cpu = 00:02:50 ; elapsed = 00:01:45 . Memory (MB): peak = 2742.070 ; gain = 0.000
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.196  | TNS=0.000  | WHS=-0.506 | THS=-25.151|
 
-Phase 6.1 Hold Fix Iter | Checksum: 15e66722e
+Phase 6.1 Hold Fix Iter | Checksum: 1ba5ad8a3
 
-Time (s): cpu = 00:05:02 ; elapsed = 00:03:07 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Phase 6 Post Hold Fix | Checksum: 17f7287f5
+Time (s): cpu = 00:02:51 ; elapsed = 00:01:46 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Phase 6 Post Hold Fix | Checksum: 1bf91d039
 
-Time (s): cpu = 00:05:02 ; elapsed = 00:03:07 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:52 ; elapsed = 00:01:46 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 7 Route finalize
 
 Router Utilization Summary
-  Global Vertical Routing Utilization    = 20.9909 %
-  Global Horizontal Routing Utilization  = 21.7878 %
+  Global Vertical Routing Utilization    = 20.3152 %
+  Global Horizontal Routing Utilization  = 21.6947 %
   Routable Net Status*
   *Does not include unroutable nets such as driverless and loadless.
   Run report_route_status for detailed report.
@@ -798,88 +793,87 @@ Router Utilization Summary
   Number of Partially Routed Nets     = 0
   Number of Node Overlaps             = 0
 
-Phase 7 Route finalize | Checksum: 123cb3e1b
+Phase 7 Route finalize | Checksum: 26363bd49
 
-Time (s): cpu = 00:05:03 ; elapsed = 00:03:08 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:52 ; elapsed = 00:01:46 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 8 Verifying routed nets
 
  Verification completed successfully
-Phase 8 Verifying routed nets | Checksum: 123cb3e1b
+Phase 8 Verifying routed nets | Checksum: 26363bd49
 
-Time (s): cpu = 00:05:03 ; elapsed = 00:03:08 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:52 ; elapsed = 00:01:47 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 9 Depositing Routes
-Phase 9 Depositing Routes | Checksum: 15a168a5b
+Phase 9 Depositing Routes | Checksum: 25000bf9d
 
-Time (s): cpu = 00:05:12 ; elapsed = 00:03:18 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:02:58 ; elapsed = 00:01:53 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Phase 10 Post Router Timing
 
 Phase 10.1 Update Timing
-Phase 10.1 Update Timing | Checksum: e8cf3510
+Phase 10.1 Update Timing | Checksum: 23f8dff50
 
-Time (s): cpu = 00:05:21 ; elapsed = 00:03:24 . Memory (MB): peak = 2737.062 ; gain = 0.000
-INFO: [Route 35-57] Estimated Timing Summary | WNS=0.253  | TNS=0.000  | WHS=0.052  | THS=0.000  |
+Time (s): cpu = 00:03:04 ; elapsed = 00:01:57 . Memory (MB): peak = 2742.070 ; gain = 0.000
+INFO: [Route 35-57] Estimated Timing Summary | WNS=0.196  | TNS=0.000  | WHS=0.050  | THS=0.000  |
 
 INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
-Phase 10 Post Router Timing | Checksum: e8cf3510
+Phase 10 Post Router Timing | Checksum: 23f8dff50
 
-Time (s): cpu = 00:05:21 ; elapsed = 00:03:24 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:03:05 ; elapsed = 00:01:57 . Memory (MB): peak = 2742.070 ; gain = 0.000
 INFO: [Route 35-16] Router Completed Successfully
 
-Time (s): cpu = 00:05:22 ; elapsed = 00:03:24 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Time (s): cpu = 00:03:05 ; elapsed = 00:01:57 . Memory (MB): peak = 2742.070 ; gain = 0.000
 
 Routing Is Done.
 INFO: [Common 17-83] Releasing license: Implementation
-126 Infos, 0 Warnings, 2 Critical Warnings and 0 Errors encountered.
+121 Infos, 0 Warnings, 2 Critical Warnings and 0 Errors encountered.
 route_design completed successfully
-route_design: Time (s): cpu = 00:05:41 ; elapsed = 00:03:35 . Memory (MB): peak = 2737.062 ; gain = 0.000
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.062 . Memory (MB): peak = 2737.062 ; gain = 0.000
+route_design: Time (s): cpu = 00:03:12 ; elapsed = 00:02:01 . Memory (MB): peak = 2742.070 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 2742.070 ; gain = 0.000
 INFO: [Timing 38-480] Writing timing data to binary archive.
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:26 ; elapsed = 00:00:09 . Memory (MB): peak = 2737.062 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top_routed.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:38 ; elapsed = 00:00:22 . Memory (MB): peak = 2737.062 ; gain = 0.000
+Write XDEF Complete: Time (s): cpu = 00:00:16 ; elapsed = 00:00:05 . Memory (MB): peak = 2742.070 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top_routed.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:24 ; elapsed = 00:00:14 . Memory (MB): peak = 2742.070 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_drc -file top_drc_routed.rpt -pb top_drc_routed.pb -rpx top_drc_routed.rpx
 Command: report_drc -file top_drc_routed.rpt -pb top_drc_routed.pb -rpx top_drc_routed.rpx
 INFO: [IP_Flow 19-1839] IP Catalog is up to date.
 INFO: [DRC 23-27] Running DRC with 2 threads
-INFO: [Coretcl 2-168] The results of DRC are in file C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top_drc_routed.rpt.
+INFO: [Coretcl 2-168] The results of DRC are in file D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top_drc_routed.rpt.
 report_drc completed successfully
-report_drc: Time (s): cpu = 00:00:36 ; elapsed = 00:00:22 . Memory (MB): peak = 2737.062 ; gain = 0.000
+report_drc: Time (s): cpu = 00:00:20 ; elapsed = 00:00:13 . Memory (MB): peak = 2742.070 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 Command: report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:8]
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:24]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:8]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:24]
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [DRC 23-133] Running Methodology with 2 threads
-INFO: [Coretcl 2-1520] The results of Report Methodology are in file C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top_methodology_drc_routed.rpt.
+INFO: [Coretcl 2-1520] The results of Report Methodology are in file D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/top_methodology_drc_routed.rpt.
 report_methodology completed successfully
-report_methodology: Time (s): cpu = 00:01:00 ; elapsed = 00:00:34 . Memory (MB): peak = 2761.145 ; gain = 24.082
+report_methodology: Time (s): cpu = 00:00:39 ; elapsed = 00:00:21 . Memory (MB): peak = 2802.445 ; gain = 60.375
 INFO: [runtcl-4] Executing : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 Command: report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 INFO: [Power 33-23] Power model is not available for PU_SCL
 INFO: [Power 33-23] Power model is not available for PU_SDA
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:8]
-INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/constrs/clocks.xdc:24]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'fmc_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:8]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'icm_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [D:/icecube/mdommb_rev1_fw/constrs/clocks.xdc:24]
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 Running Vector-less Activity Propagation...
 
 Finished Running Vector-less Activity Propagation
 WARNING: [Power 33-332] Found switching activity that implies high-fanout reset nets being asserted for excessive periods of time which may result in inaccurate power analysis.
 Resolution: To review and fix problems, please run Power Constraints Advisor in the GUI from Tools > Power Constraints Advisor or run report_power with the -advisory option to generate a text report.
-144 Infos, 1 Warnings, 2 Critical Warnings and 0 Errors encountered.
+139 Infos, 1 Warnings, 2 Critical Warnings and 0 Errors encountered.
 report_power completed successfully
-report_power: Time (s): cpu = 00:01:04 ; elapsed = 00:00:39 . Memory (MB): peak = 2761.145 ; gain = 0.000
+report_power: Time (s): cpu = 00:00:34 ; elapsed = 00:00:21 . Memory (MB): peak = 2805.758 ; gain = 3.312
 INFO: [runtcl-4] Executing : report_route_status -file top_route_status.rpt -pb top_route_status.pb
 INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -file top_timing_summary_routed.rpt -pb top_timing_summary_routed.pb -rpx top_timing_summary_routed.rpx -warn_on_violation 
 INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Delay Type: min_max.
 INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
-report_timing_summary: Time (s): cpu = 00:00:09 ; elapsed = 00:00:06 . Memory (MB): peak = 2761.145 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_incremental_reuse -file top_incremental_reuse_routed.rpt
 INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
 INFO: [runtcl-4] Executing : report_clock_utilization -file top_clock_utilization_routed.rpt
@@ -893,7 +887,7 @@ Running DRC as a precondition to command write_bitstream
 INFO: [IP_Flow 19-1839] IP Catalog is up to date.
 INFO: [DRC 23-27] Running DRC with 2 threads
 WARNING: [DRC REQP-1709] Clock output buffering: PLLE2_ADV connectivity violation. The signal DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/pll_clk3_out on the DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/plle2_i/CLKOUT3 pin of DDR3_TRANSFER_0/MIG_7_SERIES/u_mig_7series_0_mig/u_ddr3_infrastructure/plle2_i does not drive the same kind of BUFFER load as the other CLKOUT pins. Routing from the different buffer types will not be phase aligned.
-WARNING: [DRC RTSTAT-10] No routable loads: 110 net(s) have no routable loads. The problem bus(es) and/or net(s) are waveform_acq_gen[16].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[7].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[2].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[8].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[0].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[4].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[23].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[17].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[9].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[18].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[14].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[1].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[10].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[21].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[11].WFM_ACQ/i_xdom_wvb_config_bundle[37]... and (the first 15 of 110 listed).
+WARNING: [DRC RTSTAT-10] No routable loads: 110 net(s) have no routable loads. The problem bus(es) and/or net(s) are waveform_acq_gen[16].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[8].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[18].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[0].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[23].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[2].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[9].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[15].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[17].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[10].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[1].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[19].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[14].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[20].WFM_ACQ/i_xdom_wvb_config_bundle[37], waveform_acq_gen[4].WFM_ACQ/i_xdom_wvb_config_bundle[37]... and (the first 15 of 110 listed).
 INFO: [Vivado 12-3199] DRC finished with 0 Errors, 2 Warnings
 INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
 INFO: [Designutils 20-2272] Running write_bitstream with 2 threads.
@@ -907,9 +901,9 @@ Writing bitstream ./top.bit...
 Writing bitstream ./top.bin...
 INFO: [Vivado 12-1842] Bitgen Completed Successfully.
 INFO: [Project 1-120] WebTalk data collection is mandatory when using a WebPACK part without a full Vivado license. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
-INFO: [Common 17-186] 'C:/Users/atfie/IceCube/mDOMDevelopment/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/usage_statistics_webtalk.xml' has been successfully sent to Xilinx on Wed Feb  2 12:52:27 2022. For additional details about this file, please refer to the WebTalk help file at C:/Xilinx/Vivado/2019.1/doc/webtalk_introduction.html.
+INFO: [Common 17-186] 'D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/impl_1/usage_statistics_webtalk.xml' has been successfully sent to Xilinx on Mon Mar 14 12:25:24 2022. For additional details about this file, please refer to the WebTalk help file at C:/Xilinx/Vivado/2019.1/doc/webtalk_introduction.html.
 INFO: [Common 17-83] Releasing license: Implementation
-164 Infos, 3 Warnings, 2 Critical Warnings and 0 Errors encountered.
+159 Infos, 3 Warnings, 2 Critical Warnings and 0 Errors encountered.
 write_bitstream completed successfully
-write_bitstream: Time (s): cpu = 00:01:15 ; elapsed = 00:00:51 . Memory (MB): peak = 3119.488 ; gain = 358.344
-INFO: [Common 17-206] Exiting Vivado at Wed Feb  2 12:52:27 2022...
+write_bitstream: Time (s): cpu = 00:00:48 ; elapsed = 00:00:34 . Memory (MB): peak = 3174.773 ; gain = 369.016
+INFO: [Common 17-206] Exiting Vivado at Mon Mar 14 12:25:24 2022...

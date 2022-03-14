@@ -330,7 +330,7 @@ module top (
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h22;
+localparam[15:0] FW_VNUM = 16'h23;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
