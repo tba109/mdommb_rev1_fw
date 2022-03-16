@@ -17,7 +17,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 1
+set_param chipscope.maxJobs 4
 create_project -in_memory -part xc7s100fgga676-2
 
 set_param project.singleFileAddWarning.threshold 0
@@ -39,6 +39,7 @@ set_property include_dirs {
   D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_1
   D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_2
   D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_bsum_bundle
+  D:/icecube/mdommb_rev1_fw/hdl/rev_num
 } [current_fileset]
 read_verilog -library xil_defaultlib {
   D:/icecube/mdommb_rev1_fw/hdl/DDR3/DDR3_DPRAM_transfer.v

@@ -3,40 +3,46 @@
 //
 // trigger logic for mDOM waveform acquisition
 //
-
+`include "rev_num.v"
 module mdom_trigger
 (
-  input clk,
-  input rst,
+  input 	    clk,
+  input 	    rst,
   
   // data stream in and out
-  input[11:0] adc_stream_in,
-  output reg[11:0] adc_stream_out = 0,
-  input[7:0] discr_stream_in,
-  output reg[7:0] discr_stream_out = 0,
+  input [11:0] 	    adc_stream_in,
+  output reg [11:0] adc_stream_out = 0,
+  input [7:0] 	    discr_stream_in,
+  output reg [7:0]  discr_stream_out = 0,
   
   // threshold trigger settings 
-  input gt,
-  input et,
-  input lt,
-  input[11:0] thr,
-  input thresh_trig_en,
+  input 	    gt,
+  input 	    et,
+  input 	    lt,
+  input [11:0] 	    thr,
+  input 	    thresh_trig_en,
   // sw trig
-  input run,
+  input 	    run,
   
   // ext trig
-  input ext_trig_en,
-  input ext_run,
+  input 	    ext_trig_en,
+  input 	    ext_run,
     
   // discr trig
-  input discr_trig_en,
-  input discr_trig_pol,
-  
+  input 	    discr_trig_en,
+  input 	    discr_trig_pol,
+
+`ifndef MDOMREV1
+  // cal trig trig
+  input 	    cal_trig_trig_en,
+  input 	    cal_trig_trig_run, 
+`endif
+ 
   // trigger outputs
-  output reg[1:0] trig_src = 0,
-  output reg trig = 0,
-  output reg thresh_tot = 0,
-  output reg discr_tot = 0
+  output reg [1:0]  trig_src = 0,
+  output reg 	    trig = 0,
+  output reg 	    thresh_tot = 0,
+  output reg 	    discr_tot = 0
 );
 `include "trigger_src_inc.v"
 
@@ -46,12 +52,18 @@ always @(posedge clk) begin
   i_rst <= rst;
 end
 
-// posedge detector on ext_run and run
+// posedge detector on ext_run and run and cal_trig_trig_run
 wire ext_run_p;
 posedge_detector PEDGE_EXTRUN(.clk(clk), .rst_n(!i_rst), .a(ext_run), .y(ext_run_p));
 wire run_p;
 posedge_detector PEDGE_RUN(.clk(clk), .rst_n(!i_rst), .a(run), .y(run_p));
 
+`ifndef MDOMREV1
+wire cal_trig_trig_run_p;
+posedge_detector PEDGE_CALTRIGRUN(.clk(clk), .rst_n(!i_rst), .a(cal_trig_trig_run), .y(cal_trig_trig_run_p));
+`endif  
+
+   
 // comparator for threshold triggering
 wire i_thresh_tot;
 cmp CMP(.a(adc_stream_in), .b(thr), .y(i_thresh_tot), .gt(gt), .et(et), .lt(lt));
@@ -84,6 +96,13 @@ always @(posedge clk) begin
       trig <= 1;
     end
 
+`ifndef MDOMREV1
+    else if (cal_trig_trig_en && cal_trig_trig_run_p) begin
+       trig_src <= TRIG_SRC_EXT;
+       trig <= 1;
+    end
+`endif
+     
     else if (discr_trig_en && i_discr_tot) begin
       trig_src <= TRIG_SRC_DISCR;
       trig <= 1;

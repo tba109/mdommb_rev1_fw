@@ -12,192 +12,199 @@
 //    4.) Command, response, status
 /////////////////////////////////////////////////////////////////////////////////
 `include "mDOM_bsum_bundle_inc.v"
+`include "rev_num.v"
 module xdom #(parameter N_CHANNELS = 24)
 (
-  input             clk,
-  input             rst,
+  input 				clk,
+  input 				rst,
 
   // Version number
-  input [15:0]      vnum,
+  input [15:0] 				vnum,
 
   // trigger/wvb conf
-  output[19:0] xdom_trig_bundle,
-  output[39:0] xdom_wvb_conf_bundle,
-  output reg[N_CHANNELS-1:0] xdom_wvb_arm = 0,
-  output reg[N_CHANNELS-1:0] xdom_trig_run = 0,
-  output reg[N_CHANNELS-1:0] wvb_rst = 0,
+  output [19:0] 			xdom_trig_bundle,
+  output [39:0] 			xdom_wvb_conf_bundle,
+  output reg [N_CHANNELS-1:0] 		xdom_wvb_arm = 0,
+  output reg [N_CHANNELS-1:0] 		xdom_trig_run = 0,
+  output reg [N_CHANNELS-1:0] 		wvb_rst = 0,
 
   // waveform buffer status
-  input[N_CHANNELS-1:0] wvb_armed,
-  input[N_CHANNELS-1:0] wvb_overflow,
-  input[N_CHANNELS-1:0] wvb_hdr_full,
-  input[N_CHANNELS-1:0] wvb_not_empty,
-  input[N_CHANNELS*16 - 1:0] wfms_in_buf,
-  input[N_CHANNELS*16 - 1:0] buf_wds_used,
+  input [N_CHANNELS-1:0] 		wvb_armed,
+  input [N_CHANNELS-1:0] 		wvb_overflow,
+  input [N_CHANNELS-1:0] 		wvb_hdr_full,
+  input [N_CHANNELS-1:0] 		wvb_not_empty,
+  input [N_CHANNELS*16 - 1:0] 		wfms_in_buf,
+  input [N_CHANNELS*16 - 1:0] 		buf_wds_used,
 
   // wvb reader
-  input[15:0] dpram_len_in,
-  input rdout_dpram_run,
-  output reg dpram_busy = 0,
-  input rdout_dpram_wren,
-  input[9:0] rdout_dpram_wr_addr,
-  input[31:0] rdout_dpram_data,
-  output reg wvb_reader_enable = 0,
-  output reg wvb_reader_dpram_mode = 0,
+  input [15:0] 				dpram_len_in,
+  input 				rdout_dpram_run,
+  output reg 				dpram_busy = 0,
+  input 				rdout_dpram_wren,
+  input [9:0] 				rdout_dpram_wr_addr,
+  input [31:0] 				rdout_dpram_data,
+  output reg 				wvb_reader_enable = 0,
+  output reg 				wvb_reader_dpram_mode = 0,
 
   // ADC / DISCR IO controls
-  input[N_CHANNELS*10-1:0] adc_delay_tap_out,
-  output reg [N_CHANNELS-1:0] adc_io_reset = {N_CHANNELS{1'b1}},
-  output reg [N_CHANNELS-1:0] discr_io_reset = {N_CHANNELS{1'b1}},
-  output reg [N_CHANNELS-1:0] adc_delay_reset = 0,
-  output[N_CHANNELS*2-1:0] adc_delay_ce,
-  output[N_CHANNELS*2-1:0] adc_delay_inc,
-  output[N_CHANNELS*2-1:0] adc_bitslip,
-  output[N_CHANNELS-1:0] discr_bitslip,
+  input [N_CHANNELS*10-1:0] 		adc_delay_tap_out,
+  output reg [N_CHANNELS-1:0] 		adc_io_reset = {N_CHANNELS{1'b1}},
+  output reg [N_CHANNELS-1:0] 		discr_io_reset = {N_CHANNELS{1'b1}},
+  output reg [N_CHANNELS-1:0] 		adc_delay_reset = 0,
+  output [N_CHANNELS*2-1:0] 		adc_delay_ce,
+  output [N_CHANNELS*2-1:0] 		adc_delay_inc,
+  output [N_CHANNELS*2-1:0] 		adc_bitslip,
+  output [N_CHANNELS-1:0] 		discr_bitslip,
 
   // ADC serial controls
-  output reg adc_reset = 0,
-  output reg[5:0] adc_spi_sel = 0,
-  output adc_spi_req,
-  input adc_spi_ack,
-  output reg[23:0] adc_spi_wr_data = 0,
-  input[7:0] adc_spi_rd_data,
+  output reg 				adc_reset = 0,
+  output reg [5:0] 			adc_spi_sel = 0,
+  output 				adc_spi_req,
+  input 				adc_spi_ack,
+  output reg [23:0] 			adc_spi_wr_data = 0,
+  input [7:0] 				adc_spi_rd_data,
 
   // AD5668 DAC serial controls
-  output reg[2:0] dac_spi_sel = 0,
-  output reg[2:0] dac_chip_sel = 0,
-  output dac_spi_req,
-  input dac_spi_ack,
-  output reg[31:0] dac_spi_wr_data = 0,
+  output reg [2:0] 			dac_spi_sel = 0,
+  output reg [2:0] 			dac_chip_sel = 0,
+  output 				dac_spi_req,
+  input 				dac_spi_ack,
+  output reg [31:0] 			dac_spi_wr_data = 0,
 
   // AFE pulser
-  output reg[5:0] pulser_io_rst = 6'h3f,
-  output[5:0] pulser_trig_out,
-  output reg[15:0] pulser_width = 0,
+  output reg [5:0] 			pulser_io_rst = 6'h3f,
+  output [5:0] 				pulser_trig_out,
+  output reg [15:0] 			pulser_width = 0,
 
   // ADS8332 monitoring ADCs
-  output slo_adc_req,
-  input slo_adc_ack,
-  output reg[18:0] slo_adc_wr_data = 0,
-  input[18:0] slo_adc_rd_data,
-  output reg slo_adc_chip_sel = 0,
-  output slo_adc_nconvst,
+  output 				slo_adc_req,
+  input 				slo_adc_ack,
+  output reg [18:0] 			slo_adc_wr_data = 0,
+  input [18:0] 				slo_adc_rd_data,
+  output reg 				slo_adc_chip_sel = 0,
+  output 				slo_adc_nconvst,
 
   // DDR3 interface
-  input ddr3_ui_clk,
+  input 				ddr3_ui_clk,
   // note: the memory controller uses byte addresses,
   // but the xdom MCU interface will use 16-bit word addresses
   // to replicate the D-Egg interface
   // byte addresses are used everywhere else in the mDOM firmware
-  output[27:0] pg_req_addr,
-  output reg pg_optype = 0,
-  output reg pg_req = 0,
-  input pg_ack,
-  output reg ddr3_sys_rst = 0,
-  input ddr3_cal_complete,
-  input ddr3_ui_sync_rst,
-  input[11:0] ddr3_device_temp,
-  input[7:0] ddr3_dpram_addr,
-  input ddr3_dpram_wren,
-  input[127:0] ddr3_dpram_din,
-  output[127:0] ddr3_dpram_dout,
+  output [27:0] 			pg_req_addr,
+  output reg 				pg_optype = 0,
+  output reg 				pg_req = 0,
+  input 				pg_ack,
+  output reg 				ddr3_sys_rst = 0,
+  input 				ddr3_cal_complete,
+  input 				ddr3_ui_sync_rst,
+  input [11:0] 				ddr3_device_temp,
+  input [7:0] 				ddr3_dpram_addr,
+  input 				ddr3_dpram_wren,
+  input [127:0] 			ddr3_dpram_din,
+  output [127:0] 			ddr3_dpram_dout,
 
-  output reg ddr3_vtt_s3 = 0,
-  output reg ddr3_vtt_s5 = 0,
+  output reg 				ddr3_vtt_s3 = 0,
+  output reg 				ddr3_vtt_s5 = 0,
 
   // hit buffer controller
-  output reg hbuf_enable = 0,
-  output reg[15:0] hbuf_start_pg = 0,
-  output reg[15:0] hbuf_stop_pg = 0,
-  input[15:0] hbuf_first_pg,
-  input[15:0] hbuf_last_pg,
-  output reg[15:0] hbuf_pg_clr_count = 0,
-  output reg hbuf_pg_clr_req = 0,
-  input hbuf_pg_clr_ack,
-  output reg hbuf_flush_req = 0,
-  input hbuf_flush_ack,
-  input[15:0] hbuf_rd_pg_num,
-  input[15:0] hbuf_wr_pg_num,
-  input[15:0] hbuf_n_used_pgs,
-  input hbuf_empty,
-  input hbuf_full,
-  input hbuf_buffered_data,
+  output reg 				hbuf_enable = 0,
+  output reg [15:0] 			hbuf_start_pg = 0,
+  output reg [15:0] 			hbuf_stop_pg = 0,
+  input [15:0] 				hbuf_first_pg,
+  input [15:0] 				hbuf_last_pg,
+  output reg [15:0] 			hbuf_pg_clr_count = 0,
+  output reg 				hbuf_pg_clr_req = 0,
+  input 				hbuf_pg_clr_ack,
+  output reg 				hbuf_flush_req = 0,
+  input 				hbuf_flush_ack,
+  input [15:0] 				hbuf_rd_pg_num,
+  input [15:0] 				hbuf_wr_pg_num,
+  input [15:0] 				hbuf_n_used_pgs,
+  input 				hbuf_empty,
+  input 				hbuf_full,
+  input 				hbuf_buffered_data,
 
   // discr scalers
-  (* max_fanout = 5 *) output reg[31:0] scaler_period = 0,
-  (* max_fanout = 5 *) output reg[31:0] scaler_inhibit_len = 0,
-  input[N_CHANNELS*32-1:0] disc_scaler_out,
+  (* max_fanout = 5 *) output reg [31:0] scaler_period = 0,
+  (* max_fanout = 5 *) output reg [31:0] scaler_inhibit_len = 0,
+  input [N_CHANNELS*32-1:0] 		disc_scaler_out,
   // thresh scaler
-  input[N_CHANNELS*32-1:0] thresh_scaler_out,
+  input [N_CHANNELS*32-1:0] 		thresh_scaler_out,
 
   // icm sync signals and ltc
-  input[47:0] ltc_rd_data,
-  output ltc_rd_req,
-  input ltc_rd_ack,
-  output reg icm_fpga_sync_en = 0,
-  input icm_sync_rdy,
-  input icm_sync_err,
-  input[47:0] expected_sync_ltc,
-  input[47:0] received_sync_ltc,
-  input[15:0] icm_sync_err_cnt,
+  input [47:0] 				ltc_rd_data,
+  output 				ltc_rd_req,
+  input 				ltc_rd_ack,
+  output reg 				icm_fpga_sync_en = 0,
+  input 				icm_sync_rdy,
+  input 				icm_sync_err,
+  input [47:0] 				expected_sync_ltc,
+  input [47:0] 				received_sync_ltc,
+  input [15:0] 				icm_sync_err_cnt,
 
-  output[L_WIDTH_MDOM_BSUM_BUNDLE-1:0] bsum_bundle,
+  output [L_WIDTH_MDOM_BSUM_BUNDLE-1:0] bsum_bundle,
 
   // FPGA_CAL_TRIG interface
-  output reg [15:0] fpga_cal_trig_width = 0,
-  output reg fpga_cal_trig_io_rst = 1'b1,
-  output fpga_cal_trig_trig,
-  output reg fpga_cal_trig_pol = 1,
+  output reg [15:0] 			fpga_cal_trig_width = 0,
+  output reg 				fpga_cal_trig_io_rst = 1'b1,
+  output 				fpga_cal_trig_trig,
+  output reg 				fpga_cal_trig_pol = 1,
 
-  output reg dcdc_sync = 0,
+  output reg 				dcdc_sync = 0,
 
   // I2C
-  input i2cm_0_ack,
-  input[7:0] i2cm_0_rx_data,
-  input i2cm_0_i2c_acked,
-  input i2cm_0_rx_fifo_full,
-  input i2cm_0_rx_fifo_empty,
-  input i2cm_0_tx_fifo_full,
-  input i2cm_0_tx_fifo_empty, 
-  output i2cm_0_tx_fifo_wr_req,
-  output i2cm_0_rx_fifo_rd_req,
-  output i2cm_0_ex_req,
-  output reg i2cm_0_i2c_ack=0,
-  output reg i2cm_0_i2c_start=0,
-  output reg i2cm_0_i2c_stop=0,
-  output reg i2cm_0_i2c_r_wn=0, 
-  output reg[7:0] i2cm_0_tx_data=0,
+  input 				i2cm_0_ack,
+  input [7:0] 				i2cm_0_rx_data,
+  input 				i2cm_0_i2c_acked,
+  input 				i2cm_0_rx_fifo_full,
+  input 				i2cm_0_rx_fifo_empty,
+  input 				i2cm_0_tx_fifo_full,
+  input 				i2cm_0_tx_fifo_empty, 
+  output 				i2cm_0_tx_fifo_wr_req,
+  output 				i2cm_0_rx_fifo_rd_req,
+  output 				i2cm_0_ex_req,
+  output reg 				i2cm_0_i2c_ack=0,
+  output reg 				i2cm_0_i2c_start=0,
+  output reg 				i2cm_0_i2c_stop=0,
+  output reg 				i2cm_0_i2c_r_wn=0, 
+  output reg [7:0] 			i2cm_0_tx_data=0,
 
   // global discriminator trigger
-  output reg global_trig_en = 0,
-  output reg global_trig_pol = 0,
-  output reg[N_CHANNELS-1:0] global_trig_src_mask,
-  output reg[N_CHANNELS-1:0] global_trig_rcv_mask,
+  output reg 				global_trig_en = 0,
+  output reg 				global_trig_pol = 0,
+  output reg [N_CHANNELS-1:0] 		global_trig_src_mask,
+  output reg [N_CHANNELS-1:0] 		global_trig_rcv_mask,
 
+`ifndef MDOMREV1
+  // FGPA_CAL_TRIG trigger
+  output reg cal_trig_trig_en = 0,
+  output reg cal_trig_trig_pol = 0,
+ `endif
+ 
   // Debug FT232R I/O
-  input             debug_txd,
-  output            debug_rxd,
-  input             debug_rts_n,
-  output            debug_cts_n,
+  input 				debug_txd,
+  output 				debug_rxd,
+  input 				debug_rts_n,
+  output 				debug_cts_n,
 
   // ICM UART
-  output            icm_tx,
-  input             icm_rx,
-  output            icm_rts,
-  input             icm_cts,
+  output 				icm_tx,
+  input 				icm_rx,
+  output 				icm_rts,
+  input 				icm_cts,
 
   // MCU UART
-  input mcu_tx,
-  output mcu_rx,
-  input mcu_rts_n,
-  output mcu_cts_n,
+  input 				mcu_tx,
+  output 				mcu_rx,
+  input 				mcu_rts_n,
+  output 				mcu_cts_n,
 
   // priority input / FMC
-  input po_wr,
-  input po_en,
-  input[11:0] po_a,
-  input[15:0] po_din,
-  output[15:0] po_dout
+  input 				po_wr,
+  input 				po_en,
+  input [11:0] 				po_a,
+  input [15:0] 				po_din,
+  output [15:0] 			po_dout
 );
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -720,8 +727,10 @@ reg[31:0] fpga_cal_trig_period = 0;
 reg fpga_cal_trig_single = 0;
 reg fpga_cal_trig_periodic_en = 0;
 
-// Masking off three LSBs because the MIG bursts 8 words
-// at a time. (1Word = 16b)
+// MDOMREV1: Masking off three LSBs because the MIG bursts 8 words
+//           at a time. (1Word = 16b)
+// MDOMREV2: handles converting DDR3 16-bit word address from xdom
+//           into the byte address used by the memory controller
 reg[26:0] pg_req_addr_16b = 0;
 // assign pg_req_addr = {pg_req_addr_16b, 1'b0};
 // assign pg_req_addr = {pg_req_addr_16b};
@@ -756,6 +765,7 @@ always @(*)
       12'hcb1: begin y_rd_data =       received_sync_ltc[31:16];                               end
       12'hcb0: begin y_rd_data =       received_sync_ltc[15:0];                                end
       12'hcaf: begin y_rd_data =       icm_sync_err_cnt;                                       end
+`ifdef MDOMREV1
       12'hbfe: begin y_rd_data =       {7'b0,
                                         global_trig_en,
                                         global_trig_pol,
@@ -766,6 +776,20 @@ always @(*)
                                         wvb_trig_lt,
                                         wvb_trig_gt,
                                         wvb_trig_et};                                          end
+`endif 
+`ifndef MDOMREV1
+      12'hbfe: begin y_rd_data =       {5'b0,
+					cal_trig_trig_en,
+					cal_trig_trig_pol,
+					global_trig_en,
+					global_trig_pol,
+					wvb_trig_ext_trig_en,
+					wvb_trig_discr_trig_en,
+                                        wvb_trig_discr_trig_pol,
+                                        wvb_trig_lt,
+                                        wvb_trig_gt,
+                                        wvb_trig_et};                                          end
+ `endif
       12'hbfd: begin y_rd_data =       {4'b0, wvb_trig_thr};                                   end
       12'hbfc: begin y_rd_data =       {8'b0, sw_trig_mask[N_CHANNELS-1:16]};                  end
       12'hbfb: begin y_rd_data =       sw_trig_mask[15:0];                                     end
@@ -939,8 +963,12 @@ always @(posedge clk)
           wvb_trig_discr_trig_en <= y_wr_data[4];
           wvb_trig_thresh_trig_en <= y_wr_data[5];
           wvb_trig_ext_trig_en <= y_wr_data[6];
-          global_trig_pol <= y_wr_data[7];
+	  global_trig_pol <= y_wr_data[7];
           global_trig_en <= y_wr_data[8];
+ `ifndef MDOMREV1
+	  cal_trig_trig_pol <= y_wr_data[9];
+	  cal_trig_trig_en <= y_wr_data[10];
+ `endif
         end
         12'hbfd: begin wvb_trig_thr <= y_wr_data[11:0];                                        end
         12'hbfc: begin sw_trig_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];                        end
