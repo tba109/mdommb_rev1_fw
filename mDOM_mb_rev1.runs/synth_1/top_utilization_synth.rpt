@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Tue Mar 15 21:31:18 2022
+| Date         : Mon Apr  4 09:16:58 2022
 | Host         : DESKTOP-VTPCSON running 64-bit major release  (build 9200)
 | Command      : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
 | Design       : top
@@ -150,12 +150,12 @@ Table of Contents
 +------------+-------+---------------------+
 | FDRE       | 33148 |        Flop & Latch |
 | LUT4       | 10180 |                 LUT |
-| LUT6       |  7619 |                 LUT |
+| LUT6       |  7621 |                 LUT |
 | CARRY4     |  5655 |          CarryLogic |
 | LUT3       |  5136 |                 LUT |
 | LUT1       |  4905 |                 LUT |
 | LUT2       |  4073 |                 LUT |
-| LUT5       |  3758 |                 LUT |
+| LUT5       |  3757 |                 LUT |
 | MUXF7      |   898 |               MuxFx |
 | FDSE       |   853 |        Flop & Latch |
 | SRL16E     |   480 |  Distributed Memory |
