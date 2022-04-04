@@ -4,326 +4,361 @@
 // Top level module for the rev1 mDOM mainboard
 //
 
+`include "rev_num.v"
+
 module top (
   // 20 MHz oscillator
-  input QOSC_CLK_P1V8,
+  input 	QOSC_CLK_P1V8,
   // ICM clock
-  input FPGA_CLOCK_P,
-  input FPGA_CLOCK_N,
+  input 	FPGA_CLOCK_P,
+  input 	FPGA_CLOCK_N,
 
   // Debug UART signals
-  output FTD_UART_CTSn,
-  input FTD_UART_RTSn,
-  output FTD_UART_RXD,
-  input FTD_UART_TXD,
+  output 	FTD_UART_CTSn,
+  input 	FTD_UART_RTSn,
+  output 	FTD_UART_RXD,
+  input 	FTD_UART_TXD,
 
   // ICM UART
-  input FPGA_UART_CTS,
-  output FPGA_UART_RTS,
-  input FPGA_UART_RX,
-  output FPGA_UART_TX,
+  input 	FPGA_UART_CTS,
+  output 	FPGA_UART_RTS,
+  input 	FPGA_UART_RX,
+  output 	FPGA_UART_TX,
 
   // ICM sync related
-  input FPGA_SYNC_P,
-  input FPGA_SYNC_N,
-  input FPGA_GPIO_0,
-  input FPGA_GPIO_1,
+  input 	FPGA_SYNC_P,
+  input 	FPGA_SYNC_N,
+  input 	FPGA_GPIO_0,
+  input 	FPGA_GPIO_1,
 
   // MCU/CPLD UART (shared with MCU; will not be used)
-  input MCU_USART6_TX,
-  input MCU_USART6_RX,
-  input MCU_CAL_A0,
-  input MCU_AFE_SEL,
-  input MCU_CAL_SS,
-  input MCU_CAL_MOSI,
-  input MCU_CAL_MISO,
+  input 	MCU_USART6_TX,
+  input 	MCU_USART6_RX,
+  input 	MCU_CAL_A0,
+`ifndef MDOMREV1
+  input 	MCU_CAL_A1,
+  input 	MCU_CAL_A2,
+  input 	MCU_CAL_A3,
+  input 	MCU_CAL_A4,
+`endif
+  input 	MCU_AFE_SEL,
+  input 	MCU_CAL_SS,
+  input 	MCU_CAL_MOSI,
+  input 	MCU_CAL_MISO,
 
   // ADC interface
-  output ADC0_CLOCK_P,
-  output ADC0_CLOCK_M,
-  input ADC0_DA0P,
-  input ADC0_DA0M,
-  input ADC0_DA1P,
-  input ADC0_DA1M,
-  input ADC0_DB0P,
-  input ADC0_DB0M,
-  input ADC0_DB1P,
-  input ADC0_DB1M,
-  input ADC0_DC0P,
-  input ADC0_DC0M,
-  input ADC0_DC1P,
-  input ADC0_DC1M,
-  input ADC0_DCLK_P,
-  input ADC0_DCLK_M,
-  input ADC0_DD0P,
-  input ADC0_DD0M,
-  input ADC0_DD1P,
-  input ADC0_DD1M,
-  input ADC0_FCLK_P,
-  input ADC0_FCLK_M,
-  input ADC0_SDOUT,
-  output ADC0_SEN,
-  output ADC0_SYSRF_P,
-  output ADC0_SYSRF_M,
-  output ADC1_CLOCK_P,
-  output ADC1_CLOCK_M,
-  input ADC1_DA0P,
-  input ADC1_DA0M,
-  input ADC1_DA1P,
-  input ADC1_DA1M,
-  input ADC1_DB0P,
-  input ADC1_DB0M,
-  input ADC1_DB1P,
-  input ADC1_DB1M,
-  input ADC1_DC0P,
-  input ADC1_DC0M,
-  input ADC1_DC1P,
-  input ADC1_DC1M,
-  input ADC1_DCLK_P,
-  input ADC1_DCLK_M,
-  input ADC1_DD0P,
-  input ADC1_DD0M,
-  input ADC1_DD1P,
-  input ADC1_DD1M,
-  input ADC1_FCLK_P,
-  input ADC1_FCLK_M,
-  output ADC1_SEN,
-  output ADC1_SYSRF_P,
-  output ADC1_SYSRF_M,
-  output ADC2_CLOCK_P,
-  output ADC2_CLOCK_M,
-  input ADC2_DA0P,
-  input ADC2_DA0M,
-  input ADC2_DA1P,
-  input ADC2_DA1M,
-  input ADC2_DB0P,
-  input ADC2_DB0M,
-  input ADC2_DB1P,
-  input ADC2_DB1M,
-  input ADC2_DC0P,
-  input ADC2_DC0M,
-  input ADC2_DC1P,
-  input ADC2_DC1M,
-  input ADC2_DCLK_P,
-  input ADC2_DCLK_M,
-  input ADC2_DD0P,
-  input ADC2_DD0M,
-  input ADC2_DD1P,
-  input ADC2_DD1M,
-  input ADC2_FCLK_P,
-  input ADC2_FCLK_M,
-  output ADC2_SEN,
-  output ADC2_SYSRF_P,
-  output ADC2_SYSRF_M,
-  output ADC3_CLOCK_P,
-  output ADC3_CLOCK_M,
-  input ADC3_DA0P,
-  input ADC3_DA0M,
-  input ADC3_DA1P,
-  input ADC3_DA1M,
-  input ADC3_DB0P,
-  input ADC3_DB0M,
-  input ADC3_DB1P,
-  input ADC3_DB1M,
-  input ADC3_DC0P,
-  input ADC3_DC0M,
-  input ADC3_DC1P,
-  input ADC3_DC1M,
-  input ADC3_DCLK_P,
-  input ADC3_DCLK_M,
-  input ADC3_DD0P,
-  input ADC3_DD0M,
-  input ADC3_DD1P,
-  input ADC3_DD1M,
-  input ADC3_FCLK_P,
-  input ADC3_FCLK_M,
-  output ADC3_SEN,
-  output ADC3_SYSRF_P,
-  output ADC3_SYSRF_M,
-  output ADC4_CLOCK_P,
-  output ADC4_CLOCK_M,
-  input ADC4_DA0P,
-  input ADC4_DA0M,
-  input ADC4_DA1P,
-  input ADC4_DA1M,
-  input ADC4_DB0P,
-  input ADC4_DB0M,
-  input ADC4_DB1P,
-  input ADC4_DB1M,
-  input ADC4_DC0P,
-  input ADC4_DC0M,
-  input ADC4_DC1P,
-  input ADC4_DC1M,
-  input ADC4_DCLK_P,
-  input ADC4_DCLK_M,
-  input ADC4_DD0P,
-  input ADC4_DD0M,
-  input ADC4_DD1P,
-  input ADC4_DD1M,
-  input ADC4_FCLK_P,
-  input ADC4_FCLK_M,
-  output ADC4_SEN,
-  output ADC4_SYSRF_P,
-  output ADC4_SYSRF_M,
-  output ADC5_CLOCK_P,
-  output ADC5_CLOCK_M,
-  input ADC5_DA0P,
-  input ADC5_DA0M,
-  input ADC5_DA1P,
-  input ADC5_DA1M,
-  input ADC5_DB0P,
-  input ADC5_DB0M,
-  input ADC5_DB1P,
-  input ADC5_DB1M,
-  input ADC5_DC0P,
-  input ADC5_DC0M,
-  input ADC5_DC1P,
-  input ADC5_DC1M,
-  input ADC5_DCLK_P,
-  input ADC5_DCLK_M,
-  input ADC5_DD0P,
-  input ADC5_DD0M,
-  input ADC5_DD1P,
-  input ADC5_DD1M,
-  input ADC5_FCLK_P,
-  input ADC5_FCLK_M,
-  output ADC5_SEN,
-  output ADC5_SYSRF_P,
-  output ADC5_SYSRF_M,
-  output ADC_RESET,
-  output ADC_SCLK,
-  output ADC_SDATA,
+  output 	ADC0_CLOCK_P,
+  output 	ADC0_CLOCK_M,
+  input 	ADC0_DA0P,
+  input 	ADC0_DA0M,
+  input 	ADC0_DA1P,
+  input 	ADC0_DA1M,
+  input 	ADC0_DB0P,
+  input 	ADC0_DB0M,
+  input 	ADC0_DB1P,
+  input 	ADC0_DB1M,
+  input 	ADC0_DC0P,
+  input 	ADC0_DC0M,
+  input 	ADC0_DC1P,
+  input 	ADC0_DC1M,
+  input 	ADC0_DCLK_P,
+  input 	ADC0_DCLK_M,
+  input 	ADC0_DD0P,
+  input 	ADC0_DD0M,
+  input 	ADC0_DD1P,
+  input 	ADC0_DD1M,
+  input 	ADC0_FCLK_P,
+  input 	ADC0_FCLK_M,
+  input 	ADC0_SDOUT,
+  output 	ADC0_SEN,
+`ifdef MDOMREV1
+  output 	ADC0_SYSRF_P,
+  output 	ADC0_SYSRF_M,
+`endif
+  output 	ADC1_CLOCK_P,
+  output 	ADC1_CLOCK_M,
+  input 	ADC1_DA0P,
+  input 	ADC1_DA0M,
+  input 	ADC1_DA1P,
+  input 	ADC1_DA1M,
+  input 	ADC1_DB0P,
+  input 	ADC1_DB0M,
+  input 	ADC1_DB1P,
+  input 	ADC1_DB1M,
+  input 	ADC1_DC0P,
+  input 	ADC1_DC0M,
+  input 	ADC1_DC1P,
+  input 	ADC1_DC1M,
+  input 	ADC1_DCLK_P,
+  input 	ADC1_DCLK_M,
+  input 	ADC1_DD0P,
+  input 	ADC1_DD0M,
+  input 	ADC1_DD1P,
+  input 	ADC1_DD1M,
+  input 	ADC1_FCLK_P,
+  input 	ADC1_FCLK_M,
+  output 	ADC1_SEN,
+`ifdef MDOMREV1  
+  output 	ADC1_SYSRF_P,
+  output 	ADC1_SYSRF_M,
+`endif
+  output 	ADC2_CLOCK_P,
+  output 	ADC2_CLOCK_M,
+  input 	ADC2_DA0P,
+  input 	ADC2_DA0M,
+  input 	ADC2_DA1P,
+  input 	ADC2_DA1M,
+  input 	ADC2_DB0P,
+  input 	ADC2_DB0M,
+  input 	ADC2_DB1P,
+  input 	ADC2_DB1M,
+  input 	ADC2_DC0P,
+  input 	ADC2_DC0M,
+  input 	ADC2_DC1P,
+  input 	ADC2_DC1M,
+  input 	ADC2_DCLK_P,
+  input 	ADC2_DCLK_M,
+  input 	ADC2_DD0P,
+  input 	ADC2_DD0M,
+  input 	ADC2_DD1P,
+  input 	ADC2_DD1M,
+  input 	ADC2_FCLK_P,
+  input 	ADC2_FCLK_M,
+  output 	ADC2_SEN,
+`ifdef MDOMREV1
+  output 	ADC2_SYSRF_P,
+  output 	ADC2_SYSRF_M,
+`endif
+  output 	ADC3_CLOCK_P,
+  output 	ADC3_CLOCK_M,
+  input 	ADC3_DA0P,
+  input 	ADC3_DA0M,
+  input 	ADC3_DA1P,
+  input 	ADC3_DA1M,
+  input 	ADC3_DB0P,
+  input 	ADC3_DB0M,
+  input 	ADC3_DB1P,
+  input 	ADC3_DB1M,
+  input 	ADC3_DC0P,
+  input 	ADC3_DC0M,
+  input 	ADC3_DC1P,
+  input 	ADC3_DC1M,
+  input 	ADC3_DCLK_P,
+  input 	ADC3_DCLK_M,
+  input 	ADC3_DD0P,
+  input 	ADC3_DD0M,
+  input 	ADC3_DD1P,
+  input 	ADC3_DD1M,
+  input 	ADC3_FCLK_P,
+  input 	ADC3_FCLK_M,
+  output 	ADC3_SEN,
+`ifdef MDOMREV1	    
+  output 	ADC3_SYSRF_P,
+  output 	ADC3_SYSRF_M,
+`endif
+  output 	ADC4_CLOCK_P,
+  output 	ADC4_CLOCK_M,
+  input 	ADC4_DA0P,
+  input 	ADC4_DA0M,
+  input 	ADC4_DA1P,
+  input 	ADC4_DA1M,
+  input 	ADC4_DB0P,
+  input 	ADC4_DB0M,
+  input 	ADC4_DB1P,
+  input 	ADC4_DB1M,
+  input 	ADC4_DC0P,
+  input 	ADC4_DC0M,
+  input 	ADC4_DC1P,
+  input 	ADC4_DC1M,
+  input 	ADC4_DCLK_P,
+  input 	ADC4_DCLK_M,
+  input 	ADC4_DD0P,
+  input 	ADC4_DD0M,
+  input 	ADC4_DD1P,
+  input 	ADC4_DD1M,
+  input 	ADC4_FCLK_P,
+  input 	ADC4_FCLK_M,
+  output 	ADC4_SEN,
+`ifdef MDOMREV1
+  output 	ADC4_SYSRF_P,
+  output 	ADC4_SYSRF_M,
+`endif
+  output 	ADC5_CLOCK_P,
+  output 	ADC5_CLOCK_M,
+  input 	ADC5_DA0P,
+  input 	ADC5_DA0M,
+  input 	ADC5_DA1P,
+  input 	ADC5_DA1M,
+  input 	ADC5_DB0P,
+  input 	ADC5_DB0M,
+  input 	ADC5_DB1P,
+  input 	ADC5_DB1M,
+  input 	ADC5_DC0P,
+  input 	ADC5_DC0M,
+  input 	ADC5_DC1P,
+  input 	ADC5_DC1M,
+  input 	ADC5_DCLK_P,
+  input 	ADC5_DCLK_M,
+  input 	ADC5_DD0P,
+  input 	ADC5_DD0M,
+  input 	ADC5_DD1P,
+  input 	ADC5_DD1M,
+  input 	ADC5_FCLK_P,
+  input 	ADC5_FCLK_M,
+  output 	ADC5_SEN,
+`ifdef MDOMREV1
+  output 	ADC5_SYSRF_P,
+  output 	ADC5_SYSRF_M,
+`endif
+  output 	ADC_RESET,
+  output 	ADC_SCLK,
+  output 	ADC_SDATA,
 
   // Discriminators
-  input DISCR_OUT0,
-  input DISCR_OUT1,
-  input DISCR_OUT2,
-  input DISCR_OUT3,
-  input DISCR_OUT4,
-  input DISCR_OUT5,
-  input DISCR_OUT6,
-  input DISCR_OUT7,
-  input DISCR_OUT8,
-  input DISCR_OUT9,
-  input DISCR_OUT10,
-  input DISCR_OUT11,
-  input DISCR_OUT12,
-  input DISCR_OUT13,
-  input DISCR_OUT14,
-  input DISCR_OUT15,
-  input DISCR_OUT16,
-  input DISCR_OUT17,
-  input DISCR_OUT18,
-  input DISCR_OUT19,
-  input DISCR_OUT20,
-  input DISCR_OUT21,
-  input DISCR_OUT22,
-  input DISCR_OUT23,
+  input 	DISCR_OUT0,
+  input 	DISCR_OUT1,
+  input 	DISCR_OUT2,
+  input 	DISCR_OUT3,
+  input 	DISCR_OUT4,
+  input 	DISCR_OUT5,
+  input 	DISCR_OUT6,
+  input 	DISCR_OUT7,
+  input 	DISCR_OUT8,
+  input 	DISCR_OUT9,
+  input 	DISCR_OUT10,
+  input 	DISCR_OUT11,
+  input 	DISCR_OUT12,
+  input 	DISCR_OUT13,
+  input 	DISCR_OUT14,
+  input 	DISCR_OUT15,
+  input 	DISCR_OUT16,
+  input 	DISCR_OUT17,
+  input 	DISCR_OUT18,
+  input 	DISCR_OUT19,
+  input 	DISCR_OUT20,
+  input 	DISCR_OUT21,
+  input 	DISCR_OUT22,
+  input 	DISCR_OUT23,
 
   // AD5668 DACs
-  output DAC0_DIN,
-  output DAC0_nSYNC0,
-  output DAC0_nSYNC1,
-  output DAC0_nSYNC2,
-  output DAC0_SCLK,
-  output DAC1_DIN,
-  output DAC1_nSYNC0,
-  output DAC1_nSYNC1,
-  output DAC1_nSYNC2,
-  output DAC1_SCLK,
-  output DAC2_DIN,
-  output DAC2_nSYNC0,
-  output DAC2_nSYNC1,
-  output DAC2_nSYNC2,
-  output DAC2_SCLK,
+  output 	DAC0_DIN,
+  output 	DAC0_nSYNC0,
+  output 	DAC0_nSYNC1,
+  output 	DAC0_nSYNC2,
+  output 	DAC0_SCLK,
+  output 	DAC1_DIN,
+  output 	DAC1_nSYNC0,
+  output 	DAC1_nSYNC1,
+  output 	DAC1_nSYNC2,
+  output 	DAC1_SCLK,
+  output 	DAC2_DIN,
+  output 	DAC2_nSYNC0,
+  output 	DAC2_nSYNC1,
+  output 	DAC2_nSYNC2,
+  output 	DAC2_SCLK,
 
   // FMC interface
-  input  FMC_A11,
-  input  FMC_A10,
-  input  FMC_A9,
-  input  FMC_A8,
-  input  FMC_A7,
-  input  FMC_A6,
-  input  FMC_A5,
-  input  FMC_A4,
-  input  FMC_A3,
-  input  FMC_A2,
-  input  FMC_A1,
-  input  FMC_A0,
-  inout  FMC_D15,
-  inout  FMC_D14,
-  inout  FMC_D13,
-  inout  FMC_D12,
-  inout  FMC_D11,
-  inout  FMC_D10,
-  inout  FMC_D9,
-  inout  FMC_D8,
-  inout  FMC_D7,
-  inout  FMC_D6,
-  inout  FMC_D5,
-  inout  FMC_D4,
-  inout  FMC_D3,
-  inout  FMC_D2,
-  inout  FMC_D1,
-  inout  FMC_D0,
-  input  FMC_CEn,
-  input  FMC_OEn,
-  input  FMC_WEn,
-  output FMC_IRQ3,
-  output FMC_IRQ2,
-  output FMC_IRQ1,
-  output FMC_IRQ0,
+  input 	FMC_A11,
+  input 	FMC_A10,
+  input 	FMC_A9,
+  input 	FMC_A8,
+  input 	FMC_A7,
+  input 	FMC_A6,
+  input 	FMC_A5,
+  input 	FMC_A4,
+  input 	FMC_A3,
+  input 	FMC_A2,
+  input 	FMC_A1,
+  input 	FMC_A0,
+  inout 	FMC_D15,
+  inout 	FMC_D14,
+  inout 	FMC_D13,
+  inout 	FMC_D12,
+  inout 	FMC_D11,
+  inout 	FMC_D10,
+  inout 	FMC_D9,
+  inout 	FMC_D8,
+  inout 	FMC_D7,
+  inout 	FMC_D6,
+  inout 	FMC_D5,
+  inout 	FMC_D4,
+  inout 	FMC_D3,
+  inout 	FMC_D2,
+  inout 	FMC_D1,
+  inout 	FMC_D0,
+  input 	FMC_CEn,
+  input 	FMC_OEn,
+  input 	FMC_WEn,
+  output 	FMC_IRQ3,
+  output 	FMC_IRQ2,
+  output 	FMC_IRQ1,
+  output 	FMC_IRQ0,
 
   // LEDs
-  output LED_YELLOW,
-  output LED_GREEN,
-  output LED_ORANGE,
+  output 	LED_YELLOW,
+  output 	LED_GREEN,
+  output 	LED_ORANGE,
 
-  input TRIG_IN,
-  output TRIG_OUT,
+  input 	TRIG_IN,
+  output 	TRIG_OUT,
 
+`ifndef MDOMREV1
+  output 	AFE0_TPR,
+  output 	AFE1_TPR,
+  output 	AFE2_TPR,
+  output 	AFE3_TPR,
+  output 	AFE4_TPR,
+  output 	AFE5_TPR,
+`endif
+	    
   // CAL interface
-  output FPGA_CAL_TRIG_P,
-  output FPGA_CAL_TRIG_N,
-
+`ifdef MDOMREV1
+  output 	FPGA_CAL_TRIG_P,
+  output 	FPGA_CAL_TRIG_N,
+`endif
+`ifndef MDOMREV1
+  input 	FPGA_CAL_TRIG_P,
+  input 	FPGA_CAL_TRIG_N,
+`endif
+	    
   // ADS8332 monitoring ADCs
-  output MON_ADC1_CONVn,
-  output MON_ADC1_CSn,
-  output MON_ADC1_SCLK,
-  output MON_ADC1_SDI,
-  input MON_ADC1_SDO,
-  output MON_ADC2_CONVn,
-  output MON_ADC2_CSn,
-  output MON_ADC2_SCLK,
-  output MON_ADC2_SDI,
-  input MON_ADC2_SDO,
+  output 	MON_ADC1_CONVn,
+  output 	MON_ADC1_CSn,
+  output 	MON_ADC1_SCLK,
+  output 	MON_ADC1_SDI,
+  input 	MON_ADC1_SDO,
+  output 	MON_ADC2_CONVn,
+  output 	MON_ADC2_CSn,
+  output 	MON_ADC2_SCLK,
+  output 	MON_ADC2_SDI,
+  input 	MON_ADC2_SDO,
 
-  output DCDC_SYNC,
+  output 	DCDC_SYNC,
 
   // FPGA I2C
-  inout FPGA_I2C_SDA,
-  output FPGA_I2C_SCL,
+  inout 	FPGA_I2C_SDA,
+  output 	FPGA_I2C_SCL,
 
   // DDR3 related
-  output DDR3_CLK100_OUT,
-  output DDR3_VTT_S3,
-  output DDR3_VTT_S5,
+  output 	DDR3_CLK100_OUT,
+  output 	DDR3_VTT_S3,
+  output 	DDR3_VTT_S5,
 
-  inout[15:0] ddr3_dq,
-  inout[1:0] ddr3_dqs_n,
-  inout[1:0] ddr3_dqs_p,
-  output[13:0] ddr3_addr,
-  output[2:0] ddr3_ba,
-  output ddr3_ras_n,
-  output ddr3_cas_n,
-  output ddr3_we_n,
-  output ddr3_reset_n,
-  output[0:0] ddr3_ck_p,
-  output[0:0] ddr3_ck_n,
-  output[0:0] ddr3_cke,
-  output[0:0] ddr3_cs_n,
-  output[1:0] ddr3_dm,
-  output[0:0] ddr3_odt
+  inout [15:0] 	ddr3_dq,
+  inout [1:0] 	ddr3_dqs_n,
+  inout [1:0] 	ddr3_dqs_p,
+  output [13:0] ddr3_addr,
+  output [2:0] 	ddr3_ba,
+  output 	ddr3_ras_n,
+  output 	ddr3_cas_n,
+  output 	ddr3_we_n,
+  output 	ddr3_reset_n,
+  output [0:0] 	ddr3_ck_p,
+  output [0:0] 	ddr3_ck_n,
+  output [0:0] 	ddr3_cke,
+  output [0:0] 	ddr3_cs_n,
+  output [1:0] 	ddr3_dm,
+  output [0:0] 	ddr3_odt
   // (if using DDR3_CLK100 rather than internal clock)
   // input sys_clk_i
 );
@@ -333,7 +368,7 @@ module top (
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h20;
+localparam[15:0] FW_VNUM = 16'h23;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -418,33 +453,63 @@ ADC3424_clk_IO clk_IO_0(.enc_clk(i_adc_clock),
                         .dclk_P(ADC0_DCLK_P), .dclk_N(ADC0_DCLK_M), .dclk_out(i_adc_dclock[0]),
                         .fclk_P(ADC0_FCLK_P), .fclk_N(ADC0_FCLK_M), .fclk_out(i_adc_fclock[0]),
                         .adc_clk_P(ADC0_CLOCK_P), .adc_clk_N(ADC0_CLOCK_M),
+`ifdef MDOMREV1
                         .sysrf_P(ADC0_SYSRF_P), .sysrf_N(ADC0_SYSRF_M));
+`endif
+`ifndef MDOMREV1
+                        .sysrf_P(), .sysrf_N());
+`endif
 ADC3424_clk_IO clk_IO_1(.enc_clk(i_adc_clock),
                         .dclk_P(ADC1_DCLK_P), .dclk_N(ADC1_DCLK_M), .dclk_out(i_adc_dclock[1]),
                         .fclk_P(ADC1_FCLK_P), .fclk_N(ADC1_FCLK_M), .fclk_out(i_adc_fclock[1]),
                         .adc_clk_P(ADC1_CLOCK_P), .adc_clk_N(ADC1_CLOCK_M),
+`ifdef MDOMREV1                      
                         .sysrf_P(ADC1_SYSRF_P), .sysrf_N(ADC1_SYSRF_M));
+`endif
+`ifndef MDOMREV1
+                        .sysrf_P(), .sysrf_N());
+`endif
 ADC3424_clk_IO clk_IO_2(.enc_clk(i_adc_clock),
                         .dclk_P(ADC2_DCLK_P), .dclk_N(ADC2_DCLK_M), .dclk_out(i_adc_dclock[2]),
                         .fclk_P(ADC2_FCLK_P), .fclk_N(ADC2_FCLK_M), .fclk_out(i_adc_fclock[2]),
                         .adc_clk_P(ADC2_CLOCK_P), .adc_clk_N(ADC2_CLOCK_M),
+`ifdef MDOMREV1                      
                         .sysrf_P(ADC2_SYSRF_P), .sysrf_N(ADC2_SYSRF_M));
+`endif
+`ifndef MDOMREV1
+                        .sysrf_P(), .sysrf_N());
+`endif
 ADC3424_clk_IO clk_IO_3(.enc_clk(i_adc_clock),
                         .dclk_P(ADC3_DCLK_P), .dclk_N(ADC3_DCLK_M), .dclk_out(i_adc_dclock[3]),
                         .fclk_P(ADC3_FCLK_P), .fclk_N(ADC3_FCLK_M), .fclk_out(i_adc_fclock[3]),
                         .adc_clk_P(ADC3_CLOCK_P), .adc_clk_N(ADC3_CLOCK_M),
+`ifdef MDOMREV1                                            
                         .sysrf_P(ADC3_SYSRF_P), .sysrf_N(ADC3_SYSRF_M));
+`endif
+`ifndef MDOMREV1
+                        .sysrf_P(), .sysrf_N());
+`endif
 ADC3424_clk_IO clk_IO_4(.enc_clk(i_adc_clock),
                         .dclk_P(ADC4_DCLK_P), .dclk_N(ADC4_DCLK_M), .dclk_out(i_adc_dclock[4]),
                         .fclk_P(ADC4_FCLK_P), .fclk_N(ADC4_FCLK_M), .fclk_out(i_adc_fclock[4]),
                         .adc_clk_P(ADC4_CLOCK_P), .adc_clk_N(ADC4_CLOCK_M),
+`ifdef MDOMREV1                      
                         .sysrf_P(ADC4_SYSRF_P), .sysrf_N(ADC4_SYSRF_M));
+`endif
+`ifndef MDOMREV1
+                        .sysrf_P(), .sysrf_N());
+`endif
 ADC3424_clk_IO clk_IO_5(.enc_clk(i_adc_clock),
                         .dclk_P(ADC5_DCLK_P), .dclk_N(ADC5_DCLK_M), .dclk_out(i_adc_dclock[5]),
                         .fclk_P(ADC5_FCLK_P), .fclk_N(ADC5_FCLK_M), .fclk_out(i_adc_fclock[5]),
                         .adc_clk_P(ADC5_CLOCK_P), .adc_clk_N(ADC5_CLOCK_M),
+`ifdef MDOMREV1
                         .sysrf_P(ADC5_SYSRF_P), .sysrf_N(ADC5_SYSRF_M));
-
+`endif
+`ifndef MDOMREV1
+                        .sysrf_P(), .sysrf_N());
+`endif
+   
 // 100 MHz clk forwarding (if using DDR3_CLK100 signal)
 // ODDR #(
 //        .DDR_CLK_EDGE("OPPOSITE_EDGE"),
@@ -588,6 +653,8 @@ endgenerate
 //             [6] ext_trig_en
 //             [7] global_trig_pol
 //             [8] global_trig_en
+//             [9] cal_trig_trig_pol
+//             [10] cal_trig_tirg_en    
 //     12'hbfd: trig threshold [11:0] (currently common to all channels)
 //     12'hbfc: [7:0] sw_trig_mask [23:16]
 //     12'hbfb: sw_trig_mask [15:0]
@@ -714,7 +781,7 @@ endgenerate
 //     12'hba7: [11:0] bsum dev low
 //     12'hba6: [11:0] bsum dev high
 //
-//     FPGA_CAL_TRIG interface
+//     FPGA_CAL_TRIG interface (disabled as of rev 0x22)
 //     12'hba5: [15:0] FPGA_CAL_TRIG width, units of 1/960 MHz
 //     12'hba4: [0] FPGA_CAL_TRIG IO reset
 //              [1] FPGA_CAL_TRIG polarity (0 idles low, 1 idles high)
@@ -893,6 +960,12 @@ wire global_trig_pol;
 wire[N_CHANNELS-1:0] global_trig_src_mask;
 wire[N_CHANNELS-1:0] global_trig_rcv_mask;
 
+`ifndef MDOMREV1
+// FPGA_CAL_TRIG trigger
+wire 	     cal_trig_trig_en;
+wire         cal_trig_trig_pol; 	     
+`endif
+   
 // FMC
 wire [15:0] i_fmc_din;
 wire [15:0] i_fmc_dout;
@@ -1149,6 +1222,12 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .global_trig_src_mask(global_trig_src_mask),
   .global_trig_rcv_mask(global_trig_rcv_mask),
 
+`ifndef MDOMREV1
+  // FPGA_CAL_TRIG trigger
+  .cal_trig_trig_en(cal_trig_trig_en),
+  .cal_trig_trig_pol(cal_trig_trig_pol),
+`endif
+  
   // debug UART
   .debug_txd(FTD_UART_TXD),
   .debug_rxd(FTD_UART_RXD),
@@ -1183,7 +1262,12 @@ wire[P_LTC_WIDTH-1:0] ltc;
 wire[P_LTC_WIDTH-1:0] ltc_wr_data;
 wire ltc_wr_req;
 wire i_fpga_sync;
-IBUFGDS IBUF_FPGA_SYNC(.I(FPGA_SYNC_P), .IB(FPGA_SYNC_N), .O(i_fpga_sync));
+`ifdef MDOMREV1
+   IBUFGDS IBUF_FPGA_SYNC(.I(FPGA_SYNC_P), .IB(FPGA_SYNC_N), .O(i_fpga_sync));
+`endif
+`ifndef MDOMREV1
+   IBUFDS IBUF_FPGA_SYNC(.I(FPGA_SYNC_P), .IB(FPGA_SYNC_N), .O(i_fpga_sync));
+`endif
 icm_time_transfer #(.SHIFT_CNT(40), .EXPECTED_LTC_OFFSET(1)) ICM_TIME_TRANSFER (
   .clk(lclk),
   .rst(lclk_rst),
@@ -1256,10 +1340,19 @@ always @(posedge lclk) begin
   xdom_bsum_bundle_reg <= xdom_bsum_bundle;
 end
 
-// external trigger
+// external trigger & FPGA CAL_TRIG trigger
+`ifndef MDOMREV1
+   wire i_fpga_cal_trig;
+   IBUFDS FPGA_CAL_TRIG_IBUFDS(.I(FPGA_CAL_TRIG_P), .IB(FPGA_CAL_TRIG_N), .O(i_fpga_cal_trig)); 
+`endif
 wire ext_trig_s;
 sync SYNC_TRIG_IN(.clk(lclk),.rst_n(!lclk_rst),.a(TRIG_IN),.y(ext_trig_s));
-
+`ifndef MDOMREV1   
+wire cal_trig_s; 
+sync SYNC_CAL_TRIG(.clk(lclk), .rst_n(!lclk_rst), .a(i_fpga_cal_trig), .y(cal_trig_s)); 
+wire cal_trig_trig_run = cal_trig_trig_pol == 1 ? cal_trig_s : ~cal_trig_s; 
+`endif
+   
 generate
   for (i = 0; i < N_CHANNELS; i = i + 1) begin : waveform_acq_gen
     waveform_acquisition #(.P_ADR_WIDTH(P_WVB_ADR_WIDTH),
@@ -1306,6 +1399,11 @@ generate
 
       .icm_sync_rdy(icm_sync_rdy),
 
+`ifndef MDOMREV1
+      .cal_trig_trig_en(cal_trig_trig_en),
+      .cal_trig_trig_run(cal_trig_trig_run), 
+`endif
+    
       .bsum_bundle(xdom_bsum_bundle_reg)
     );
   end
@@ -1672,7 +1770,11 @@ assign slo_adc_miso = slo_adc_chip_sel == 0 ? MON_ADC1_SDO : MON_ADC2_SDO;
 //
 // AFE pulser
 //
-// For the v1 test setup, TRIG_OUT is connected to AFE0_TP
+// MDOMREV1: For the v1 test setup, TRIG_OUT is connected to AFE0_TP
+// MDOMREV2: TRIG_OUT not currently supported
+`ifndef MDOMREV1
+   assign TRIG_OUT = 1'b0; 
+`endif
 afe_pulser PULSER_0 (
   .lclk(lclk),
   .lclk_rst(lclk_rst),
@@ -1683,10 +1785,16 @@ afe_pulser PULSER_0 (
   .trig(pulser_trig[0]),
   .y0(1'b1),
   .width(pulser_width),
+`ifdef MDOMREV1
   .out(TRIG_OUT),
+`endif
+`ifndef MDOMREV1
+  .out(AFE0_TPR),
+`endif
   .out_n()
 );
 
+`ifdef MDOMREV1
 // FPGA_CAL trigger; treat it as an independent AFE pulser channel
 afe_pulser #(.DIFFERENTIAL(1)) CAL_PULSER_0 (
   .lclk(lclk),
@@ -1699,9 +1807,96 @@ afe_pulser #(.DIFFERENTIAL(1)) CAL_PULSER_0 (
   .y0(cal_trig_pol),
   .width(cal_trig_width),
   .out(FPGA_CAL_TRIG_P),
-  .out_n(FPGA_CAL_TRIG_N)
-);
+  .out_n(FPGA_CAL_TRIG_N)  
+  );
+`endif
 
+`ifndef MDOMREV1
+afe_pulser PULSER_1 (
+
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .divclk(discr_fclk_120MHz),
+  .divclk_rst(!idelay_discrclk_locked),
+  .fastclk(clk_480MHz),
+  .io_rst(pulser_io_rst[1]),
+  .trig(pulser_trig[1]),
+  .y0(1'b1),
+  .width(pulser_width),
+  .out(AFE1_TPR),
+  .out_n()
+);
+afe_pulser PULSER_2 (
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .divclk(discr_fclk_120MHz),
+  .divclk_rst(!idelay_discrclk_locked),
+  .fastclk(clk_480MHz),
+  .io_rst(pulser_io_rst[2]),
+  .trig(pulser_trig[2]),
+  .y0(1'b1),
+  .width(pulser_width),
+  .out(AFE2_TPR),
+  .out_n()
+);
+afe_pulser PULSER_3 (
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .divclk(discr_fclk_120MHz),
+  .divclk_rst(!idelay_discrclk_locked),
+  .fastclk(clk_480MHz),
+  .io_rst(pulser_io_rst[3]),
+  .trig(pulser_trig[3]),
+  .y0(1'b1),
+  .width(pulser_width),
+  .out(AFE3_TPR),
+  .out_n()
+);
+afe_pulser PULSER_4 (
+  .lclk(lclk),
+  .lclk_rst(lclk_rst),
+  .divclk(discr_fclk_120MHz),
+  .divclk_rst(!idelay_discrclk_locked),
+  .fastclk(clk_480MHz),
+  .io_rst(pulser_io_rst[4]),
+  .trig(pulser_trig[4]),
+  .y0(1'b1),
+  .width(pulser_width),
+  .out(AFE4_TPR),
+  .out_n()
+);
+afe_pulser PULSER_5 (
+   .lclk(lclk),
+   .lclk_rst(lclk_rst),
+   .divclk(discr_fclk_120MHz),
+   .divclk_rst(!idelay_discrclk_locked),
+   .fastclk(clk_480MHz),
+   .io_rst(pulser_io_rst[5]),
+   .trig(pulser_trig[5]),
+   .y0(1'b1),
+   .width(pulser_width),
+   .out(AFE5_TPR),
+   .out_n()
+ );
+
+// FPGA_CAL trigger; treat it as an independent AFE pulser channel
+// disabled for version 0x22
+// afe_pulser #(.DIFFERENTIAL(1)) CAL_PULSER_0 (
+//   .lclk(lclk),
+//   .lclk_rst(lclk_rst),
+//   .divclk(discr_fclk_120MHz),
+//   .divclk_rst(!idelay_discrclk_locked),
+//   .fastclk(clk_480MHz),
+//   .io_rst(cal_io_rst),
+//   .trig(cal_trig),
+//   .y0(cal_trig_pol),
+//   .width(cal_trig_width),
+//   .out(FPGA_CAL_TRIG_P),
+//   .out_n(FPGA_CAL_TRIG_N)
+// );
+
+`endif
+   
 // FPGA I2C
 PULLUP PU_SDA(.O(FPGA_I2C_SDA));
 PULLUP PU_SCL(.O(FPGA_I2C_SCL));

@@ -4,6 +4,7 @@
 // mDOM waveform triggering & buffering;
 // adapted from arty S7 prototype project
 //
+`include "rev_num.v"
 
 module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
                               parameter P_ADR_WIDTH = 12,
@@ -15,54 +16,61 @@ module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
                               parameter P_MDOM_BSUM_BUNDLE_WIDTH = 45,
                               parameter P_BSUM_WIDTH = 19)
 (
-  input clk,
-  input rst,
+  input 				clk,
+  input 				rst,
 
   // adc and discr data streams
-  input[11:0] adc_data,
-  input[7:0] discr_data,
+  input [11:0] 				adc_data,
+  input [7:0] 				discr_data,
 
   // WVB reader interface
-  output[P_DATA_WIDTH-1:0] wvb_data_out,
-  output[P_HDR_WIDTH-1:0]  wvb_hdr_data_out,
-  output wvb_hdr_full,
-  output wvb_hdr_empty,
-  output[P_N_WVF_IN_BUF_WIDTH-1:0] wvb_n_wvf_in_buf,
-  output[15:0] wvb_wused,
-  input wvb_hdr_rdreq,
-  input wvb_wvb_rdreq,
-  input wvb_wvb_rddone,
+  output [P_DATA_WIDTH-1:0] 		wvb_data_out,
+  output [P_HDR_WIDTH-1:0] 		wvb_hdr_data_out,
+  output 				wvb_hdr_full,
+  output 				wvb_hdr_empty,
+  output [P_N_WVF_IN_BUF_WIDTH-1:0] 	wvb_n_wvf_in_buf,
+  output [15:0] 			wvb_wused,
+  input 				wvb_hdr_rdreq,
+  input 				wvb_wvb_rdreq,
+  input 				wvb_wvb_rddone,
 
   // Local time counter
-  input [P_LTC_WIDTH-1:0] ltc_in,
+  input [P_LTC_WIDTH-1:0] 		ltc_in,
 
   // External
-  input ext_trig_in,
-  output wvb_trig_out,
-  output wvb_trig_test_out,
+  input 				ext_trig_in,
+
+`ifndef MDOMREV1
+ // FPGA CAL_TRIG
+  input 				cal_trig_trig_en,
+  input 				cal_trig_trig_run, 
+`endif
+ 
+  output 				wvb_trig_out,
+  output 				wvb_trig_test_out,
 
   // for TOT scaler
-  output thresh_tot_out,
+  output 				thresh_tot_out,
 
   // XDOM interface
   // temporary send "arm" and "run"
   // separately from the trigger bundle
-  input xdom_arm,
-  input xdom_trig_run,
-  input[P_WVB_TRIG_BUNDLE_WIDTH-1:0] xdom_wvb_trig_bundle,
-  input[P_WVB_CONFIG_BUNDLE_WIDTH-1:0] xdom_wvb_config_bundle,
-  output          xdom_wvb_armed,
-  output          xdom_wvb_overflow,
+  input 				xdom_arm,
+  input 				xdom_trig_run,
+  input [P_WVB_TRIG_BUNDLE_WIDTH-1:0] 	xdom_wvb_trig_bundle,
+  input [P_WVB_CONFIG_BUNDLE_WIDTH-1:0] xdom_wvb_config_bundle,
+  output 				xdom_wvb_armed,
+  output 				xdom_wvb_overflow,
 
   // global trigger in
-  input global_trigger,
+  input 				global_trigger,
 
   // icm time sync ready
-  input icm_sync_rdy,
+  input 				icm_sync_rdy,
 
 
   // bsum bundle
-  input[P_MDOM_BSUM_BUNDLE_WIDTH-1:0] bsum_bundle
+  input [P_MDOM_BSUM_BUNDLE_WIDTH-1:0] 	bsum_bundle
 );
 `include "mDOM_bsum_bundle_inc.v"
 
@@ -200,6 +208,12 @@ mdom_trigger MDOM_TRIG
    .discr_trig_en(wvb_trig_discr_trig_en),
    .discr_trig_pol(wvb_trig_discr_trig_pol),
 
+`ifndef MDOMREV1
+   // cal trig
+   .cal_trig_trig_en(cal_trig_trig_en),
+   .cal_trig_trig_run(cal_trig_trig_run),
+`endif
+   
    // trigger outputs
    .trig_src(trig_src),
    .trig(wvb_trig),
