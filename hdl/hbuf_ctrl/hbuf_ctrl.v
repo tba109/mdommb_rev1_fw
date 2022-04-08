@@ -86,6 +86,7 @@ module hbuf_ctrl
 
 // instantiate the reader DPRAM and the DDR3 DPRAM
 
+   
 //
 // wvb_reader readout DPRAM
 //
@@ -297,6 +298,36 @@ end
 
 wire[15:0] next_wr_pg_num = wr_pg_num == i_stop_pg ? i_start_pg : wr_pg_num + 1;
 
+
+// Mon 04/04/2022_13:46:04.97
+// This is for Jim Braun's issue #11
+// We need a register for the number
+// of words written so that the software
+// knows how many words to read during a
+// flush. 
+// The hit buffer sometimes inserts
+// two extra words of zeros at the end of
+// waveform packets. Those are included
+// in the number of valid words. The footer
+// is not included in i_n_words_written. 
+   reg [3:0] prev_fsm = 0; 
+reg [15:0] 	   i_n_words_written = 0; 
+always @(posedge clk) begin
+   prev_fsm <= fsm; 
+   if(rst || !en) begin
+      i_n_words_written <= 16'd0;
+   end
+
+   else if(pg_dpram_wren) begin
+      if(prev_fsm==S_WR_HDR)
+	i_n_words_written <= 16'd4;
+      else if(prev_fsm==S_WR_DATA) begin
+	 i_n_words_written <= i_n_words_written + 16'h4; 
+      end
+   end
+   
+end
+   
 // crc module
 reg crc_rst = 1;
 reg crc_en = 0;
@@ -316,7 +347,7 @@ crc16_64b_parallel CRC
 );
 
 localparam HDR = {16'h5555, 16'hAAAA, 16'h5555, 16'hA000};
-wire[63:0] pg_ftr = {crc_out, 16'hAAAA, 16'h5555, 16'hAAAA};
+wire[63:0] pg_ftr = {crc_out, i_n_words_written, 16'h5555, 16'hAAAA};
 
 // synchronize pg_ack
 wire pg_ack_s;
@@ -460,7 +491,8 @@ always @(posedge clk) begin
       end
 
       S_SEND_PG: begin
-        pg_addr <= (wr_pg_num << 27'd12);
+        // pg_addr <= (wr_pg_num << 27'd12);
+	pg_addr <= (wr_pg_num << 27'd11);
         pg_optype <= 1'b1;
         pg_req <= 1;
 
