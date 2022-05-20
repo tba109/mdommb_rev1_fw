@@ -826,7 +826,8 @@ wire[L_WIDTH_MDOM_WVB_CONF_BUNDLE-1:0] xdom_wvb_conf_bundle;
 wire[N_CHANNELS-1:0] xdom_wvb_rst;
 wire[N_CHANNELS-1:0] xdom_arm;
 wire[N_CHANNELS-1:0] xdom_trig_run;
-
+wire[N_CHANNELS-1:0] xdom_trig_en; // Fri 05/20/2022_11:35:13.64 
+   
 // waveform buffer status
 wire[N_CHANNELS-1:0] wvb_armed;
 wire[N_CHANNELS-1:0] wvb_overflow;
@@ -1079,6 +1080,7 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .xdom_wvb_arm(xdom_arm),
   .xdom_trig_run(xdom_trig_run),
   .wvb_rst(xdom_wvb_rst),
+  .xdom_trig_en(xdom_trig_en), 
 
   // waveform buffer status
   .wvb_armed(wvb_armed),
@@ -1394,6 +1396,7 @@ generate
       .xdom_wvb_config_bundle(xdom_wvb_conf_bundle_reg),
       .xdom_wvb_armed(wvb_armed[i]),
       .xdom_wvb_overflow(wvb_overflow[i]),
+      .xdom_trig_en(xdom_trig_en[i]), // Fri 05/20/2022_11:38:45.31
 
       .global_trigger(global_trig_out[i]),
 

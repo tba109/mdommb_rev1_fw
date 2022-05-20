@@ -27,7 +27,8 @@ module xdom #(parameter N_CHANNELS = 24)
   output reg [N_CHANNELS-1:0] 		xdom_wvb_arm = 0,
   output reg [N_CHANNELS-1:0] 		xdom_trig_run = 0,
   output reg [N_CHANNELS-1:0] 		wvb_rst = 0,
-
+  output reg [N_CHANNELS-1:0]           xdom_trig_en = {N_CHANNELS{1'b1}},  				
+ 
   // waveform buffer status
   input [N_CHANNELS-1:0] 		wvb_armed,
   input [N_CHANNELS-1:0] 		wvb_overflow,
@@ -177,8 +178,8 @@ module xdom #(parameter N_CHANNELS = 24)
 
 `ifndef MDOMREV1
   // FGPA_CAL_TRIG trigger
-  output reg cal_trig_trig_en = 0,
-  output reg cal_trig_trig_pol = 0,
+  output reg 				cal_trig_trig_en = 0,
+  output reg 				cal_trig_trig_pol = 0,
  `endif
  
   // Debug FT232R I/O
@@ -914,6 +915,8 @@ always @(*)
       12'hb98: begin y_rd_data =        global_trig_src_mask[15:0];                            end
       12'hb97: begin y_rd_data =        {8'b0, global_trig_rcv_mask[N_CHANNELS-1:16]};         end
       12'hb96: begin y_rd_data =        global_trig_rcv_mask[15:0];                            end
+      12'hb95: begin y_rd_data =        {8'h0,xdom_trig_en[23:16]};                            end
+      12'hb94: begin y_rd_data =        xdom_trig_en[15:0];                                    end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
@@ -1079,6 +1082,8 @@ always @(posedge clk)
         12'hb98: begin global_trig_src_mask[15:0] <= y_wr_data;                                end
         12'hb97: begin global_trig_rcv_mask[N_CHANNELS-1:16] <= y_wr_data[7:0];                end
         12'hb96: begin global_trig_rcv_mask[15:0] <= y_wr_data;                                end
+	12'hb95: begin xdom_trig_en[23:16] <= y_wr_data[7:0];                                  end
+	12'hb94: begin xdom_trig_en[15:0]  <= y_wr_data;                                       end
         default: begin                                                                         end
       endcase
 end // always @ (posedge clk)

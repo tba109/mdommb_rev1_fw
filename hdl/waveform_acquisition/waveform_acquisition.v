@@ -61,7 +61,8 @@ module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
   input [P_WVB_CONFIG_BUNDLE_WIDTH-1:0] xdom_wvb_config_bundle,
   output 				xdom_wvb_armed,
   output 				xdom_wvb_overflow,
-
+  input                                 xdom_trig_en, // Fri 05/20/2022_11:39:16.84				
+ 
   // global trigger in
   input 				global_trigger,
 
@@ -195,22 +196,22 @@ mdom_trigger MDOM_TRIG
    .et(wvb_trig_et),
    .lt(wvb_trig_lt),
    .thr(wvb_trig_thr),
-   .thresh_trig_en(wvb_trig_thresh_trig_en),
+   .thresh_trig_en(wvb_trig_thresh_trig_en && xdom_trig_en),
 
    // sw or global trigger
-   .run(wvb_trig_run || global_trigger),
+   .run((wvb_trig_run || global_trigger) && xdom_trig_en),
 
    // ext trig
-   .ext_trig_en(wvb_trig_ext_trig_en),
+   .ext_trig_en(wvb_trig_ext_trig_en && xdom_trig_en),
    .ext_run(i_ext_trig_in),
 
    // discr trig
-   .discr_trig_en(wvb_trig_discr_trig_en),
+   .discr_trig_en(wvb_trig_discr_trig_en && xdom_trig_en),
    .discr_trig_pol(wvb_trig_discr_trig_pol),
 
 `ifndef MDOMREV1
    // cal trig
-   .cal_trig_trig_en(cal_trig_trig_en),
+   .cal_trig_trig_en(cal_trig_trig_en && xdom_trig_en),
    .cal_trig_trig_run(cal_trig_trig_run),
 `endif
    
