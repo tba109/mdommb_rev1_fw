@@ -18,6 +18,7 @@ module wvb_rd_addr_ctrl #(parameter P_ADR_WIDTH = 12,
 	output reg[P_ADR_WIDTH-1:0] wvb_rd_addr = 0
 );
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
+`include "mDOM_wvb_hdr_bundle_3_inc.v" // T. Anderson Sat 05/21/2022_14:24:26.47
 
 // header fan out
 wire[P_ADR_WIDTH-1:0] start_addr;
@@ -45,6 +46,22 @@ else if (P_HDR_WIDTH == L_WIDTH_MDOM_WVB_HDR_BUNDLE_2) begin
     .bsum(),
     .bsum_len_sel(),
     .bsum_valid()
+  );
+end
+else if (P_HDR_WIDTH == L_WIDTH_MDOM_WVB_HDR_BUNDLE_3) begin
+  mDOM_wvb_hdr_bundle_3_fan_out HDR_FAN_OUT (
+    .bundle(hdr_data),
+    .evt_ltc(),
+    .start_addr(start_addr),
+    .stop_addr(stop_addr),
+    .trig_src(),
+    .cnst_run(),
+    .pre_conf(),
+    .sync_rdy(),
+    .bsum(),
+    .bsum_len_sel(),
+    .bsum_valid(),
+    .local_coinc()
   );
 end
 endgenerate

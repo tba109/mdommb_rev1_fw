@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7s100fgga676-2" LaunchTime="1653065222">
+<GenRun Id="synth_1" LaunchPart="xc7s100fgga676-2" LaunchTime="1653161971">
   <File Type="PA-TCL" Name="top.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="top_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="top_reports.tcl"/>
@@ -214,6 +214,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PPRDIR/hdl/local_coincidence/local_coincidence.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/hdl/local_time_counter/local_time_counter.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -285,6 +292,20 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/hdl/bundles/mDOM_wvb_hdr_bundle_2/mDOM_wvb_hdr_bundle_2_fan_out.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/hdl/bundles/mDOM_wvb_hdr_bundle_3/mDOM_wvb_hdr_bundle_3_fan_in.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/hdl/bundles/mDOM_wvb_hdr_bundle_3/mDOM_wvb_hdr_bundle_3_fan_out.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -473,6 +494,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PPRDIR/hdl/wvb_rd_ctrl/wvb_rd_ctrl_fmt_2.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/hdl/wvb_reader/wvb_reader.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -560,7 +588,9 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
     <Step Id="synth_design"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="BUFFER_1024_22"/>

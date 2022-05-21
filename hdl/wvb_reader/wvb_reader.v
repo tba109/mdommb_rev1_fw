@@ -172,7 +172,27 @@ else if (P_FMT == 1)
     .dpram_wren(dpram_wren),
     .dpram_len(rd_ctrl_dpram_len)
    );
-
+else if (P_FMT == 2)
+  wvb_rd_ctrl_fmt_2 #(.P_WVB_ADR_WIDTH(P_WVB_ADR_WIDTH),
+                      .P_HDR_WIDTH(P_HDR_WIDTH))
+  RD_CTRL
+   (
+    .clk(clk),
+    .rst(rst || !en),
+    .req(rd_ctrl_req),
+    .idx({3'b0, chan_index}),
+    .dpram_mode(dpram_mode),
+    .ack(rd_ctrl_ack),
+    .rd_ctrl_more(rd_ctrl_more),
+    .wvb_data(wvb_data_mux_out_reg),
+    .hdr_data(hdr_data_mux_out_reg),
+    .wvb_rdreq(i_wvb_rdreq),
+    .wvb_rddone(i_wvb_rddone),
+    .dpram_a(dpram_addr),
+    .dpram_data(dpram_data),
+    .dpram_wren(dpram_wren),
+    .dpram_len(rd_ctrl_dpram_len)
+   );
 endgenerate
 
 // FSM logic

@@ -20,6 +20,7 @@ module wvb_overflow_ctrl #(parameter P_ADR_WIDTH = 12,
 	input hdr_full
 );
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
+`include "mDOM_wvb_hdr_bundle_3_inc.v" // T. Anderson Sat 05/21/2022_14:21:30.96
 
 // header fan out
 wire[P_ADR_WIDTH-1:0] stop_addr;
@@ -47,6 +48,21 @@ else if (P_HDR_WIDTH == L_WIDTH_MDOM_WVB_HDR_BUNDLE_2)
     .bsum(),
     .bsum_len_sel(),
     .bsum_valid()
+  );
+else if (P_HDR_WIDTH == L_WIDTH_MDOM_WVB_HDR_BUNDLE_3) // T. Anderson Sat 05/21/2022_14:23:43.83
+  mDOM_wvb_hdr_bundle_3_fan_out HDR_FAN_OUT (
+    .bundle(hdr_data),
+    .evt_ltc(),
+    .start_addr(),
+    .stop_addr(stop_addr),
+    .trig_src(),
+    .cnst_run(),
+    .pre_conf(),
+    .sync_rdy(),
+    .bsum(),
+    .bsum_len_sel(),
+    .bsum_valid(),
+    .local_coinc()
   );
 endgenerate
 

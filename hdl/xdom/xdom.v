@@ -27,7 +27,7 @@ module xdom #(parameter N_CHANNELS = 24)
   output reg [N_CHANNELS-1:0] 		xdom_wvb_arm = 0,
   output reg [N_CHANNELS-1:0] 		xdom_trig_run = 0,
   output reg [N_CHANNELS-1:0] 		wvb_rst = 0,
-  output reg [N_CHANNELS-1:0]           xdom_trig_en = {N_CHANNELS{1'b1}},  				
+  output reg [N_CHANNELS-1:0] 		xdom_trig_en = {N_CHANNELS{1'b1}}, 
  
   // waveform buffer status
   input [N_CHANNELS-1:0] 		wvb_armed,
@@ -200,6 +200,11 @@ module xdom #(parameter N_CHANNELS = 24)
   input 				mcu_rts_n,
   output 				mcu_cts_n,
 
+  // Local coincidence - T. Anderson Sat 05/21/2022_15:19:23.50
+  output reg [15:0] 			lc_window_width = 4,
+  output reg [15:0] 			n_lc_thr = 2,
+  output reg 				lc_required = 1'b0, 
+ 
   // priority input / FMC
   input 				po_wr,
   input 				po_en,
@@ -917,6 +922,9 @@ always @(*)
       12'hb96: begin y_rd_data =        global_trig_rcv_mask[15:0];                            end
       12'hb95: begin y_rd_data =        {8'h0,xdom_trig_en[23:16]};                            end
       12'hb94: begin y_rd_data =        xdom_trig_en[15:0];                                    end
+      12'hb93: begin y_rd_data =        lc_window_width;                                       end
+      12'hb92: begin y_rd_data =        n_lc_thr;                                              end
+      12'hb91: begin y_rd_data =        {15'h0,lc_required};                                   end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
@@ -1084,7 +1092,10 @@ always @(posedge clk)
         12'hb96: begin global_trig_rcv_mask[15:0] <= y_wr_data;                                end
 	12'hb95: begin xdom_trig_en[23:16] <= y_wr_data[7:0];                                  end
 	12'hb94: begin xdom_trig_en[15:0]  <= y_wr_data;                                       end
-        default: begin                                                                         end
+        12'hb93: begin lc_window_width <= y_wr_data;                                           end
+	12'hb92: begin n_lc_thr <= y_wr_data;                                                  end
+	12'hb91: begin lc_required <= y_wr_data[0];                                            end
+	default: begin                                                                         end
       endcase
 end // always @ (posedge clk)
 

@@ -71,7 +71,11 @@ module waveform_acquisition #(parameter P_DATA_WIDTH = 22,
 
 
   // bsum bundle
-  input [P_MDOM_BSUM_BUNDLE_WIDTH-1:0] 	bsum_bundle
+  input [P_MDOM_BSUM_BUNDLE_WIDTH-1:0] 	bsum_bundle,
+
+  //
+  input local_coinc, // T. Anderson Sat 05/21/2022_14:43:19.49  
+  input lc_required  // T. Anderson Sat 05/21/2022_14:43:19.49  
 );
 `include "mDOM_bsum_bundle_inc.v"
 
@@ -281,7 +285,7 @@ waveform_buffer
    .discr_in(discr_data_stream_1),
    // .tot(discr_tot || thresh_tot),
    .tot(thresh_tot),
-   .trig(wvb_trig),
+   .trig(lc_required ? local_coinc : wvb_trig), // T. Anderson Sat 05/21/2022_15:08:42.48
    .trig_src(trig_src),
    .arm(wvb_arm),
 
@@ -301,7 +305,8 @@ waveform_buffer
 
    .bsum(bsum),
    .bsum_len_sel(prev_sum_len_sel),
-   .bsum_valid(bsum_valid)
+   .bsum_valid(bsum_valid),
+   .local_coinc(local_coinc) // T. Anderson Sat 05/21/2022_14:44:06.33
   );
 
 endmodule

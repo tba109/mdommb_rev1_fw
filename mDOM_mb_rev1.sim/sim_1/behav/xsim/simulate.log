@@ -1,4 +1,7 @@
 Vivado Simulator 2019.1
 Time resolution is 1 ps
-Block Memory Generator module hbuf_ctrl.READER_DPRAM_0.inst.native_mem_module.blk_mem_gen_v8_4_3_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-Block Memory Generator module hbuf_ctrl.DDR3_PG_DPRAM_0.inst.native_mem_module.blk_mem_gen_v8_4_3_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+
+------------------------------------------------------
+Test Case: TEST_CASE_1
+Shifting a 1 through every bit position
+

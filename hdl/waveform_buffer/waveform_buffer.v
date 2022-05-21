@@ -57,7 +57,8 @@ module waveform_buffer
 
   input[P_BSUM_WIDTH-1:0] bsum,
   input[P_BSUM_LEN_SEL_WIDTH-1:0] bsum_len_sel,
-  input bsum_valid
+  input bsum_valid,
+  input local_coinc // T. Anderson Sat 05/21/2022_14:41:38.84
 );
 
 // register synchronous reset
@@ -165,7 +166,8 @@ wvb_wr_ctrl
 
    .bsum(bsum),
    .bsum_len_sel(bsum_len_sel),
-   .bsum_valid(bsum_valid)
+   .bsum_valid(bsum_valid),
+   .local_coinc(local_coinc) // T. Anderson Sat 05/21/2022_14:41:47.21
   );
 
 // read address controller

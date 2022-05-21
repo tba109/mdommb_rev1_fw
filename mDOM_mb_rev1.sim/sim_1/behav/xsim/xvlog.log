@@ -1,14 +1,6 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_DDR3_PG/sim/HBUF_DDR3_PG.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module HBUF_DDR3_PG
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_RDOUT_DPRAM/sim/HBUF_RDOUT_DPRAM.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module HBUF_RDOUT_DPRAM
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/crc16_64b_parallel/crc16_64b_parallel.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module crc16_64b_parallel
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/posedge_detector/posedge_detector.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module posedge_detector
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/sync/sync.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module sync
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/hbuf_ctrl/hbuf_ctrl.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module hbuf_ctrl
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/local_coincidence/local_coincidence.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module local_coincidence
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/one_shot/one_shot.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module one_shot
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/local_coincidence/sim/local_coincidence_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module local_coincidence_tb

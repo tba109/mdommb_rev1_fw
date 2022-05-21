@@ -365,6 +365,7 @@ module top (
 
 `include "mDOM_trig_bundle_inc.v"
 `include "mDOM_wvb_conf_bundle_inc.v"
+`include "mDOM_wvb_hdr_bundle_3_inc.v" // T. Anderson Sat 05/21/2022_14:16:33.17
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
@@ -386,8 +387,10 @@ localparam P_WVB_ADR_WIDTH = 11;
 // localparam P_HDR_WIDTH = P_WVB_ADR_WIDTH == 10 ? 71 : 80;
 // hdr_bundle 2, 49 bit LTC
 localparam P_LTC_WIDTH = 49;
-localparam P_HDR_WIDTH = L_WIDTH_MDOM_WVB_HDR_BUNDLE_2;
-localparam P_FMT = 1;
+// localparam P_HDR_WIDTH = L_WIDTH_MDOM_WVB_HDR_BUNDLE_2;
+localparam P_HDR_WIDTH = L_WIDTH_MDOM_WVB_HDR_BUNDLE_3; // T. Anderson Sat 05/21/2022_14:19:23.51
+// localparam P_FMT = 1;
+localparam P_FMT = 2; // T. Anderson Sat 05/21/2022_14:19:23.51
 
 //
 // clock generation
@@ -1068,6 +1071,10 @@ wire lclk_fmc_wren = i_fmc_wen_ne && !i_fmc_cen_1;
 wire[11:0] fmc_addr_mux = i_fmc_oen == 0 ? i_fmc_a : i_fmc_a_1;
 wire fmc_cen_mux = i_fmc_oen == 0 ? i_fmc_cen : i_fmc_cen_1;
 
+wire [15:0] 	    xdom_lc_window_width; // T. Anderson Sat 05/21/2022_15:15:06.83
+wire [15:0] 	    xdom_n_lc_thr; // T. Anderson Sat 05/21/2022_15:15:06.83
+wire 	            xdom_lc_required; // T. Anderson Sat 05/21/2022_14:48:16.12
+   
 xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
 (
   .clk(lclk),
@@ -1248,6 +1255,12 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .mcu_rts_n(1'b0),
   .mcu_cts_n(),
 
+  // T. Anderson Sat 05/21/2022_15:02:34.96
+  // Local coincidence
+  .lc_window_width(xdom_lc_window_width),
+  .n_lc_thr(xdom_n_lc_thr),
+  .lc_required(xdom_lc_required),
+  
   // priority input / FMC
   .po_wr(lclk_fmc_wren),
   .po_en(!fmc_cen_mux),
@@ -1332,6 +1345,9 @@ wire[N_CHANNELS*P_HDR_WIDTH-1:0] wvb_hdr_data;
 
 wire[N_CHANNELS-1:0] thresh_tot_out;
 
+wire [N_CHANNELS-1:0] local_coinc; // T. Anderson Sat 05/21/2022_14:48:16.12
+wire [N_CHANNELS-1:0] wvb_trig_out; // T. Anderson Sat 05/21/2022_14:48:16.12
+   
 // register the xdom trigger/wvb configuration
 (* max_fanout = 5 *) reg[L_WIDTH_MDOM_TRIG_BUNDLE-1:0] xdom_trig_bundle_reg;
 (* max_fanout = 5 *) reg[L_WIDTH_MDOM_WVB_CONF_BUNDLE-1:0] xdom_wvb_conf_bundle_reg;
@@ -1384,7 +1400,7 @@ generate
 
       // External
       .ext_trig_in(ext_trig_s),
-      .wvb_trig_out(),
+      .wvb_trig_out(wvb_trig_out[i]), // T. Anderson Sat 05/21/2022_14:48:16.12
       .wvb_trig_test_out(),
 
       .thresh_tot_out(thresh_tot_out[i]),
@@ -1407,11 +1423,24 @@ generate
       .cal_trig_trig_run(cal_trig_trig_run), 
 `endif
     
-      .bsum_bundle(xdom_bsum_bundle_reg)
+      .bsum_bundle(xdom_bsum_bundle_reg),
+      .local_coinc(local_coinc[i]), // T. Anderson Sat 05/21/2022_14:48:16.12
+      .lc_required(xdom_lc_required) // T. Anderson Sat 05/21/2022_14:48:16.12
     );
   end
 endgenerate
 
+// T. Anderson Sat 05/21/2022_14:48:16.12
+// Local Coincidence Module, Issue #16. 
+local_coincidence #(.N_CHANNELS(N_CHANNELS)) LOCAL_COINCIDENCE_0
+  (
+    .lc_window_width(xdom_lc_window_width),
+    .n_lc_thr(xdom_n_lc_thr),
+    .trig(wvb_trig_out),
+    .local_coinc(local_coinc)
+    );
+
+   
 // scalers
 (* max_fanout = 5 *) reg[31:0] scaler_period = 0;
 (* max_fanout = 5 *) reg[31:0] scaler_inhibit_len = 0;

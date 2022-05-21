@@ -44,10 +44,12 @@ module wvb_wr_ctrl #(parameter P_DATA_WIDTH = 22,
 
   input[P_BSUM_WIDTH-1:0] bsum,
   input[P_BSUM_LEN_SEL_WIDTH-1:0] bsum_len_sel,
-  input bsum_valid
+  input bsum_valid,
+  input local_coinc // T. Anderson Sat 05/21/2022_14:39:29.68
 );
 `include "trigger_src_inc.v"
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
+`include "mDOM_wvb_hdr_bundle_3_inc.v" // T. Anderson Sat 05/21/2022_14:35:13.75
 
 // register synchronous rst
 (* DONT_TOUCH = "true" *) reg i_rst = 0;
@@ -74,7 +76,8 @@ reg i_icm_sync_rdy = 0;
 reg[P_BSUM_WIDTH-1:0] i_bsum = 0;
 reg[P_BSUM_LEN_SEL_WIDTH-1:0] i_bsum_len_sel = 0;
 reg i_bsum_valid = 0;
-
+reg i_local_coinc = 0; // T. Anderson Sat 05/21/2022_14:37:47.72 
+   
 // FSM states
 localparam
   S_IDLE = 0,
@@ -130,6 +133,7 @@ always @(posedge clk) begin
     i_bsum <= 0;
     i_bsum_len_sel <= 0;
     i_bsum_valid <= 0;
+    i_local_coinc <= 0; // T. Anderson Sat 05/21/2022_14:37:56.10 
   end
 
   else if (fsm == S_IDLE) begin
@@ -141,6 +145,7 @@ always @(posedge clk) begin
     i_bsum <= bsum;
     i_bsum_len_sel <= bsum_len_sel;
     i_bsum_valid <= bsum_valid;
+    i_local_coinc <= local_coinc; // T. Anderson Sat 05/21/2022_14:38:04.86
   end
 end
 // stop addr will always update along with wvb_wr_addr
@@ -268,6 +273,22 @@ else if (P_HDR_WIDTH == L_WIDTH_MDOM_WVB_HDR_BUNDLE_2)
     .bsum(i_bsum),
     .bsum_len_sel(i_bsum_len_sel),
     .bsum_valid(i_bsum_valid)
+  );
+else if (P_HDR_WIDTH == L_WIDTH_MDOM_WVB_HDR_BUNDLE_3) // T. Anderson Sat 05/21/2022_14:36:11.70
+  mDOM_wvb_hdr_bundle_3_fan_in HDR_FAN_IN
+  (
+    .bundle(hdr_data),
+    .evt_ltc(i_evt_ltc),
+    .start_addr(i_start_addr),
+    .stop_addr(i_stop_addr),
+    .trig_src(i_trig_src),
+    .cnst_run(i_cnst_run),
+    .pre_conf(i_pre_conf),
+    .sync_rdy(i_icm_sync_rdy),
+    .bsum(i_bsum),
+    .bsum_len_sel(i_bsum_len_sel),
+    .bsum_valid(i_bsum_valid),
+    .local_coinc(i_local_coinc) // T. Anderson Sat 05/21/2022_14:38:52.72
   );
 endgenerate
 

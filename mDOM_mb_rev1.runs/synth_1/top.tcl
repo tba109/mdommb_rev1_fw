@@ -40,6 +40,7 @@ set_property include_dirs {
   D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_2
   D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_bsum_bundle
   D:/icecube/mdommb_rev1_fw/hdl/rev_num
+  D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_3
 } [current_fileset]
 read_verilog -library xil_defaultlib {
   D:/icecube/mdommb_rev1_fw/hdl/DDR3/DDR3_DPRAM_transfer.v
@@ -71,6 +72,7 @@ read_verilog -library xil_defaultlib {
   D:/icecube/mdommb_rev1_fw/hdl/discr_scaler/inhibit_generator_8b.v
   D:/icecube/mdommb_rev1_fw/hdl/iter_integer_linear_cal/iter_integer_linear_calc.v
   D:/icecube/mdommb_rev1_fw/hdl/knight_rider/knight_rider.v
+  D:/icecube/mdommb_rev1_fw/hdl/local_coincidence/local_coincidence.v
   D:/icecube/mdommb_rev1_fw/hdl/local_time_counter/local_time_counter.v
   D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_bsum_bundle/mDOM_bsum_bundle_fan_in.v
   D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_bsum_bundle/mDOM_bsum_bundle_fan_out.v
@@ -82,6 +84,8 @@ read_verilog -library xil_defaultlib {
   D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_1/mDOM_wvb_hdr_bundle_1_fan_out.v
   D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_2/mDOM_wvb_hdr_bundle_2_fan_in.v
   D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_2/mDOM_wvb_hdr_bundle_2_fan_out.v
+  D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_3/mDOM_wvb_hdr_bundle_3_fan_in.v
+  D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_3/mDOM_wvb_hdr_bundle_3_fan_out.v
   D:/icecube/mdommb_rev1_fw/hdl/mdom_trigger/mdom_trigger.v
   D:/icecube/mdommb_rev1_fw/hdl/n_channel_mux/n_channel_mux.v
   D:/icecube/mdommb_rev1_fw/hdl/negedge_detector/negedge_detector.v
@@ -108,6 +112,7 @@ read_verilog -library xil_defaultlib {
   D:/icecube/mdommb_rev1_fw/hdl/waveform_buffer/wvb_rd_addr_ctrl.v
   D:/icecube/mdommb_rev1_fw/hdl/wvb_rd_ctrl/wvb_rd_ctrl_fmt_0.v
   D:/icecube/mdommb_rev1_fw/hdl/wvb_rd_ctrl/wvb_rd_ctrl_fmt_1.v
+  D:/icecube/mdommb_rev1_fw/hdl/wvb_rd_ctrl/wvb_rd_ctrl_fmt_2.v
   D:/icecube/mdommb_rev1_fw/hdl/wvb_reader/wvb_reader.v
   D:/icecube/mdommb_rev1_fw/hdl/wvb_wr_ctrl/wvb_wr_ctrl.v
   D:/icecube/mdommb_rev1_fw/hdl/xdom/xdom.v
