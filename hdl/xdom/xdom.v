@@ -11,9 +11,8 @@
 //    3.) MCU UART (unused on the mDOM)
 //    4.) Command, response, status
 /////////////////////////////////////////////////////////////////////////////////
-`include "mDOM_bsum_bundle_inc.v"
 `include "rev_num.v"
-module xdom #(parameter N_CHANNELS = 24)
+module xdom #(parameter N_CHANNELS = 24, parameter P_WIDTH_MDOM_BSUM_BUNDLE = 45)
 (
   input 				clk,
   input 				rst,
@@ -143,7 +142,7 @@ module xdom #(parameter N_CHANNELS = 24)
   input [47:0] 				received_sync_ltc,
   input [15:0] 				icm_sync_err_cnt,
 
-  output [L_WIDTH_MDOM_BSUM_BUNDLE-1:0] bsum_bundle,
+  output [P_WIDTH_MDOM_BSUM_BUNDLE-1:0] bsum_bundle,
 
   // FPGA_CAL_TRIG interface
   output reg [15:0] 			fpga_cal_trig_width = 0,
@@ -245,6 +244,8 @@ ft232r_proc_buffered UART_DEBUG_0
   .err_ack          (debug_err_ack)
   );
 
+`include "mDOM_bsum_bundle_inc.v"
+   
 ///////////////////////////////////////////////////////////////////////////////
 // 2.) ICM UART
 wire [11:0] icm_logic_adr;

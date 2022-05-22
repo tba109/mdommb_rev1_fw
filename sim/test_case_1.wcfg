@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="3500000000fs"></ZoomStartTime>
+      <ZoomEndTime time="24500000001fs"></ZoomEndTime>
+      <Cursor1Time time="21000000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="146"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="122" />
+   <wave_markers>
+      <marker time="3984444444" label="" />
+   </wave_markers>
+   <wvobject fp_name="/tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/FMC_CEn" type="logic">
+      <obj_property name="ElementShortName">FMC_CEn</obj_property>
+      <obj_property name="ObjectShortName">FMC_CEn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/FMC_OEn" type="logic">
+      <obj_property name="ElementShortName">FMC_OEn</obj_property>
+      <obj_property name="ObjectShortName">FMC_OEn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/FMC_WEn" type="logic">
+      <obj_property name="ElementShortName">FMC_WEn</obj_property>
+      <obj_property name="ObjectShortName">FMC_WEn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/FPGA_CLOCK_N" type="logic">
+      <obj_property name="ElementShortName">FPGA_CLOCK_N</obj_property>
+      <obj_property name="ObjectShortName">FPGA_CLOCK_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/FPGA_CLOCK_P" type="logic">
+      <obj_property name="ElementShortName">FPGA_CLOCK_P</obj_property>
+      <obj_property name="ObjectShortName">FPGA_CLOCK_P</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/FMC_D" type="array">
+      <obj_property name="ElementShortName">FMC_D[15:0]</obj_property>
+      <obj_property name="ObjectShortName">FMC_D[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/FMC_A" type="array">
+      <obj_property name="ElementShortName">FMC_A[11:0]</obj_property>
+      <obj_property name="ObjectShortName">FMC_A[11:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/fmc_din" type="array">
+      <obj_property name="ElementShortName">fmc_din[15:0]</obj_property>
+      <obj_property name="ObjectShortName">fmc_din[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/fmc_dout" type="array">
+      <obj_property name="ElementShortName">fmc_dout[15:0]</obj_property>
+      <obj_property name="ObjectShortName">fmc_dout[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider278">
+      <obj_property name="label">XDOM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/vnum" type="array">
+      <obj_property name="ElementShortName">vnum[15:0]</obj_property>
+      <obj_property name="ObjectShortName">vnum[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/ddr3_ui_clk" type="logic">
+      <obj_property name="ElementShortName">ddr3_ui_clk</obj_property>
+      <obj_property name="ObjectShortName">ddr3_ui_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/pg_req_addr" type="array">
+      <obj_property name="ElementShortName">pg_req_addr[27:0]</obj_property>
+      <obj_property name="ObjectShortName">pg_req_addr[27:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/pg_optype" type="logic">
+      <obj_property name="ElementShortName">pg_optype</obj_property>
+      <obj_property name="ObjectShortName">pg_optype</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/pg_req" type="logic">
+      <obj_property name="ElementShortName">pg_req</obj_property>
+      <obj_property name="ObjectShortName">pg_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/pg_ack" type="logic">
+      <obj_property name="ElementShortName">pg_ack</obj_property>
+      <obj_property name="ObjectShortName">pg_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_enable" type="logic">
+      <obj_property name="ElementShortName">hbuf_enable</obj_property>
+      <obj_property name="ObjectShortName">hbuf_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_start_pg" type="array">
+      <obj_property name="ElementShortName">hbuf_start_pg[15:0]</obj_property>
+      <obj_property name="ObjectShortName">hbuf_start_pg[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_stop_pg" type="array">
+      <obj_property name="ElementShortName">hbuf_stop_pg[15:0]</obj_property>
+      <obj_property name="ObjectShortName">hbuf_stop_pg[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_first_pg" type="array">
+      <obj_property name="ElementShortName">hbuf_first_pg[15:0]</obj_property>
+      <obj_property name="ObjectShortName">hbuf_first_pg[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_last_pg" type="array">
+      <obj_property name="ElementShortName">hbuf_last_pg[15:0]</obj_property>
+      <obj_property name="ObjectShortName">hbuf_last_pg[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_pg_clr_count" type="array">
+      <obj_property name="ElementShortName">hbuf_pg_clr_count[15:0]</obj_property>
+      <obj_property name="ObjectShortName">hbuf_pg_clr_count[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_pg_clr_req" type="logic">
+      <obj_property name="ElementShortName">hbuf_pg_clr_req</obj_property>
+      <obj_property name="ObjectShortName">hbuf_pg_clr_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_pg_clr_ack" type="logic">
+      <obj_property name="ElementShortName">hbuf_pg_clr_ack</obj_property>
+      <obj_property name="ObjectShortName">hbuf_pg_clr_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_flush_req" type="logic">
+      <obj_property name="ElementShortName">hbuf_flush_req</obj_property>
+      <obj_property name="ObjectShortName">hbuf_flush_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_flush_ack" type="logic">
+      <obj_property name="ElementShortName">hbuf_flush_ack</obj_property>
+      <obj_property name="ObjectShortName">hbuf_flush_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_rd_pg_num" type="array">
+      <obj_property name="ElementShortName">hbuf_rd_pg_num[15:0]</obj_property>
+      <obj_property name="ObjectShortName">hbuf_rd_pg_num[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_wr_pg_num" type="array">
+      <obj_property name="ElementShortName">hbuf_wr_pg_num[15:0]</obj_property>
+      <obj_property name="ObjectShortName">hbuf_wr_pg_num[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_n_used_pgs" type="array">
+      <obj_property name="ElementShortName">hbuf_n_used_pgs[15:0]</obj_property>
+      <obj_property name="ObjectShortName">hbuf_n_used_pgs[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_empty" type="logic">
+      <obj_property name="ElementShortName">hbuf_empty</obj_property>
+      <obj_property name="ObjectShortName">hbuf_empty</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_full" type="logic">
+      <obj_property name="ElementShortName">hbuf_full</obj_property>
+      <obj_property name="ObjectShortName">hbuf_full</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/hbuf_buffered_data" type="logic">
+      <obj_property name="ElementShortName">hbuf_buffered_data</obj_property>
+      <obj_property name="ObjectShortName">hbuf_buffered_data</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/lc_window_width" type="array">
+      <obj_property name="ElementShortName">lc_window_width[15:0]</obj_property>
+      <obj_property name="ObjectShortName">lc_window_width[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/n_lc_thr" type="array">
+      <obj_property name="ElementShortName">n_lc_thr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">n_lc_thr[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/lc_required" type="logic">
+      <obj_property name="ElementShortName">lc_required</obj_property>
+      <obj_property name="ObjectShortName">lc_required</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/po_wr" type="logic">
+      <obj_property name="ElementShortName">po_wr</obj_property>
+      <obj_property name="ObjectShortName">po_wr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/po_en" type="logic">
+      <obj_property name="ElementShortName">po_en</obj_property>
+      <obj_property name="ObjectShortName">po_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/po_a" type="array">
+      <obj_property name="ElementShortName">po_a[11:0]</obj_property>
+      <obj_property name="ObjectShortName">po_a[11:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/po_din" type="array">
+      <obj_property name="ElementShortName">po_din[15:0]</obj_property>
+      <obj_property name="ObjectShortName">po_din[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/XDOM_0/po_dout" type="array">
+      <obj_property name="ElementShortName">po_dout[15:0]</obj_property>
+      <obj_property name="ObjectShortName">po_dout[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider566">
+      <obj_property name="label">trig</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/\waveform_acq_gen[0].WFM_ACQ /MDOM_TRIG/trig" type="logic">
+      <obj_property name="ElementShortName">trig</obj_property>
+      <obj_property name="ObjectShortName">trig</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider567">
+      <obj_property name="label">LC</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/LOCAL_COINCIDENCE_0/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/LOCAL_COINCIDENCE_0/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/LOCAL_COINCIDENCE_0/lc_window_width" type="array">
+      <obj_property name="ElementShortName">lc_window_width[15:0]</obj_property>
+      <obj_property name="ObjectShortName">lc_window_width[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/LOCAL_COINCIDENCE_0/n_lc_thr" type="array">
+      <obj_property name="ElementShortName">n_lc_thr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">n_lc_thr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/LOCAL_COINCIDENCE_0/trig" type="array">
+      <obj_property name="ElementShortName">trig[23:0]</obj_property>
+      <obj_property name="ObjectShortName">trig[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/LOCAL_COINCIDENCE_0/local_coinc" type="array">
+      <obj_property name="ElementShortName">local_coinc[23:0]</obj_property>
+      <obj_property name="ObjectShortName">local_coinc[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/LOCAL_COINCIDENCE_0/i_y_os" type="array">
+      <obj_property name="ElementShortName">i_y_os[23:0]</obj_property>
+      <obj_property name="ObjectShortName">i_y_os[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/LOCAL_COINCIDENCE_0/i_cw" type="array">
+      <obj_property name="ElementShortName">i_cw[23:0]</obj_property>
+      <obj_property name="ObjectShortName">i_cw[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/LOCAL_COINCIDENCE_0/j" type="array">
+      <obj_property name="ElementShortName">j[31:0]</obj_property>
+      <obj_property name="ObjectShortName">j[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/LOCAL_COINCIDENCE_0/coinc_level" type="array">
+      <obj_property name="ElementShortName">coinc_level[15:0]</obj_property>
+      <obj_property name="ObjectShortName">coinc_level[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider579">
+      <obj_property name="label">WVF_ACQ</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/\waveform_acq_gen[0].WFM_ACQ /WVB/WR_CTRL/i_local_coinc" type="logic">
+      <obj_property name="ElementShortName">i_local_coinc</obj_property>
+      <obj_property name="ObjectShortName">i_local_coinc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/\waveform_acq_gen[1].WFM_ACQ /WVB/WR_CTRL/i_local_coinc" type="logic">
+      <obj_property name="ElementShortName">i_local_coinc</obj_property>
+      <obj_property name="ObjectShortName">i_local_coinc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/\waveform_acq_gen[2].WFM_ACQ /WVB/WR_CTRL/i_local_coinc" type="logic">
+      <obj_property name="ElementShortName">i_local_coinc</obj_property>
+      <obj_property name="ObjectShortName">i_local_coinc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/\waveform_acq_gen[3].WFM_ACQ /WVB/WR_CTRL/i_local_coinc" type="logic">
+      <obj_property name="ElementShortName">i_local_coinc</obj_property>
+      <obj_property name="ObjectShortName">i_local_coinc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/\waveform_acq_gen[4].WFM_ACQ /WVB/WR_CTRL/i_local_coinc" type="logic">
+      <obj_property name="ElementShortName">i_local_coinc</obj_property>
+      <obj_property name="ObjectShortName">i_local_coinc</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider585">
+      <obj_property name="label">WVB_RD_CTRL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /req" type="logic">
+      <obj_property name="ElementShortName">req</obj_property>
+      <obj_property name="ObjectShortName">req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /idx" type="array">
+      <obj_property name="ElementShortName">idx[7:0]</obj_property>
+      <obj_property name="ObjectShortName">idx[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /dpram_mode" type="logic">
+      <obj_property name="ElementShortName">dpram_mode</obj_property>
+      <obj_property name="ObjectShortName">dpram_mode</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /ack" type="logic">
+      <obj_property name="ElementShortName">ack</obj_property>
+      <obj_property name="ObjectShortName">ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /rd_ctrl_more" type="logic">
+      <obj_property name="ElementShortName">rd_ctrl_more</obj_property>
+      <obj_property name="ObjectShortName">rd_ctrl_more</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /wvb_data" type="array">
+      <obj_property name="ElementShortName">wvb_data[21:0]</obj_property>
+      <obj_property name="ObjectShortName">wvb_data[21:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /hdr_data" type="array">
+      <obj_property name="ElementShortName">hdr_data[103:0]</obj_property>
+      <obj_property name="ObjectShortName">hdr_data[103:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /wvb_rdreq" type="logic">
+      <obj_property name="ElementShortName">wvb_rdreq</obj_property>
+      <obj_property name="ObjectShortName">wvb_rdreq</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /wvb_rddone" type="logic">
+      <obj_property name="ElementShortName">wvb_rddone</obj_property>
+      <obj_property name="ObjectShortName">wvb_rddone</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /dpram_a" type="array">
+      <obj_property name="ElementShortName">dpram_a[9:0]</obj_property>
+      <obj_property name="ObjectShortName">dpram_a[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /dpram_data" type="array">
+      <obj_property name="ElementShortName">dpram_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dpram_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /dpram_wren" type="logic">
+      <obj_property name="ElementShortName">dpram_wren</obj_property>
+      <obj_property name="ObjectShortName">dpram_wren</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /dpram_len" type="array">
+      <obj_property name="ElementShortName">dpram_len[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dpram_len[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /start_addr" type="array">
+      <obj_property name="ElementShortName">start_addr[10:0]</obj_property>
+      <obj_property name="ObjectShortName">start_addr[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /stop_addr" type="array">
+      <obj_property name="ElementShortName">stop_addr[10:0]</obj_property>
+      <obj_property name="ObjectShortName">stop_addr[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /evt_ltc" type="array">
+      <obj_property name="ElementShortName">evt_ltc[47:0]</obj_property>
+      <obj_property name="ObjectShortName">evt_ltc[47:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /odd_ltc_bit" type="logic">
+      <obj_property name="ElementShortName">odd_ltc_bit</obj_property>
+      <obj_property name="ObjectShortName">odd_ltc_bit</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /trig_src" type="array">
+      <obj_property name="ElementShortName">trig_src[1:0]</obj_property>
+      <obj_property name="ObjectShortName">trig_src[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /cnst_run" type="logic">
+      <obj_property name="ElementShortName">cnst_run</obj_property>
+      <obj_property name="ObjectShortName">cnst_run</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /pre_conf" type="array">
+      <obj_property name="ElementShortName">pre_conf[4:0]</obj_property>
+      <obj_property name="ObjectShortName">pre_conf[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /icm_sync_rdy" type="logic">
+      <obj_property name="ElementShortName">icm_sync_rdy</obj_property>
+      <obj_property name="ObjectShortName">icm_sync_rdy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /bsum" type="array">
+      <obj_property name="ElementShortName">bsum[18:0]</obj_property>
+      <obj_property name="ObjectShortName">bsum[18:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /bsum_len_sel" type="array">
+      <obj_property name="ElementShortName">bsum_len_sel[2:0]</obj_property>
+      <obj_property name="ObjectShortName">bsum_len_sel[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /bsum_valid" type="logic">
+      <obj_property name="ElementShortName">bsum_valid</obj_property>
+      <obj_property name="ObjectShortName">bsum_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /local_coinc" type="logic">
+      <obj_property name="ElementShortName">local_coinc</obj_property>
+      <obj_property name="ObjectShortName">local_coinc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /addr_diff" type="array">
+      <obj_property name="ElementShortName">addr_diff[10:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_diff[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /evt_len" type="array">
+      <obj_property name="ElementShortName">evt_len[15:0]</obj_property>
+      <obj_property name="ObjectShortName">evt_len[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /wvb_discr" type="array">
+      <obj_property name="ElementShortName">wvb_discr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">wvb_discr[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /wvb_adc" type="array">
+      <obj_property name="ElementShortName">wvb_adc[11:0]</obj_property>
+      <obj_property name="ObjectShortName">wvb_adc[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /wvb_adc_ext" type="array">
+      <obj_property name="ElementShortName">wvb_adc_ext[15:0]</obj_property>
+      <obj_property name="ObjectShortName">wvb_adc_ext[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /wvb_tot" type="logic">
+      <obj_property name="ElementShortName">wvb_tot</obj_property>
+      <obj_property name="ObjectShortName">wvb_tot</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /wvb_eoe" type="logic">
+      <obj_property name="ElementShortName">wvb_eoe</obj_property>
+      <obj_property name="ObjectShortName">wvb_eoe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /hdr_0" type="array">
+      <obj_property name="ElementShortName">hdr_0[15:0]</obj_property>
+      <obj_property name="ObjectShortName">hdr_0[15:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /fsm" type="array">
+      <obj_property name="ElementShortName">fsm[3:0]</obj_property>
+      <obj_property name="ObjectShortName">fsm[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /loop_s_ftr" type="logic">
+      <obj_property name="ElementShortName">loop_s_ftr</obj_property>
+      <obj_property name="ObjectShortName">loop_s_ftr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /wait_cnt" type="array">
+      <obj_property name="ElementShortName">wait_cnt[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wait_cnt[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /evt_len_reg" type="array">
+      <obj_property name="ElementShortName">evt_len_reg[15:0]</obj_property>
+      <obj_property name="ObjectShortName">evt_len_reg[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /P_WVB_ADR_WIDTH" type="array">
+      <obj_property name="ElementShortName">P_WVB_ADR_WIDTH[31:0]</obj_property>
+      <obj_property name="ObjectShortName">P_WVB_ADR_WIDTH[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /P_DATA_WIDTH" type="array">
+      <obj_property name="ElementShortName">P_DATA_WIDTH[31:0]</obj_property>
+      <obj_property name="ObjectShortName">P_DATA_WIDTH[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /P_HDR_WIDTH" type="array">
+      <obj_property name="ElementShortName">P_HDR_WIDTH[31:0]</obj_property>
+      <obj_property name="ObjectShortName">P_HDR_WIDTH[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /L_FMT" type="array">
+      <obj_property name="ElementShortName">L_FMT[7:0]</obj_property>
+      <obj_property name="ObjectShortName">L_FMT[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /L_DPRAM_A_LAST_DATA" type="array">
+      <obj_property name="ElementShortName">L_DPRAM_A_LAST_DATA[9:0]</obj_property>
+      <obj_property name="ObjectShortName">L_DPRAM_A_LAST_DATA[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /L_DPRAM_A_LAST_DATA_CONTINUE" type="array">
+      <obj_property name="ElementShortName">L_DPRAM_A_LAST_DATA_CONTINUE[9:0]</obj_property>
+      <obj_property name="ObjectShortName">L_DPRAM_A_LAST_DATA_CONTINUE[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /L_DPRAM_A_LAST" type="array">
+      <obj_property name="ElementShortName">L_DPRAM_A_LAST[9:0]</obj_property>
+      <obj_property name="ObjectShortName">L_DPRAM_A_LAST[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /L_DPRAM_A_STOP_STREAM" type="array">
+      <obj_property name="ElementShortName">L_DPRAM_A_STOP_STREAM[9:0]</obj_property>
+      <obj_property name="ObjectShortName">L_DPRAM_A_STOP_STREAM[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /L_RD_WAIT_CNT_MAX" type="array">
+      <obj_property name="ElementShortName">L_RD_WAIT_CNT_MAX[31:0]</obj_property>
+      <obj_property name="ObjectShortName">L_RD_WAIT_CNT_MAX[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /S_IDLE" type="array">
+      <obj_property name="ElementShortName">S_IDLE[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_IDLE[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /S_CHAN_LEN" type="array">
+      <obj_property name="ElementShortName">S_CHAN_LEN[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_CHAN_LEN[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /S_HDR_0_LTC_2" type="array">
+      <obj_property name="ElementShortName">S_HDR_0_LTC_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_HDR_0_LTC_2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /S_LTC_1_LTC_0" type="array">
+      <obj_property name="ElementShortName">S_LTC_1_LTC_0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_LTC_1_LTC_0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /S_PAT_1_PAT_0" type="array">
+      <obj_property name="ElementShortName">S_PAT_1_PAT_0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_PAT_1_PAT_0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /S_SAMPLE_WORD" type="array">
+      <obj_property name="ElementShortName">S_SAMPLE_WORD[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_SAMPLE_WORD[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /S_FTR" type="array">
+      <obj_property name="ElementShortName">S_FTR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_FTR[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /S_ACK" type="array">
+      <obj_property name="ElementShortName">S_ACK[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_ACK[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /S_REQ_WAIT" type="array">
+      <obj_property name="ElementShortName">S_REQ_WAIT[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_REQ_WAIT[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/UUT_0/WVB_READER/\genblk2.RD_CTRL /S_RD_WAIT" type="array">
+      <obj_property name="ElementShortName">S_RD_WAIT[31:0]</obj_property>
+      <obj_property name="ObjectShortName">S_RD_WAIT[31:0]</obj_property>
+   </wvobject>
+</wave_config>

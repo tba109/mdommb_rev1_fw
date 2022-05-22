@@ -1,6 +1,341 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_256_72/sim/FIFO_256_72.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FIFO_256_72
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/BUFFER_1024_22/sim/BUFFER_1024_22.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module BUFFER_1024_22
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_512_108/sim/FIFO_512_108.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FIFO_512_108
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/BUFFER_2048_22/sim/BUFFER_2048_22.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module BUFFER_2048_22
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIST_BUFFER_32_22/sim/DIST_BUFFER_32_22.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DIST_BUFFER_32_22
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIST_BUFFER_128_12/sim/DIST_BUFFER_128_12.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DIST_BUFFER_128_12
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES_selectio_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DISCR_SERDES_selectio_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DISCR_SERDES/DISCR_SERDES.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DISCR_SERDES
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES_selectio_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ADC_SERDES_selectio_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ADC_SERDES/ADC_SERDES.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ADC_SERDES
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_1024_16/sim/FIFO_1024_16.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FIFO_1024_16
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF_selectio_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PULSER_OUT_DIFF_selectio_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/PULSER_OUT_DIFF/PULSER_OUT_DIFF.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PULSER_OUT_DIFF
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT_selectio_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AFE_PULSER_OUTPUT_selectio_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/AFE_PULSER_OUTPUT/AFE_PULSER_OUTPUT.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AFE_PULSER_OUTPUT
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/clocking/mig_7series_v4_2_clk_ibuf.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_clk_ibuf
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/clocking/mig_7series_v4_2_infrastructure.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_infrastructure
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/clocking/mig_7series_v4_2_iodelay_ctrl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_iodelay_ctrl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/clocking/mig_7series_v4_2_tempmon.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_tempmon
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_arb_mux.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_arb_mux
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_arb_row_col.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_arb_row_col
+WARNING: [VRFC 10-2654] begin/end is required for generate-for in this mode of verilog [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_arb_row_col.v:252]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_arb_select.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_arb_select
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_bank_cntrl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_bank_cntrl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_bank_common.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_bank_common
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_bank_compare.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_bank_compare
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_bank_mach.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_bank_mach
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_bank_queue.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_bank_queue
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_bank_state.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_bank_state
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_col_mach.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_col_mach
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_mc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_mc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_rank_cntrl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_rank_cntrl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_rank_common.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_rank_common
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_rank_mach.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_rank_mach
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/controller/mig_7series_v4_2_round_robin_arb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_round_robin_arb
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/ecc/mig_7series_v4_2_ecc_buf.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ecc_buf
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/ecc/mig_7series_v4_2_ecc_dec_fix.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ecc_dec_fix
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/ecc/mig_7series_v4_2_ecc_gen.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ecc_gen
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/ecc/mig_7series_v4_2_ecc_merge_enc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ecc_merge_enc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/ecc/mig_7series_v4_2_fi_xor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_fi_xor
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/ip_top/mig_7series_v4_2_memc_ui_top_std.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_memc_ui_top_std
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/ip_top/mig_7series_v4_2_mem_intfc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_mem_intfc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_byte_group_io.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_byte_group_io
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_byte_lane.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_byte_lane
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_calib_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_calib_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_if_post_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_if_post_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_mc_phy.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_mc_phy
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_mc_phy_wrapper.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_mc_phy_wrapper
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_of_pre_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_of_pre_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_4lanes.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_4lanes
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_ck_addr_cmd_delay.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_ck_addr_cmd_delay
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_dqs_found_cal.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_dqs_found_cal
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_dqs_found_cal_hr.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_dqs_found_cal_hr
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_init
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_ocd_cntlr.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_ocd_cntlr
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_ocd_data.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_ocd_data
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_ocd_edge.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_ocd_edge
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_ocd_lim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_ocd_lim
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_ocd_mux.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_ocd_mux
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_ocd_po_cntlr.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_ocd_po_cntlr
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_ocd_samp.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_ocd_samp
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_oclkdelay_cal.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_oclkdelay_cal
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_prbs_rdlvl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_prbs_rdlvl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_rdlvl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_rdlvl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_tempmon.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_tempmon
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_wrcal.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_wrcal
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_wrlvl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_wrlvl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_phy_wrlvl_off_delay.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_phy_wrlvl_off_delay
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_prbs_gen.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_prbs_gen
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_ddr_skip_calib_tap.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ddr_skip_calib_tap
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_poc_cc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_poc_cc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_poc_edge_store.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_poc_edge_store
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_poc_meta.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_poc_meta
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_poc_pd.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_poc_pd
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_poc_tap_base.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_poc_tap_base
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/phy/mig_7series_v4_2_poc_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_poc_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/ui/mig_7series_v4_2_ui_cmd.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ui_cmd
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/ui/mig_7series_v4_2_ui_rd_data.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ui_rd_data
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/ui/mig_7series_v4_2_ui_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ui_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/ui/mig_7series_v4_2_ui_wr_data.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_v4_2_ui_wr_data
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/mig_7series_0_mig_sim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_0_mig
+INFO: [VRFC 10-2458] undeclared symbol dbg_sel_po_incdec, assumed default net type wire [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/mig_7series_0_mig_sim.v:1096]
+INFO: [VRFC 10-2458] undeclared symbol dbg_po_f_inc, assumed default net type wire [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/mig_7series_0_mig_sim.v:1100]
+INFO: [VRFC 10-2458] undeclared symbol dbg_po_f_stg23_sel, assumed default net type wire [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/mig_7series_0_mig_sim.v:1101]
+INFO: [VRFC 10-2458] undeclared symbol dbg_po_f_dec, assumed default net type wire [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/mig_7series_0_mig_sim.v:1102]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/mig_7series_0/mig_7series_0/user_design/rtl/mig_7series_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mig_7series_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_DDR3_PG/sim/HBUF_DDR3_PG.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module HBUF_DDR3_PG
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/HBUF_RDOUT_DPRAM/sim/HBUF_RDOUT_DPRAM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module HBUF_RDOUT_DPRAM
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/DIRECT_RDOUT_DPRAM/sim/DIRECT_RDOUT_DPRAM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DIRECT_RDOUT_DPRAM
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/XDOM_DDR3_PG/sim/XDOM_DDR3_PG.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module XDOM_DDR3_PG
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/FIFO_2048_32/sim/FIFO_2048_32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FIFO_2048_32
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ddr3_idelay_clk_wiz_clk_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/ddr3_idelay_clk_wiz/ddr3_idelay_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ddr3_idelay_clk_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module idelay_discr_clk_wiz_clk_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/idelay_discr_clk_wiz/idelay_discr_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module idelay_discr_clk_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module lclk_adcclk_wiz_clk_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.srcs/sources_1/ip/lclk_adcclk_wiz/lclk_adcclk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module lclk_adcclk_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/DDR3/DDR3_DPRAM_transfer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DDR3_DPRAM_transfer
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/DDR3/DDR3_pg_transfer_ctrl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DDR3_pg_transfer_ctrl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/DDR3/DDR3_pg_transfer_mux.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DDR3_pg_transfer_mux
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/adc3424_clk_IO/adc3424_clk_IO.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ADC3424_clk_IO
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/adc_discr_channel/adc_discr_channel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module adc_discr_channel
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/afe_pulser/afe_pulser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module afe_pulser
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/cmp/cmp.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cmp
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/crc16_64b_parallel/crc16_64b_parallel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module crc16_64b_parallel
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/crc16_8b_parallel/crc16_8b_parallel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module crc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/crs_master/crs_master.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module crs_master
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/delay/delay.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module delay
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/delay/delay_n.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module delay_n
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/delay/delay_one.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module delay_one
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/rollingsum/deviation_detector.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module deviation_detector
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/discr_scaler/discr_scaler.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module discr_scaler
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/err_mngr/err_mngr.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module err_mngr
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/fpga_temp_sync/fpga_temp_sync.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fpga_temp_sync
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/ft232r_hs/ft232r_hs.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ft232r_hs
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/ft232r_proc_buffered/ft232r_proc_buffered.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ft232r_proc_buffered
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/global_trigger/global_trigger.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module global_trigger
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/hbuf_ctrl/hbuf_ctrl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module hbuf_ctrl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/i2c_byte/i2c_byte.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_byte
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/i2c_master/i2c_master.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2c_master
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/icm_time_transfer/icm_ltc_des.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module icm_ltc_des
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/icm_time_transfer/icm_time_transfer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module icm_time_transfer
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/discr_scaler/inhibit_generator_1b.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module inhibit_generator_1b
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/discr_scaler/inhibit_generator_8b.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module inhibit_generator_8b
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/iter_integer_linear_cal/iter_integer_linear_calc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module iter_integer_linear_calc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/knight_rider/knight_rider.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module knight_rider
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/local_coincidence/local_coincidence.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module local_coincidence
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/local_time_counter/local_time_counter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module local_time_counter
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_bsum_bundle/mDOM_bsum_bundle_fan_in.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mDOM_bsum_bundle_fan_in
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_bsum_bundle/mDOM_bsum_bundle_fan_out.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mDOM_bsum_bundle_fan_out
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_trig_bundle/mDOM_trig_bundle_fan_in.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mDOM_trig_bundle_fan_in
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_trig_bundle/mDOM_trig_bundle_fan_out.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mDOM_trig_bundle_fan_out
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_conf_bundle/mDOM_wvb_conf_bundle_fan_in.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mDOM_wvb_conf_bundle_fan_in
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_conf_bundle/mDOM_wvb_conf_bundle_fan_out.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mDOM_wvb_conf_bundle_fan_out
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_1/mDOM_wvb_hdr_bundle_1_fan_in.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mDOM_wvb_hdr_bundle_1_fan_in
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_1/mDOM_wvb_hdr_bundle_1_fan_out.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mDOM_wvb_hdr_bundle_1_fan_out
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_2/mDOM_wvb_hdr_bundle_2_fan_in.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mDOM_wvb_hdr_bundle_2_fan_in
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_2/mDOM_wvb_hdr_bundle_2_fan_out.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mDOM_wvb_hdr_bundle_2_fan_out
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_3/mDOM_wvb_hdr_bundle_3_fan_in.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mDOM_wvb_hdr_bundle_3_fan_in
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/bundles/mDOM_wvb_hdr_bundle_3/mDOM_wvb_hdr_bundle_3_fan_out.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mDOM_wvb_hdr_bundle_3_fan_out
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/mdom_trigger/mdom_trigger.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mdom_trigger
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/mdommb_fw_rev1_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/n_channel_mux/n_channel_mux.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module n_channel_mux
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/negedge_detector/negedge_detector.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module negedge_detector
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/one_shot/one_shot.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module one_shot
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/local_coincidence/sim/local_coincidence_tb.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module local_coincidence_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/periodic_trigger_gen/periodic_trigger_gen.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module periodic_trigger_gen
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/posedge_counter/posedge_counter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module posedge_counter
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/posedge_detector/posedge_detector.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module posedge_detector
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/pretrigger_buffer/pretrigger_buffer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pretrigger_buffer
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/pulse_extender/pulse_extender.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pulse_extender
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/rollingsum/rollingsum_lutram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rollingsum_lutram
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/rs232_des/rs232_des.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rs232_des
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/rs232_ser/rs232_ser.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rs232_ser
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/serial_ck/serial_ck.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module serial_ck
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/serial_rx/serial_rx.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module serial_rx
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/serial_tx/serial_tx.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module serial_tx
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/spi_master/spi_master.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module spi_master
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/sync/sync.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sync
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/task_reg/task_reg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module task_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/uart_proc_hs/uart_proc_hs.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_proc_hs
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/waveform_acquisition/waveform_acquisition.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module waveform_acquisition
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/waveform_buffer/waveform_buffer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module waveform_buffer
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/waveform_buffer_storage/waveform_buffer_storage.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module waveform_buffer_storage
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/waveform_buffer/wvb_overflow_ctrl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wvb_overflow_ctrl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/waveform_buffer/wvb_rd_addr_ctrl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wvb_rd_addr_ctrl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/wvb_rd_ctrl/wvb_rd_ctrl_fmt_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wvb_rd_ctrl_fmt_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/wvb_rd_ctrl/wvb_rd_ctrl_fmt_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wvb_rd_ctrl_fmt_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/wvb_rd_ctrl/wvb_rd_ctrl_fmt_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wvb_rd_ctrl_fmt_2
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/wvb_reader/wvb_reader.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wvb_reader
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/wvb_wr_ctrl/wvb_wr_ctrl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wvb_wr_ctrl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/hdl/xdom/xdom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xdom
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/icecube/mdommb_rev1_fw/sim/tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb

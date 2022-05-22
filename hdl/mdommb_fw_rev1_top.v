@@ -1434,6 +1434,8 @@ endgenerate
 // Local Coincidence Module, Issue #16. 
 local_coincidence #(.N_CHANNELS(N_CHANNELS)) LOCAL_COINCIDENCE_0
   (
+    .clk(lclk),
+    .rst(lclk_rst), 
     .lc_window_width(xdom_lc_window_width),
     .n_lc_thr(xdom_n_lc_thr),
     .trig(wvb_trig_out),
