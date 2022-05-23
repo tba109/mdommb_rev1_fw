@@ -1,7 +1,11 @@
 +--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
 |       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
 +--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
-| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |waveform_acq_gen[9].WFM_ACQ/WVB/WBS/WAVEFORM_DISCR_BUFF/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_noinit.ram/DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM18.ram/DIADI[0]|
-| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |                                                          waveform_acq_gen[0].WFM_ACQ/MDOM_TRIG/trig_reg/D|
-| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |                                                          waveform_acq_gen[1].WFM_ACQ/MDOM_TRIG/trig_reg/D|
+| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |                                                          waveform_acq_gen[7].WFM_ACQ/MDOM_TRIG/trig_reg/D|
+| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |waveform_acq_gen[15].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_full_fb_i_reg/D|
+| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |                                                         waveform_acq_gen[17].WFM_ACQ/MDOM_TRIG/trig_reg/D|
+| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |waveform_acq_gen[15].WFM_ACQ/WVB/WBS/HDR_FIFO_FMT_0/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/grss.rsts/ram_empty_fb_i_reg/D|
+| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |                                      waveform_acq_gen[15].WFM_ACQ/WVB/WR_CTRL/FSM_sequential_fsm_reg[1]/D|
+| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |                                      waveform_acq_gen[15].WFM_ACQ/WVB/WR_CTRL/FSM_sequential_fsm_reg[0]/D|
+| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |                                      waveform_acq_gen[15].WFM_ACQ/WVB/WR_CTRL/FSM_sequential_fsm_reg[2]/D|
 +--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
