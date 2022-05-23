@@ -122,6 +122,11 @@ always @(posedge clk) begin
   end
 end
 
+// We want to latch the local coincidence flag if it fires at any time while writing the event. 
+always @(posedge clk)
+  if(wvb_wren && local_coinc) i_local_coinc <= 1'b1;
+  else if(fsm==S_IDLE) i_local_coinc <= 1'b0; 
+   
 // latch header values when fsm is in the idle state
 always @(posedge clk) begin
   if (i_rst) begin
@@ -133,7 +138,6 @@ always @(posedge clk) begin
     i_bsum <= 0;
     i_bsum_len_sel <= 0;
     i_bsum_valid <= 0;
-    i_local_coinc <= 0; // T. Anderson Sat 05/21/2022_14:37:56.10 
   end
 
   else if (fsm == S_IDLE) begin
@@ -145,7 +149,6 @@ always @(posedge clk) begin
     i_bsum <= bsum;
     i_bsum_len_sel <= bsum_len_sel;
     i_bsum_valid <= bsum_valid;
-    i_local_coinc <= local_coinc; // T. Anderson Sat 05/21/2022_14:38:04.86
   end
 end
 // stop addr will always update along with wvb_wr_addr
