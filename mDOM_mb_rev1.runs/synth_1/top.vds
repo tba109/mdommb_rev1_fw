@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Mon May 23 17:39:46 2022
-# Process ID: 600
+# Start of session at: Tue Jun  7 13:56:20 2022
+# Process ID: 18004
 # Current directory: D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/top.vds
@@ -16,9 +16,9 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7s100'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s100'
 INFO: [Device 21-403] Loading part xc7s100fgga676-2
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 4984 
+INFO: Helper process launched with PID 13900 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 742.727 ; gain = 178.062
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 742.758 ; gain = 177.270
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'top' [D:/icecube/mdommb_rev1_fw/hdl/mdommb_fw_rev1_top.v:9]
 	Parameter L_WIDTH_MDOM_TRIG_BUNDLE_TRIG_ET bound to: 1 - type: integer 
@@ -160,7 +160,7 @@ INFO: [Synth 8-6157] synthesizing module 'top' [D:/icecube/mdommb_rev1_fw/hdl/md
 	Parameter L_STOP_POS_MDOM_BSUM_BUNDLE_DEV_HIGH bound to: 44 - type: integer 
 	Parameter L_WIDTH_MDOM_BSUM_BUNDLE_ZERO_PAD bound to: 0 - type: integer 
 	Parameter L_WIDTH_MDOM_BSUM_BUNDLE bound to: 45 - type: integer 
-	Parameter FW_VNUM bound to: 16'b0000000000100100 
+	Parameter FW_VNUM bound to: 16'b0000000000100101 
 	Parameter CLK_SRC bound to: 1 - type: integer 
 	Parameter N_CHANNELS bound to: 24 - type: integer 
 	Parameter N_ADC_BITS bound to: 12 - type: integer 
@@ -172,10 +172,10 @@ INFO: [Synth 8-6157] synthesizing module 'top' [D:/icecube/mdommb_rev1_fw/hdl/md
 	Parameter DEFAULT_DELAY bound to: 5'b00000 
 INFO: [Synth 8-6157] synthesizing module 'adc_discr_channel' [D:/icecube/mdommb_rev1_fw/hdl/adc_discr_channel/adc_discr_channel.v:7]
 	Parameter DISCR_DELAY bound to: 10 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'ADC_SERDES' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/ADC_SERDES_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'ADC_SERDES' (1#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/ADC_SERDES_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'DISCR_SERDES' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/DISCR_SERDES_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'DISCR_SERDES' (2#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/DISCR_SERDES_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'ADC_SERDES' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/ADC_SERDES_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'ADC_SERDES' (1#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/ADC_SERDES_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'DISCR_SERDES' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/DISCR_SERDES_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'DISCR_SERDES' (2#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/DISCR_SERDES_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'delay' [D:/icecube/mdommb_rev1_fw/hdl/delay/delay.v:10]
 	Parameter DELAY bound to: 10 - type: integer 
 	Parameter BITS bound to: 8 - type: integer 
@@ -342,8 +342,8 @@ INFO: [Synth 8-6157] synthesizing module 'delay_n__parameterized0' [D:/icecube/m
 	Parameter DEFAULT bound to: 1'b0 
 INFO: [Synth 8-6155] done synthesizing module 'delay_n__parameterized0' (13#1) [D:/icecube/mdommb_rev1_fw/hdl/delay/delay_n.v:8]
 INFO: [Synth 8-6155] done synthesizing module 'delay__parameterized0' (13#1) [D:/icecube/mdommb_rev1_fw/hdl/delay/delay.v:10]
-INFO: [Synth 8-6157] synthesizing module 'DIST_BUFFER_128_12' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/DIST_BUFFER_128_12_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'DIST_BUFFER_128_12' (14#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/DIST_BUFFER_128_12_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'DIST_BUFFER_128_12' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/DIST_BUFFER_128_12_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'DIST_BUFFER_128_12' (14#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/DIST_BUFFER_128_12_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'rollingsum_lutram' (15#1) [D:/icecube/mdommb_rev1_fw/hdl/rollingsum/rollingsum_lutram.v:9]
 INFO: [Synth 8-6157] synthesizing module 'waveform_buffer' [D:/icecube/mdommb_rev1_fw/hdl/waveform_buffer/waveform_buffer.v:7]
 	Parameter P_DATA_WIDTH bound to: 22 - type: integer 
@@ -364,18 +364,18 @@ INFO: [Synth 8-6157] synthesizing module 'pretrigger_buffer' [D:/icecube/mdommb_
 	Parameter P_USE_DISTRIBUTED_RAM bound to: 1 - type: integer 
 	Parameter RDY_CNT bound to: 32'b00000000000000000000000000100000 
 	Parameter RD_ADDR_OFFSET bound to: 32'b00000000000000000000000000000010 
-INFO: [Synth 8-6157] synthesizing module 'DIST_BUFFER_32_22' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/DIST_BUFFER_32_22_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'DIST_BUFFER_32_22' (16#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/DIST_BUFFER_32_22_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'DIST_BUFFER_32_22' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/DIST_BUFFER_32_22_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'DIST_BUFFER_32_22' (16#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/DIST_BUFFER_32_22_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'pretrigger_buffer' (17#1) [D:/icecube/mdommb_rev1_fw/hdl/pretrigger_buffer/pretrigger_buffer.v:8]
 INFO: [Synth 8-6157] synthesizing module 'waveform_buffer_storage' [D:/icecube/mdommb_rev1_fw/hdl/waveform_buffer_storage/waveform_buffer_storage.v:7]
 	Parameter P_DATA_WIDTH bound to: 22 - type: integer 
 	Parameter P_ADR_WIDTH bound to: 11 - type: integer 
 	Parameter P_HDR_WIDTH bound to: 104 - type: integer 
 	Parameter P_N_WVF_IN_BUF_WIDTH bound to: 16 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'BUFFER_2048_22' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/BUFFER_2048_22_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'BUFFER_2048_22' (18#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/BUFFER_2048_22_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'FIFO_512_108' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/FIFO_512_108_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'FIFO_512_108' (19#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/FIFO_512_108_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'BUFFER_2048_22' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/BUFFER_2048_22_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'BUFFER_2048_22' (18#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/BUFFER_2048_22_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'FIFO_512_108' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/FIFO_512_108_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'FIFO_512_108' (19#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/FIFO_512_108_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'waveform_buffer_storage' (20#1) [D:/icecube/mdommb_rev1_fw/hdl/waveform_buffer_storage/waveform_buffer_storage.v:7]
 INFO: [Synth 8-6157] synthesizing module 'wvb_wr_ctrl' [D:/icecube/mdommb_rev1_fw/hdl/wvb_wr_ctrl/wvb_wr_ctrl.v:7]
 	Parameter P_DATA_WIDTH bound to: 22 - type: integer 
@@ -720,12 +720,12 @@ INFO: [Synth 8-6157] synthesizing module 'IBUFGDS' [C:/Xilinx/Vivado/2019.1/scri
 	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
 	Parameter IOSTANDARD bound to: DEFAULT - type: string 
 INFO: [Synth 8-6155] done synthesizing module 'IBUFGDS' (31#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:33335]
-INFO: [Synth 8-6157] synthesizing module 'lclk_adcclk_wiz' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/lclk_adcclk_wiz_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'lclk_adcclk_wiz' (32#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/lclk_adcclk_wiz_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'idelay_discr_clk_wiz' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/idelay_discr_clk_wiz_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'idelay_discr_clk_wiz' (33#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/idelay_discr_clk_wiz_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'ddr3_idelay_clk_wiz' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/ddr3_idelay_clk_wiz_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'ddr3_idelay_clk_wiz' (34#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/ddr3_idelay_clk_wiz_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'lclk_adcclk_wiz' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/lclk_adcclk_wiz_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'lclk_adcclk_wiz' (32#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/lclk_adcclk_wiz_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'idelay_discr_clk_wiz' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/idelay_discr_clk_wiz_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'idelay_discr_clk_wiz' (33#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/idelay_discr_clk_wiz_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'ddr3_idelay_clk_wiz' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/ddr3_idelay_clk_wiz_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'ddr3_idelay_clk_wiz' (34#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/ddr3_idelay_clk_wiz_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'IDELAYCTRL' [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:34933]
 	Parameter SIM_DEVICE bound to: 7SERIES - type: string 
 INFO: [Synth 8-6155] done synthesizing module 'IDELAYCTRL' (35#1) [C:/Xilinx/Vivado/2019.1/scripts/rt/data/unisim_comp.v:34933]
@@ -851,8 +851,8 @@ INFO: [Synth 8-6155] done synthesizing module 'err_mngr' (45#1) [D:/icecube/mdom
 WARNING: [Synth 8-6014] Unused sequential element n_burst_reg was removed.  [D:/icecube/mdommb_rev1_fw/hdl/uart_proc_hs/uart_proc_hs.v:222]
 WARNING: [Synth 8-6014] Unused sequential element err_reg was removed.  [D:/icecube/mdommb_rev1_fw/hdl/uart_proc_hs/uart_proc_hs.v:223]
 INFO: [Synth 8-6155] done synthesizing module 'uart_proc_hs' (46#1) [D:/icecube/mdommb_rev1_fw/hdl/uart_proc_hs/uart_proc_hs.v:16]
-INFO: [Synth 8-6157] synthesizing module 'FIFO_2048_32' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/FIFO_2048_32_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'FIFO_2048_32' (47#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/FIFO_2048_32_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'FIFO_2048_32' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/FIFO_2048_32_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'FIFO_2048_32' (47#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/FIFO_2048_32_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'ft232r_proc_buffered' (48#1) [D:/icecube/mdommb_rev1_fw/hdl/ft232r_proc_buffered/ft232r_proc_buffered.v:9]
 INFO: [Synth 8-6157] synthesizing module 'crs_master' [D:/icecube/mdommb_rev1_fw/hdl/crs_master/crs_master.v:16]
 	Parameter S_IDLE bound to: 0 - type: integer 
@@ -978,10 +978,10 @@ INFO: [Synth 8-6157] synthesizing module 'task_reg__parameterized3' [D:/icecube/
 INFO: [Synth 8-6155] done synthesizing module 'task_reg__parameterized3' (55#1) [D:/icecube/mdommb_rev1_fw/hdl/task_reg/task_reg.v:12]
 INFO: [Synth 8-6157] synthesizing module 'periodic_trigger_gen' [D:/icecube/mdommb_rev1_fw/hdl/periodic_trigger_gen/periodic_trigger_gen.v:9]
 INFO: [Synth 8-6155] done synthesizing module 'periodic_trigger_gen' (56#1) [D:/icecube/mdommb_rev1_fw/hdl/periodic_trigger_gen/periodic_trigger_gen.v:9]
-INFO: [Synth 8-6157] synthesizing module 'XDOM_DDR3_PG' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/XDOM_DDR3_PG_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'XDOM_DDR3_PG' (57#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/XDOM_DDR3_PG_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'DIRECT_RDOUT_DPRAM' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/DIRECT_RDOUT_DPRAM_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'DIRECT_RDOUT_DPRAM' (58#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/DIRECT_RDOUT_DPRAM_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'XDOM_DDR3_PG' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/XDOM_DDR3_PG_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'XDOM_DDR3_PG' (57#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/XDOM_DDR3_PG_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'DIRECT_RDOUT_DPRAM' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/DIRECT_RDOUT_DPRAM_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'DIRECT_RDOUT_DPRAM' (58#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/DIRECT_RDOUT_DPRAM_stub.v:6]
 WARNING: [Synth 8-3848] Net debug_err_ack in module/entity xdom does not have driver. [D:/icecube/mdommb_rev1_fw/hdl/xdom/xdom.v:225]
 WARNING: [Synth 8-3848] Net icm_err_ack in module/entity xdom does not have driver. [D:/icecube/mdommb_rev1_fw/hdl/xdom/xdom.v:259]
 WARNING: [Synth 8-3848] Net mcu_err_ack in module/entity xdom does not have driver. [D:/icecube/mdommb_rev1_fw/hdl/xdom/xdom.v:292]
@@ -1037,10 +1037,10 @@ INFO: [Synth 8-6157] synthesizing module 'hbuf_ctrl' [D:/icecube/mdommb_rev1_fw/
 	Parameter DPRAM_RD_LATENCY bound to: 2 - type: integer 
 	Parameter LAST_PG_DPRAM_ADDR bound to: 511 - type: integer 
 	Parameter HDR bound to: 64'b0101010101010101101010101010101001010101010101011010000000000000 
-INFO: [Synth 8-6157] synthesizing module 'HBUF_RDOUT_DPRAM' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/HBUF_RDOUT_DPRAM_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'HBUF_RDOUT_DPRAM' (66#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/HBUF_RDOUT_DPRAM_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'HBUF_DDR3_PG' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/HBUF_DDR3_PG_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'HBUF_DDR3_PG' (67#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/HBUF_DDR3_PG_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'HBUF_RDOUT_DPRAM' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/HBUF_RDOUT_DPRAM_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'HBUF_RDOUT_DPRAM' (66#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/HBUF_RDOUT_DPRAM_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'HBUF_DDR3_PG' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/HBUF_DDR3_PG_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'HBUF_DDR3_PG' (67#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/HBUF_DDR3_PG_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'crc16_64b_parallel' [D:/icecube/mdommb_rev1_fw/hdl/crc16_64b_parallel/crc16_64b_parallel.v:14]
 INFO: [Synth 8-6155] done synthesizing module 'crc16_64b_parallel' (68#1) [D:/icecube/mdommb_rev1_fw/hdl/crc16_64b_parallel/crc16_64b_parallel.v:14]
 INFO: [Synth 8-6155] done synthesizing module 'hbuf_ctrl' (69#1) [D:/icecube/mdommb_rev1_fw/hdl/hbuf_ctrl/hbuf_ctrl.v:33]
@@ -1124,8 +1124,8 @@ INFO: [Synth 8-6157] synthesizing module 'DDR3_pg_transfer_ctrl' [D:/icecube/mdo
 INFO: [Synth 8-4471] merging register 'app_wdf_end_reg' into 'app_wdf_wren_reg' [D:/icecube/mdommb_rev1_fw/hdl/DDR3/DDR3_pg_transfer_ctrl.v:220]
 WARNING: [Synth 8-6014] Unused sequential element app_wdf_end_reg was removed.  [D:/icecube/mdommb_rev1_fw/hdl/DDR3/DDR3_pg_transfer_ctrl.v:220]
 INFO: [Synth 8-6155] done synthesizing module 'DDR3_pg_transfer_ctrl' (73#1) [D:/icecube/mdommb_rev1_fw/hdl/DDR3/DDR3_pg_transfer_ctrl.v:8]
-INFO: [Synth 8-6157] synthesizing module 'mig_7series_0' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/mig_7series_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mig_7series_0' (74#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-600-DESKTOP-VTPCSON/realtime/mig_7series_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mig_7series_0' [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/mig_7series_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mig_7series_0' (74#1) [D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/.Xil/Vivado-18004-DESKTOP-VTPCSON/realtime/mig_7series_0_stub.v:5]
 INFO: [Synth 8-6155] done synthesizing module 'DDR3_DPRAM_transfer' (75#1) [D:/icecube/mdommb_rev1_fw/hdl/DDR3/DDR3_DPRAM_transfer.v:7]
 INFO: [Synth 8-6157] synthesizing module 'fpga_temp_sync' [D:/icecube/mdommb_rev1_fw/hdl/fpga_temp_sync/fpga_temp_sync.v:7]
 	Parameter MAX_WAIT_CNT bound to: 16'b0000000000000010 
@@ -1279,7 +1279,7 @@ WARNING: [Synth 8-3331] design top has unconnected port MCU_CAL_SS
 WARNING: [Synth 8-3331] design top has unconnected port MCU_CAL_MOSI
 WARNING: [Synth 8-3331] design top has unconnected port MCU_CAL_MISO
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 908.223 ; gain = 343.559
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 908.332 ; gain = 342.844
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1292,10 +1292,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 908.223 ; gain = 343.559
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 908.332 ; gain = 342.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 908.223 ; gain = 343.559
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 908.332 ; gain = 342.844
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 32 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -1684,13 +1684,13 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1219.598 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1221.859 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 20 instances were transformed.
   IBUFGDS => IBUFDS: 14 instances
   OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS, OBUFDS): 6 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.372 . Memory (MB): peak = 1219.598 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.376 . Memory (MB): peak = 1221.859 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'CAL_PULSER_0/PULSER_OUT_DIFF' at clock pin 'clk_in' is different from the actual clock period '2.083', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'HBUF_CTRL_0/DDR3_PG_DPRAM_0' at clock pin 'clka' is different from the actual clock period '8.333', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'HBUF_CTRL_0/READER_DPRAM_0' at clock pin 'clka' is different from the actual clock period '8.333', this can lead to different synthesis results.
@@ -1793,14 +1793,14 @@ WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context s
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'waveform_acq_gen[13].WFM_ACQ/ROLLING_BSUM/sample_buffer' at clock pin 'clk' is different from the actual clock period '8.333', this can lead to different synthesis results.
 INFO: [Common 17-14] Message 'Timing 38-316' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1238.051 ; gain = 673.387
+Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1239.930 ; gain = 674.441
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s100fgga676-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1238.051 ; gain = 673.387
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1239.930 ; gain = 674.441
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -2331,7 +2331,7 @@ Applied set_property DONT_TOUCH = true for CAL_PULSER_0/PULSER_OUT_DIFF. (constr
 Applied set_property DONT_TOUCH = true for I2CM_0/RX_FIFO_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for I2CM_0/TX_FIFO_0. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:24 . Memory (MB): peak = 1238.051 ; gain = 673.387
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 1239.930 ; gain = 674.441
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'fsm_reg' in module 'rs232_ser'
 INFO: [Synth 8-802] inferred FSM for state register 'fsm_reg' in module 'rs232_des'
@@ -2948,7 +2948,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'fsm_reg' using encoding 's
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'fsm_reg' using encoding 'sequential' in module 'inhibit_generator_1b'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:36 ; elapsed = 00:00:36 . Memory (MB): peak = 1238.051 ; gain = 673.387
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:36 ; elapsed = 00:00:36 . Memory (MB): peak = 1239.930 ; gain = 674.441
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -9663,7 +9663,7 @@ INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instan
 INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 WARNING: [Synth 8-3331] design i2c_byte has unconnected port scl_i
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:30 ; elapsed = 00:01:40 . Memory (MB): peak = 1238.051 ; gain = 673.387
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:30 ; elapsed = 00:01:41 . Memory (MB): peak = 1239.930 ; gain = 674.441
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -9677,7 +9677,7 @@ Report RTL Partitions:
 |5     |top__GCB3           |           1|         8|
 |6     |top__GCB4           |           1|      8537|
 |7     |top__GCB5           |           1|      6760|
-|8     |top__GCB6           |           1|     15811|
+|8     |top__GCB6           |           1|     15705|
 |9     |top__GCB7           |           1|      5760|
 |10    |top__GCB8           |           1|      5760|
 |11    |top__GCB9           |           1|      7269|
@@ -9710,13 +9710,13 @@ INFO: [Synth 8-5578] Moved timing constraint from pin 'DDR3_IDELAY_CLK_WIZ_0/clk
 INFO: [Synth 8-5783] Moving clock source from hierarchical pin 'DDR3_IDELAY_CLK_WIZ_0/clk_in1' to 'IBUFDGS_FPGACLK/O'
 INFO: [Synth 8-5819] Moved 10 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:40 ; elapsed = 00:01:51 . Memory (MB): peak = 1238.051 ; gain = 673.387
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:40 ; elapsed = 00:01:51 . Memory (MB): peak = 1239.930 ; gain = 674.441
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:11 ; elapsed = 00:02:22 . Memory (MB): peak = 1409.941 ; gain = 845.277
+Finished Timing Optimization : Time (s): cpu = 00:02:11 ; elapsed = 00:02:21 . Memory (MB): peak = 1407.992 ; gain = 842.504
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -9742,13 +9742,13 @@ Report RTL Partitions:
 |17    |top__GCB17          |           1|      7487|
 |18    |top__GCB18          |           1|      2977|
 |19    |top__GCB19          |           1|      3490|
-|20    |top_GT0             |           1|     26343|
+|20    |top_GT0             |           1|     26237|
 +------+--------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:30 ; elapsed = 00:02:43 . Memory (MB): peak = 1409.941 ; gain = 845.277
+Finished Technology Mapping : Time (s): cpu = 00:02:30 ; elapsed = 00:02:43 . Memory (MB): peak = 1407.992 ; gain = 842.504
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -9774,7 +9774,7 @@ Report RTL Partitions:
 |17    |top__GCB17             |           1|      3575|
 |18    |top__GCB18             |           1|      1480|
 |19    |top__GCB19             |           1|      2007|
-|20    |top_GT0                |           1|     15558|
+|20    |top_GT0                |           1|     15560|
 |21    |ADC3424_clk_IO__GC0__1 |           1|         2|
 |22    |ADC3424_clk_IO__GC0__2 |           1|         2|
 |23    |ADC3424_clk_IO__GC0__3 |           1|         2|
@@ -9953,7 +9953,7 @@ INFO: [Common 17-14] Message 'Synth 8-4618' appears 100 times and further instan
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:40 ; elapsed = 00:02:53 . Memory (MB): peak = 1409.941 ; gain = 845.277
+Finished IO Insertion : Time (s): cpu = 00:02:39 ; elapsed = 00:02:53 . Memory (MB): peak = 1446.844 ; gain = 881.355
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -9966,7 +9966,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:40 ; elapsed = 00:02:53 . Memory (MB): peak = 1409.941 ; gain = 845.277
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:40 ; elapsed = 00:02:53 . Memory (MB): peak = 1446.844 ; gain = 881.355
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -9978,25 +9978,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:50 ; elapsed = 00:03:03 . Memory (MB): peak = 1409.941 ; gain = 845.277
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:49 ; elapsed = 00:03:03 . Memory (MB): peak = 1446.844 ; gain = 881.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:50 ; elapsed = 00:03:03 . Memory (MB): peak = 1409.941 ; gain = 845.277
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:49 ; elapsed = 00:03:03 . Memory (MB): peak = 1446.844 ; gain = 881.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:51 ; elapsed = 00:03:04 . Memory (MB): peak = 1409.941 ; gain = 845.277
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:50 ; elapsed = 00:03:04 . Memory (MB): peak = 1446.844 ; gain = 881.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:52 ; elapsed = 00:03:05 . Memory (MB): peak = 1409.941 ; gain = 845.277
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:51 ; elapsed = 00:03:04 . Memory (MB): peak = 1446.844 ; gain = 881.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -10231,13 +10231,13 @@ Report Cell Usage:
 |184   |CARRY4                 |  5949|
 |185   |IDELAYCTRL             |     1|
 |186   |LUT1                   |  5260|
-|187   |LUT2                   |  4090|
-|188   |LUT3                   |  5190|
-|189   |LUT4                   | 10977|
-|190   |LUT5                   |  3744|
+|187   |LUT2                   |  4088|
+|188   |LUT3                   |  5193|
+|189   |LUT4                   | 10982|
+|190   |LUT5                   |  3736|
 |191   |LUT6                   |  7919|
-|192   |MUXF7                  |   798|
-|193   |MUXF8                  |    13|
+|192   |MUXF7                  |   799|
+|193   |MUXF8                  |    18|
 |194   |ODDR                   |    12|
 |195   |PULLUP                 |     2|
 |196   |SRL16E                 |   480|
@@ -10255,7 +10255,7 @@ Report Instance Areas:
 +------+-------------------------------------------+------------------------------------+------+
 |      |Instance                                   |Module                              |Cells |
 +------+-------------------------------------------+------------------------------------+------+
-|1     |top                                        |                                    | 84762|
+|1     |top                                        |                                    | 84766|
 |2     |  GLOBAL_TRIG                              |global_trigger                      |    72|
 |3     |  AD5668_SPI                               |spi_master__parameterized0          |  1323|
 |4     |    IILC_MISO_0                            |iter_integer_linear_calc_499        |   256|
@@ -10345,14 +10345,14 @@ Report Instance Areas:
 |88    |  WVB_READER                               |wvb_reader                          |  5101|
 |89    |    HDR_DATA_MUX                           |n_channel_mux__parameterized3       |  1040|
 |90    |    RD_CTRL                                |wvb_rd_ctrl_fmt_2                   |   394|
-|91    |  XDOM_0                                   |xdom                                |  6379|
-|92    |    ADC_SPI_TASK_0                         |task_reg__parameterized0            |    44|
+|91    |  XDOM_0                                   |xdom                                |  6383|
+|92    |    ADC_SPI_TASK_0                         |task_reg__parameterized0            |    45|
 |93    |    AFE_TRIG_GEN                           |periodic_trigger_gen                |    88|
 |94    |    BUF_N_WFMS_MUX                         |n_channel_mux                       |   100|
 |95    |    BUF_WDS_USED_MUX                       |n_channel_mux_424                   |   120|
-|96    |    CALSYNC                                |sync_425                            |     2|
+|96    |    CALSYNC                                |sync_425                            |     3|
 |97    |    CAL_TRIG_GEN                           |periodic_trigger_gen_426            |    88|
-|98    |    CRSM_0                                 |crs_master                          |  1504|
+|98    |    CRSM_0                                 |crs_master                          |  1506|
 |99    |      NEDGE_0                              |negedge_detector_449                |     7|
 |100   |    DAC_SPI_TASK_0                         |task_reg__parameterized1            |    48|
 |101   |    DISC_SCALER_MUX                        |n_channel_mux__parameterized1       |   320|
@@ -10975,17 +10975,17 @@ Report Instance Areas:
 |718   |      WR_CTRL                              |wvb_wr_ctrl                         |   560|
 +------+-------------------------------------------+------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:52 ; elapsed = 00:03:05 . Memory (MB): peak = 1409.941 ; gain = 845.277
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:51 ; elapsed = 00:03:04 . Memory (MB): peak = 1446.844 ; gain = 881.355
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 78 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:02:32 ; elapsed = 00:02:53 . Memory (MB): peak = 1409.941 ; gain = 515.449
-Synthesis Optimization Complete : Time (s): cpu = 00:02:52 ; elapsed = 00:03:05 . Memory (MB): peak = 1409.941 ; gain = 845.277
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:31 ; elapsed = 00:02:52 . Memory (MB): peak = 1446.844 ; gain = 549.758
+Synthesis Optimization Complete : Time (s): cpu = 00:02:51 ; elapsed = 00:03:05 . Memory (MB): peak = 1446.844 ; gain = 881.355
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 6809 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Netlist 29-17] Analyzing 6815 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 1409.941 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 1446.844 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 37 instances were transformed.
   IBUFGDS => IBUFDS: 14 instances
@@ -10995,11 +10995,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 870 Infos, 227 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:03:09 ; elapsed = 00:03:23 . Memory (MB): peak = 1409.941 ; gain = 1092.938
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1409.941 ; gain = 0.000
+synth_design: Time (s): cpu = 00:03:08 ; elapsed = 00:03:23 . Memory (MB): peak = 1446.844 ; gain = 1129.270
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1446.844 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'D:/icecube/mdommb_rev1_fw/mDOM_mb_rev1.runs/synth_1/top.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:11 ; elapsed = 00:00:09 . Memory (MB): peak = 1409.941 ; gain = 0.000
+write_checkpoint: Time (s): cpu = 00:00:11 ; elapsed = 00:00:09 . Memory (MB): peak = 1446.844 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon May 23 17:43:26 2022...
+INFO: [Common 17-206] Exiting Vivado at Tue Jun  7 14:00:00 2022...

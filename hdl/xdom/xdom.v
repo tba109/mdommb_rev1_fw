@@ -791,7 +791,8 @@ always @(*)
 					global_trig_en,
 					global_trig_pol,
 					wvb_trig_ext_trig_en,
-					wvb_trig_discr_trig_en,
+					wvb_trig_thresh_trig_en, // Tue 06/07/2022_13:36:13.39 v0x25 fixes missing from v0x22
+                                        wvb_trig_discr_trig_en,
                                         wvb_trig_discr_trig_pol,
                                         wvb_trig_lt,
                                         wvb_trig_gt,
