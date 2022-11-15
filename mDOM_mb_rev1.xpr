@@ -486,6 +486,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/hdl/thermal_shutdown/thermal_shutdown.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PPRDIR/hdl/uart_proc_hs/uart_proc_hs.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>

@@ -17,6 +17,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_param chipscope.maxJobs 4
 create_project -in_memory -part xc7s100fgga676-2
 
 set_param project.singleFileAddWarning.threshold 0
@@ -103,6 +104,7 @@ read_verilog -library xil_defaultlib {
   D:/icecube/mdommb_rev1_fw/hdl/spi_master/spi_master.v
   D:/icecube/mdommb_rev1_fw/hdl/sync/sync.v
   D:/icecube/mdommb_rev1_fw/hdl/task_reg/task_reg.v
+  D:/icecube/mdommb_rev1_fw/hdl/thermal_shutdown/thermal_shutdown.v
   D:/icecube/mdommb_rev1_fw/hdl/uart_proc_hs/uart_proc_hs.v
   D:/icecube/mdommb_rev1_fw/hdl/waveform_acquisition/waveform_acquisition.v
   D:/icecube/mdommb_rev1_fw/hdl/waveform_buffer/waveform_buffer.v

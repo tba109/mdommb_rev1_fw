@@ -369,7 +369,7 @@ module top (
 `include "mDOM_wvb_hdr_bundle_2_inc.v"
 `include "mDOM_bsum_bundle_inc.v"
 
-localparam[15:0] FW_VNUM = 16'h25;
+localparam[15:0] FW_VNUM = 16'h26;
 
 // 1 for icm clock, 0 for Q_OSC
 localparam CLK_SRC = 1;
@@ -408,12 +408,15 @@ wire clk_120MHz;
 wire clk_200MHz;
 wire clk_360MHz;
 wire clk_480MHz;
+wire thermal_shutdown; 
+reg [7:0] thermal_shutdown_filt = 0;
+always @(posedge osc_20MHz) thermal_shutdown_filt <= {thermal_shutdown_filt[6:0],thermal_shutdown}; 
 lclk_adcclk_wiz LCLK_ADCCLK_WIZ_0 (
   .clk_in1(osc_20MHz),
   .clk_out1(clk_120MHz),
   .clk_out2(clk_360MHz),
   .locked(lclk_adcclk_locked),
-  .reset(1'b0)
+  .reset(|thermal_shutdown_filt)
 );
 wire lclk = clk_120MHz;
 wire lclk_rst = !lclk_adcclk_locked;
@@ -427,7 +430,7 @@ idelay_discr_clk_wiz IDELAY_DISCR_CLK_WIZ_0 (
   .clk_out1(discr_fclk_120MHz),
   .clk_out2(clk_480MHz),
   .locked(idelay_discrclk_locked),
-  .reset(1'b0)
+  .reset(|thermal_shutdown_filt)
 );
 
 wire ddr3_idelay_locked;
@@ -436,7 +439,7 @@ ddr3_idelay_clk_wiz DDR3_IDELAY_CLK_WIZ_0 (
   .clk_out1(clk_100MHz),
   .clk_out2(clk_200MHz),
   .locked(ddr3_idelay_locked),
-  .reset(1'b0)
+  .reset(|thermal_shutdown_filt)
 );
 
 // IDELAY control; this should automatically be replicated to all banks where it is needed
@@ -733,7 +736,7 @@ endgenerate
 //     12'hbca: [0] pg transfer task reg
 //     12'hbc9: DDR3 sys rst (active low)
 //     12'hbc8: DDR3 cal complete
-//     12'hbc7: [11:0] mem interface device temp
+//     12'hbc7: [11:0] mem interface device 
 //     12'hbc6: [0] ddr3 ui sync rst
 //
 //     hit buffer controller
@@ -1031,7 +1034,7 @@ assign i_fmc_wen     = FMC_WEn;
 assign FMC_IRQ3 = 0;
 assign FMC_IRQ2 = 0;
 assign FMC_IRQ1 = 0;
-assign FMC_IRQ0 = 0;
+assign FMC_IRQ0 = thermal_shutdown;
 
 wire i_fmc_wen_s;
 wire i_fmc_oen_s;
@@ -1074,7 +1077,10 @@ wire fmc_cen_mux = i_fmc_oen == 0 ? i_fmc_cen : i_fmc_cen_1;
 wire [15:0] 	    xdom_lc_window_width; // T. Anderson Sat 05/21/2022_15:15:06.83
 wire [15:0] 	    xdom_n_lc_thr; // T. Anderson Sat 05/21/2022_15:15:06.83
 wire 	            xdom_lc_required; // T. Anderson Sat 05/21/2022_14:48:16.12
-   
+
+// T. Anderson Mon 11/14/2022_17:38:35.04
+// Safe thermal shutdown
+wire [11:0] xdom_thermal_shutdown_temp; 
 xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
 (
   .clk(lclk),
@@ -1260,6 +1266,9 @@ xdom #(.N_CHANNELS(N_CHANNELS)) XDOM_0
   .lc_window_width(xdom_lc_window_width),
   .n_lc_thr(xdom_n_lc_thr),
   .lc_required(xdom_lc_required),
+
+  // T. Anderson Mon 11/14/2022_17:55:02.21
+  .xdom_thermal_shutdown_temp(xdom_thermal_shutdown_temp), 
   
   // priority input / FMC
   .po_wr(lclk_fmc_wren),
@@ -1663,6 +1672,25 @@ fpga_temp_sync TEMP_SYNC (
   .device_temp_out(ddr3_device_temp_xdom)
 );
 
+// T. Anderson Mon 11/14/2022_17:38:35.04
+// Safe thermal shutdown synchronization to osc_20MHz
+wire [11:0] ddr3_device_temp_osc_20MHz;
+fpga_temp_sync TEMP_SYNC_20MHZ_OSC ( 
+  .lclk(osc_20MHz),
+  .lclk_rst(1'b0),
+  .ddr3_clk(ddr3_ui_clk),
+  .ddr3_clk_rst(ddr3_ui_sync_rst),
+  .device_temp_in(ddr3_device_temp),
+  .device_temp_out(ddr3_device_temp_osc_20MHz)
+); 
+thermal_shutdown THERMAL_SHUTDOWN_0 (
+  .clk(osc_20MHz),
+  .device_temp_rdy(ddr3_cal_complete),
+  .device_temp(ddr3_device_temp_osc_20MHz), 
+  .thermal_shutdown_temp(xdom_thermal_shutdown_temp),
+  .thermal_shutdown(thermal_shutdown)
+); 
+   
 //
 // ADC3424 serial controls
 //

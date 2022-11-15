@@ -1,8 +1,0 @@
-+--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
-|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
-+--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
-| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |waveform_acq_gen[3].WFM_ACQ/WVB/WBS/WAVEFORM_DISCR_BUFF/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_noinit.ram/DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM18.ram/DIADI[0]|
-| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |                                                         waveform_acq_gen[23].WFM_ACQ/MDOM_TRIG/trig_reg/D|
-| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |                                                       waveform_acq_gen[5].WFM_ACQ/WVB/WR_CTRL/armed_reg/D|
-| clk_out1_lclk_adcclk_wiz | clk_out1_lclk_adcclk_wiz |                                                       waveform_acq_gen[3].WFM_ACQ/WVB/WR_CTRL/armed_reg/D|
-+--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+

@@ -256,6 +256,27 @@ rollingsum_lutram ROLLING_BSUM (
   .valid(bsum_valid)
 );
 
+   // Tyler Anderson Mon 10/24/2022_18:55:47.69
+   // This is required for local_coinc to meet timing
+   reg [11:0] 	       adc_data_stream_2 = 0;
+   reg [7:0] 	       discr_data_stream_2 = 0;
+   reg [1:0] 	       trig_src_2 = 0;
+   reg 		       wvb_trig_2 = 0;
+   reg 		       thresh_tot_2 = 0;
+   reg 		       discr_tot_2 = 0; 
+   reg 		       local_coinc_2 = 0; 
+   always @(posedge clk)
+     begin
+	adc_data_stream_2   <= adc_data_stream_1;
+	discr_data_stream_2 <= discr_data_stream_1;
+	trig_src_2          <= trig_src;
+	wvb_trig_2          <= wvb_trig;
+	thresh_tot_2        <= thresh_tot;
+	discr_tot_2         <= discr_tot;
+	local_coinc_2       <= local_coinc; 
+     end
+   
+   
 waveform_buffer
   #(.P_DATA_WIDTH(P_DATA_WIDTH),
     .P_ADR_WIDTH(P_ADR_WIDTH),
@@ -281,12 +302,12 @@ waveform_buffer
    .clk(clk),
    .rst(i_rst),
    .ltc_in(ltc_in),
-   .adc_in(adc_data_stream_1),
-   .discr_in(discr_data_stream_1),
+   .adc_in(adc_data_stream_2),
+   .discr_in(discr_data_stream_2),
    // .tot(discr_tot || thresh_tot),
-   .tot(thresh_tot),
-   .trig(lc_required ? local_coinc : wvb_trig), // T. Anderson Sat 05/21/2022_15:08:42.48
-   .trig_src(trig_src),
+   .tot(thresh_tot_2),
+   .trig(lc_required ? local_coinc_2 : wvb_trig_2), // T. Anderson Sat 05/21/2022_15:08:42.48
+   .trig_src(trig_src_2),
    .arm(wvb_arm),
 
    .wvb_rdreq(wvb_wvb_rdreq),
@@ -306,7 +327,7 @@ waveform_buffer
    .bsum(bsum),
    .bsum_len_sel(prev_sum_len_sel),
    .bsum_valid(bsum_valid),
-   .local_coinc(local_coinc) // T. Anderson Sat 05/21/2022_14:44:06.33
+   .local_coinc(local_coinc_2) // T. Anderson Sat 05/21/2022_14:44:06.33
   );
 
 endmodule

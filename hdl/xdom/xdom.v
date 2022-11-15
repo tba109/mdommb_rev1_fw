@@ -203,7 +203,10 @@ module xdom #(parameter N_CHANNELS = 24, parameter P_WIDTH_MDOM_BSUM_BUNDLE = 45
   output reg [15:0] 			lc_window_width = 4,
   output reg [15:0] 			n_lc_thr = 2,
   output reg 				lc_required = 1'b0, 
- 
+
+  // Thermal shutdown - T. Anderson Mon 11/14/2022_17:54:34.05
+  output reg [11:0] 			xdom_thermal_shutdown_temp = 2870, // ~80degC 
+  
   // priority input / FMC
   input 				po_wr,
   input 				po_en,
@@ -927,6 +930,7 @@ always @(*)
       12'hb93: begin y_rd_data =        lc_window_width;                                       end
       12'hb92: begin y_rd_data =        n_lc_thr;                                              end
       12'hb91: begin y_rd_data =        {15'h0,lc_required};                                   end
+      12'hb90: begin y_rd_data =        {4'h0,xdom_thermal_shutdown_temp}; end
       default:
         begin
           y_rd_data = xdom_dpram_rd_data;
@@ -1097,6 +1101,7 @@ always @(posedge clk)
         12'hb93: begin lc_window_width <= y_wr_data;                                           end
 	12'hb92: begin n_lc_thr <= y_wr_data;                                                  end
 	12'hb91: begin lc_required <= y_wr_data[0];                                            end
+	12'hb90: begin xdom_thermal_shutdown_temp <= y_wr_data[11:0];                          end
 	default: begin                                                                         end
       endcase
 end // always @ (posedge clk)
